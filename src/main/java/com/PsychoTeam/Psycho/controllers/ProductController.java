@@ -45,8 +45,8 @@ public class ProductController {
     @PostMapping("/products")
     public ResponseEntity<Object> createProduct(
             @RequestParam String name, @RequestParam String description,
-            @RequestParam int stock, @RequestParam double price, @RequestParam List<Double> sizes, @RequestParam List<String> colors) throws MessagingException, UnsupportedEncodingException {
-
+            @RequestParam int stock, @RequestParam double price, @RequestParam("sizes[]") List<Double> sizes, @RequestParam List<String> colors) throws MessagingException, UnsupportedEncodingException {
+        System.out.println(sizes);
         if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty())
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
 
