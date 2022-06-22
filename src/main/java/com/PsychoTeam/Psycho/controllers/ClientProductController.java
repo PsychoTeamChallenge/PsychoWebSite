@@ -89,7 +89,15 @@ public class ClientProductController {
 
         if (productExist.size() > 0){
             ClientProduct clientProduct1 =  productExist.stream().findFirst().orElse(null);
+            if(clientProduct1.getProduct().getStock() < clientProduct1.getQuantity() + 1){
+                return new ResponseEntity<>("Not enough items in stock", HttpStatus.FORBIDDEN);
+            }
             clientProduct1.setQuantity(clientProduct1.getQuantity() + 1);
+            // --------------------- //
+            Product productEntity = clientProduct1.getProduct();
+            productEntity.setStock(productEntity.getStock() - 1);
+            productService.saveProduct(productEntity);
+            // --------------------- //
             clientProductService.saveClientProduct(clientProduct1);
             return new ResponseEntity<>("Product added successfully",HttpStatus.CREATED);
         }

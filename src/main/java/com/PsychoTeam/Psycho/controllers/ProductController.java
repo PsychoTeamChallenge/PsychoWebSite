@@ -54,6 +54,7 @@ public class ProductController {
         if(price < 0){
             return new ResponseEntity<>("Invalid price", HttpStatus.FORBIDDEN);
         }
+
         Product product = new Product(name, description, stock, price, sizes, colors);
 
         productService.saveProduct(product);
