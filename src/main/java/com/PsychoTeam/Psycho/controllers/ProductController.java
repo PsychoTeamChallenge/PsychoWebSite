@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class ProductController {
         ProductDTO productDTO = new ProductDTO(product);
         return new ResponseEntity<>(productDTO, HttpStatus.OK);
     }
-
+    @Transactional
     @PostMapping("/products")
     public ResponseEntity<Object> createProduct(
             @RequestParam String name, @RequestParam String description,
@@ -61,7 +62,7 @@ public class ProductController {
 
         return new ResponseEntity<>("Product created successfully", HttpStatus.CREATED);
     }
-
+    @Transactional
     @PostMapping("/products/modify")
     public ResponseEntity<Object> modifyProduct(
             @RequestParam int id,

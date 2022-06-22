@@ -18,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Set;
@@ -41,17 +42,38 @@ public class ClientProductController {
         return productService.getProductsDTO();
     }
 
+    @Transactional
     @PatchMapping("/cart/modify")
     public ResponseEntity<Object> modifyProduct(
             @RequestParam int clientProduct_id, @RequestParam int quantity){
-        if(clientProductService.getClientProductById(clientProduct_id) == null){
+
+        ClientProduct clientProduct =  clientProductService.getClientProductById(clientProduct_id);
+
+        if( clientProduct == null){
             return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
         }
-        ClientProduct clientProduct = clientProductService.getClientProductById(clientProduct_id);
-        clientProduct.setQuantity(quantity);
+
+        Product product = clientProduct.getProduct();
+
+
+        if(quantity > 0 && product.getStock() < quantity)
+            return new ResponseEntity<>("Not enough items in stock", HttpStatus.FORBIDDEN);
+
+        if (clientProduct.getQuantity() + quantity < 1) {
+            product.setStock(product.getStock() + clientProduct.getQuantity());
+            clientProductService.removeClientProduct(clientProduct);
+            productService.saveProduct(product);
+            return new ResponseEntity<>("Product removed successfully", HttpStatus.ACCEPTED);
+        }
+
+        product.setStock(product.getStock() + quantity*-1);
+
+        clientProduct.setQuantity(clientProduct.getQuantity() + quantity);
+        productService.saveProduct(product);
         clientProductService.saveClientProduct(clientProduct);
         return new ResponseEntity<>("Product modified correctly", HttpStatus.ACCEPTED);
     }
+
 
     @GetMapping("/cart/current")
     public ResponseEntity<Object> getProductsOfClient(Authentication auth){
@@ -63,9 +85,10 @@ public class ClientProductController {
         return new ResponseEntity<>(cartListDTO, HttpStatus.ACCEPTED);
     }
 
+    @Transactional
     @PostMapping("/cart")
     public ResponseEntity<Object> createProduct(
-            @RequestParam String size, @RequestParam String color, @RequestParam int quantity, @RequestParam int id_product, Authentication auth) throws MessagingException, UnsupportedEncodingException {
+            @RequestParam String size, @RequestParam String color, @RequestParam int id_product, Authentication auth) throws MessagingException, UnsupportedEncodingException {
 
         if(auth.getName() == null){
             return new ResponseEntity<>("Invalid credentials", HttpStatus.FORBIDDEN);
@@ -80,7 +103,7 @@ public class ClientProductController {
 
         Client client = clientService.getClient(auth.getName());
         Product product = productService.getProductById(id_product);
-        ClientProduct clientProduct = new ClientProduct(client, product, size, color, product.getPrice(), quantity);
+        ClientProduct clientProduct = new ClientProduct(client, product, size, color, product.getPrice(), 1);
 
         Set<ClientProduct> productExist = client.getCart().stream()
                 .filter(product1 ->  product1.getProduct() == product
@@ -106,6 +129,10 @@ public class ClientProductController {
         client.addProductCart(clientProduct); // Add ClientProduct to Client
         product.addClientProduct(clientProduct); // Add ClientProduct to Product
 
+        Product productEntity = clientProduct.getProduct();
+        productEntity.setStock(productEntity.getStock() - 1);
+
+        productService.saveProduct(productEntity);
         clientService.saveClient(client); // Save client
         productService.saveProduct(product); // Save product
         clientProductService.saveClientProduct(clientProduct); // Save ClientProduct
@@ -113,6 +140,7 @@ public class ClientProductController {
         return new ResponseEntity<>("Product added successfully",HttpStatus.CREATED);
     }
 
+    @Transactional
     @DeleteMapping("/cart")
     public ResponseEntity<Object> removeProductFromCart(
             @RequestParam int clientProduct_id){
@@ -125,6 +153,7 @@ public class ClientProductController {
         return new ResponseEntity<>("Product removed successfully", HttpStatus.ACCEPTED);
     }
 
+    @Transactional
     @DeleteMapping("/cart/empty")
     public ResponseEntity<Object> emptyCart(Authentication auth){
         if(auth.getName() == null){

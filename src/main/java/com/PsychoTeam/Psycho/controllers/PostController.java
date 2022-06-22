@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -29,7 +30,7 @@ public class PostController {
         List<PostDTO> posts = postService.getPostsDTO();
         return new ResponseEntity(posts, HttpStatus.OK);
     }
-
+    @Transactional
     @PostMapping("/post")
     public ResponseEntity<?> createPost(Authentication authentication, @RequestParam String title, @RequestParam String urlImage, @RequestParam String description,
                                         @RequestParam String tattooer, @RequestParam PostType postType, @RequestParam int fires) {
