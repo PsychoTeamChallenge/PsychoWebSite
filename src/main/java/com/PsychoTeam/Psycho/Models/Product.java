@@ -36,13 +36,14 @@ public class Product {
 
     public Product(){}
 
-    public Product(String name, String description, int stock, double price, List<Double> sizes, List<String> colors) {
+    public Product(String name, String description, int stock, double price, ArrayList<Double> sizes, ArrayList<String> colors) {
         this.name = name;
         this.description = description;
         this.stock = stock;
         this.price = price;
         this.sizes = sizes;
         this.colors = colors;
+
     }
 
     public void addClientProduct(ClientProduct clientProduct) {

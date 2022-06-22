@@ -20,6 +20,8 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -41,11 +43,11 @@ public class ClientProductController {
 
     @PatchMapping("/cart/modify")
     public ResponseEntity<Object> modifyProduct(
-            @RequestParam int clientproduct_id, @RequestParam int quantity){
-        if(clientProductService.getClientProductById(clientproduct_id) == null){
+            @RequestParam int clientProduct_id, @RequestParam int quantity){
+        if(clientProductService.getClientProductById(clientProduct_id) == null){
             return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
         }
-        ClientProduct clientProduct = clientProductService.getClientProductById(clientproduct_id);
+        ClientProduct clientProduct = clientProductService.getClientProductById(clientProduct_id);
         clientProduct.setQuantity(quantity);
         clientProductService.saveClientProduct(clientProduct);
         return new ResponseEntity<>("Product modified correctly", HttpStatus.ACCEPTED);
@@ -75,9 +77,23 @@ public class ClientProductController {
         if (clientService.getClient(auth.getName()) == null || productService.getProductById(id_product) == null)
             return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
 
+
         Client client = clientService.getClient(auth.getName());
         Product product = productService.getProductById(id_product);
         ClientProduct clientProduct = new ClientProduct(client, product, size, color, product.getPrice(), quantity);
+
+        Set<ClientProduct> productExist = client.getCart().stream()
+                .filter(product1 ->  product1.getProduct() == product
+                        && product1.getSize().equals(size)
+                        && product1.getColor().equals(color)).collect(Collectors.toSet());
+
+        if (productExist.size() > 0){
+            ClientProduct clientProduct1 =  productExist.stream().findFirst().orElse(null);
+            clientProduct1.setQuantity(clientProduct1.getQuantity() + 1);
+            clientProductService.saveClientProduct(clientProduct1);
+            return new ResponseEntity<>("Product added successfully",HttpStatus.CREATED);
+        }
+
 
         client.addProductCart(clientProduct); // Add ClientProduct to Client
         product.addClientProduct(clientProduct); // Add ClientProduct to Product
@@ -91,12 +107,12 @@ public class ClientProductController {
 
     @DeleteMapping("/cart")
     public ResponseEntity<Object> removeProductFromCart(
-            @RequestParam int clientproduct_id){
+            @RequestParam int clientProduct_id){
 
-        if(clientProductService.getClientProductById(clientproduct_id) == null){
+        if(clientProductService.getClientProductById(clientProduct_id) == null){
             return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
         }
-        ClientProduct clientProduct = clientProductService.getClientProductById(clientproduct_id);
+        ClientProduct clientProduct = clientProductService.getClientProductById(clientProduct_id);
         clientProductService.removeClientProduct(clientProduct);
         return new ResponseEntity<>("Product removed successfully", HttpStatus.ACCEPTED);
     }
@@ -111,5 +127,6 @@ public class ClientProductController {
         clientProductService.removeClientProducts(client);
         return new ResponseEntity<>("Product removed successfully", HttpStatus.ACCEPTED);
     }
+
 
 }
