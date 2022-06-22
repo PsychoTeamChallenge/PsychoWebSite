@@ -11,10 +11,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class PsychoApplication {
-
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-
 
 	public static void main(String[] args) {
 		SpringApplication.run(PsychoApplication.class, args);
@@ -23,8 +21,11 @@ public class PsychoApplication {
 	@Bean
 	public CommandLineRunner initData(ClientService clientService) {
 		return (args) -> {
-			Client clientAdmin = new Client("Ezequiel", "Priotto", "zeke@psycho.com",passwordEncoder.encode("admin123"), "Zeke");
-			Client clientAdmin2 = new Client("David", "Pereira", "davey@psycho.com",passwordEncoder.encode("admin123"), "Davey");
+			Client clientAdmin = new Client("Ezequiel", "Priotto", "Zeke","zeke@psycho.com",passwordEncoder.encode("admin123") );
+			Client clientAdmin2 = new Client("David", "Pereira", "Davey", "davey@psycho.com",passwordEncoder.encode("admin123"));
+
+			clientAdmin.setEnabled(true);
+			clientAdmin2.setEnabled(true);
 
 			clientService.saveClient(clientAdmin);
 			clientService.saveClient(clientAdmin2);
@@ -32,4 +33,6 @@ public class PsychoApplication {
 			System.out.println("PROGRAMA INICIADO :D");
 		};
 	}
+
+
 }
