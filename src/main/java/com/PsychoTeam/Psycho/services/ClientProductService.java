@@ -18,4 +18,6 @@ public interface ClientProductService {
 
     void saveClientProduct(ClientProduct clientProduct);
 
+    void removeClientProduct(ClientProduct clientProduct);
+
 }

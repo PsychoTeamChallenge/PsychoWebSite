@@ -86,4 +86,14 @@ public class ClientProductController {
         return new ResponseEntity<>("Product added successfully",HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/cart")
+    public ResponseEntity<Object> removeProductFromCart(
+            @RequestParam int clientproduct_id){
+
+        if(clientProductService.getClientProductById(clientproduct_id) == null){
+            return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
+        }
+
+        return new ResponseEntity<>("Product removed successfully", HttpStatus.ACCEPTED);
+    }
 }

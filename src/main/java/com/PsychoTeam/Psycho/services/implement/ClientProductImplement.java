@@ -40,4 +40,9 @@ public class ClientProductImplement implements ClientProductService {
     public void saveClientProduct(ClientProduct clientProduct) {
         clientProductRepository.save(clientProduct);
     }
+
+    @Override
+    public void removeClientProduct(ClientProduct clientProduct) {
+        clientProductRepository.delete(clientProduct);
+    }
 }
