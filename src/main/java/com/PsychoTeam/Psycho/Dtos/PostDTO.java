@@ -11,6 +11,8 @@ public class PostDTO {
     private String title,urlImage,description, tattooer;
 
     private PostType postType;
+
+    private int fires;
     public PostDTO(Post post) {
 
         this.id = post.getId();
@@ -19,5 +21,6 @@ public class PostDTO {
         this.description = post.getDescription();
         this.tattooer = post.getTattooer();
         this.postType = post.getPostType();
+        this.fires = post.getFires();
     }
 }

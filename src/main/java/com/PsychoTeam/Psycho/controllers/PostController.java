@@ -32,17 +32,20 @@ public class PostController {
 
     @PostMapping("/post")
     public ResponseEntity<?> createPost(Authentication authentication, @RequestParam String title, @RequestParam String urlImage, @RequestParam String description,
-                                        @RequestParam String tattooer, @RequestParam PostType postType) {
+                                        @RequestParam String tattooer, @RequestParam PostType postType, @RequestParam int fires) {
 
         if (title.isEmpty() || urlImage.isEmpty() || description.isEmpty() || tattooer.isEmpty())
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+
+        if (fires < 0 || fires > 5)
+            return new ResponseEntity<>("Fires invalid", HttpStatus.FORBIDDEN);
 
         Client client = clientService.getClient(authentication.getName());
 
         if (client == null)
             return new ResponseEntity<>("User no have Client rol", HttpStatus.FORBIDDEN);
 
-        Post post = new Post(client, title, urlImage, description, tattooer, postType);
+        Post post = new Post(client, title, urlImage, description, tattooer, postType, fires);
         client.addPost(post);
 
         postService.savePost(post);
