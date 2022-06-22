@@ -9,6 +9,7 @@ import org.springframework.expression.spel.ast.NullLiteral;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -22,22 +23,23 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/products")
-    public List<ProductDTO> getProducts(){
+    public List<ProductDTO> getProducts() {
         return productService.getProductsDTO();
     }
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<Object> getProductById(@RequestParam String id){
-        if(id.isEmpty()){
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
-        } else {
-            ProductDTO productDTO = new ProductDTO(productService.getProductById(Integer.parseInt(id)));
-            if(productDTO == null){
-                return new ResponseEntity<>("Object not found", HttpStatus.FORBIDDEN);
-            }
+    public ResponseEntity<Object> getProductById(@PathVariable String id) {
 
-            return new ResponseEntity<>(productDTO, HttpStatus.FORBIDDEN);
-        }
+        if (id.isEmpty())
+            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+
+        Product product = productService.getProductById(Integer.parseInt(id));
+
+        if(product == null)
+            return new ResponseEntity<>("Object not found", HttpStatus.FORBIDDEN);
+
+        ProductDTO productDTO = new ProductDTO(product);
+        return new ResponseEntity<>(productDTO, HttpStatus.OK);
     }
 
     @PostMapping("/products")
@@ -52,6 +54,9 @@ public class ProductController {
 
         productService.saveProduct(product);
 
-        return new ResponseEntity<>("Product created successfully",HttpStatus.CREATED);
+        return new ResponseEntity<>("Product created successfully", HttpStatus.CREATED);
     }
+
+
+
 }

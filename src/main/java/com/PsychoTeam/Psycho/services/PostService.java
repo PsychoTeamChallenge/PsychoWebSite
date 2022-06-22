@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface PostService {
 
-    List<PostDTO> getPostDTO();
+    List<PostDTO> getPostsDTO();
     List<Post> getByClient(Client client);
-    void saveCard(Post post);
+    void savePost(Post post);
 
 }
