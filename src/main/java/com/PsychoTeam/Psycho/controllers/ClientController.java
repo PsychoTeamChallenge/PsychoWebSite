@@ -39,12 +39,20 @@ public class ClientController {
     }
 
     @GetMapping("/clients/current")
-    public ClientDTO getCurrentClient(Authentication authentication){
-        return new ClientDTO(clientService.getClient(authentication.getName()));
+    public ResponseEntity<?> getCurrentClient(Authentication authentication){
+
+        Client client = clientService.getClient(authentication.getName());
+
+        if(client == null)
+            return new ResponseEntity<>("The user no have client rol", HttpStatus.FORBIDDEN);
+
+        ClientDTO clientDTO = new ClientDTO(client);
+
+        return new ResponseEntity<>(clientDTO,HttpStatus.OK);
     }
 
     @PostMapping("/clients")
-    public ResponseEntity<Object> register(
+    public ResponseEntity<?> register(
             @RequestParam String firstName, @RequestParam String lastName,
             @RequestParam String email, @RequestParam String password, @RequestParam String userName, HttpServletRequest request) throws MessagingException, UnsupportedEncodingException {
 
@@ -85,7 +93,7 @@ public class ClientController {
 
     @Transactional
     @PostMapping("/activateAccount/{token}")
-    public ResponseEntity<Object> activateAccount(HttpServletRequest request, @PathVariable String token){
+    public ResponseEntity<?> activateAccount(HttpServletRequest request, @PathVariable String token){
 
         Client client = clientService.getClientToken(token);
 
@@ -100,7 +108,7 @@ public class ClientController {
     }
 
     @PatchMapping("/clients/current")
-    public ResponseEntity<Object> changeCurrentClient(Authentication authentication, @RequestParam String userName) {
+    public ResponseEntity<?> changeCurrentClient(Authentication authentication, @RequestParam String userName) {
         Client client = clientService.getClient(authentication.getName());
         if ( userName.isEmpty()) {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
@@ -115,7 +123,7 @@ public class ClientController {
 
     @Transactional
     @PostMapping("/clients/current/disable")
-    public ResponseEntity<Object> disableCurrentClient(Authentication authentication) throws MessagingException, UnsupportedEncodingException {
+    public ResponseEntity<?> disableCurrentClient(Authentication authentication) throws MessagingException, UnsupportedEncodingException {
         Client client = clientService.getClient(authentication.getName());
 
         if (client == null)

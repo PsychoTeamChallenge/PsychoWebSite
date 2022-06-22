@@ -17,7 +17,7 @@ public class PostServiceImplement implements PostService {
     PostRepository postRepository;
 
     @Override
-    public List<PostDTO> getPostDTO() {
+    public List<PostDTO> getPostsDTO() {
         return postRepository.findAll().stream().map(post -> new PostDTO(post)).collect(Collectors.toList());
     }
 
@@ -27,7 +27,7 @@ public class PostServiceImplement implements PostService {
     }
 
     @Override
-    public void saveCard(Post post) {
+    public void savePost(Post post) {
         postRepository.save(post);
     }
 }
