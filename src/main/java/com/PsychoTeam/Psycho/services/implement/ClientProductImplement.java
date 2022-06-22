@@ -1,15 +1,11 @@
 package com.PsychoTeam.Psycho.services.implement;
 
 
-import com.PsychoTeam.Psycho.Dtos.ClientDTO;
 import com.PsychoTeam.Psycho.Dtos.ClientProductDTO;
 import com.PsychoTeam.Psycho.Models.Client;
 import com.PsychoTeam.Psycho.Models.ClientProduct;
 import com.PsychoTeam.Psycho.repositories.ClientProductRepository;
-import com.PsychoTeam.Psycho.repositories.ClientRepository;
-import com.PsychoTeam.Psycho.repositories.ProductRepository;
 import com.PsychoTeam.Psycho.services.ClientProductService;
-import com.PsychoTeam.Psycho.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,10 +26,14 @@ public class ClientProductImplement implements ClientProductService {
     public ClientProduct getClientProductById(long id) {
         return clientProductRepository.findById(id).orElse(null);
     }
+    @Override
+    public List<ClientProductDTO> getClientProductsByClient(Client client) {
+        return clientProductRepository.findAllByClient(client).stream().map(ClientProductDTO::new).collect(Collectors.toList());
+    }
 
     @Override
     public List<ClientProductDTO> getClientsProductDTO() {
-        return clientProductRepository.findAll().stream().map(client -> new ClientProductDTO(client)).collect(Collectors.toList());
+        return clientProductRepository.findAll().stream().map(ClientProductDTO::new).collect(Collectors.toList());
     }
 
     @Override

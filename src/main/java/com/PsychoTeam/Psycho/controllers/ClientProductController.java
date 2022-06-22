@@ -1,5 +1,6 @@
 package com.PsychoTeam.Psycho.controllers;
 
+import com.PsychoTeam.Psycho.Dtos.ClientProductDTO;
 import com.PsychoTeam.Psycho.Dtos.ProductDTO;
 import com.PsychoTeam.Psycho.Models.Client;
 import com.PsychoTeam.Psycho.Models.ClientProduct;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.spel.ast.NullLiteral;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.web.servlet.headers.HttpStrictTransportSecurityDsl;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
@@ -35,19 +38,27 @@ public class ClientProductController {
         return productService.getProductsDTO();
     }
 
-    /*@GetMapping("/products/{id}")
-    public ResponseEntity<Object> getProductById(@RequestParam String id){
-        if(id.isEmpty()){
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
-        } else {
-            ProductDTO productDTO = new ProductDTO(productService.getProductById(Integer.parseInt(id)));
-            if(productDTO == null){
-                return new ResponseEntity<>("Object not found", HttpStatus.FORBIDDEN);
-            }
-
-            return new ResponseEntity<>(productDTO, HttpStatus.FORBIDDEN);
+    @PatchMapping("/cart/modify")
+    public ResponseEntity<Object> modifyProduct(
+            @RequestParam int clientproduct_id, @RequestParam int quantity){
+        if(clientProductService.getClientProductById(clientproduct_id) == null){
+            return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
         }
-    }*/
+        ClientProduct clientProduct = clientProductService.getClientProductById(clientproduct_id);
+        clientProduct.setQuantity(quantity);
+        clientProductService.saveClientProduct(clientProduct);
+        return new ResponseEntity<>("Product modified correctly", HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/cart/current")
+    public ResponseEntity<Object> getProductsOfClient(Authentication auth){
+        if(auth.getName() == null){
+            return new ResponseEntity<>("Invalid authentication credentials", HttpStatus.FORBIDDEN);
+        }
+        Client client = clientService.getClient(auth.getName());
+        List<ClientProductDTO> cartListDTO = clientProductService.getClientProductsByClient(client);
+        return new ResponseEntity<>(cartListDTO, HttpStatus.ACCEPTED);
+    }
 
     @PostMapping("/cart")
     public ResponseEntity<Object> createProduct(
