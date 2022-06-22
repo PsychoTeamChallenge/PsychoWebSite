@@ -45,4 +45,15 @@ public class ClientProductImplement implements ClientProductService {
     public void removeClientProduct(ClientProduct clientProduct) {
         clientProductRepository.delete(clientProduct);
     }
+
+    @Override
+    public void removeClientProducts(Client client) {
+        List<ClientProduct> cart = clientProductRepository.findAllByClient(client);
+        for(int i = 0; i < cart.size(); i++){
+            ClientProduct cartProduct = cart.get(i);
+            clientProductRepository.delete(cartProduct);
+        }
+    }
+
+
 }

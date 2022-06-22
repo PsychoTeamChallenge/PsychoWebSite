@@ -20,4 +20,6 @@ public interface ClientProductService {
 
     void removeClientProduct(ClientProduct clientProduct);
 
+    void removeClientProducts(Client client);
+
 }

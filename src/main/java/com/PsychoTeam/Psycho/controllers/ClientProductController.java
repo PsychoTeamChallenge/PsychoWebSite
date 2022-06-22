@@ -8,6 +8,7 @@ import com.PsychoTeam.Psycho.Models.Product;
 import com.PsychoTeam.Psycho.services.ClientProductService;
 import com.PsychoTeam.Psycho.services.ClientService;
 import com.PsychoTeam.Psycho.services.ProductService;
+import org.apache.tomcat.util.http.parser.Authorization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.spel.ast.NullLiteral;
 import org.springframework.http.HttpStatus;
@@ -93,7 +94,20 @@ public class ClientProductController {
         if(clientProductService.getClientProductById(clientproduct_id) == null){
             return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
         }
-
+        ClientProduct clientProduct = clientProductService.getClientProductById(clientproduct_id);
+        clientProductService.removeClientProduct(clientProduct);
         return new ResponseEntity<>("Product removed successfully", HttpStatus.ACCEPTED);
     }
+
+    @DeleteMapping("/cart/empty")
+    public ResponseEntity<Object> emptyCart(Authentication auth){
+        if(auth.getName() == null){
+            return new ResponseEntity<>("Invalid authentication credentials", HttpStatus.FORBIDDEN);
+        }
+
+        Client client = clientService.getClient(auth.getName());
+        clientProductService.removeClientProducts(client);
+        return new ResponseEntity<>("Product removed successfully", HttpStatus.ACCEPTED);
+    }
+
 }
