@@ -11,7 +11,6 @@ public interface ProductService {
     List<Product> getProducts();
     List<ProductDTO> getProductsDTO();
     boolean existProduct(long id);
-    void saveClientProduct(ClientProduct clientProduct);
     void saveProduct(Product product);
 
 }
