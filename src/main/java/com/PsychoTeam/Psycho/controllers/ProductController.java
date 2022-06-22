@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -45,13 +46,47 @@ public class ProductController {
     @PostMapping("/products")
     public ResponseEntity<Object> createProduct(
             @RequestParam String name, @RequestParam String description,
-            @RequestParam int stock, @RequestParam double price, @RequestParam("sizes[]") List<Double> sizes, @RequestParam List<String> colors) throws MessagingException, UnsupportedEncodingException {
+            @RequestParam int stock, @RequestParam double price, @RequestParam() ArrayList<Double> sizes, @RequestParam ArrayList<String> colors) throws MessagingException, UnsupportedEncodingException {
         System.out.println(sizes);
         if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty())
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
 
+        if(price < 0){
+            return new ResponseEntity<>("Invalid price", HttpStatus.FORBIDDEN);
+        }
         Product product = new Product(name, description, stock, price, sizes, colors);
 
+        productService.saveProduct(product);
+
+        return new ResponseEntity<>("Product created successfully", HttpStatus.CREATED);
+    }
+
+    @PostMapping("/products/modify")
+    public ResponseEntity<Object> modifyProduct(
+            @RequestParam int id,
+            @RequestParam String name, @RequestParam String description,
+            @RequestParam int stock, @RequestParam double price, @RequestParam() ArrayList<Double> sizes, @RequestParam ArrayList<String> colors) throws MessagingException, UnsupportedEncodingException {
+
+        if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty())
+            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+
+        if(price < 0)
+            return new ResponseEntity<>("Invalid price", HttpStatus.FORBIDDEN);
+
+        if(productService.getProductById(id) == null){
+            return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
+        }
+
+        Product product = productService.getProductById(id);
+        // ----------------------------- //
+        product.setClientProducts(product.getClientProducts());
+        product.setColors(colors);
+        product.setSizes(sizes);
+        product.setDescription(description);
+        product.setName(name);
+        product.setPrice(price);
+        product.setStock(stock);
+        // ----------------------------- //
         productService.saveProduct(product);
 
         return new ResponseEntity<>("Product created successfully", HttpStatus.CREATED);
