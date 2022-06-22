@@ -63,9 +63,8 @@ public class ClientProductController {
 
     @PostMapping("/cart")
     public ResponseEntity<Object> createProduct(
-            @RequestParam String size, @RequestParam String color,
-            @RequestParam double price, @RequestParam int quantity, @RequestParam int id_product, Authentication auth) throws MessagingException, UnsupportedEncodingException {
-        
+            @RequestParam String size, @RequestParam String color, @RequestParam int quantity, @RequestParam int id_product, Authentication auth) throws MessagingException, UnsupportedEncodingException {
+
         if(auth.getName() == null){
             return new ResponseEntity<>("Invalid credentials", HttpStatus.FORBIDDEN);
         }
@@ -73,12 +72,12 @@ public class ClientProductController {
         if (size.isEmpty() || color.isEmpty())
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
 
-        if (product == null || client == null)
+        if (clientService.getClient(auth.getName()) == null || productService.getProductById(id_product) == null)
             return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
 
         Client client = clientService.getClient(auth.getName());
         Product product = productService.getProductById(id_product);
-        ClientProduct clientProduct = new ClientProduct(client, product, size, color, price, quantity);
+        ClientProduct clientProduct = new ClientProduct(client, product, size, color, product.getPrice(), quantity);
 
         client.addProductCart(clientProduct); // Add ClientProduct to Client
         product.addClientProduct(clientProduct); // Add ClientProduct to Product
