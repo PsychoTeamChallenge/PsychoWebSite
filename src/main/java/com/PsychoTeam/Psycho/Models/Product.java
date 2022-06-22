@@ -31,9 +31,8 @@ public class Product {
     @Column(name="colors")
     private List<String> colors = new ArrayList<>();
 
-
     @OneToMany(mappedBy="product", fetch=FetchType.EAGER)
-    private Set<ClientProduct> clientProducts = new HashSet<ClientProduct>();
+    private Set<ClientProduct> clientProducts = new HashSet<>();
 
     public Product(){}
 

@@ -15,6 +15,7 @@ public class ClientDTO {
     private String firstName,lastName,userName, email, password;
 
     private Set<ClientProduct> cart;
+
     private Set<Product> favourites;
     private Set<Post> post;
 
