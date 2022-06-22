@@ -5,8 +5,10 @@ import com.PsychoTeam.Psycho.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -15,12 +17,21 @@ import javax.transaction.Transactional;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import static com.PsychoTeam.Psycho.Utils.Utils.DeleteToken;
+import static com.PsychoTeam.Psycho.Utils.Utils.GenerateToken;
+
 @RestController
 @RequestMapping("/api")
 public class ClientController {
 
     @Autowired
     private ClientService clientService;
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @GetMapping("/clients")
     public List<ClientDTO> getClients(){
@@ -52,10 +63,8 @@ public class ClientController {
         if (clientService.getClient(userName) != null)
             return new ResponseEntity<>("Username already in use", HttpStatus.FORBIDDEN);
 
-
         if(password.length() < 5)
             return new ResponseEntity<>("Short password", HttpStatus.FORBIDDEN);
-
 
         if(userName.length() > 15)
             return new ResponseEntity<>("Username too long", HttpStatus.FORBIDDEN);
@@ -74,7 +83,6 @@ public class ClientController {
         return new ResponseEntity<>("User created, email verification is required",HttpStatus.CREATED);
     }
 
-
     @Transactional
     @PostMapping("/activateAccount/{token}")
     public ResponseEntity<Object> activateAccount(HttpServletRequest request, @PathVariable String token){
@@ -90,7 +98,6 @@ public class ClientController {
         clientService.saveClient(client);
         return new ResponseEntity<>( HttpStatus.ACCEPTED);
     }
-
 
     @PatchMapping("/clients/current")
     public ResponseEntity<Object> changeCurrentClient(Authentication authentication, @RequestParam String userName) {
@@ -123,20 +130,18 @@ public class ClientController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-
-
     private void sendVerificationEmail(Client client)
             throws MessagingException, UnsupportedEncodingException {
 
         String toAddress = client.getEmail();
-        String fromAddress = "bankrdox@gmail.com";
-        String senderName = "BankrdoX";
+        String fromAddress = "psychoTeam@gmail.com";
+        String senderName = "PsychoTeam";
         String subject = "Please verify your registration";
         String content = "<h2 style=\"color:black;\">Hi [[name]]!</h2>"
                 + "<p style=\"color:black;\"> Please click the link below to verify your registration: </p>"
                 +"<img src=\"https://i.imgur.com/DjW6seD.png\" alt=\"ImgRegister\" width=\"450\" height=\"302\"/> <br>"
                 + "<h3><a href=\"[[URL]]\" target=\"_self\" style=\"color:#ff5e14;\">VERIFY YOUR ACCOUNT</a></h3>"
-                + "<div style=\"display:flex;gap: 0.4rem;\"> <p style=\"color:black;\"> Thank you, </p> <p style=\"color:rgb(232, 91, 26);font-weight: bold;\"> BankrdoX teams. </p> </div> "
+                + "<div style=\"display:flex;gap: 0.4rem;\"> <p style=\"color:black;\"> Thank you, </p> <p style=\"color:rgb(232, 91, 26);font-weight: bold;\"> Psycho teams. </p> </div> "
                 ;
 
         MimeMessage message = mailSender.createMimeMessage();
@@ -148,7 +153,7 @@ public class ClientController {
 
         content = content.replace("[[name]]", client.getFullName());
 
-        String verifyURL = "https://bankrdox.herokuapp.com/web/activateClient.html?token=" + client.getToken();
+        String verifyURL = "/web/activateClient.html?token=" + client.getToken();
 
         content = content.replace("[[URL]]", verifyURL);
 

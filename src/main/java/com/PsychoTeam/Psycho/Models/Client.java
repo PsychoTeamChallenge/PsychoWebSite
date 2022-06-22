@@ -1,11 +1,13 @@
 package com.PsychoTeam.Psycho.Models;
 
+import com.PsychoTeam.Psycho.Dtos.ProductDTO;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Setter
@@ -22,13 +24,14 @@ public class Client {
     private String firstName,lastName,userName, email, password, token;
 
     @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
-    private Set<ClientProduct> cart = new HashSet<ClientProduct>();
+    private Set<ClientProduct> cart = new HashSet<>();
+
+    @ElementCollection
+    @Column(name="favourites")
+    private Set<Product> favourites;
 
     @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
-    private Set<Product> favourites = new HashSet<Product>();
-
-    @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
-    private Set<Post> posts = new HashSet<Post>();
+    private Set<Post> posts = new HashSet<>();
 
     private boolean enabled;
 
@@ -54,7 +57,9 @@ public class Client {
     public void addFavourite(Product product) {
         favourites.add(product);
     }
-
+    public void removeFavourite(Product product) {
+        favourites.remove(product);
+    }
     public void addPost(Post post) {
         post.setClient(this);
         posts.add(post);
