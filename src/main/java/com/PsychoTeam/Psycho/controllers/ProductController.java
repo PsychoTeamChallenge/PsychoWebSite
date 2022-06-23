@@ -4,10 +4,12 @@ import com.PsychoTeam.Psycho.Dtos.ProductDTO;
 import com.PsychoTeam.Psycho.Models.Client;
 import com.PsychoTeam.Psycho.Models.Product;
 import com.PsychoTeam.Psycho.services.ProductService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.spel.ast.NullLiteral;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
@@ -93,6 +95,26 @@ public class ProductController {
 
         return new ResponseEntity<>("Product created successfully", HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/products/delete/{id}")
+    public ResponseEntity<Object> deleteProduct(
+            @PathVariable long id,
+            Authentication auth){
+
+        if(auth.getName() == null || auth.getName() == ""){
+            return new ResponseEntity<>("Invalid credentials", HttpStatus.FORBIDDEN);
+        }
+
+        Product product = productService.getProductById(id);
+        if(product == null){
+            return new ResponseEntity<>("Product not found", HttpStatus.FORBIDDEN);
+        }
+
+        productService.removeProduct(product);
+        return new ResponseEntity<>("Product has been removed", HttpStatus.ACCEPTED);
+
+    }
+
 
 
 

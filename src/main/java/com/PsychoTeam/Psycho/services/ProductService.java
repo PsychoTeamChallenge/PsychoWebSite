@@ -13,4 +13,6 @@ public interface ProductService {
     boolean existProduct(long id);
     void saveProduct(Product product);
 
+    void removeProduct(Product product);
+
 }
