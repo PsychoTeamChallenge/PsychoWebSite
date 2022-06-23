@@ -74,7 +74,6 @@ public class ClientProductController {
         return new ResponseEntity<>("Product modified correctly", HttpStatus.ACCEPTED);
     }
 
-
     @GetMapping("/cart/current")
     public ResponseEntity<Object> getProductsOfClient(Authentication auth){
         if(auth.getName() == null){
