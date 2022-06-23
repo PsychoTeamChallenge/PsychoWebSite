@@ -3,6 +3,7 @@ package com.PsychoTeam.Psycho.controllers;
 import com.PsychoTeam.Psycho.Dtos.ProductDTO;
 import com.PsychoTeam.Psycho.Models.Client;
 import com.PsychoTeam.Psycho.Models.Product;
+import com.PsychoTeam.Psycho.services.ClientService;
 import com.PsychoTeam.Psycho.services.ProductService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ClientService clientService;
 
     @GetMapping("/products")
     public List<ProductDTO> getProducts() {
@@ -49,52 +53,59 @@ public class ProductController {
     @PostMapping("/products")
     public ResponseEntity<Object> createProduct(
             @RequestParam String name, @RequestParam String description,
-            @RequestParam int stock, @RequestParam double price, @RequestParam() ArrayList<Double> sizes, @RequestParam ArrayList<String> colors) throws MessagingException, UnsupportedEncodingException {
-        System.out.println(sizes);
-        if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty())
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+        @RequestParam int stock, @RequestParam double price, @RequestParam() ArrayList<Double> sizes, @RequestParam ArrayList<String> colors,@RequestParam String urlImg, Authentication authentication) throws MessagingException, UnsupportedEncodingException {
+            System.out.println(sizes);
 
-        if(price < 0){
-            return new ResponseEntity<>("Invalid price", HttpStatus.FORBIDDEN);
+            if(clientService.getClient(authentication.getName()) == null)
+                return new ResponseEntity<>("You no have authorization", HttpStatus.FORBIDDEN);
+
+            if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty())
+                if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty() || urlImg.isEmpty())
+                    return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+
+            if(price < 0){
+                return new ResponseEntity<>("Invalid price", HttpStatus.FORBIDDEN);
+            }
+
+            Product product = new Product(name, description, urlImg, stock, price, sizes, colors);
+
+            productService.saveProduct(product);
+
+            return new ResponseEntity<>("Product created successfully", HttpStatus.CREATED);
         }
+        @Transactional
+        @PostMapping("/products/modify")
+        public ResponseEntity<Object> modifyProduct(
+        @RequestParam int id,
+        @RequestParam String name, @RequestParam String description,@RequestParam String urlImg,
+        @RequestParam int stock, @RequestParam double price, @RequestParam() ArrayList<Double> sizes, @RequestParam ArrayList<String> colors) throws MessagingException, UnsupportedEncodingException {
 
-        Product product = new Product(name, description, stock, price, sizes, colors);
+            if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty())
+                if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty() || urlImg.isEmpty())
+                    return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
 
-        productService.saveProduct(product);
+            if(price < 0)
+                return new ResponseEntity<>("Invalid price", HttpStatus.FORBIDDEN);
 
-        return new ResponseEntity<>("Product created successfully", HttpStatus.CREATED);
-    }
-    @Transactional
-    @PostMapping("/products/modify")
-    public ResponseEntity<Object> modifyProduct(
-            @RequestParam int id,
-            @RequestParam String name, @RequestParam String description,
-            @RequestParam int stock, @RequestParam double price, @RequestParam() ArrayList<Double> sizes, @RequestParam ArrayList<String> colors) throws MessagingException, UnsupportedEncodingException {
+            if(productService.getProductById(id) == null){
+                return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
+            }
 
-        if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty())
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+            Product product = productService.getProductById(id);
+            // ----------------------------- //
+            product.setClientProducts(product.getClientProducts());
+            product.setColors(colors);
+            product.setSizes(sizes);
+            product.setDescription(description);
+            product.setName(name);
+            product.setPrice(price);
+            product.setStock(stock);
+            product.setUrlImg(urlImg);
+            // ----------------------------- //
+            productService.saveProduct(product);
 
-        if(price < 0)
-            return new ResponseEntity<>("Invalid price", HttpStatus.FORBIDDEN);
-
-        if(productService.getProductById(id) == null){
-            return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Product update successfully", HttpStatus.CREATED);
         }
-
-        Product product = productService.getProductById(id);
-        // ----------------------------- //
-        product.setClientProducts(product.getClientProducts());
-        product.setColors(colors);
-        product.setSizes(sizes);
-        product.setDescription(description);
-        product.setName(name);
-        product.setPrice(price);
-        product.setStock(stock);
-        // ----------------------------- //
-        productService.saveProduct(product);
-
-        return new ResponseEntity<>("Product created successfully", HttpStatus.CREATED);
-    }
 
     @DeleteMapping("/products/delete/{id}")
     public ResponseEntity<Object> deleteProduct(
