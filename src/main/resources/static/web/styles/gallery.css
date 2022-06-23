@@ -1,0 +1,134 @@
+:root{
+    --lightblue:  rgb(0, 224, 224);
+    --pink: rgb(230, 0, 130);
+ }
+ @font-face {
+     font-family: "Argh";
+     src: url("../assets/fonts/argh/ArghDemo-Italic.otf");
+   }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: Argh;
+}
+body {
+    
+    background-image: url("../assets/istockphoto-1192881783-640x640.png");
+}
+.d-flex {
+    display: flex!important;
+    flex-direction: column;
+    align-items:center;
+    flex-wrap: wrap;
+    padding: 1rem;
+}
+.cards{
+    display: flex;
+    background-color: #fff0;
+    max-width: 75%;
+    max-height: 30vh;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+    border: 0.1rem solid #fff;
+    padding: 0.4em;
+    box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem var(--pink), 0 0 0.8rem var(--pink), 0 0 2.8rem , inset 0 0 1.3rem var(--pink);
+}
+
+.test{
+    width: 45%;
+    height: 30vh;
+    max-width: 100%;
+}
+ .glass{
+    height: 4%;
+    background: rgba( 255, 255, 255, 0.25 );
+    backdrop-filter: blur( 5px );
+    -webkit-backdrop-filter: blur( -10px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    position: absolute;
+    opacity:0;
+}
+
+.cards:hover
+    .glass{
+        opacity: 1;
+        transition: .8s;
+    }
+
+button{
+    position: relative;
+    height: 3rem;
+    width: 8rem;
+    margin: 0 35px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    background: #111;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 1s;
+  }
+
+  button:last-child:hover{
+    background: linear-gradient(90deg, #00dada, #c3007d, #c3007d, #00dada);
+    background-size: 400%;
+  }
+  
+  button:last-child:before{
+    content: '';
+    position: absolute;
+    background: inherit;
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+    border-radius: 50px;
+    filter: blur(20px);
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+ 
+  button:last-child:hover:before{
+    opacity: 1;
+    z-index: -1;
+  }
+  button:hover{
+    z-index: 1;
+    animation: glow 8s linear infinite;
+  }
+  @keyframes glow {
+    0%{
+      background-position: 0%;
+    }
+    100%{
+      background-position: 400%;
+    }
+  }
+
+.fire{
+    display: flex;
+    justify-content: space-around;
+}
+.stars{
+    width:15%;
+    height:5vh;
+}
+.filter{
+    display: flex;
+    align-content: space-around;
+    justify-content: space-around;
+}
+#input:checked {
+    background-color: var(--lightblue);
+    border-color: var(--lightblue);
+   
+}
