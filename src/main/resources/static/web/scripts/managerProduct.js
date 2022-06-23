@@ -40,6 +40,13 @@ Vue.createApp({
             this.addNewProduct = !this.addNewProduct
             this.fullProduct = false;
 
+            this.productFocusColors =[]
+            this.productFocusSizes = []
+            this.productFocusName = ""
+            this.productFocusDescription = "" 
+            this.productFocusPrice = ""
+            this.productFocusUrlImg = ""
+            this.productFocusStock = ""
             this.productoToModificar = {}
         },
         addImg() {
