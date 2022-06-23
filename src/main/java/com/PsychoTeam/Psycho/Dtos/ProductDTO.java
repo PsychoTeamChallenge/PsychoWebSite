@@ -25,12 +25,12 @@ public class ProductDTO {
 
     private List<String> colors = new ArrayList<>();
 
-    private Set<ClientProduct> clientProducts = new HashSet<ClientProduct>();
-
     public ProductDTO(Product product){
         this.id = product.getId();
         this.name = product.getName();
         this.description = product.getDescription();
+        this.sizes = product.getSizes();
+        this.colors = product.getColors();
         this.stock = product.getStock();
         this.price = product.getPrice();
     }

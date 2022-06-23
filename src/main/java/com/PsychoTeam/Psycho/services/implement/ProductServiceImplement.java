@@ -34,7 +34,7 @@ public class ProductServiceImplement implements ProductService {
 
     @Override
     public List<ProductDTO> getProductsDTO() {
-        return  productRepository.findAll().stream().map(product -> new ProductDTO(product)).collect(Collectors.toList());
+        return  productRepository.findAll().stream().map(ProductDTO::new).collect(Collectors.toList());
     }
 
     @Override
@@ -45,9 +45,5 @@ public class ProductServiceImplement implements ProductService {
     @Override
     public void saveProduct(Product product) {
         productRepository.save(product);
-    }
-    @Override
-    public void saveClientProduct(ClientProduct clientProduct) {
-        clientProductRepository.save(clientProduct);
     }
 }

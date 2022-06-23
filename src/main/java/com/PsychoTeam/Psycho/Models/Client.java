@@ -1,5 +1,6 @@
 package com.PsychoTeam.Psycho.Models;
 
+import com.PsychoTeam.Psycho.Dtos.ClientProductDTO;
 import com.PsychoTeam.Psycho.Dtos.ProductDTO;
 import lombok.Getter;
 import lombok.Setter;

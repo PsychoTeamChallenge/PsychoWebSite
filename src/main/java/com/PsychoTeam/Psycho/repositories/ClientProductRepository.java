@@ -8,5 +8,5 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface ClientProductRepository extends JpaRepository<ClientProduct, Long> {
-    public List<ClientProduct> findByClient(Client client);
+    public List<ClientProduct> findAllByClient(Client client);
 }

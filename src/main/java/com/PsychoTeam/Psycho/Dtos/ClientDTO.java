@@ -7,17 +7,18 @@ import com.PsychoTeam.Psycho.Models.Product;
 import lombok.Getter;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Getter
 public class ClientDTO {
 
     private long id;
-    private String firstName,lastName,userName, email, password;
+    private String firstName,lastName,userName, email;
 
-    private Set<ClientProduct> cart;
+    private Set<ClientProductDTO> cart;
 
     private Set<Product> favourites;
-    private Set<Post> post;
+    private Set<PostDTO> posts;
 
     public ClientDTO(Client client){
         this.id = client.getId();
@@ -25,9 +26,9 @@ public class ClientDTO {
         this.lastName = client.getLastName();
         this.userName = client.getUserName();
         this.email = client.getEmail();
-        this.cart = client.getCart();
+        this.cart = client.getCart().stream().map(clientProduct -> new ClientProductDTO(clientProduct)).collect(Collectors.toSet());
         this.favourites = client.getFavourites();
-        this.post = client.getPosts();
+        this.posts = client.getPosts().stream().map(post -> new PostDTO(post)).collect(Collectors.toSet());
     }
 
 

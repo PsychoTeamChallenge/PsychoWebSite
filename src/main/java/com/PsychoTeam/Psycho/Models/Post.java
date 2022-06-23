@@ -20,16 +20,18 @@ public class Post {
 
     private String title,urlImage,description, tattooer;
 
+    private int fires;
     private PostType postType;
 
     public Post() {}
 
-    public Post(Client client, String title, String urlImage, String description, String tattooer, PostType postType) {
+    public Post(Client client, String title, String urlImage, String description, String tattooer, PostType postType, int fires) {
         this.client = client;
         this.title = title;
         this.urlImage = urlImage;
         this.description = description;
         this.tattooer = tattooer;
         this.postType = postType;
+        this.fires = fires;
     }
 }
