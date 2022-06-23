@@ -45,6 +45,7 @@ body {
   margin: 2.5rem;
   border: 0.1rem solid #fff;
   box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem var(--pink), 0 0 0.8rem var(--pink), 0 0 2.8rem, inset 0 0 1.3rem var(--pink);
+  transition:.8s;
 }
 
 /* imagen de prueba*/
@@ -64,6 +65,7 @@ body {
   opacity: 0;
   display: flex;
   align-items: center;
+  transition: .8s;
 }
 
 .fire {
@@ -72,11 +74,13 @@ body {
   bottom: 20px;
   justify-content: space-around;
   opacity: 0;
+  transition: .8s;
 }
 
 .stars {
   width: 15%;
   height: 4vh;
+  transition: .8s;
 }
 
 .username {
@@ -87,23 +91,17 @@ body {
   bottom: 0px;
   left: 0px;
   opacity: 0;
-}
-
-.cards:hover .glass {
-  opacity: 1;
   transition: .8s;
 }
 
-.cards:hover .fire {
+.cards:hover .glass,.cards:hover .fire,.cards:hover .username {
   opacity: 1;
-  transition: .8s;
+  
 }
 
-.cards:hover .username {
-  opacity: 1;
-  transition: .8s;
-}
-
+.cards:hover{
+    transform: scale(1.1);
+   }
 /* boton de turno */
 .requestTurn {
   position: absolute;
