@@ -20,7 +20,6 @@ body {
 }
 .d-flex {
     display: flex!important;
-    flex-direction: column;
     align-items:center;
     flex-wrap: wrap;
     padding: 1rem;
