@@ -57,7 +57,7 @@ body {
 
 #barbedWire {
     position: absolute;
-    top: 41.7vh;
+    top: 41.8vh;
     left: -1vw;
     z-index: 1;
     height: 17vh;
@@ -111,6 +111,7 @@ body {
 .cards img {
     width: 180px;
     height: 110px;
+    filter: grayscale();
 }
 
 /* button request */
