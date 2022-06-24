@@ -33,6 +33,11 @@ public class ClientProductImplement implements ClientProductService {
     }
 
     @Override
+    public List<ClientProduct> getClientProductsByClientNotDTO(Client client) {
+        return clientProductRepository.findAllByClient(client);
+    }
+
+    @Override
     public List<ClientProductDTO> getClientsProductDTO() {
         return clientProductRepository.findAll().stream().map(ClientProductDTO::new).collect(Collectors.toList());
     }

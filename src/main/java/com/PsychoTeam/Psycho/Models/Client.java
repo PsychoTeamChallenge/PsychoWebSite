@@ -68,6 +68,11 @@ public class Client {
         posts.add(post);
     }
 
+    public void addPurchases(Purchase purchase){
+        purchase.setClient(this);
+        purchases.add(purchase);
+    }
+
     public void deleteToken() {
         this.token = "";
     }

@@ -14,6 +14,8 @@ public interface ClientProductService {
 
     List<ClientProductDTO> getClientProductsByClient(Client client);
 
+    List<ClientProduct> getClientProductsByClientNotDTO(Client client);
+
     List<ClientProductDTO> getClientsProductDTO();
 
     long getTotalExpensesOfCart(Client client);
