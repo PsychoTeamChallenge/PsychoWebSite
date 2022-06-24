@@ -25,6 +25,7 @@
 .mobileNav i{
     font-size: 1.6rem;
     color: white;
+    transition: .3s;
 }
 
 .mobileNav i.active, .mobileNav i:hover{

@@ -91,7 +91,7 @@ public class PurchaseController {
         newPurchase.setAddress(purchaseApplicationDTO.getAddress());
         newPurchase.setPayMethod(purchaseApplicationDTO.getPaymentMethod());
         newPurchase.setPdf(purchaseApplicationDTO.getPdf());
-
+        newPurchase.setEnable(true);
         clientUsed.addPurchases(newPurchase);
         clientService.saveClient(clientUsed);
         purchaseService.savePurchase(newPurchase);
