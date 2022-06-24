@@ -1,10 +1,26 @@
 html, body{
   height: 100%;
 }
-
-body{
+:root {
+  --lightblue: rgb(0, 224, 224);
+  --pink: rgb(230, 0, 130);
+}
+@font-face {
+  font-family: "Argh";
+  src: url("../assets/fonts/argh/ArghDemo-Italic.otf");
+}
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Argh;
+}
+body{
+  color: var(--pink);
+  margin: 0;
+  padding: 0;
+  background-image: url("../assets/newBackground.png");
 }
 
 ol, ul{
@@ -84,4 +100,18 @@ a{
 
 .hidden{
   display: none;
+}
+
+#bill{
+  border: 1px solid;
+  background-color: rgba(0, 0, 0, 0.603);
+}
+
+@media screen and (max-width: 600px) {
+  #bill{
+  display:none;
+  }
+  #steps{
+    width: 100%;
+  }
 }

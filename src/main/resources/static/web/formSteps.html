@@ -17,12 +17,48 @@
 <body>
   <div class="container-fluid h-100">
     <div class="w-100 h-100 d-flex">
-      <div class="w-40 h-100">
-        Factura
+      <div id="bill"class="w-40 h-100">
+        <h3 class="text-center">Bill</h3>
+        <div class="data">
+        <div>Product Image</div>
+        <div>Description</div>
+        <div>Quantity</div>
+        <div>Product Value</div>
       </div>
-      <div class="w-60 h-100">
+
+      <div class="data">
+        <div>Product Image</div>
+        <div>Description</div>
+        <div>Quantity</div>
+        <div>Product Value</div>
+      </div>
+      <div class="data">
+        <div>Product Image</div>
+        <div>Description</div>
+        <div>Quantity</div>
+        <div>Product Value</div>
+      </div>
+
+        <div>Total</div>
+      
+      </div>
+      <div id="steps" class="w-60 h-100">
         <div class="h-90 d-flex justify-content-center align-items-center">
-          <form id = "main-form">
+          <form id="main-form">
+            <div class="tab-steps hidden">
+              <table class="text-light">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre de producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Unidades</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col">Eliminar</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+
             <div class="tab-steps hidden">
               <label for="firstName" class="inp">
                 <input type="text" id="firstName" placeholder="&nbsp;">
@@ -50,15 +86,59 @@
             </div>
 
             <div class="tab-steps hidden">
-              form 2
+                <div class="payment">
+                <label for="cardNumber" class="inp">
+                  <input type="number" id="cardNumber" placeholder="&nbsp;">
+                  <span class="label">card number</span>
+                  <span class="focus-bg"></span>
+                </label>
+                
+                <label for="mont" class="inp">
+                  <input type="number" id="month" placeholder="&nbsp;">
+                  <span class="label">Expiry Month</span>
+                </label>
+
+                <label for="year" class="inp">
+                  <input type="number" id="years" placeholder="&nbsp;">
+                  <span class="label">Expiry year</span>
+                  <span class="focus-bg"></span>
+                </label>
+
+                <label for="cardHolder" class="inp">
+                  <input type="text" id="cardHolder" placeholder="&nbsp;">
+                  <span class="label">Name Of The Card</span>
+                  <span class="focus-bg"></span>
+                </label>
+              </div>
             </div>
+    
 
             <div class="tab-steps hidden">
-              Form 3
-            </div>
-
-            <div class="tab-steps hidden">
-              Form 4
+              <label for="location" class="inp">
+                <input type="text" id="location" placeholder="&nbsp;">
+                <span class="label">Location</span>
+                <span class="focus-bg"></span>
+              </label>
+              <label for="postalCode" class="inp">
+                <input type="text" id="postalCode" placeholder="&nbsp;">
+                <span class="label">Postal Code</span>
+                <span class="focus-bg"></span>
+              </label>
+              <label for="street" class="inp">
+                <input type="text" id="street" placeholder="&nbsp;">
+                <span class="label">Street</span>
+                <span class="focus-bg"></span>
+              </label>
+              <label for="streetNumber" class="inp">
+                <input type="text" id="streetNumber" placeholder="&nbsp;">
+                <span class="label">Street Number</span>
+                <span class="focus-bg"></span>
+              </label>
+              <label for="phoneNumber" class="inp">
+                <input type="text" id="phoneNumber" placeholder="&nbsp;">
+                <span class="label">Phone Number</span>
+                <span class="focus-bg"></span>
+              </label>
             </div>
 
             <button class="button-49" id="nextBtn" onclick="nextTab()"> Continue </button>
