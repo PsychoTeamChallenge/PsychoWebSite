@@ -47,7 +47,7 @@ body {
   box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem var(--pink), 0 0 0.8rem var(--pink), 0 0 2.8rem, inset 0 0 1.3rem var(--pink);
   transition:.8s;
   margin-bottom: 4rem;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
