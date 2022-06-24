@@ -44,7 +44,7 @@ public class ClientProductController {
 
 
     @Transactional
-    @PatchMapping("/cart/modify")
+    @PatchMapping("/cart/current/modify")
     public ResponseEntity<Object> modifyProduct(
             @RequestParam int clientProduct_id, @RequestParam int quantity){
 
@@ -86,7 +86,7 @@ public class ClientProductController {
     }
 
     @Transactional
-    @PostMapping("/cart")
+    @PostMapping("/cart/current")
     public ResponseEntity<Object> createProduct(
             @RequestParam String size, @RequestParam String color, @RequestParam int id_product, Authentication auth) throws MessagingException, UnsupportedEncodingException {
 
@@ -142,7 +142,7 @@ public class ClientProductController {
     }
 
     @Transactional
-    @DeleteMapping("/cart")
+    @DeleteMapping("/cart/current")
     public ResponseEntity<Object> removeProductFromCart(
             @RequestParam int clientProduct_id){
 
@@ -155,7 +155,7 @@ public class ClientProductController {
     }
 
     @Transactional
-    @DeleteMapping("/cart/empty")
+    @DeleteMapping("/cart/current/empty")
     public ResponseEntity<Object> emptyCart(Authentication auth){
         if(auth.getName() == null){
             return new ResponseEntity<>("Invalid authentication credentials", HttpStatus.FORBIDDEN);

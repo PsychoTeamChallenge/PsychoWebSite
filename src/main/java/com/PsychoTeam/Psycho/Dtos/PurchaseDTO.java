@@ -21,7 +21,6 @@ public class PurchaseDTO {
     private ShipmentType shipmentType;
     private String payMethod;
     private String address;
-    private Document pdf;
     public boolean enable;
 
 
@@ -37,7 +36,6 @@ public class PurchaseDTO {
         this.shipmentType = purchase.getShipmentType();
         this.payMethod = purchase.getPayMethod();
         this.address = purchase.getAddress();
-        this.pdf = purchase.getPdf();
         this.enable = purchase.isEnable();
     }
 

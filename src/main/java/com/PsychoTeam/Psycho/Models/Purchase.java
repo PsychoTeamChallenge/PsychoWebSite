@@ -34,13 +34,13 @@ public class Purchase {
     private ShipmentType shipmentType;
     private String payMethod;
     private String address;
-    private Document pdf;
+
 
     public boolean enable;
 
     public Purchase() {}
 
-    public Purchase(Client client, double totalExpense, ShipmentType shipmentType, String payMethod, String address, Document pdf) {
+    public Purchase(Client client, double totalExpense, ShipmentType shipmentType, String payMethod, String address) {
         this.client = client;
         this.products = client.getCart();
         this.date = LocalDateTime.now();
@@ -48,7 +48,6 @@ public class Purchase {
         this.shipmentType = shipmentType;
         this.payMethod = payMethod;
         this.address = address;
-        this.pdf = pdf;
         this.idCrypt = GenerateIdCrypt();
     }
 

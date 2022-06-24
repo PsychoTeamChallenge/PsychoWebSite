@@ -10,8 +10,9 @@ import com.PsychoTeam.Psycho.services.ClientProductService;
 import com.PsychoTeam.Psycho.services.ClientService;
 import com.PsychoTeam.Psycho.services.ProductService;
 import com.PsychoTeam.Psycho.services.PurchaseService;
-import com.lowagie.text.Document;
 
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
@@ -19,14 +20,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static com.PsychoTeam.Psycho.Utils.Utils.CreatePDF;
 
 
 @RestController
@@ -62,7 +68,7 @@ public class PurchaseController {
 
     @Transactional
     @PostMapping("/purchase/complete")
-    public ResponseEntity<Object> completePurchase(@RequestBody PurchaseApplicationDTO purchaseApplicationDTO, Authentication auth){
+    public ResponseEntity<Object> completePurchase(HttpServletResponse response, @RequestBody PurchaseApplicationDTO purchaseApplicationDTO, Authentication auth) throws DocumentException, IOException {
 
         if (auth.getName() == null)
             return new ResponseEntity<>("Invalid credentials", HttpStatus.FORBIDDEN);
@@ -90,12 +96,10 @@ public class PurchaseController {
         newPurchase.setDate(todayTime);
         newPurchase.setAddress(purchaseApplicationDTO.getAddress());
         newPurchase.setPayMethod(purchaseApplicationDTO.getPaymentMethod());
-        newPurchase.setPdf(purchaseApplicationDTO.getPdf());
-
+        newPurchase.setEnable(true);
         clientUsed.addPurchases(newPurchase);
         clientService.saveClient(clientUsed);
         purchaseService.savePurchase(newPurchase);
-
         return new ResponseEntity<>("Purchase completed", HttpStatus.ACCEPTED);
     }
 
@@ -117,4 +121,7 @@ public class PurchaseController {
         purchaseService.removePurchase(purchase);
         return new ResponseEntity<>("Product removed successfully", HttpStatus.ACCEPTED);
     }
+
+
+
 }

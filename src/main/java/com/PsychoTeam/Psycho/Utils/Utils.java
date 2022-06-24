@@ -71,8 +71,8 @@ public class Utils {
        document.open();
 
 
-
        document.close();
+
    }
 
 }

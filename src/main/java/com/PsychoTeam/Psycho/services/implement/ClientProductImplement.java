@@ -49,13 +49,13 @@ public class ClientProductImplement implements ClientProductService {
         ArrayList<ClientProduct> clientProducts = new ArrayList<>(client.getCart());
 
         //        for(int i = 0; i < clientProducts.size(); i++){
-//            double clientProductPrice = clientProducts.get(i).getPrice() + clientProducts.get(i).getQuantity();
+//            double clientProductPrice = clientProducts.get(i).getPrice() * clientProducts.get(i).getQuantity();
 //            totalPrice += clientProductPrice;
 //        }
 
         double totalPrice = clientProducts.stream().mapToDouble(clientProduct -> clientProduct.getPrice() * clientProduct.getQuantity()).sum();
 
-        return (double) totalPrice;
+        return totalPrice;
     }
 
     @Override
