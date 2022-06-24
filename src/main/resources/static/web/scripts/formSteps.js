@@ -14,69 +14,42 @@ $(document).ready(function(){
 });
 
 var n = 0;
+var s = false;
+
 function nextTab(){
-  console.log(n);
   let tabs = Array.from($('#main-form').children('.tab-steps'));
-  if(n == tabs.length){
-    console.log('nothing')
-  } else {
-    //$('#main-form').children('.tab-steps').toggleClass('hidden');
-
-    console.log(tabs.length);
-    if(n > 0){
-        $(tabs[n-1]).toggleClass('hidden');
-    }
-      $(tabs[n]).toggleClass('hidden');
-      nextIcon();
-    }
-}
-
-function nextIcon(){
-  console.log(n);
-  let tabs = Array.from($('.first ul li').children('a').children('span'));
-  console.log(tabs);
-  if(n == tabs.length){
-    console.log('nothing')
-  } else {
-    //$('#main-form').children('.tab-steps').toggleClass('hidden');
-    if(n > 0){
-        //$(tabs[n-1]).toggleClass('active');
-    }
-      $(tabs[n]).toggleClass('active');
-      n++;
-    }
-}
-
-function switchTab(number){
-  let tabs = Array.from($('#main-form').children('.tab-steps'));
-  let icons = Array.from($('.first ul li').children('a').children('span'));
-  if(number > tabs.length){
+  if(s == true){
+    s = false;
+    n++;
+  }
+  if(n >= tabs.length){
     return false;
-    console.log("Invalid data");
-  }
-  var i = 0;
-  while(i < tabs.length){
-    console.log(i);
-    if(i == number){
-      if($(tabs[i]).hasClass('hidden') == true){
-        $(tabs[i]).toggleClass('hidden');
+  } else {
+    var i = 0;
+    while(i < tabs.length){
+      if(i == n){
+        if($(tabs[i]).hasClass('hidden') == true){
+          $(tabs[i]).toggleClass('hidden');
+        }
+        i++;
+      } else {
+        if($(tabs[i]).hasClass('hidden') == false){
+          $(tabs[i]).toggleClass('hidden');
 
+        }
+        i++;
       }
-      i++;
-    } else {
-      if($(tabs[i]).hasClass('hidden') == false){
-        $(tabs[i]).toggleClass('hidden');
-
-      }
-      i++;
     }
+    nextIcon(n);
   }
+}
 
+function switchIcon(number){
+  s = true;
+  let icons = Array.from($('.first ul li').children('a').children('span'));
   var j = 0;
   while(j < icons.length){
-    console.log(j);
     if(j > number){
-      console.log("mayor");
       if($(icons[j]).hasClass('active') == true){
         $(icons[j]).toggleClass('active');
       }
@@ -88,6 +61,52 @@ function switchTab(number){
       j++;
     }
   }
+  n = number;
+}
+
+function nextIcon(number){
+  let icons = Array.from($('.first ul li').children('a').children('span'));
+  var j = 0;
+  while(j < icons.length){
+    if(j > number){
+      if($(icons[j]).hasClass('active') == true){
+        $(icons[j]).toggleClass('active');
+      }
+      j++;
+    } else {
+      if($(icons[j]).hasClass('active') == false){
+        $(icons[j]).toggleClass('active');
+      }
+      j++;
+    }
+  }
+  n++;
+}
+
+function switchTab(number){
+
+  let tabs = Array.from($('#main-form').children('.tab-steps'));
+  if(number > tabs.length){
+    console.log("Invalid data");
+    return false;
+  }
+  var i = 0;
+  while(i < tabs.length){
+    console.log(i);
+    if(i == number){
+      if($(tabs[i]).hasClass('hidden') == true){
+        $(tabs[i]).toggleClass('hidden');
+      }
+      i++;
+    } else {
+      if($(tabs[i]).hasClass('hidden') == false){
+        $(tabs[i]).toggleClass('hidden');
+
+      }
+      i++;
+    }
+  }
+  switchIcon(number);
 }
 
 
