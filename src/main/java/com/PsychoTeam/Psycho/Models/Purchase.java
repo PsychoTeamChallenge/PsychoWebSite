@@ -35,7 +35,6 @@ public class Purchase {
     private String payMethod;
     private String address;
 
-
     public boolean enable;
 
     public Purchase() {}

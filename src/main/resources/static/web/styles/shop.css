@@ -1,0 +1,92 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+
+
+/* tipografia */
+@font-face {
+    font-family: "Argh";
+    src: url(../assets/fonts/argh/ArghDemo.otf);
+}
+
+@font-face {
+    font-family: "Text";
+    src: url(../assets/fonts/fontsAlternativas/Kepolu.ttf);
+}
+
+@font-face {
+    font-family: "Graffity";
+    src: url(../assets/fonts/fontsAlternativas/aAnotherTag.ttf);
+}
+
+
+/*------------------------------ ANIMACIONES -----------------------------------------*/
+
+@-webkit-keyframes fade-in-fwd {
+    0% {
+        -webkit-transform: translateZ(-80px);
+        transform: translateZ(-80px);
+        opacity: 0
+    }
+
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1
+    }
+}
+
+@keyframes fade-in-fwd {
+    0% {
+        -webkit-transform: translateZ(-80px);
+        transform: translateZ(-80px);
+        opacity: 0
+    }
+
+    100% {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fade-in-right {
+    0% {
+        -webkit-transform: translateX(50px);
+        transform: translateX(50px);
+        opacity: 0
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1
+    }
+}
+
+@keyframes fade-in-right {
+    0% {
+        -webkit-transform: translateX(50px);
+        transform: translateX(50px);
+        opacity: 0
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1
+    }
+}
+
+/*------------------------------ ANIMACIONES -----------------------------------------*/
+
+
+/* body */
+body {
+    background-image: url(../assets/background/newBackground.png);
+    background-color: black;
+    color: white;
+}
