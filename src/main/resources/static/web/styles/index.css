@@ -116,38 +116,13 @@ body {
 
 }
 
-#logoTongue{
-  /*transition: all 1s ease;*/
-}
-
-.logo-tongue{
-  position: absolute;
-  bottom: -9vh;
-  left: -2vw;
-  top: 50vh;
-  z-index: 2;
-  width: 150px;
-  /* height: 100px; */
-}
-
-.logo-tongue-navbar{
-  position: fixed;
-  bottom: -9vh;
-  left: 10vw;
-  top: -1vh;
-  z-index: 2;
-  width: 150px;
-  z-index: 10002;
-  transform: scale(0.7);
-  /* height: 100px; */
-}
-
-.hidden{
-  display: none;
-}
-
-#barbedWire{
-
+#logoToungue {
+    position: absolute;
+    bottom: -9vh;
+    left: -2vw;
+    z-index: 2;
+    width: 150px;
+    /* height: 100px; */
 }
 
 .barbedWire {
@@ -158,17 +133,6 @@ body {
     height: 17vh;
     top: 87.6%;
     filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
-}
-
-.barbedWire-navbar{
-  position: fixed;
-  background-image: url(../assets/index/alambrePuasSeparador.png);
-  width: 100%;
-  z-index: 1;
-  height: 17vh;
-  top: 1%;
-  filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
-  z-index: 10001;
 }
 
 
@@ -541,15 +505,12 @@ h3 {
     }
 
     #logoToungue {
+        position: absolute;
+        bottom: -11vh;
+        left: 5vw;
+        z-index: 2;
+        width: 200px;
 
-    }
-
-    .logo-tongue{
-      position: absolute;
-      bottom: -11vh;
-      left: 5vw;
-      z-index: 2;
-      width: 200px;
     }
 
     .aboutUsContainer p {
@@ -574,11 +535,7 @@ h3 {
         margin-top: 7rem;
     }
 
-<<<<<<< Updated upstream
     .imgAbout {
-=======
-    .imgAbout{
->>>>>>> Stashed changes
         -webkit-clip-path: circle(50% at 86% 77%);
         clip-path: circle(58% at 75% 75%);
         position: absolute;
