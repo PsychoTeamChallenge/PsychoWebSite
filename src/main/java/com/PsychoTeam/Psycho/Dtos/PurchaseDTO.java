@@ -11,17 +11,19 @@ import java.util.Set;
 
 @Getter
 public class PurchaseDTO {
-   
+
     private long id;
     private long idCrypt;
     private long clientId;
     private Set<ClientProduct> products;
     private LocalDateTime date;
-    private long totalExpense;
+    private double totalExpense;
     private ShipmentType shipmentType;
     private String payMethod;
     private String address;
     private Document pdf;
+    public boolean enable;
+
 
     public PurchaseDTO(){}
 
@@ -36,6 +38,7 @@ public class PurchaseDTO {
         this.payMethod = purchase.getPayMethod();
         this.address = purchase.getAddress();
         this.pdf = purchase.getPdf();
+        this.enable = purchase.isEnable();
     }
 
 }

@@ -30,15 +30,17 @@ public class Purchase {
     @Column(name = "products")
     private Set<ClientProduct> products;
     private LocalDateTime date;
-    private long totalExpense;
+    private double totalExpense;
     private ShipmentType shipmentType;
     private String payMethod;
     private String address;
     private Document pdf;
 
+    public boolean enable;
+
     public Purchase() {}
 
-    public Purchase(Client client, long totalExpense, ShipmentType shipmentType, String payMethod, String address, Document pdf) {
+    public Purchase(Client client, double totalExpense, ShipmentType shipmentType, String payMethod, String address, Document pdf) {
         this.client = client;
         this.products = client.getCart();
         this.date = LocalDateTime.now();

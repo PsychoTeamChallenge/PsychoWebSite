@@ -46,6 +46,7 @@ public class PurchaseImplement implements PurchaseService {
 
     @Override
     public void removePurchase(Purchase purchase) {
-        purchaseRepository.delete(purchase);
+        purchase.setEnable(false);
+        purchaseRepository.save(purchase);
     }
 }

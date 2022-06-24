@@ -1,8 +1,14 @@
 package com.PsychoTeam.Psycho.Utils;
 
+import com.PsychoTeam.Psycho.Models.Purchase;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Font;
+import com.lowagie.text.pdf.PdfWriter;
 import net.bytebuddy.utility.RandomString;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,4 +58,21 @@ public class Utils {
         idsCreated.add(number);
         return number;
     }
+
+   public static void CreatePDF(HttpServletResponse response, Purchase purchase) throws IOException, DocumentException {
+
+       Font catFont = new Font(Font.STRIKETHRU, 20, Font.BOLD);
+       Font smallBold = new Font(Font.STRIKETHRU, 12);
+       Font tableFont = new Font(Font.STRIKETHRU, 10, Font.NORMAL);
+       Font headerFont = new Font(Font.STRIKETHRU, 12, Font.BOLD);
+
+       Document document = new Document();
+       PdfWriter.getInstance(document, response.getOutputStream());
+       document.open();
+
+
+
+       document.close();
+   }
+
 }

@@ -1,5 +1,6 @@
 package com.PsychoTeam.Psycho.controllers;
 
+import com.PsychoTeam.Psycho.Dtos.PurchaseApplicationDTO;
 import com.PsychoTeam.Psycho.Dtos.PurchaseDTO;
 import com.PsychoTeam.Psycho.Models.Client;
 import com.PsychoTeam.Psycho.Models.ClientProduct;
@@ -61,13 +62,7 @@ public class PurchaseController {
 
     @Transactional
     @PostMapping("/purchase/complete")
-    public ResponseEntity<Object> completePurchase(
-            @RequestParam long cart_id,
-            @RequestParam String shipmentType,
-            @RequestParam String paymentMethod,
-            @RequestParam String address,
-            @RequestParam Document pdf,
-            Authentication auth){
+    public ResponseEntity<Object> completePurchase(@RequestBody PurchaseApplicationDTO purchaseApplicationDTO, Authentication auth){
 
         if (auth.getName() == null)
             return new ResponseEntity<>("Invalid credentials", HttpStatus.FORBIDDEN);
@@ -86,16 +81,16 @@ public class PurchaseController {
         LocalDate todayDate = LocalDate.now();
         LocalDateTime todayTime = todayDate.atTime(LocalTime.now());
 
-        long totalExpense = clientProductService.getTotalExpensesOfCart(clientUsed);
+        double totalExpense = clientProductService.getTotalExpensesOfCart(clientUsed);
 
         Set<ClientProduct> productsList = new HashSet<>(clientProductList);
 
         Purchase newPurchase = new Purchase();
         newPurchase.setProducts(productsList);
         newPurchase.setDate(todayTime);
-        newPurchase.setAddress(address);
-        newPurchase.setPayMethod(paymentMethod);
-        newPurchase.setPdf(pdf);
+        newPurchase.setAddress(purchaseApplicationDTO.getAddress());
+        newPurchase.setPayMethod(purchaseApplicationDTO.getPaymentMethod());
+        newPurchase.setPdf(purchaseApplicationDTO.getPdf());
 
         clientUsed.addPurchases(newPurchase);
         clientService.saveClient(clientUsed);
