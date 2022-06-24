@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 /* colors */
 :root {
     --lightblue: rgb(0, 224, 224);
@@ -23,8 +24,7 @@
 /* body */
 body {
     background-image: url(../assets/background/newBackground.png);
-    /* background-position: center;
-    background-size: cover; */
+    background-color: black;
     color: white;
 }
 
@@ -111,7 +111,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: auto;
+    width: 100%;
     /* gap: 3rem; */
 
 
@@ -120,7 +120,7 @@ body {
 .cards {
     display: flex;
     background-color: #fff0;
-    max-width: 75%;
+    max-width: 60%;
     flex-direction: column;
     align-items: center;
     margin: 1rem;
@@ -358,19 +358,16 @@ h3 {
     }
 
     .tattooArtistCards {
-        width: 70%;
+        width: 100%;
     }
 
-    /* #logoToungue {
-        position: absolute;
-        bottom: -2vh;
-        left: 2vw;
-        width: 170px;
+    .cards{
+        width: 40%;
+    }
 
-    } */
-    /* .barbedWire{
-        position: absolute;
-    } */
+   
+
+    
 
 }
 
