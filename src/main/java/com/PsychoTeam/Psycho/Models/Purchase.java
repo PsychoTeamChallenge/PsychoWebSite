@@ -26,6 +26,8 @@ public class Purchase {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
     private Client client;
+    @ElementCollection
+    @Column(name = "products")
     private Set<ClientProduct> products;
     private LocalDateTime date;
     private long totalExpense;
@@ -34,10 +36,12 @@ public class Purchase {
     private String address;
     private Document pdf;
 
-    public Purchase(Client client, LocalDateTime date, long totalExpense, ShipmentType shipmentType, String payMethod, String address, Document pdf) {
+    public Purchase() {}
+
+    public Purchase(Client client, long totalExpense, ShipmentType shipmentType, String payMethod, String address, Document pdf) {
         this.client = client;
         this.products = client.getCart();
-        this.date = date;
+        this.date = LocalDateTime.now();
         this.totalExpense = totalExpense;
         this.shipmentType = shipmentType;
         this.payMethod = payMethod;
