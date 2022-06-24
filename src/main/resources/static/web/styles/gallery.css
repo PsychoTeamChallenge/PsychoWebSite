@@ -38,8 +38,8 @@ body {
   display: flex;
   position: relative;
   background-color: #361025;
-  max-width: 60%;
-  height: auto;
+  width: 13rem;
+  height:13rem;
   flex-direction: column;
   align-items: center;
   margin: 2.5rem;
