@@ -11,10 +11,12 @@
     font-family: "Argh";
     src: url(../assets/fonts/argh/ArghDemo.otf);
 }
+
 @font-face {
     font-family: "Text";
     src: url(../assets/fonts/fontsAlternativas/Kepolu.ttf);
 }
+
 @font-face {
     font-family: "Graffity";
     src: url(../assets/fonts/fontsAlternativas/aAnotherTag.ttf);
@@ -447,13 +449,13 @@ h3 {
         width: 100%;
     }
 
-    .cards{
+    .cards {
         width: 40%;
     }
 
-   
 
-    
+
+
 
 }
 
@@ -519,6 +521,7 @@ h3 {
 }
 
 @media screen and (min-width:1080px) {
+
     /* #logoToungue {
         position: absolute;
         bottom: -7vh;
@@ -531,8 +534,8 @@ h3 {
         gap: 5vw;
         margin-top: 7rem;
     }
-   
-    .imgAbout{
+
+    .imgAbout {
         -webkit-clip-path: circle(50% at 86% 77%);
         clip-path: circle(58% at 75% 75%);
         position: absolute;
@@ -546,9 +549,11 @@ h3 {
         opacity: 0.3;
         filter: brightness(0.5) saturate(0.5);
     }
-    .heartAbout{
+
+    .heartAbout {
         background-image: url(../assets/index/heartGraffity.png);
     }
+
     .aboutUsContainer p {
         font-size: 1.7rem;
         padding-top: 2rem;
@@ -563,7 +568,7 @@ h3 {
         width: 35vw;
     }
 
-    h4{
+    h4 {
         display: flex;
     }
 }
