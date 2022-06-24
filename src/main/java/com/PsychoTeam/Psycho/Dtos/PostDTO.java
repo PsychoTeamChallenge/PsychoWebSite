@@ -8,13 +8,12 @@ import lombok.Getter;
 public class PostDTO {
 
     private long id;
-    private String title,urlImage,description, tattooer;
+    private String title,urlImage,description, tattooer,username;
 
     private PostType postType;
 
     private int fires;
     public PostDTO(Post post) {
-
         this.id = post.getId();
         this.title = post.getTitle();
         this.urlImage = post.getUrlImage();
@@ -22,5 +21,6 @@ public class PostDTO {
         this.tattooer = post.getTattooer();
         this.postType = post.getPostType();
         this.fires = post.getFires();
+        this.username = post.getClient().getUserName();
     }
 }
