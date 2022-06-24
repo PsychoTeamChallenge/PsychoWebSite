@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/favicon-32x32.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="./styles/managerProduct.css">
+    <title>Psycho Tattoo & Piercing Shop</title>
+</head>
+
+<body>
+    <nav><a href="./index.html"> <i class='bx bx-chevron-left'></i> Go back</a></nav>
+    <main id="app" class="d-flex flex-column align-items-center">
+        <h1>PANEL CONTROLLER</h1>
+
+        <form @submit.prevent="createProduct" class=" d-flex flex-column" v-if="addNewProduct">
+            <fieldset class="w-100 d-flex flex-column align-items-center">
+                <label for="inputName">Enter the product <span>name</span></label>
+                <input type="text" id="inputName" v-model="productName">
+            </fieldset>
+
+            <fieldset>
+                <label for="inputDescription">Enter the product <span>description</span></label>
+                <textarea id="inputDescription" v-model="productDescription"></textarea>
+            </fieldset>
+
+            <fieldset>
+                <label for="inputDescription">Enter the product <span>image</span></label>
+                <img :src=productImgUrl alt="" srcset="" width="200" class="mb-3" v-if="productImgUrl != ''">
+                <button type="button" @click="addImg">ADD IMAGE</button>
+            </fieldset>
+
+            <fieldset>
+                <label for="inputStock">Enter the product <span>stock</span></label>
+                <input type="number" id="inputStock" v-model="productStock">
+            </fieldset>
+
+            <fieldset>
+                <label for="inputPrice">Enter the product <span>price</span></label>
+                <input type="number" id="inputPrice" v-model="productPrice">
+
+            </fieldset>
+
+            <fieldset>
+                <label for="inputSize">Add the product <span>size</span> </label>
+                <div class="d-flex gap-2 w-100 justify-content-center">
+                    <input type="number" id="inputSize" v-model="size">
+                    <button type="button" @click="addSize()"> <i class='bx bx-list-plus'></i> </button>
+                </div>
+                <ul class="sizesDiv align-self-start">
+                    <li v-for="size in productSizes" class="text-white">{{size}} <i class='bx bx-trash'
+                            @click="removeSize(size)"></i></li>
+                </ul>
+            </fieldset>
+
+            <fieldset>
+                <label for="inputColor">Add the product <span>color</span> </label>
+                <div class="d-flex gap-2 w-100 justify-content-center">
+                    <input type="text" id="inputColor" v-model="color">
+                    <button type="button" @click="addColor"> <i class='bx bx-list-plus'></i> </button>
+                </div>
+                <ul class="colorsDiv align-self-start">
+                    <li v-for="color in productColors" class="text-white">{{color}} <i class='bx bx-trash'
+                            @click="removeColor(color)"></i></li>
+                </ul>
+            </fieldset>
+
+            <button type="submit" class="align-self-center btnCreate">CREATE PRODUCT</button>
+        </form>
+
+        <div v-if="!addNewProduct" >
+            <ul v-dragscroll.x="true" class="products">
+                <li v-for="product in products" @click="openProduct(product)">
+                    <p> Name:{{product.name}}</p>
+                    <p> Name:{{product.stock}}</p>
+                    <img :src=product.urlImg alt="" width="200">
+                </li>
+             
+               
+            </ul>
+        </div>
+
+        <div class="divModifyProduct" :class="{active:fullProduct}">
+            <form @submit.prevent="updateProduct" class=" d-flex flex-column">
+                <fieldset class="w-100 d-flex flex-column align-items-center">
+                    <label for="inputName">Enter the product <span>name</span></label>
+                    <input type="text" id="inputName" v-model="productFocusName">
+                </fieldset>
+    
+                <fieldset>
+                    <label for="inputDescription">Enter the product <span>description</span></label>
+                    <textarea id="inputDescription" v-model="productFocusDescription"></textarea>
+                </fieldset>
+    
+                <fieldset>
+                    <label for="inputDescription">Enter the product <span>image</span></label>
+                   <img :src=productoToModificar.urlImg alt="" srcset="" width="200" class="mb-3">
+                    <button type="button" @click="changeImgOld">CHANGE IMAGE</button>
+                </fieldset>
+    
+                <fieldset>
+                    <label for="inputStock">Enter the product <span>stock</span></label>
+                    <input type="number" id="inputStock" v-model="productFocusStock">
+                </fieldset>
+    
+                <fieldset>
+                    <label for="inputPrice">Enter the product <span>price</span></label>
+                    <input type="number" id="inputPrice" v-model="productFocusPrice">
+    
+                </fieldset>
+    
+                <fieldset>
+                    <label for="inputSize">Add the product <span>size</span> </label>
+                    <div class="d-flex gap-2 w-100 justify-content-center">
+                        <input type="number" id="inputSize" v-model="size">
+                        <button type="button" @click="addSizeOld()"> <i class='bx bx-list-plus'></i> </button>
+                    </div>
+                    <ul class="sizesDiv align-self-start">
+                        <li v-for="size in productFocusSizes" class="text-white">{{size}} <i class='bx bx-trash'
+                                @click="removeSizeOld(size)"></i></li>
+                    </ul>
+                </fieldset>
+    
+                <fieldset>
+                    <label for="inputColor">Add the product <span>color</span> </label>
+                    <div class="d-flex gap-2 w-100 justify-content-center">
+                        <input type="text" id="inputColor" v-model="color">
+                        <button type="button" @click="addColorOld"> <i class='bx bx-list-plus'></i> </button>
+                    </div>
+                    <ul class="colorsDiv align-self-start">
+                        <li v-for="color in productFocusColors" class="text-white">{{color}} <i class='bx bx-trash'
+                                @click="removeColorOld(color)"></i></li>
+                    </ul>
+                </fieldset>
+    
+                <div class="d-flex gap-3 justify-content-center">
+                    <button type="submit" class="align-self-center btnCreate">UPDATE PRODUCT</button>
+                    <button type="button" class="align-self-center btn-danger" @click="deleteProduct()">DELETE PRODUCT</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="menu">
+            <div :class="{active:addNewProduct}" @click="changeMenu('create')">Create</div>
+            <div :class="{active:!addNewProduct}" @click="changeMenu('modify')">Modify</div>
+        </div>
+    </main>
+  
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+
+    <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue-dragscroll"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="../web/scripts/managerProduct.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+/* colores */
+:root {
+    --lightblue: rgb(0, 224, 224);
+    --pink: rgb(230, 0, 130);
+    --darklightblue: #00748E;
+    --blue: #00313E;
+    --darkpink: #C3007D;
+}
+
+/* tipografia */
+@font-face {
+    font-family: "Argh";
+    src: url(../assets/fonts/argh/ArghDemo.otf);
+}
+
+* {
+    font-family: "Argh";
+}
+
+/* body */
+body {
+    background-image: url(../assets/newBackground.png);
+    background-color: black;
+    color: white;
+}
+
+nav a,
+nav a:visited {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+nav a i {
+    font-size: 2rem;
+}
+
+h1 {
+    color: var(--darkpink);
+    text-decoration: underline;
+}
+
+form {
+    width: 90%;
+    padding-bottom: 6rem;
+}
+
+fieldset {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0.9rem;
+}
+
+label {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+}
+
+label span {
+    color: var(--darkpink);
+}
+
+fieldset input,
+fieldset textarea {
+    background-color: #003c4c;
+    outline: none;
+    border: none;
+    height: 3rem;
+    width: 61%;
+    font-size: 1.6rem;
+    color: white;
+    letter-spacing: 5px;
+    padding: 0.2rem;
+}
+
+fieldset button {
+    background-color: #003c4c;
+    border: none;
+    padding: 0px 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+
+fieldset ul {
+    margin-top: 0.8rem;
+    margin-bottom: 0;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+fieldset ul li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    background-color: #141414ba;
+    padding: 1rem;
+    width: 7rem;
+}
+
+fieldset ul li i {
+    background-color: #00313E;
+    padding: .5rem;
+    border-radius: 50%;
+}
+
+.products{
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 98vw;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.products li{
+    list-style: none;
+}
+
+.swal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swal-modal,
+.swal-title,
+.swal-text {
+    color: white !important;
+    background-color: #230c2e !important;
+    letter-spacing: 0.6rem;
+}
+.swal-modal span{
+    background-color: var(--bs-cyan);
+}
+.swal-icon--error, .swal-icon--success{
+    border-color: var(--bs-cyan);
+}
+
+.swal-icon--success:after, .swal-icon--success:before, .swal-icon--success__hide-corners{
+    background-color: transparent;
+}
+
+
+.menu{
+    display: flex;
+    position: fixed;
+    top: 86.3%;
+    left: 0;
+    gap: 2rem;
+    font-size: 2rem;
+    width: 100%;
+    background: #0000008c;
+    justify-content: center;
+    padding: 0.4rem;
+    z-index: 3;
+}
+
+.menu div{
+    background-color: transparent;
+    padding: .5rem;
+    border-radius: 1.2rem;
+    transition: .5s;
+}
+.menu div:hover{
+cursor: pointer;
+}
+.menu div.active{
+    background-color: var(--darkpink);
+}   
+
+.divModifyProduct{
+    opacity: 0;
+    z-index: -3;
+    position: absolute;
+    top: 105px;
+    left: 0%;
+    transition: .3s;
+    background: var(--blue);
+     background-image: url(../assets/newBackground.png);
+    ;
+    width: 100%;
+}
+.divModifyProduct.active{
+    opacity: 100;
+    z-index: 2;
+}
+
+
+.divModifyProduct label span {
+    color: var(--darklightblue);
+}
+.divModifyProduct fieldset input,
+.divModifyProduct fieldset textarea, .divModifyProduct fieldset button, .divModifyProduct fieldset ul li i {
+background-color: var(--darkpink);
+}
+
+
+.btnCreate{
+    padding: 0.7rem;
+    border-radius: 4rem;
+    background: #d63395;
+    border: none;
+    color: white;
+}
+.btn-danger{
+    padding: 0.7rem;
+    border-radius: 4rem;
+    border: none;
+    color: white;
+}

@@ -30,6 +30,7 @@ public class PostController {
         List<PostDTO> posts = postService.getPostsDTO();
         return new ResponseEntity(posts, HttpStatus.OK);
     }
+
     @Transactional
     @PostMapping("/post")
     public ResponseEntity<?> createPost(Authentication authentication, @RequestParam String title, @RequestParam String urlImage, @RequestParam String description,

@@ -17,7 +17,7 @@ import java.util.Set;
 public class ProductDTO {
 
     private long id;
-    private String name,description;
+    private String name,description,urlImg;
     private int stock;
     private double price;
 
@@ -33,6 +33,7 @@ public class ProductDTO {
         this.colors = product.getColors();
         this.stock = product.getStock();
         this.price = product.getPrice();
+        this.urlImg = product.getUrlImg();
     }
 
 
