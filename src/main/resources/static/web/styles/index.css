@@ -574,11 +574,7 @@ h3 {
         margin-top: 7rem;
     }
 
-<<<<<<< Updated upstream
-    .imgAbout {
-=======
     .imgAbout{
->>>>>>> Stashed changes
         -webkit-clip-path: circle(50% at 86% 77%);
         clip-path: circle(58% at 75% 75%);
         position: absolute;
