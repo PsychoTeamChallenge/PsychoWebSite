@@ -42,6 +42,7 @@ public class ClientProductController {
         return productService.getProductsDTO();
     }
 
+
     @Transactional
     @PatchMapping("/cart/modify")
     public ResponseEntity<Object> modifyProduct(
@@ -114,6 +115,7 @@ public class ClientProductController {
             if(clientProduct1.getProduct().getStock() < clientProduct1.getQuantity() + 1){
                 return new ResponseEntity<>("Not enough items in stock", HttpStatus.FORBIDDEN);
             }
+
             clientProduct1.setQuantity(clientProduct1.getQuantity() + 1);
             // --------------------- //
             Product productEntity = clientProduct1.getProduct();
