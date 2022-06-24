@@ -127,7 +127,6 @@ body {
   top: 50vh;
   z-index: 2;
   width: 150px;
-  /* transition: .3s; */
   /* height: 100px; */
 }
 
@@ -145,6 +144,10 @@ body {
 
 .hidden{
   display: none;
+}
+
+#barbedWire{
+
 }
 
 .barbedWire {
@@ -568,7 +571,6 @@ h3 {
         gap: 5vw;
         margin-top: 7rem;
     }
-
 
     .imgAbout{
         -webkit-clip-path: circle(50% at 86% 77%);
