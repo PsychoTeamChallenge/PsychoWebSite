@@ -2,32 +2,59 @@ Vue.createApp({
     data() {
         return {
             posts: [],
-            client:{},
-            isClient:false,
-
+            filtradosCategory:[],
+            postsFiltrados: [],
+            client: {},
+            isClient: false,
+            piercing: false,
+            tattoo: false,
+            shearchInput:""
         }
     },
 
     created() {
-        axios.get("/api/post").then(response=> this.posts = response.data).catch(error=> console.log(error))
-        
-        axios.get("/api/clients/current")
-        .then(response=> {
-            console.log(response)
-            this.client = response.data;
-            this.isClient = true;
+        axios.get("/api/post").then(response => {
+            this.posts = response.data;
+            this.postsFiltrados = this.posts;
         })
-        .catch(error=> console.log(error))
+            .catch(error => console.log(error))
+
+        axios.get("/api/clients/current")
+            .then(response => {
+                this.client = response.data;
+                this.isClient = true;
+            })
+            .catch(error => console.log(error))
 
     },
 
     methods: {
 
-     
+        changePost() {
+           
+        },
+       
 
     },
     computed: {
+        shearchFilter(){
+            if (this.posts.length > 0 && this.piercing && !this.tattoo) {
+                this.filtradosCategory = this.posts.filter(post => post.postType == "PIERCING")
+            }
+            else if (this.posts.length > 0 && this.tattoo && !this.piercing) {
+                this.filtradosCategory = this.posts.filter(post => post.postType == "TATTOO")
+            }
+            else{
+                this.filtradosCategory = this.posts;
+            }
 
+            if(this.shearchInput != ""){
+                 this.postsFiltrados =  this.filtradosCategory.filter(post=> post.title.includes(this.shearchInput) ||  post.tattooer.includes(this.shearchInput) ||   post.description.includes(this.shearchInput))
+            }
+            else{
+                this.postsFiltrados = this.filtradosCategory
+            }
+        }
     }
 
 }).mount('#app')
