@@ -50,7 +50,7 @@
                     </label>
                 </fieldset>
                 <input type="text" class="rounded">
-                <button aria-label="Close" class="rounded">Buscar</button>
+                <button aria-label="Close" class="rounded" id="search">Search</button>
             </form>
 
         </div>
@@ -58,28 +58,24 @@
 
         <div class="d-flex">
             <div class="cards">
-                <p class="glass">nombre del tatuador </p>
+                <p class="glass">@instagramoredes</p>
                 <img class="test"
-                    src="https://i.etsystatic.com/9923028/r/il/a62e37/1922703079/il_794xN.1922703079_tjt7.jpg"
+                    src="../web/assets/tatuajes/estilo1.png"
                     alt="test">
-                <!-- _________________ fire icon ___________________________ -->
-                <div class="fire">
-                    <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
-                    <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
-                    <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
-                    <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
-                    <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
-                </div>
-
-                <!-- _________________ underphoto text ___________________________ -->
-
-                <span class="text-light">@instagramoredes</span>
-                <button> solicitar turno</button>
+                    <div class="fire">
+                        <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
+                        <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
+                        <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
+                        <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
+                        <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
+                    </div>
+                <span class="username">@username</span>
+                <button class="requestTurn">Request Appointment</button>
             </div>
             <div class="cards">
-                <p class="glass">nombre del tatuador </p>
+                <p class="glass">@instagramoredes</p>
                 <img class="test"
-                    src="https://i.etsystatic.com/9923028/r/il/a62e37/1922703079/il_794xN.1922703079_tjt7.jpg"
+                    src="../web/assets/tatuajes/estilo2.png"
                     alt="test">
                 <!-- _________________ fire icon ___________________________ -->
                 <div class="fire">
@@ -92,13 +88,23 @@
 
                 <!-- _________________ underphoto text ___________________________ -->
 
-                <span class="text-light">@instagramoredes</span>
-                <button> solicitar turno</button>
+                <span class="username">@username</span>
+                 <!-- _________________ fire icon ___________________________ -->
+                 <div class="fire">
+                    <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
+                    <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
+                    <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
+                    <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
+                    <img class="stars" src="../web/assets/fireEmoji.png" alt="stars">
+                </div>
+
+                <!-- _________________ underphoto text ___________________________ -->
+                <button class="requestTurn">Request Appointment</button>
             </div>
             <div class="cards">
-                <p class="glass">nombre del tatuador </p>
+                <p class="glass">@instagramoredes</p>
                 <img class="test"
-                    src="https://i.etsystatic.com/9923028/r/il/a62e37/1922703079/il_794xN.1922703079_tjt7.jpg"
+                    src="../web/assets/tatuajes/estilo3.png"
                     alt="test">
                 <!-- _________________ fire icon ___________________________ -->
                 <div class="fire">
@@ -111,8 +117,8 @@
 
                 <!-- _________________ underphoto text ___________________________ -->
 
-                <span class="text-light">@instagramoredes</span>
-                <button> solicitar turno</button>
+                <span class="username">@username</span>
+                <button class="requestTurn">Request Appointment</button>
             </div>
 
             <!-- _________________ end card ___________________________ -->
@@ -123,7 +129,11 @@
     <div></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>
+    </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    <script src="https://unpkg.com/vue@3"></script>
+    
 </body>
 
 </html>
