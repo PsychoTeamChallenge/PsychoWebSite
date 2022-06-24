@@ -16,6 +16,8 @@ public interface ClientProductService {
 
     List<ClientProductDTO> getClientsProductDTO();
 
+    long getTotalExpensesOfCart(Client client);
+
     void saveClientProduct(ClientProduct clientProduct);
 
     void removeClientProduct(ClientProduct clientProduct);

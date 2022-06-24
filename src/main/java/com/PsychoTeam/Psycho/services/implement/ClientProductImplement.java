@@ -9,6 +9,7 @@ import com.PsychoTeam.Psycho.services.ClientProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,6 +35,18 @@ public class ClientProductImplement implements ClientProductService {
     @Override
     public List<ClientProductDTO> getClientsProductDTO() {
         return clientProductRepository.findAll().stream().map(ClientProductDTO::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public long getTotalExpensesOfCart(Client client) {
+        ArrayList<ClientProduct> clientProducts = new ArrayList<ClientProduct>(client.getCart());
+        double totalPrice = 0;
+        for(int i = 0; i < clientProducts.size(); i++){
+            double clientProductPrice = clientProducts.get(i).getPrice() + clientProducts.get(i).getQuantity();
+            totalPrice += clientProductPrice;
+        }
+
+        return (long) totalPrice;
     }
 
     @Override
