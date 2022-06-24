@@ -21,7 +21,7 @@
 
         <form @submit.prevent="createProduct" class=" d-flex flex-column" v-if="addNewProduct">
             <fieldset class="w-100 d-flex flex-column align-items-center">
-                <label for="inputName">Enter the product name</label>
+                <label for="inputName">Enter the product <span>name</span></label>
                 <input type="text" id="inputName" v-model="productName">
             </fieldset>
 
@@ -32,6 +32,7 @@
 
             <fieldset>
                 <label for="inputDescription">Enter the product <span>image</span></label>
+                <img :src=productImgUrl alt="" srcset="" width="200" class="mb-3" v-if="productImgUrl != ''">
                 <button type="button" @click="addImg">ADD IMAGE</button>
             </fieldset>
 
@@ -70,7 +71,7 @@
                 </ul>
             </fieldset>
 
-            <button type="submit" class="align-self-center">CREATE PRODUCT</button>
+            <button type="submit" class="align-self-center btnCreate">CREATE PRODUCT</button>
         </form>
 
         <div v-if="!addNewProduct" >
@@ -80,11 +81,7 @@
                     <p> Name:{{product.stock}}</p>
                     <img :src=product.urlImg alt="" width="200">
                 </li>
-                <li v-for="product in products" @click="openProduct(product)">
-                    <p> Name: {{product.name}}</p>
-                    <p> Stock: {{product.stock}}</p>
-                    <img :src=product.urlImg alt="" width="200">
-                </li>
+             
                
             </ul>
         </div>
@@ -92,7 +89,7 @@
         <div class="divModifyProduct" :class="{active:fullProduct}">
             <form @submit.prevent="updateProduct" class=" d-flex flex-column">
                 <fieldset class="w-100 d-flex flex-column align-items-center">
-                    <label for="inputName">Enter the product name</label>
+                    <label for="inputName">Enter the product <span>name</span></label>
                     <input type="text" id="inputName" v-model="productFocusName">
                 </fieldset>
     
@@ -104,7 +101,7 @@
                 <fieldset>
                     <label for="inputDescription">Enter the product <span>image</span></label>
                    <img :src=productoToModificar.urlImg alt="" srcset="" width="200" class="mb-3">
-                    <button type="button" @click="changeImg">CHANGE IMAGE</button>
+                    <button type="button" @click="changeImgOld">CHANGE IMAGE</button>
                 </fieldset>
     
                 <fieldset>
@@ -143,15 +140,15 @@
                 </fieldset>
     
                 <div class="d-flex gap-3 justify-content-center">
-                    <button type="submit" class="align-self-center">UPDATE PRODUCT</button>
+                    <button type="submit" class="align-self-center btnCreate">UPDATE PRODUCT</button>
                     <button type="button" class="align-self-center btn-danger" @click="deleteProduct()">DELETE PRODUCT</button>
                 </div>
             </form>
         </div>
 
         <div class="menu">
-            <div :class="{active:addNewProduct}" @click="changeMenu">Create</div>
-            <div :class="{active:!addNewProduct}" @click="changeMenu">Modify</div>
+            <div :class="{active:addNewProduct}" @click="changeMenu('create')">Create</div>
+            <div :class="{active:!addNewProduct}" @click="changeMenu('modify')">Modify</div>
         </div>
     </main>
   

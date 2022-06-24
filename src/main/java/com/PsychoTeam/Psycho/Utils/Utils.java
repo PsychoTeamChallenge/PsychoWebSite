@@ -11,6 +11,7 @@ public class Utils {
 
     private static List<String> tokensCreated = new ArrayList<>();
     private static List<String> codesCreated = new ArrayList<>();
+    private static List<Long> idsCreated = new ArrayList<>();
     public static String GenerateToken(int tokenL) {
         String token = "";
         do {
@@ -40,4 +41,15 @@ public class Utils {
         tokensCreated = tokensCreated.stream().filter(token -> token != tokenD).collect(Collectors.toList());
     }
 
+    public static long GenerateIdCrypt() {
+        long number;
+
+        do {
+                number = (int) ((Math.random() * (9 - 0)) + 0);
+
+        }
+        while (idsCreated.contains(number));
+        idsCreated.add(number);
+        return number;
+    }
 }

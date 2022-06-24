@@ -124,7 +124,7 @@ fieldset ul li i {
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
-    width: 100vw;
+    width: 98vw;
     gap: 2rem;
     margin-top: 4rem;
 }
@@ -144,13 +144,19 @@ fieldset ul li i {
 .swal-text {
     color: white !important;
     background-color: #230c2e !important;
+    letter-spacing: 0.6rem;
 }
 .swal-modal span{
     background-color: var(--bs-cyan);
 }
-.swal-icon--error{
+.swal-icon--error, .swal-icon--success{
     border-color: var(--bs-cyan);
 }
+
+.swal-icon--success:after, .swal-icon--success:before, .swal-icon--success__hide-corners{
+    background-color: transparent;
+}
+
 
 .menu{
     display: flex;
@@ -172,7 +178,9 @@ fieldset ul li i {
     border-radius: 1.2rem;
     transition: .5s;
 }
-
+.menu div:hover{
+cursor: pointer;
+}
 .menu div.active{
     background-color: var(--darkpink);
 }   
@@ -201,4 +209,19 @@ fieldset ul li i {
 .divModifyProduct fieldset input,
 .divModifyProduct fieldset textarea, .divModifyProduct fieldset button, .divModifyProduct fieldset ul li i {
 background-color: var(--darkpink);
+}
+
+
+.btnCreate{
+    padding: 0.7rem;
+    border-radius: 4rem;
+    background: #d63395;
+    border: none;
+    color: white;
+}
+.btn-danger{
+    padding: 0.7rem;
+    border-radius: 4rem;
+    border: none;
+    color: white;
 }

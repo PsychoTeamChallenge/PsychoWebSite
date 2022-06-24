@@ -36,19 +36,28 @@ Vue.createApp({
 
     methods: {
 
-        changeMenu() {
-            this.addNewProduct = !this.addNewProduct
+        changeMenu(location) {
+
+            if (location == "create") {
+                this.addNewProduct = true
+            }
+            else if (location == "modify") {
+                this.addNewProduct = false
+            }
+
             this.fullProduct = false;
 
-            this.productFocusColors =[]
+            this.productFocusColors = []
             this.productFocusSizes = []
             this.productFocusName = ""
-            this.productFocusDescription = "" 
+            this.productFocusDescription = ""
             this.productFocusPrice = ""
             this.productFocusUrlImg = ""
             this.productFocusStock = ""
             this.productoToModificar = {}
         },
+
+
         addImg() {
             const client = filestack.init("A9oZryZIQq2zxTic8yRnDz");
             const options = {
@@ -84,6 +93,10 @@ Vue.createApp({
                     .then(response => {
                         if (response.data == "Product created successfully") {
                             swal("Nice", "Product created!", "success")
+                            .then((value) => {
+                                window.location.reload()
+                            })
+
                         }
                         else {
                             console.log(response)
@@ -101,17 +114,29 @@ Vue.createApp({
                 swal("Oops", "Missing data!", "error")
             }
         },
+
+
+
         openProduct(product) {
             this.productoToModificar = product;
 
-            this.productFocusColors = this.productoToModificar.colors 
+            this.productFocusColors = this.productoToModificar.colors
             this.productFocusSizes = this.productoToModificar.sizes
             this.productFocusName = this.productoToModificar.name
-            this.productFocusDescription = this.productoToModificar.description 
+            this.productFocusDescription = this.productoToModificar.description
             this.productFocusPrice = this.productoToModificar.price
-            this.productFocusUrlImg = this.productoToModificar.urlImg 
+            this.productFocusUrlImg = this.productoToModificar.urlImg
             this.productFocusStock = this.productoToModificar.stock
             this.fullProduct = !this.fullProduct
+        },
+        changeImgOld() {
+            const client = filestack.init("A9oZryZIQq2zxTic8yRnDz");
+            const options = {
+                onUploadDone: (res) => {
+                    this.productFocusImgUrl = res.filesUploaded[0].url;
+                },
+            };
+            client.picker(options).open();
         },
         addSizeOld() {
             if (this.size > 0) {
@@ -142,11 +167,14 @@ Vue.createApp({
 
             if (this.productFocusColors.length >= 1 && this.productFocusSizes.length >= 1
                 && this.productFocusName != "" && this.productFocusDescription != "" && this.productFocusPrice > 0 && this.productFocusUrlImg != "") {
-                    console.log(`id=${this.productoToModificar.id}&name=${this.productFocusName}&description=${this.productFocusDescription}&urlImg=${this.productFocusUrlImg}&stock=${this.productFocusStock}&price=${this.productFocusPrice}&sizes=${this.productFocusSizes}&colors=${this.productFocusColors}`)
+                console.log(`id=${this.productoToModificar.id}&name=${this.productFocusName}&description=${this.productFocusDescription}&urlImg=${this.productFocusUrlImg}&stock=${this.productFocusStock}&price=${this.productFocusPrice}&sizes=${this.productFocusSizes}&colors=${this.productFocusColors}`)
                 axios.post("/api/products/modify", `id=${this.productoToModificar.id}&name=${this.productFocusName}&description=${this.productFocusDescription}&urlImg=${this.productFocusUrlImg}&stock=${this.productFocusStock}&price=${this.productFocusPrice}&sizes=${this.productFocusSizes}&colors=${this.productFocusColors}`)
                     .then(response => {
                         if (response.data == "Product update successfully") {
                             swal("Nice", "Product update!", "success")
+                            .then((value) => {
+                                window.location.reload()
+                            })
                         }
                         else {
                             console.log(response)
@@ -154,7 +182,7 @@ Vue.createApp({
                         }
                     })
                     .catch(error => {
-                    console.log(error)
+                        console.log(error)
                         swal("Oops", "Something went wrong!", "error")
                     })
 
@@ -164,22 +192,25 @@ Vue.createApp({
                 swal("Oops", "Missing data!", "error")
             }
         },
-        deleteProduct(){
+        deleteProduct() {
             axios.delete(`/api/products/delete/${this.productoToModificar.id}`)
-            .then(response => {
-                if (response.data == "Product has been removed") {
-                    swal("Nice", "Product delete!", "success")
-                }
-                else {
-                    console.log(response)
+                .then(response => {
+                    if (response.data == "Product has been removed") {
+                        swal("Nice", "Product delete!", "success")
+                        .then((value) => {
+                            window.location.reload()
+                        })
+                    }
+                    else {
+                        swal("Oops", "Something went wrong!", "error")
+                    }
+                })
+               
+                .catch(error => {
                     swal("Oops", "Something went wrong!", "error")
-                }
-            })
-            .catch(error => {
-            console.log(error)
-                swal("Oops", "Something went wrong!", "error")
-            })
+                })
         }
+
     },
     computed: {
 
