@@ -107,6 +107,39 @@ a{
   background-color: rgba(0, 0, 0, 0.603);
 }
 
+
+.container{
+    padding: 0;
+    margin: 1rem;
+    width: 100vw;
+    height: 13vh;
+}
+#image{
+  width:20vw;
+  height: 13vh;
+}
+#information{
+  width:79vw;
+  height: 13vh;
+}
+#units{
+  padding: 0.2rem;
+  background-color:white;
+}
+#itemQuantity{
+  outline: none;
+  border: none;
+}
+.priceInfo{
+  display: flex;
+  justify-content: space-around;
+
+  flex-direction: row-reverse;
+}
+#delete{
+  display: flex;
+    justify-content: space-around;
+}
 @media screen and (max-width: 600px) {
   #bill{
   display:none;
