@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,45 +12,76 @@
     <link rel="stylesheet" href="./styles/contact.css">
     <title>Contact Us</title>
 </head>
+
 <body>
     <header></header>
- <!-- nav mobile -->
- <nav class="mobileNav">
-    <a href="./index.html"><i class='bx bx-home-circle active'></i></a>
-    <a href="./gallery.html"><i class='bx bxs-grid-alt'></i></a>
-    <a href="./gallery.html"><i class='bx bxs-plus-circle'></i></a>
-    <a href="./shop.html"><i class='bx bx-shopping-bag'></i></a>
-    <a href="./account.html"><i class='bx bx-user'></i></a>
-</nav>
-<!-- nav desktop -->
-<nav class="desktopNav">
+    <!-- nav mobile -->
+    <nav class="mobileNav">
+        <a href="./index.html"><i class='bx bx-home-circle active'></i></a>
+        <a href="./gallery.html"><i class='bx bxs-grid-alt'></i></a>
+        <a href="./gallery.html"><i class='bx bxs-plus-circle'></i></a>
+        <a href="./shop.html"><i class='bx bx-shopping-bag'></i></a>
+        <a href="./account.html"><i class='bx bx-user'></i></a>
+    </nav>
+    <!-- nav desktop -->
+    <nav class="desktopNav">
 
-</nav>
+    </nav>
 
 
-<main>
-    <div class="contact">
-        <h1>Contact Us</h1>
-        <!-- <img src="./assets/index/xGraffittiVioleta.png" alt="xGraffiti" id="xGraffiti"> -->
-    </div>
+    <main>
+        <div class="contact">
+            <h1>Contact Us</h1>
+            <!-- <img src="./assets/index/xGraffittiVioleta.png" alt="xGraffiti" id="xGraffiti"> -->
+        </div>
 
-<!-- info (telefono,email,whatsapp,mapa) -->
-<h2>Come to visit us</h2>
-<!-- map -->
-<div class="cards">
+        <!-- info (phone,email,whatsapp,adress) -->
+        <section class="info">
+            <div class="map">
+                <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAdVJREFUSEu1VdFVAjEQnKlArUCpQKhArUCsQKhAqESsQKhArUCsQDoQO9AK1jf3dnkhJHfnB/m5e7nNzO7MZo848uKR8dFJYGYXAB4AXAMYekIbAGsATyS3bUm2EpjZwsHbMBYk57WAKoGZKctLP7gCICDtwcxUyQzAfVREclQiKRIkmf9KmgDOAZxIUp24XCLdWwcErvmXR40E7nuPmQdz6e8knx4/yD0pEYTuMnDm4AI4zZL7AaAERLJ0uZozaVyJILSP7F8B3AL4ADDxwwK8AvBGcpxUscm9KBGYQEg238xMmUrjXfmJjFuSA4/bOxdV/IfgjKTIRKq7IZ++Sepde70J1BUqP5dI+1PP7NkvXkikS/guGUnqfbdKFYRh6pKFZytfJFO61MJDN1nGqstWJMOnJrZEMAbwAiDVVzKou9JRMYuWNDONi3MAdyTVFPUKXM84MCWpiqrLzJSxJNv50YcgqpCp6p7G3HyZme6GzNbzIPuiRAFiZmH2muRNhSDuzIG51TZNCJSVpJK5S5LRQU1Icntl9kWtyq5xLVNjmO1IMvDqMGyVKKlkj8T1lketk7ZTolTzbCzrUy/wXhVklUTLTmr/iLwZOv/JbXegz7ejE/wBXP7vGWPMnI8AAAAASUVORK5CYII="/> -->
+                <box-icon name='map' color='#ffff' ></box-icon>
+                <p>Via Casilina,183</p>
+            </div>
+            <!-- phone -->
+            <div class="wpp">
+                <!-- <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAd5JREFUSEvFlYExBEEQRf/PgAiQgQyQARFwESACRIAIyIAMEAEiIANE0OpN9VzN7c7eKVXKVE3t3m1P/+7/u3usP17+Y//6f4CI2JV0KGk796ekF0mPkp5s85xckxlExKakG0kAfDVO1xJoJ73eS5rZBni0ugARQbQPUqHwyvZ573BEnEi6lITzg142I4CIIMK3jHrfNnRMrgzmVtKGpK1hJj0AUoaWXZwn4Jrt9ymUBHmWdG/7oLVbAGgML6AldeDgp+2tFZlUuqCKIMsaAlxJOpa0TqoNx9giJFQsoyskXdsGrAtQSs42FGkAsBDZhOgL53sZwPOj7aMEoFQRHIrWl0Wf9jBw2NoOKQLgxfZ+ddZkcWt7toIiyvnM9tzvEGCUYkYG93Qzz1NJtQkRE85Lk0UEv7dt832pyNTzQllGRC0AnLGrk1JxCcD/lGqhuKdB5Xx+qKUk5xLO6phghNR+wSmjZa/t6F6jdWkaABEIG70oZ97pl9dagd0MMs1RLa8QlrlF5DRiyaa1H4pM9dylkB85MtBiLmRTXcwsmpKmws/IeU+DKmQvaKgDDCGJujQjd4Kko6lZNcyA9EqzZcMx7OCXKHHKO5Fjx6ZifnfhrOran37//zv5p5FO2X0Dr4jpGRYc/iQAAAAASUVORK5CYII=" /> -->
+                    <box-icon name='whatsapp' type='logo' color='#ffffff'></box-icon>
+                    <p>919-808.8606</p>
+            </div>
+            <div class="phone">
+                <!-- <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAU5JREFUSEvFlWFRQzEQhHcVgANAAaAAUABVAHUACgoOqAJaBYACWgfgAAk4WGaZpJOG5M174XW4n226XzZ3eyV2XNyxPv4HIOkRwAGAKcmvv7jcciBpH8AzgPMguiJ5MSbgHcBxJrggOW2F5A5UEWqG9AWYe0fSvRlUOWAF4Kyi8EryapA6sD2mkhYArgsiH258y0TlDnxDT1FazeIWKY3pJ4C9hHBE0p811a8kF57pgeR9k3ruwCKSDgE4D9GFk3yauwihfALgMM5rFyjuIkm+8Sz5kYGTCAnibwBOwplqTqrLTtILgMsEYifOwTIMQhSPR4qQLoD3knORr46udvi8nW4WZOe6Dk9hJ7XwlWBLkjfxi17/B6Ent9n41pzMSfrsT/UCJNPl5juMaU5S0JpkXPXDAFElPJshFvJIx+crJr63g9GC1io0KGhjQr4BmPdtGWiiH+cAAAAASUVORK5CYII=" /> -->
+                    <box-icon name='phone' type='solid' color='#ffffff' ></box-icon>
+                    <p>2468-9099</p>
+            </div>
+            <div>
+                <box-icon name='gmail' type='logo' color='#ffffff' ></box-icon>
+                <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAR1JREFUSEvtldFRwzAQRN9WAB0AHdABdEDoACogVEBSAaQCKAE6gA4oISWECo5Zj5xRjGzFGcLwkfuRx9btu9uTxmLPoT3rcwBUHV5bFBE3wDOwAmaSFtXsbEPKf0yv7iW9+DkHLIGTLOcVuJVkYG9ExDFgYRfYxlLSWRcQBRVDryV9lggRcZ669roRkpri8w5KgDZp2rUss8Qd/IixAAs0liUlz2oyZN0uAOvZMsfpkHhjzUiLano7WfQGXAJHFfUv4B24yvdt08EceEreX/RAPtIspsDDaICkmZMiwuuGADAf+r5VB61AgtgunyTHRJJtaaJUwGhAEmrOfPd2/xqgb9j/BuATc5dVuR5i7RIUOlhI8sk6/NFq5v2BRd87VowZDYN9IAAAAABJRU5ErkJggg=="/> -->
+                <p>info@psychotattoo.com</p>
+            </div>
 
-</div>
-<h2>Give us a call or send a message</h2>
-<!-- phone -->
+            <div class="hours">
+                <!-- <h2>our opening hours</h2> -->
+                <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAZlJREFUSEu9VYFNwzAQvNsAJgAmgE5A2QAmgA3aTkI7ATABZQOYgHaDdoNu8Oikd7AdO44qiqUoiuz8/f3fn4kTL544PpoAZvYE4BbAjT/KaePPmuTHUJJVADO7B/AM4LLBcgdgQXJdOlcEMLMlgJn/sAeg70+SyhxmJjZTAHMAF35uSXKRg/QAsuDKTMGry8wEIqZaK5L67lYC4GV5991JyLglBGf07ece4nLlAKqnKBczNzNTEJIl5oHJjuRVSKo76Gp5AbAnWWzsEID3JiTYsYgBXgE81rL3AFUGvh9YvJGUvH/nwMykkGsA1dqPYCB1qRcbkpMcYDC7mAGAc5KHUvPzJOISjQEILPW+K4EMAYwp0ZkGzkvZA4nkuiWpciU9aDbZyxSDJJqPhq7YZHmPhizRcaXOApnm/mNmdZlmOm5aRA4cZZ/M0f9ahbOInXROcvVnZhcCZY6qugr0K7NrXUKa3GArPSdNVFSoqZquwMHva0R0X4jp+AsnjuQWLjDpWlaitY2uzGLgnpu2PP/Y/ealf2zg8N8Pa73kGXQA7YMAAAAASUVORK5CYII=" /> -->
 
-<!-- formulario -->
-<form>
-    <input type="fname" name="fname" id="fname" placeholder="FIRST NAME">
-    <input type="lname" name="lname" id="lname" placeholder="LAST NAME">
-    <input type="email" name="email" id="email" placeholder="EMAIL">
-    <input type="phone" name="phone" id="phone" placeholder="PHONE">
-    <textarea name="message" id="message" cols="30" rows="10" placeholder="MESSAGE"></textarea>
-</form>
-</main>
+                <box-icon name='time-five' color='#ffffff' ></box-icon>
+                <p>10 A.M - 8 P.M</p>
+            </div>
+        </section>
+        <!-- form -->
+        <form>
+            <h2>Give us a call or send a message</h2>
+            <input type="fname" name="fname" id="fname" placeholder="FIRST NAME">
+            <input type="lname" name="lname" id="lname" placeholder="LAST NAME">
+            <input type="email" name="email" id="email" placeholder="EMAIL">
+            <input type="phone" name="phone" id="phone" placeholder="PHONE">
+            <textarea name="message" id="message" cols="30" rows="10" placeholder="MESSAGE"></textarea>
+        <button type="submit">SEND</button>
+        </form>
+    </main>
+
+    <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
 </body>
+
 </html>
