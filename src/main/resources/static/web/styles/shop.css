@@ -7,10 +7,9 @@
 :root {
     --lightblue: rgb(0, 224, 224);
     --pink: rgb(230, 0, 130);
-  }
-  
+}
 
-/* tipografia */
+
 @font-face {
     font-family: "Argh";
     src: url(../assets/fonts/argh/ArghDemo.otf);
@@ -27,7 +26,7 @@
 }
 
 
-/*------------------------------ ANIMACIONES -----------------------------------------*/
+/*------------------------------ ANIMATIONS -----------------------------------------*/
 
 @-webkit-keyframes fade-in-fwd {
     0% {
@@ -85,7 +84,7 @@
     }
 }
 
-/*------------------------------ ANIMACIONES -----------------------------------------*/
+/*------------------------------ ANIMATIONS -----------------------------------------*/
 
 
 /* body */
@@ -95,6 +94,66 @@ body {
     color: white;
 }
 
+/* ===================OPTIONS VIEW================== */
 
 
+.mobileHeader {
+    height: 7rem;
+    background-color: rgb(50, 50, 50);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+}
 
+.upSeccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+.upSeccion h1 {}
+
+.upSeccion i {
+    font-size: 2rem;
+}
+
+.downSeccion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    gap: 1rem;
+    width: 100%;
+}
+
+.downSeccion .typesProducts {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 0.7rem;
+}
+
+.downSeccion .typesProducts p {
+    margin: 0;
+}
+
+
+.downSeccion .filters {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: .5rem;
+}
+
+.downSeccion .filters input {
+    width: 7rem;
+}
+
+/* ===================OPTIONS VIEW================== */
+.filterMobileContainer{
+
+}
