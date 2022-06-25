@@ -304,8 +304,8 @@ body {
 }
 
 h2 {
-    -webkit-animation: fade-in-right .6s cubic-bezier(.39, .575, .565, 1.000) both;
-    animation: fade-in-right .6s cubic-bezier(.39, .575, .565, 1.000) both
+    -webkit-animation:  fade-in-fwd .6s cubic-bezier(.39, .575, .565, 1.000) both;
+    animation:  fade-in-fwd .6s cubic-bezier(.39, .575, .565, 1.000) both
 }
 
 
@@ -474,18 +474,6 @@ h3 {
     font-size: 2rem;
 }
 
-/* --------------LOADER -----------------*/
-
-#loading{
-    background: url(../assets/loaderTres.gif) 50% 50% no-repeat rgb(0, 0, 0);
-    background-repeat: no-repeat;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 9999999;
-}
 
 /* ---------------------- MEDIA QUERIES ----------------------*/
 
