@@ -29,7 +29,7 @@ public class Client {
 
     @ElementCollection
     @Column(name="favourites")
-    private Set<Product> favourites;
+    private Set<Product> favourites = new HashSet<>();
 
     @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
     private Set<Post> posts = new HashSet<>();
@@ -60,6 +60,7 @@ public class Client {
     public void addFavourite(Product product) {
         favourites.add(product);
     }
+
     public void removeFavourite(Product product) {
         favourites.remove(product);
     }

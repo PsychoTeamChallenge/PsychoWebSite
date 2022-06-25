@@ -1,28 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--- <link rel="shortcut icon" href="./assets/favicon-32x32.png" type="image/x-icon"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="styles/formSteps.css">
-    <link rel="stylesheet" href="styles/inputs.css">
-    <link rel="stylesheet" href="styles/breadcrumbs.css">
-    <title>Psycho Tattoo & Piercing Shop</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--- <link rel="shortcut icon" href="./assets/favicon-32x32.png" type="image/x-icon"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="styles/formSteps.css">
+  <link rel="stylesheet" href="styles/inputs.css">
+  <link rel="stylesheet" href="styles/breadcrumbs.css">
+  <title>Psycho Tattoo & Piercing Shop</title>
 </head>
+
 <body>
   <div class="container-fluid h-100">
     <div class="w-100 h-100 d-flex">
-      <div class="w-40 h-100">
-        Factura
+      <div id="bill" class="w-40 h-100">
+        <h3 class="text-center">Bill</h3>
+        <div class="data">
+          <div>Product Image</div>
+          <div>Description</div>
+          <div>Quantity</div>
+          <div>Product Value</div>
+        </div>
+
+        <div class="data">
+          <div>Product Image</div>
+          <div>Description</div>
+          <div>Quantity</div>
+          <div>Product Value</div>
+        </div>
+        <div class="data">
+          <div>Product Image</div>
+          <div>Description</div>
+          <div>Quantity</div>
+          <div>Product Value</div>
+        </div>
+
+        <div>Total</div>
+
       </div>
-      <div class="w-60 h-100">
+      <div id="steps" class="w-60 h-100">
         <div class="h-90 d-flex justify-content-center align-items-center">
-          <form id = "main-form">
+          <form id="main-form">
+            <!-- form 1 (checkout) -->
+            <div class="tab-steps hidden">
+              <div class="container border d-flex row">
+                <div id="image" class="border">Image</div>
+                <div id="information" class="border">
+                  <h2>Example information title</h2>
+                  <h5>Subtitle information</h5>
+                  <div class="priceInfo">
+                    <div id="precio">$4000
+                    </div>
+                    <div id="units">Units
+                    <input type="number" name="itemQuantity" id="itemQuantity" min="1" max="10">
+                  </div>
+                  </div>
+                </div>
+                <div id="delete">
+                  <a href="http://">Delete</a>
+                  <a href="http://">Home</a>
+                </div>
+              </div>
+              <div class="container border d-flex row">
+                <div id="image" class="border">Image</div>
+                <div id="information" class="border">
+                  <h2>Example information title</h2>
+                  <h5>Subtitle information</h5>
+                  <div class="priceInfo">
+                    <div id="precio">$4000
+                    </div>
+                    <div>Units
+                      <input type="number" name="itemQuantity" id="itemQuantity" min="1" max="10">
+                    </div>
+                  </div>
+                </div>
+                <div id="delete">
+                  <a href="http://">Delete</a>
+                  <a href="http://">Home</a>
+                </div>
+              </div>
+            </div>
+            <!-- form 2 (form data) -->
             <div class="tab-steps hidden">
               <label for="firstName" class="inp">
                 <input type="text" id="firstName" placeholder="&nbsp;">
@@ -48,29 +114,83 @@
                 <span class="focus-bg"></span>
               </label>
             </div>
-
+            <!-- form 3 (payment form) -->
             <div class="tab-steps hidden">
-              form 2
+              <div class="payment">
+                <label for="cardHolder" class="inp">
+                  <input type="text" id="cardHolder" placeholder="&nbsp;">
+                  <span class="label">Number of card</span>
+                  <span class="focus-bg"></span>
+                  <label for="cardNumber" class="inp"> yy/ee mm/ee cvv
+                  </label>
+                  <label for="mont" class="inpExpiry">
+                    <!-- <span class="label">Expiry Month</span> -->
+                    <input type="number" id="month" placeholder="&nbsp;">
+                  </label>
+                  <label for="year" class="inpExpiry">
+                    <input type="number" id="month" placeholder="&nbsp;">
+                    <!-- <span class="label">Expiry Year</span> -->
+                  </label>
+                  <label for="cvv" class="inpExpiry">
+                    <input type="number" id="years" placeholder="cvv">
+                    <!-- <span class="label">cvv</span> -->
+
+                    <span class="focus-bg"></span>
+                  </label>
+
+                  <label for="cardHolder" class="inp">
+                    <input type="text" id="cardHolder" placeholder="&nbsp;">
+                    <span class="label">Name Of The Card</span>
+                    <span class="focus-bg"></span>
+                  </label>
+              </div>
             </div>
 
+            <!-- form 4(shipping) -->
             <div class="tab-steps hidden">
-              Form 3
-            </div>
-
-            <div class="tab-steps hidden">
-              Form 4
+              <label for="location" class="inp">
+                <input type="text" id="location" placeholder="&nbsp;">
+                <span class="label">Location</span>
+                <span class="focus-bg"></span>
+              </label>
+              <label for="postalCode" class="inp">
+                <input type="text" id="postalCode" placeholder="&nbsp;">
+                <span class="label">Postal Code</span>
+                <span class="focus-bg"></span>
+              </label>
+              <label for="street" class="inp">
+                <input type="text" id="street" placeholder="&nbsp;">
+                <span class="label">Street</span>
+                <span class="focus-bg"></span>
+              </label>
+              <label for="streetNumber" class="inp">
+                <input type="text" id="streetNumber" placeholder="&nbsp;">
+                <span class="label">Street Number</span>
+                <span class="focus-bg"></span>
+              </label>
+              <label for="phoneNumber" class="inp">
+                <input type="text" id="phoneNumber" placeholder="&nbsp;">
+                <span class="label">Phone Number</span>
+                <span class="focus-bg"></span>
+              </label>
             </div>
 
             <button class="button-49" id="nextBtn" onclick="nextTab()"> Continue </button>
           </form>
         </div>
+        <!-- footer form(?) -->
         <div class="h-10 bg-red">
-          <nav class = "first w-100 h-100">
-            <ul class = "breadcrumb-nav w-100 h-100 align-items-center">
-              <li><a href="#"><span><i class="fa-solid fa-magnifying-glass breadcrumb-icon"></i><span class = "breadcrumb-text">Order</span></span></a></li>
-              <li><a href="#"><span><i class="fa-solid fa-user breadcrumb-icon"></i><span class = "breadcrumb-text">Client</span></span></a></li>
-              <li><a href="#"><span><i class="fa-solid fa-receipt breadcrumb-icon"></i><span class = "breadcrumb-text">Paid</span></span></a></li>
-              <li><a href="#"><span><i class="fa-solid fa-truck-fast"></i><span class = "breadcrumb-text">Shipping</span></span></li>
+          <nav class="first w-100 h-100">
+            <ul class="breadcrumb-nav w-100 h-100 align-items-center">
+              <li onclick="switchTab(0)"><a href="#"><span><i
+                      class="fa-solid fa-magnifying-glass breadcrumb-icon"></i><span
+                      class="breadcrumb-text">Order</span></span></a></li>
+              <li onclick="switchTab(1)"><a href="#"><span><i class="fa-solid fa-user breadcrumb-icon"></i><span
+                      class="breadcrumb-text">Client</span></span></a></li>
+              <li onclick="switchTab(2)"><a href="#"><span><i class="fa-solid fa-receipt breadcrumb-icon"></i><span
+                      class="breadcrumb-text">Paid</span></span></a></li>
+              <li onclick="switchTab(3)"><a href="#"><span><i class="fa-solid fa-truck-fast"></i><span
+                      class="breadcrumb-text">Shipping</span></span></li>
             </ul>
           </nav>
         </div>
@@ -78,8 +198,11 @@
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <script type="text/javascript" src = "scripts/formSteps.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+  </script>
+  <script type="text/javascript" src="scripts/formSteps.js"></script>
 
 </body>
+
 </html>

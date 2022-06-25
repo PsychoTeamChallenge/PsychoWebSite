@@ -19,6 +19,7 @@ import javax.transaction.Transactional;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -49,38 +50,60 @@ public class ProductController {
         ProductDTO productDTO = new ProductDTO(product);
         return new ResponseEntity<>(productDTO, HttpStatus.OK);
     }
+
+    @GetMapping("/products/category")
+    public ResponseEntity<Object> getProductsByCategory(
+            @RequestParam String category,
+            Authentication auth){
+
+        if (category.isEmpty())
+            return new ResponseEntity<>("Empty data", HttpStatus.FORBIDDEN);
+
+        if (auth.getName() == null)
+            return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
+
+        List<ProductDTO> productDTOList = productService.getAllProductsByCategory(category).stream().map(ProductDTO::new).collect(Collectors.toList());
+        return new ResponseEntity<>(productDTOList, HttpStatus.ACCEPTED);
+    }
+
     @Transactional
     @PostMapping("/products")
     public ResponseEntity<Object> createProduct(
             @RequestParam String name, @RequestParam String description,
-        @RequestParam int stock, @RequestParam double price, @RequestParam() ArrayList<Double> sizes, @RequestParam ArrayList<String> colors,@RequestParam String urlImg, Authentication authentication) throws MessagingException, UnsupportedEncodingException {
+        @RequestParam int stock, @RequestParam double price, @RequestParam() ArrayList<Double> sizes,
+            @RequestParam ArrayList<String> colors,@RequestParam String urlImg,
+            @RequestParam String category, @RequestParam String filter,
+            Authentication authentication) throws MessagingException, UnsupportedEncodingException {
             System.out.println(sizes);
 
             if(clientService.getClient(authentication.getName()) == null)
                 return new ResponseEntity<>("You no have authorization", HttpStatus.FORBIDDEN);
 
             if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty())
-                if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty() || urlImg.isEmpty())
+                if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty() || urlImg.isEmpty() || category.isEmpty() || filter.isEmpty())
                     return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
 
             if(price < 0){
                 return new ResponseEntity<>("Invalid price", HttpStatus.FORBIDDEN);
             }
 
-            Product product = new Product(name, description, urlImg, stock, price, sizes, colors);
+            Product product = new Product(name, description, urlImg, stock, price, sizes, colors, category, filter);
 
             productService.saveProduct(product);
 
             return new ResponseEntity<>("Product created successfully", HttpStatus.CREATED);
         }
+
+
         @Transactional
         @PostMapping("/products/modify")
         public ResponseEntity<Object> modifyProduct(
         @RequestParam int id,
         @RequestParam String name, @RequestParam String description,@RequestParam String urlImg,
-        @RequestParam int stock, @RequestParam double price, @RequestParam() ArrayList<Double> sizes, @RequestParam ArrayList<String> colors) throws MessagingException, UnsupportedEncodingException {
+        @RequestParam int stock, @RequestParam double price, @RequestParam() ArrayList<Double> sizes,
+        @RequestParam ArrayList<String> colors, @RequestParam String category, @RequestParam String filter) throws MessagingException, UnsupportedEncodingException {
 
-            if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty())
+            if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty() || category.isEmpty() || filter.isEmpty())
                 if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty() || urlImg.isEmpty())
                     return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
 
@@ -97,6 +120,8 @@ public class ProductController {
             product.setColors(colors);
             product.setSizes(sizes);
             product.setDescription(description);
+            product.setCategory(category);
+            product.setFilter(filter);
             product.setName(name);
             product.setPrice(price);
             product.setStock(stock);

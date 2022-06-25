@@ -31,15 +31,15 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   padding: 1rem;
-  margin-bottom: rem;
+  margin-bottom: 5rem;
 }
 
 .cards {
   display: flex;
   position: relative;
-  background-color: #fff0;
-  max-width: 60%;
-  height: auto;
+  background-color: #361025;
+  width: 13rem;
+  height:13rem;
   flex-direction: column;
   align-items: center;
   margin: 2.5rem;
@@ -47,6 +47,9 @@ body {
   box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem var(--pink), 0 0 0.8rem var(--pink), 0 0 2.8rem, inset 0 0 1.3rem var(--pink);
   transition:.8s;
   margin-bottom: 4rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* imagen de prueba*/

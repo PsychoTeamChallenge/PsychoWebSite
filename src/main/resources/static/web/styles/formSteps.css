@@ -1,10 +1,26 @@
 html, body{
   height: 100%;
 }
-
-body{
+:root {
+  --lightblue: rgb(0, 224, 224);
+  --pink: rgb(230, 0, 130);
+}
+@font-face {
+  font-family: "Argh";
+  src: url("../assets/fonts/argh/ArghDemo-Italic.otf");
+}
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Argh;
+}
+body{
+  color: var(--pink);
+  margin: 0;
+  padding: 0;
+  background-image: url("../assets/newBackground.png");
 }
 
 ol, ul{
@@ -84,4 +100,51 @@ a{
 
 .hidden{
   display: none;
+}
+
+#bill{
+  border: 1px solid;
+  background-color: rgba(0, 0, 0, 0.603);
+}
+
+
+.container{
+    padding: 0;
+    margin: 1rem;
+    width: 100vw;
+    height: 13vh;
+}
+#image{
+  width:20vw;
+  height: 13vh;
+}
+#information{
+  width:79vw;
+  height: 13vh;
+}
+#units{
+  padding: 0.2rem;
+  background-color:white;
+}
+#itemQuantity{
+  outline: none;
+  border: none;
+}
+.priceInfo{
+  display: flex;
+  justify-content: space-around;
+
+  flex-direction: row-reverse;
+}
+#delete{
+  display: flex;
+    justify-content: space-around;
+}
+@media screen and (max-width: 600px) {
+  #bill{
+  display:none;
+  }
+  #steps{
+    width: 100%;
+  }
 }

@@ -14,35 +14,110 @@ $(document).ready(function(){
 });
 
 var n = 0;
+var s = false;
+
 function nextTab(){
-  console.log(n);
   let tabs = Array.from($('#main-form').children('.tab-steps'));
-  if(n == tabs.length){
-    console.log('nothing')
+  if(s == true){
+    s = false;
+    n++;
+  }
+  if(n >= tabs.length){
+    return false;
   } else {
-    //$('#main-form').children('.tab-steps').toggleClass('hidden');
+    var i = 0;
+    while(i < tabs.length){
+      if(i == n){
+        if($(tabs[i]).hasClass('hidden') == true){
+          $(tabs[i]).toggleClass('hidden');
+        }
+        i++;
+      } else {
+        if($(tabs[i]).hasClass('hidden') == false){
+          $(tabs[i]).toggleClass('hidden');
 
-    console.log(tabs.length);
-    if(n > 0){
-        $(tabs[n-1]).toggleClass('hidden');
+        }
+        i++;
+      }
     }
-      $(tabs[n]).toggleClass('hidden');
-      nextIcon();
-    }
+    nextIcon(n);
+  }
 }
 
-function nextIcon(){
-  console.log(n);
-  let tabs = Array.from($('.first ul li').children('a').children('span'));
-  console.log(tabs);
-  if(n == tabs.length){
-    console.log('nothing')
-  } else {
-    //$('#main-form').children('.tab-steps').toggleClass('hidden');
-    if(n > 0){
-        //$(tabs[n-1]).toggleClass('active');
+function switchIcon(number){
+  s = true;
+  let icons = Array.from($('.first ul li').children('a').children('span'));
+  var j = 0;
+  while(j < icons.length){
+    if(j > number){
+      if($(icons[j]).hasClass('active') == true){
+        $(icons[j]).toggleClass('active');
+      }
+      j++;
+    } else {
+      if($(icons[j]).hasClass('active') == false){
+        $(icons[j]).toggleClass('active');
+      }
+      j++;
     }
-      $(tabs[n]).toggleClass('active');
-      n++;
-    }
+  }
+  n = number;
 }
+
+function nextIcon(number){
+  let icons = Array.from($('.first ul li').children('a').children('span'));
+  var j = 0;
+  while(j < icons.length){
+    if(j > number){
+      if($(icons[j]).hasClass('active') == true){
+        $(icons[j]).toggleClass('active');
+      }
+      j++;
+    } else {
+      if($(icons[j]).hasClass('active') == false){
+        $(icons[j]).toggleClass('active');
+      }
+      j++;
+    }
+  }
+  n++;
+}
+
+function switchTab(number){
+
+  let tabs = Array.from($('#main-form').children('.tab-steps'));
+  if(number > tabs.length){
+    console.log("Invalid data");
+    return false;
+  }
+  var i = 0;
+  while(i < tabs.length){
+    console.log(i);
+    if(i == number){
+      if($(tabs[i]).hasClass('hidden') == true){
+        $(tabs[i]).toggleClass('hidden');
+      }
+      i++;
+    } else {
+      if($(tabs[i]).hasClass('hidden') == false){
+        $(tabs[i]).toggleClass('hidden');
+
+      }
+      i++;
+    }
+  }
+  switchIcon(number);
+}
+
+
+  /*for(let i = 0; i < tabs.length; i++){
+    if(i != n){
+      if($(tabs[i]).hasClass('hidden') == false){
+        $(tabs[i]).toggleClass('hidden');
+      }
+    } else {
+      if($(tabs[i]).hasClass('hidden') == true){
+        $(tabs[i]).toggleClass('hidden');
+      }
+    }
+  }*/
