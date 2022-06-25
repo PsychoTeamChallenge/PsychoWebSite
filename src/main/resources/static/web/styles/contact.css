@@ -29,7 +29,6 @@ body {
 /* --------------------------------------- MAIN ---------------------------------- */
 
 /* ----------------------- INFO --------------------- */
-
 .contact {
     text-align: center;
     margin: 1%;
@@ -56,6 +55,7 @@ body {
     gap: 3vh;
     margin: 4%;
     text-align: left;
+    flex-wrap: wrap;
 }
 
 .info div {
@@ -196,4 +196,34 @@ h1 {
 
 h2 {
     font-size: 2rem;
+}
+
+
+@media screen and (min-width:550px) and (max-width:739px) {
+
+    .info{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+
+@media screen and (min-width:740px) {
+    .info{
+        display: flex;
+        flex-direction: row;
+    }
+
+
+    .info .bx{
+        font-size: 3rem;
+    }
+}
+@media screen and (min-width:1080px){
+
+    
+    .info {
+        display: flex;
+        gap: 5vw;
+    }
 }
