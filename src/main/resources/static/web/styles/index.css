@@ -117,7 +117,7 @@ body {
 }
 
 #logoTongue{
-  /*transition: all 1s ease;*/
+  transition: all 1s ease;
 }
 
 .logo-tongue{
@@ -139,7 +139,7 @@ body {
     width: 150px;
     z-index: 10002;
     transform: scale(1);
-    
+
 }
 
 .hidden{
