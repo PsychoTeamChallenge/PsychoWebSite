@@ -10,6 +10,7 @@ public interface ProductService {
     Product getProductById(long id);
     List<Product> getProducts();
     List<ProductDTO> getProductsDTO();
+    List<Product> getAllProductsByCategory(String category);
     boolean existProduct(long id);
     void saveProduct(Product product);
 
