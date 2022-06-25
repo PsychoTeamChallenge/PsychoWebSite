@@ -121,14 +121,14 @@ body {
 }
 
 #logoTongue{
-  transition: all 1s ease;
+  /* transition: all 1s ease; */
 }
 
 .logo-tongue{
   position: absolute;
   /* bottom: -9vh; */
   left: -2vw;
-  top: 50vh;
+  top: 58vh;
   z-index: 2;
   width: 150px;
 }
