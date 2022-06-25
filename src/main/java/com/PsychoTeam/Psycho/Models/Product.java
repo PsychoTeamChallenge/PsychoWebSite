@@ -19,7 +19,7 @@ public class Product {
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
 
-    private String name,description,urlImg;
+    private String name,description,urlImg, category, filter;
     private int stock;
     private double price;
 
@@ -36,7 +36,7 @@ public class Product {
 
     public Product(){}
 
-    public Product(String name, String description,String urlImg, int stock, double price, ArrayList<Double> sizes, ArrayList<String> colors) {
+    public Product(String name, String description,String urlImg, int stock, double price, ArrayList<Double> sizes, ArrayList<String> colors, String category, String filter) {
         this.name = name;
         this.description = description;
         this.stock = stock;
@@ -44,6 +44,8 @@ public class Product {
         this.sizes = sizes;
         this.colors = colors;
         this.urlImg = urlImg;
+        this.category = category;
+        this.filter = filter;
     }
 
     public void addClientProduct(ClientProduct clientProduct) {

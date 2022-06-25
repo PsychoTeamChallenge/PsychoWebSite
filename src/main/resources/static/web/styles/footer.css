@@ -1,0 +1,83 @@
+
+footer{
+    display: none;
+}
+/* ---------------------- FOOTER ----------------------*/
+@media (min-width: 800px) { 
+footer {
+    height: 10rem;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.116);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.barbedWireFooter {
+    position: absolute;
+    background-image: url(../assets/index/alambrePuasSeparador.png);
+    width: 100%;
+    z-index: 1;
+    height: 17vh;
+    top: -53px;
+    filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+}
+
+.partLeft {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+}
+.partLeft iframe{
+    width: 14rem;
+    height: 9rem;
+}
+.findUs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.findUs h5{
+    font-family: "Argh";
+    font-size: 2rem;
+    color: var(--pink);
+    letter-spacing: 7px;
+}
+.findUs p{
+    color: white;
+    margin: 0;
+    margin-right: 1rem;
+}
+.partLeft .socialsMedia{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.partLeft .socialsMedia i{
+    color: white;
+    transition: .3s;
+    z-index: 3;
+}
+
+.partLeft .socialsMedia i:hover{
+    color: rgb(205, 9, 199);
+    cursor: pointer;
+}
+
+
+.partRight{
+    width: 15rem;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+footer img{
+    width: 100%;
+}
+
+}

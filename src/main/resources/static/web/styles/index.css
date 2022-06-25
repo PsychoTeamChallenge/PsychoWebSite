@@ -4,17 +4,23 @@
     box-sizing: border-box;
 }
 
-
+:root {
+    --lightblue: rgb(0, 224, 224);
+    --pink: rgb(230, 0, 130);
+  }
+  
 
 /* tipografia */
 @font-face {
     font-family: "Argh";
     src: url(../assets/fonts/argh/ArghDemo.otf);
 }
+
 @font-face {
     font-family: "Text";
     src: url(../assets/fonts/fontsAlternativas/Kepolu.ttf);
 }
+
 @font-face {
     font-family: "Graffity";
     src: url(../assets/fonts/fontsAlternativas/aAnotherTag.ttf);
@@ -114,13 +120,37 @@ body {
 
 }
 
-#logoToungue {
-    position: absolute;
+#logoTongue{
+  /* transition: all 1s ease; */
+}
+
+.logo-tongue{
+  position: absolute;
+  /* bottom: -9vh; */
+  left: -2vw;
+  top: 58vh;
+  z-index: 2;
+  width: 150px;
+}
+
+.logo-tongue-navbar{
+    position: fixed;
     bottom: -9vh;
-    left: -2vw;
+    left: 11vw;
+    top: 1vh;
     z-index: 2;
     width: 150px;
-    /* height: 100px; */
+    z-index: 10002;
+    transform: scale(1);
+
+}
+
+.hidden{
+  display: none;
+}
+
+#barbedWire{
+
 }
 
 .barbedWire {
@@ -131,6 +161,17 @@ body {
     height: 17vh;
     top: 87.6%;
     filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+}
+
+.barbedWire-navbar{
+  position: fixed;
+  background-image: url(../assets/index/alambrePuasSeparador.png);
+  width: 100%;
+  z-index: 1;
+  height: 17vh;
+  top: 0.6%;
+  filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+  z-index: 10001;
 }
 
 
@@ -288,7 +329,6 @@ h2 {
 .aboutUsContainer p {
     /* font-family: 'Nanum Gothic', sans-serif; */
     font-family: 'Text', sans-serif;
-
     font-size: 1.3rem;
 }
 
@@ -447,13 +487,13 @@ h3 {
         width: 100%;
     }
 
-    .cards{
+    .cards {
         width: 40%;
     }
 
-   
 
-    
+
+
 
 }
 
@@ -503,12 +543,15 @@ h3 {
     }
 
     #logoToungue {
-        position: absolute;
-        bottom: -11vh;
-        left: 5vw;
-        z-index: 2;
-        width: 200px;
 
+    }
+
+    .logo-tongue{
+      position: absolute;
+      bottom: -11vh;
+      left: 5vw;
+      z-index: 2;
+      width: 200px;
     }
 
     .aboutUsContainer p {
@@ -519,6 +562,7 @@ h3 {
 }
 
 @media screen and (min-width:1080px) {
+
     /* #logoToungue {
         position: absolute;
         bottom: -7vh;
@@ -531,7 +575,7 @@ h3 {
         gap: 5vw;
         margin-top: 7rem;
     }
-   
+
     .imgAbout{
         -webkit-clip-path: circle(50% at 86% 77%);
         clip-path: circle(58% at 75% 75%);
@@ -546,9 +590,11 @@ h3 {
         opacity: 0.3;
         filter: brightness(0.5) saturate(0.5);
     }
-    .heartAbout{
+
+    .heartAbout {
         background-image: url(../assets/index/heartGraffity.png);
     }
+
     .aboutUsContainer p {
         font-size: 1.7rem;
         padding-top: 2rem;
@@ -563,7 +609,7 @@ h3 {
         width: 35vw;
     }
 
-    h4{
+    h4 {
         display: flex;
     }
 }
