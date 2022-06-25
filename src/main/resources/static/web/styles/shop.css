@@ -4,7 +4,11 @@
     box-sizing: border-box;
 }
 
-
+:root {
+    --lightblue: rgb(0, 224, 224);
+    --pink: rgb(230, 0, 130);
+  }
+  
 
 /* tipografia */
 @font-face {
@@ -90,3 +94,7 @@ body {
     background-color: black;
     color: white;
 }
+
+
+
+

@@ -54,6 +54,7 @@
     margin: 0;
     padding: 0;
     background-color: black;
+    transition: .3s;
   }
 
   .nav-item{

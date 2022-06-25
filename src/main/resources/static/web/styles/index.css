@@ -4,7 +4,11 @@
     box-sizing: border-box;
 }
 
-
+:root {
+    --lightblue: rgb(0, 224, 224);
+    --pink: rgb(230, 0, 130);
+  }
+  
 
 /* tipografia */
 @font-face {
@@ -122,12 +126,11 @@ body {
 
 .logo-tongue{
   position: absolute;
-  bottom: -9vh;
+  /* bottom: -9vh; */
   left: -2vw;
   top: 50vh;
   z-index: 2;
   width: 150px;
-  /* height: 100px; */
 }
 
 .logo-tongue-navbar{
@@ -330,6 +333,7 @@ h2 {
 }
 
 h4 {
+    display: none;
     font-family: "Graffity";
     position: absolute;
     top: -19%;
