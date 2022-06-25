@@ -77,16 +77,36 @@ body {
 
 
 /* ----------------------- FORM --------------------- */
+.imgFormContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
 .formContainer {
     padding-top: 3vh;
-    width: 100%;
+    max-width: 50%;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     padding-bottom: 2vh;
-
 }
+
+/* form contact */
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 5vh;
+    padding-bottom: 6vh;
+    
+}
+
+
 
 .formTitleContainer {
     width: 84%;
@@ -106,22 +126,20 @@ body {
 
 /* input */
 form input {
-    width: 85vw;
+    width: 43vw;
     background-color: transparent;
     background-image: url(../assets/index/imputTexto.png);
     border: none;
     margin-top: 2vh;
-}
-
-form input {
     height: 40px;
     margin-bottom: 2vh;
 }
 
+
 /* text messange texterea */
 form textarea {
-    width: 85vw;
-    max-height: 150px;
+    width: 43vw;
+    max-height: 107px;
     background-image: url(../assets/index/imputTextoGrande.png);
     background-color: transparent;
     border: none;
@@ -129,21 +147,11 @@ form textarea {
 
 }
 
-/* form contact */
-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding-top: 5vh;
-    padding-bottom: 6vh;
-}
 
 /* button submit form */
 form button[type="submit"] {
-    width: 90px;
-    height: 50px;
+    width: 85px;
+    height: 39px;
     align-self: center;
     background-image: url(../assets/index/buttonTurquesa.png);
     background-color: transparent;
@@ -182,6 +190,14 @@ form textarea::-webkit-input-placeholder {
 }
 
 
+.imgDivForm{
+    background-image: url(../assets/contact/tattooContact.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 42%;
+    height: 95vh;
+}
+
 /* ------------------------------------ TITLE -----------------------*/
 h2,
 h1 {
@@ -205,6 +221,11 @@ h2 {
         display: flex;
         flex-direction: row;
     }
+
+
+    .formContainer{
+        width: 50%;
+    }
 }
 
 
@@ -214,16 +235,21 @@ h2 {
         flex-direction: row;
     }
 
-
     .info .bx{
         font-size: 3rem;
+    }
+
+    .formContainer{
+        width: 50%;
     }
 }
 @media screen and (min-width:1080px){
 
-    
     .info {
         display: flex;
         gap: 5vw;
+    }
+    .formContainer{
+        width: 50%;
     }
 }

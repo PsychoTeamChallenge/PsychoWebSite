@@ -120,9 +120,9 @@ body {
 
 }
 
-#logoTongue{
-  /* transition: all 1s ease; */
-}
+/* #logoTongue{
+  transition: all 1s ease; 
+} */
 
 .logo-tongue{
   position: absolute;
@@ -149,9 +149,9 @@ body {
   display: none;
 }
 
-#barbedWire{
+/* #barbedWire{
 
-}
+} */
 
 .barbedWire {
     position: absolute;
@@ -543,9 +543,9 @@ h3 {
         box-shadow: 0 0 0.2rem rgb(255, 255, 255), 0 0 0.2rem #fff, 0 0 0.5rem var(--darklightblue), 0 0 0.8rem var(--darklightblue), 0 0 2rem, inset 0 0 1.3rem var(--darklightblue);
     }
 
-    #logoToungue {
+    /* #logoToungue {
 
-    }
+    } */
 
     .logo-tongue{
       position: absolute;
