@@ -166,3 +166,54 @@ button{
     background-position: 400%;
   }
 }
+@media screen and (min-width: 600px) {
+  .button-49{
+    right: 240px;
+  }
+}
+@media screen and (min-width: 690px) {
+  .button-49{
+    right: 280px;
+  }
+}
+@media screen and (min-width: 760px) {
+  .button-49{
+    right: 300px;
+  }
+}
+@media screen and (min-width: 820px) {
+  .button-49{
+    right: 330px;
+  }
+  
+}
+@media screen and (min-width: 900px) {
+  .button-49{
+    right: 360px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .button-49{
+    right: 500px;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .button-49{
+    right: 550px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .button-49{
+    right: 600px;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .button-49{
+    right: 650px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .button-49{
+    right: 700px;
+  }
+}
