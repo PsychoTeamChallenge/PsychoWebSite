@@ -25,6 +25,10 @@ public class ProductDTO {
 
     private List<String> colors = new ArrayList<>();
 
+    public String category;
+
+    public String filter;
+
     public ProductDTO(Product product){
         this.id = product.getId();
         this.name = product.getName();

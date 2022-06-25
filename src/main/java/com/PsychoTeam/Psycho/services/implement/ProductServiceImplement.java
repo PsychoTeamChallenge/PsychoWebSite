@@ -38,6 +38,11 @@ public class ProductServiceImplement implements ProductService {
     }
 
     @Override
+    public List<Product> getAllProductsByCategory(String category) {
+        return productRepository.getAllProductByCategory(category);
+    }
+
+    @Override
     public boolean existProduct(long id) {
         return productRepository.existsById(id);
     }
