@@ -32,6 +32,7 @@ body {
 .contact {
     text-align: center;
     margin: 1%;
+    width: auto;
     height: 8vh;
     margin: 3vh;
     width: 90vw;
@@ -42,7 +43,7 @@ body {
 #xGraffity {
     position: absolute;
     bottom: -2.5vh;
-    left: 4vh;
+    right: 4vh;
     z-index: -1;
     width: 80px;
 }
@@ -88,15 +89,14 @@ body {
 }
 
 .formTitleContainer {
-
     width: 84%;
     position: relative;
 }
 
 #xGraffityForm {
     position: absolute;
-    bottom: 1.7vh;
-    left: 27.5vh;
+    top: -2.5vh;
+    left: 2.5vh;
     z-index: -1;
     width: 80px;
     /* height: 12vh; */

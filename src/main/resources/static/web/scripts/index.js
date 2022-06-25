@@ -60,3 +60,4 @@ window.onload = function()
     //display loader on page load 
     $('#loading').fadeOut();
 }
+
