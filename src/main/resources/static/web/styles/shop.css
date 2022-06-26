@@ -374,7 +374,6 @@ body {
 }
 
 .productBody .img {
-
     height: 7rem;
     width: 8rem;
     background-position: center;
@@ -384,7 +383,10 @@ body {
     bottom: 2.2rem;
     filter: drop-shadow(7px 8px 21px black);
 }
-
+.productBody .img.piercing {
+    transform: scale(1.3);
+    filter: drop-shadow(7px 8px 15px black);
+}
 .favouriteIcon {
     position: absolute;
     right: 7px;

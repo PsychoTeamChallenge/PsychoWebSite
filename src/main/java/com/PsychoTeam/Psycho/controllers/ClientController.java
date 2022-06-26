@@ -1,7 +1,9 @@
 package com.PsychoTeam.Psycho.controllers;
 import com.PsychoTeam.Psycho.Dtos.ClientDTO;
 import com.PsychoTeam.Psycho.Models.Client;
+import com.PsychoTeam.Psycho.Models.Product;
 import com.PsychoTeam.Psycho.services.ClientService;
+import com.PsychoTeam.Psycho.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,9 @@ public class ClientController {
 
     @Autowired
     private ClientService clientService;
+
+    @Autowired
+    ProductService productService;
 
     @Autowired
     private JavaMailSender mailSender;
@@ -136,6 +141,38 @@ public class ClientController {
         clientService.saveClient(client);
         sendDisableEmail(client);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PostMapping("/clients/current/favourites")
+    public ResponseEntity<?> addFavourite(@RequestParam long idProduct, Authentication authentication){
+        Client client = clientService.getClient(authentication.getName());
+        if(client == null){
+            return new ResponseEntity<>("Client unauthorized", HttpStatus.FORBIDDEN);
+        }
+
+        Product product = productService.getProductById(idProduct);
+        if(product == null){
+            return new ResponseEntity<>("Product not exist", HttpStatus.FORBIDDEN);
+        }
+        client.addFavourite(product);
+        clientService.saveClient(client);
+        return new ResponseEntity<>(client, HttpStatus.ACCEPTED);
+    }
+
+    @PatchMapping("/clients/current/favourites")
+    public ResponseEntity<?> removeFavourite(@RequestParam long idProduct, Authentication authentication){
+        Client client = clientService.getClient(authentication.getName());
+        if(client == null){
+            return new ResponseEntity<>("Client unauthorized", HttpStatus.FORBIDDEN);
+        }
+
+        Product product = productService.getProductById(idProduct);
+        if(product == null){
+            return new ResponseEntity<>("Product not exist", HttpStatus.FORBIDDEN);
+        }
+        client.removeFavourite(product);
+        clientService.saveClient(client);
+        return new ResponseEntity<>(client, HttpStatus.ACCEPTED);
     }
 
     private void sendVerificationEmail(Client client)

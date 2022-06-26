@@ -38,7 +38,7 @@
         <section class="mobileHeader">
             <div class="upSeccion">
                 <h1>Psycho Shop</h1>
-                <i class="fa-solid fa-bag-shopping"><span>1</span></i>
+                <i class="fa-solid fa-bag-shopping"><span v-if="cart.length > 0">{{cart.length}}</span v-else><span></span></i>
                 
             </div>
 
@@ -52,7 +52,8 @@
                 </div>
                 <div class="filters">
                     <i class='bx bx-slider-alt' @click="openFilters()"></i>
-                    <input type="search" name="shearch">
+                    <input type="search" name="shearch" v-model="shearchInput">
+                    {{shearch}}
                 </div>
             </div>
 
@@ -65,35 +66,39 @@
             <p class="title">Search Options</p>
             <h3>Order by:</h3>
             <div class="orderDiv">
-                <div class="active"><i class='bx bx-chevron-up'></i>Price</div>
-                <div><i class='bx bx-chevron-down'></i>Price</div>
-                <div><i class='bx bx-chevron-up'></i>A-Z</div>
-                <div><i class='bx bx-chevron-down'></i>Z-A</div>
+                <div  :class="{active:order == 'lowPrice'}"><i class='bx bx-chevron-down' @click="changeOrder('lowPrice')"></i>Price</div>
+                <div  :class="{active:order == 'highPrice'}"><i class='bx bx-chevron-up' @click="changeOrder('highPrice')" ></i>Price</div>
+                <div  :class="{active:order == 'lowApha'}"><i class='bx bx-chevron-up' @click="changeOrder('lowApha')" ></i>A-Z</div>
+                <div  :class="{active:order == 'highApha'}"><i class='bx bx-chevron-down' @click="changeOrder('highApha')"></i>Z-A</div>
             </div>
-            
+           
             <h3>Filter by:</h3>
             <div class="typeDiv">
                 <div class="clothingOptions" v-if="clothOrPier">
-                    <div class="active">Hat</div>
-                    <div>T-shirt</div>
-                    <div>Sweatshirt</div>
+                    <div  @click="changeCategory('ALL')"  :class="{active:category == 'ALL'}">All</div>
+                    <div  @click="changeCategory('HAT')"  :class="{active:category == 'HAT'}">Hat</div>
+                    <div @click="changeCategory('T-SHIRT')"  :class="{active:category == 'T-SHIRT'}">T-shirt</div>
+                    <div @click="changeCategory('SWEATSHIRT')"  :class="{active:category == 'SWEATSHIRT'}">Sweatshirt</div>
                 </div>
                 <div class="piercingOptions" v-if="!clothOrPier">
-                    <div>Body</div>
-                    <div>Mouth</div>
-                    <div>Eyebrow</div>
-                    <div>Ear</div>
+                    <div  @click="changeCategory('ALL')"  :class="{active:category == 'ALL'}">All</div>
+                    <div @click="changeCategory('BODY')"  :class="{active:category == 'BODY'}">Body</div>
+                    <div @click="changeCategory('MOUTH')"  :class="{active:category == 'MOUTH'}">Mouth</div>
+                    <div @click="changeCategory('NOSE')"  :class="{active:category == 'NOSE'}">Nose</div>
+                    <div @click="changeCategory('EYEBROW')" :class="{active:category == 'EYEBROW'}">Eyebrow</div>
+                    <div @click="changeCategory('EAR')"  :class="{active:category == 'EAR'}">Ear</div>
                 </div>
             </div>
-            <div class="btnApply">APPLY</div>
+            <div class="btnApply" @click="orderProducts(),openFilters()">APPLY</div>
         </div>
 
         <div class="mainContent">
-            <div class="productCard" v-for="product in productsFilters">
+            <div class="productCard" v-for="product in productsList">
                 <div class="productBody">
-                    <div class="img" :style="'background-image: url('+product.urlImg+');'"></div>
+                    <div class="img" :style="'background-image: url('+product.urlImg+');'" :class="{piercing:!clothOrPier}"></div>
                     <div class="favouriteIcon">
-                        <i class='bx bx-heart'></i>
+                        <i class='bx bxs-heart' v-if="favouritesIds.includes(product.id)"  @click="removeFavourite(product.id)"></i>
+                        <i class='bx bx-heart'v-else @click="addFavourite(product.id)"></i>
                     </div>
                     <div class="productBodyBackground"></div>
                 </div>

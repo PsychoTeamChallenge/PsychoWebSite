@@ -49,7 +49,6 @@ public class ClientProductController {
             @RequestParam int clientProduct_id, @RequestParam int quantity){
 
         ClientProduct clientProduct =  clientProductService.getClientProductById(clientProduct_id);
-
         if( clientProduct == null){
             return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
         }
@@ -81,6 +80,11 @@ public class ClientProductController {
             return new ResponseEntity<>("Invalid authentication credentials", HttpStatus.FORBIDDEN);
         }
         Client client = clientService.getClient(auth.getName());
+
+        if(client == null){
+            return new ResponseEntity<>("Invalid authentication credentials", HttpStatus.FORBIDDEN);
+        }
+
         List<ClientProductDTO> cartListDTO = clientProductService.getClientProductsByClient(client);
         return new ResponseEntity<>(cartListDTO, HttpStatus.ACCEPTED);
     }
