@@ -7,8 +7,8 @@
 :root {
     --lightblue: rgb(0, 224, 224);
     --pink: rgb(230, 0, 130);
-  }
-  
+}
+
 
 /* tipografia */
 @font-face {
@@ -124,16 +124,16 @@ body {
   transition: all 1s ease; 
 } */
 
-.logo-tongue{
-  position: absolute;
-  /* bottom: -9vh; */
-  left: -2vw;
-  top: 58vh;
-  z-index: 2;
-  width: 150px;
+.logo-tongue {
+    position: absolute;
+    /* bottom: -9vh; */
+    left: -2vw;
+    top: 58vh;
+    z-index: 2;
+    width: 150px;
 }
 
-.logo-tongue-navbar{
+.logo-tongue-navbar {
     position: fixed;
     bottom: -9vh;
     left: 11vw;
@@ -145,8 +145,8 @@ body {
 
 }
 
-.hidden{
-  display: none;
+.hidden {
+    display: none;
 }
 
 /* #barbedWire{
@@ -163,15 +163,15 @@ body {
     filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
 }
 
-.barbedWire-navbar{
-  position: fixed;
-  background-image: url(../assets/index/alambrePuasSeparador.png);
-  width: 100%;
-  z-index: 1;
-  height: 17vh;
-  top: 0.6%;
-  filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
-  z-index: 10001;
+.barbedWire-navbar {
+    position: fixed;
+    background-image: url(../assets/index/alambrePuasSeparador.png);
+    width: 100%;
+    z-index: 1;
+    height: 17vh;
+    top: 0.6%;
+    filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+    z-index: 10001;
 }
 
 
@@ -304,8 +304,8 @@ body {
 }
 
 h2 {
-    -webkit-animation:  fade-in-fwd .6s cubic-bezier(.39, .575, .565, 1.000) both;
-    animation:  fade-in-fwd .6s cubic-bezier(.39, .575, .565, 1.000) both
+    -webkit-animation: fade-in-fwd .6s cubic-bezier(.39, .575, .565, 1.000) both;
+    animation: fade-in-fwd .6s cubic-bezier(.39, .575, .565, 1.000) both
 }
 
 
@@ -491,11 +491,6 @@ h3 {
     .cards {
         width: 40%;
     }
-
-
-
-
-
 }
 
 
@@ -547,12 +542,12 @@ h3 {
 
     } */
 
-    .logo-tongue{
-      position: absolute;
-      bottom: -11vh;
-      left: 5vw;
-      z-index: 2;
-      width: 200px;
+    .logo-tongue {
+        position: absolute;
+        bottom: -11vh;
+        left: 5vw;
+        z-index: 2;
+        width: 200px;
     }
 
     .aboutUsContainer p {
@@ -577,7 +572,7 @@ h3 {
         margin-top: 7rem;
     }
 
-    .imgAbout{
+    .imgAbout {
         -webkit-clip-path: circle(50% at 86% 77%);
         clip-path: circle(58% at 75% 75%);
         position: absolute;

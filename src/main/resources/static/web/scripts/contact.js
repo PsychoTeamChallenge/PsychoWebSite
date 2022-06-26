@@ -55,9 +55,8 @@ $(window).ready(hideLoader);
 setTimeout(hideLoader, 20 * 1000);
  */
 
-/*   window.onload = function() 
-  {
-      //display loader on page load 
-      $('#loading').fadeOut();
-  }
-   */
+window.onload = function () {
+    //display loader on page load 
+    $('#loading').fadeOut();
+}
+

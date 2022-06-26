@@ -28,12 +28,86 @@ body {
 
 /* --------------------------------------- MAIN ---------------------------------- */
 
+/* IMAGES */
+.welcome {
+    width: 100%;
+    height: 16rem;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 6vh;
+    padding-top: 0px;
+    margin-top: 0;
+    box-sizing: border-box;
+    display: block;
+    background-position: center;
+    background-image: url(../assets/index/welcomeGirl.png);
+    background-size: cover;
+
+}
+
+#girlWelcome {
+    width: 100%;
+    filter: grayscale();
+
+}
+
+.logo-tongue {
+    position: absolute;
+    left: -2vw;
+    top: 58vh;
+    z-index: 2;
+    width: 150px;
+}
+
+.logo-tongue-navbar {
+    position: fixed;
+    bottom: -9vh;
+    left: 11vw;
+    top: 1vh;
+    z-index: 2;
+    width: 150px;
+    z-index: 10002;
+    transform: scale(1);
+
+}
+
+.hidden {
+    display: none;
+}
+
+/* #barbedWire{
+
+} */
+
+.barbedWire {
+    position: absolute;
+    background-image: url(../assets/index/alambrePuasSeparador.png);
+    width: 100%;
+    z-index: 1;
+    height: 17vh;
+    top: 87.6%;
+    filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+}
+
+.barbedWire-navbar {
+    position: fixed;
+    background-image: url(../assets/index/alambrePuasSeparador.png);
+    width: 100%;
+    z-index: 1;
+    height: 17vh;
+    top: 0.6%;
+    filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+    z-index: 10001;
+}
+
 /* ----------------------- INFO --------------------- */
-.infoContactContainer{
+.infoContactContainer {
     display: flex;
     flex-direction: column;
     padding-top: 5vh;
 }
+
 .contact {
     position: relative;
     width: 300px !important;
@@ -257,6 +331,14 @@ h2 {
         padding-bottom: 0;
         /* justify-content: flex-start; */
         align-items: center;
+    }
+
+    .logo-tongue {
+        position: absolute;
+        bottom: -11vh;
+        left: 5vw;
+        z-index: 2;
+        width: 200px;
     }
 
 
