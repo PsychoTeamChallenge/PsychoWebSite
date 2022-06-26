@@ -15,6 +15,8 @@ border: 1px solid rgba(255, 255, 255, 0.125);
 
 .productIcon{
   cursor: pointer;
+  color: rgb(230 0 130 / 53%);
+  font-size: 20px;
 }
 
 #cartMobileContainer{
@@ -74,6 +76,7 @@ border: 1px solid rgba(255, 255, 255, 0.125);
 }
 
 .cardProductOptions{
+  font-size: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

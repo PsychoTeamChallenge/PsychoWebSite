@@ -133,7 +133,13 @@ Vue.createApp({
                 confirmButtonText: 'Yes, delete it!'
               }).then((result) => {
                 if (result.isConfirmed) {
-                  axios.patch("/api/cart/current","clientProduct_id=" + id).then(this.actualizarClient).catch(console.log("error"));
+                  axios.patch("/api/cart/current","clientProduct_id=" + id)
+                  .then((response) => {
+                    this.actualizarClient();
+                  })
+                  .catch((error) => {
+                    console.log("error");
+                  });
                   Swal.fire(
                     'Deleted!',
                     'Your product has been removed.',
