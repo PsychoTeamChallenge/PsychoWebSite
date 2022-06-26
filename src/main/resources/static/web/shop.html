@@ -37,25 +37,31 @@
 
         <section class="mobileHeader">
             <div class="upSeccion">
-                <h1>Pyscho Shop</h1>
-                <i class='bx bxs-cart'></i>
+                <h1>Psycho Shop</h1>
+                <i class="fa-solid fa-bag-shopping"><span>1</span></i>
+                
             </div>
 
             <div class="downSeccion">
                 <div class="typesProducts">
-                    <p>Piercing</p>
-                    <p>Clothing</p>
+                    <img src="./assets/shop/option1.png" alt="" class="optionClothing " :class="{active: !clothOrPier}" @click="changeFilterCategory('CLOTHING')">
+                    <img src="./assets/shop/option1Active.png" alt="" class="optionClothingSelect " :class="{active: clothOrPier}" @click="changeFilterCategory('CLOTHING')">
+                    
+                    <img src="./assets/shop/option2.png" alt="" class="optionPiercing " :class="{active:clothOrPier}" @click="changeFilterCategory('PIERCING')">
+                    <img src="./assets/shop/option2Active.png" alt="" class="optionPiercingSelect " :class="{active: !clothOrPier}" @click="changeFilterCategory('PIERCING')">
                 </div>
                 <div class="filters">
-                    <i class='bx bx-slider-alt'></i>
+                    <i class='bx bx-slider-alt' @click="openFilters()"></i>
                     <input type="search" name="shearch">
                 </div>
             </div>
 
+            <div class="barbedWire"></div>
         </section>
-
-        <!-- <div class="filterMobileContainer">
-            <i class='bx bx-left-arrow-alt'></i>
+        <div class="mobileHeaderBackground"></div>
+     
+        <div class="filterMobileContainer" :class="{active:filtersShow}">
+            <i class='bx bx-left-arrow-alt' @click="openFilters()"></i>
             <p class="title">Search Options</p>
             <h3>Order by:</h3>
             <div class="orderDiv">
@@ -67,12 +73,12 @@
             
             <h3>Filter by:</h3>
             <div class="typeDiv">
-                <div class="clothingOptions">
+                <div class="clothingOptions" v-if="clothOrPier">
                     <div class="active">Hat</div>
                     <div>T-shirt</div>
                     <div>Sweatshirt</div>
                 </div>
-                <div class="piercingOptions">
+                <div class="piercingOptions" v-if="!clothOrPier">
                     <div>Body</div>
                     <div>Mouth</div>
                     <div>Eyebrow</div>
@@ -80,113 +86,23 @@
                 </div>
             </div>
             <div class="btnApply">APPLY</div>
-        </div> -->
+        </div>
 
         <div class="mainContent">
-            <div class="productCard">
+            <div class="productCard" v-for="product in productsFilters">
                 <div class="productBody">
-                    <div class="img"></div>
+                    <div class="img" :style="'background-image: url('+product.urlImg+');'"></div>
                     <div class="favouriteIcon">
                         <i class='bx bx-heart'></i>
-                        <!-- <i class='bx bxs-heart' ></i> -->
                     </div>
+                    <div class="productBodyBackground"></div>
                 </div>
                 <div class="productText">
-                    <p class="nameProduct">Gorrito</p>
-                    <p class="priceProduct">$2600</p>
+                    <p class="nameProduct">{{product.name}}</p>
+                    <p class="priceProduct">${{product.price}}</p>
                 </div>
             </div>
-            <div class="productCard">
-                <div class="productBody">
-                    <div class="img"></div>
-                    <div class="favouriteIcon">
-                        <!-- <i class='bx bx-heart'></i> -->
-                        <i class='bx bxs-heart'></i>
-                    </div>
-                </div>
-                <div class="productText">
-                    <p class="nameProduct">Gorrito</p>
-                    <p class="priceProduct">$2600</p>
-                </div>
-            </div>
-            <div class="productCard">
-                <div class="productBody">
-                    <div class="img"></div>
-                    <div class="favouriteIcon">
-                        <i class='bx bx-heart'></i>
-                        <!-- <i class='bx bxs-heart' ></i> -->
-                    </div>
-                </div>
-                <div class="productText">
-                    <p class="nameProduct">Gorrito</p>
-                    <p class="priceProduct">$2600</p>
-                </div>
-            </div>
-            <div class="productCard">
-                <div class="productBody">
-                    <div class="img"></div>
-                    <div class="favouriteIcon">
-                        <!-- <i class='bx bx-heart'></i> -->
-                        <i class='bx bxs-heart'></i>
-                    </div>
-                </div>
-                <div class="productText">
-                    <p class="nameProduct">Gorrito</p>
-                    <p class="priceProduct">$2600</p>
-                </div>
-            </div>
-            <div class="productCard">
-                <div class="productBody">
-                    <div class="img"></div>
-                    <div class="favouriteIcon">
-                        <i class='bx bx-heart'></i>
-                        <!-- <i class='bx bxs-heart' ></i> -->
-                    </div>
-                </div>
-                <div class="productText">
-                    <p class="nameProduct">Gorrito</p>
-                    <p class="priceProduct">$2600</p>
-                </div>
-            </div>
-            <div class="productCard">
-                <div class="productBody">
-                    <div class="img"></div>
-                    <div class="favouriteIcon">
-                        <!-- <i class='bx bx-heart'></i> -->
-                        <i class='bx bxs-heart'></i>
-                    </div>
-                </div>
-                <div class="productText">
-                    <p class="nameProduct">Gorrito</p>
-                    <p class="priceProduct">$2600</p>
-                </div>
-            </div>
-            <div class="productCard">
-                <div class="productBody">
-                    <div class="img"></div>
-                    <div class="favouriteIcon">
-                        <i class='bx bx-heart'></i>
-                        <!-- <i class='bx bxs-heart' ></i> -->
-                    </div>
-                </div>
-                <div class="productText">
-                    <p class="nameProduct">Gorrito</p>
-                    <p class="priceProduct">$2600</p>
-                </div>
-            </div>
-            <div class="productCard">
-                <div class="productBody">
-                    <div class="img"></div>
-                    <div class="favouriteIcon">
-                        <!-- <i class='bx bx-heart'></i> -->
-                        <i class='bx bxs-heart'></i>
-                    </div>
-                </div>
-                <div class="productText">
-                    <p class="nameProduct">Gorrito</p>
-                    <p class="priceProduct">$2600</p>
-                </div>
-            </div>
+           
         </div>
 
     </main>
@@ -219,7 +135,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>
+    <script src="https://kit.fontawesome.com/14ea8811f4.js" crossorigin="anonymous"></script>
+    
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/vue-dragscroll"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
 
+    <script src="./scripts/shop.js"></script>
 </body>
 
 </html>

@@ -87,8 +87,9 @@ public class ProductController {
                 return new ResponseEntity<>("Invalid price", HttpStatus.FORBIDDEN);
             }
 
-            Product product = new Product(name, description, urlImg, stock, price, sizes, colors, category, filter);
-
+            Product product = new Product(name, description, urlImg, stock, price, category, filter);
+            product.setSizes( sizes);
+            product.setColors(colors);
             productService.saveProduct(product);
 
             return new ResponseEntity<>("Product created successfully", HttpStatus.CREATED);
