@@ -12,6 +12,8 @@
 
 .productIcon{
   cursor: pointer;
+  color: rgb(230 0 130 / 53%);
+  font-size: 20px;
 }
 
 #cartMobileContainer{
@@ -71,6 +73,7 @@
 }
 
 .cardProductOptions{
+  font-size: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
