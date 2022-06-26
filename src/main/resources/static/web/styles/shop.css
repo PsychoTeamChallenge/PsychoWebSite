@@ -58,6 +58,10 @@
 
 /*------------------------------ ANIMATIONS -----------------------------------------*/
 
+html.active{
+    overflow: hidden;
+}
+
 
 /* body */
 body {
@@ -194,6 +198,10 @@ body {
 
 .downSeccion .filters i {
     font-size: 1.4rem;
+    background: #951b60;
+    color: white;
+    padding: .3rem;
+    border-radius: 50%;
 }
 
 .downSeccion .filters input {
@@ -221,14 +229,28 @@ body {
 
 /* ===================OPTIONS FILTER VIEW================== */
 
+
+
 .filterMobileContainer {
     display: flex;
     flex-direction: column;
     padding: 0 1rem;
-    position: relative;
-    height: 90vh;
+    position: fixed;
+    height: 100vh;
+    z-index: -20;
+    opacity: 0;
+    background-image: url(../assets/background/newBackground.png);
+    background-color: black;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    transition: .7s;
 }
-
+.filterMobileContainer.active{
+    opacity: 100;
+    z-index: 90;
+    left: 0;
+}
 .filterMobileContainer .bx.bx-left-arrow-alt {
     position: absolute;
     font-size: 2rem;
