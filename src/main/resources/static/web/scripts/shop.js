@@ -10,6 +10,7 @@ Vue.createApp({
 
             client: {},
             cart: [],
+            totalCart: 0,
             favouritesIds:[],
 
             clothOrPier: true,
@@ -31,7 +32,7 @@ Vue.createApp({
                 this.changeFilterCategory("CLOTHING")
 
             })
-       this.actualizarClient()
+       this.actualizarClient();
     },
 
     methods: {
@@ -43,6 +44,9 @@ Vue.createApp({
                 this.isClient = true;
                 this.cart = this.client.cart
                 this.favouritesIds =  this.client.favourites.map(fav => fav.id)
+                this.cart.forEach(product => {
+                  this.totalCart += product.quantity * product.price;
+                });
 
             })
 
@@ -119,30 +123,95 @@ Vue.createApp({
         removeProduct(id){
           /*'../transactions/create',
               "monto=" + monto + "&description="*/
-          axios.patch("/api/cart/current","clientProduct_id=" + id).then(this.actualizarClient).catch(console.log("error"));
+              Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  axios.patch("/api/cart/current","clientProduct_id=" + id).then(this.actualizarClient).catch(console.log("error"));
+                  Swal.fire(
+                    'Deleted!',
+                    'Your product has been removed.',
+                    'success'
+                  )
+                }
+              });
         },
         addProduct(product){
-          axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + 1).then(this.actualizarClient).catch(console.log("error"));
+          axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + 1).then(this.actualizarClient).catch(
+            Swal.fire(
+              'Error!',
+              'Not enought stock for this product.',
+              'error'
+            )
+          );
         },
         subProduct(product){
-          axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + (-1)).then(this.actualizarClient).catch(console.log("error"));
+          if(product.quantity == 1){
+            Swal.fire({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + (-1)).then(this.actualizarClient).catch(console.log("error"));
+                Swal.fire(
+                  'Deleted!',
+                  'Your product has been removed.',
+                  'success'
+                )
+              }
+            });
+          } else {
+            axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + (-1)).then(this.actualizarClient).catch(console.log("error"));
+          }
+
         },
         closeCart(){
           if($(window).width() < 800){
-            $('#cartMobileContainer').css("display", "none");
+            $('#cartMobileContainer').css("left", "-100%");
           } else {
-            $('#cartDesktopContainer').css("display", "none");
+            $('#cartDesktopContainer').css("left", "-40%");
           }
         },
         openCart(){
           if($(window).width() < 800){
-            $('#cartMobileContainer').css("display", "block");
+            $('#cartMobileContainer').css("left", "0%");
+            $('html').toggleClass("active");
           } else {
-            $('#cartDesktopContainer').css("display", "block");
+            $('#cartDesktopContainer').css("left", "0%");
+            $('html').toggleClass("active");
           }
         },
         removeCart(){
-          axios.patch("/api/cart/current/empty").then(this.actualizarClient).catch(console.log("error"));
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              axios.patch("/api/cart/current/empty").then(this.actualizarClient).catch(console.log("error"));
+              Swal.fire(
+                'Deleted!',
+                'Your cart has been removed.',
+                'success'
+              )
+            }
+          });
+
         }
     },
     computed: {
