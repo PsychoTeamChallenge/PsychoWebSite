@@ -38,6 +38,8 @@
         <section class="mobileHeader">
             <div class="upSeccion">
                 <h1>Psycho Shop</h1>
+
+
                 <i class="fa-solid fa-bag-shopping"><span>1</span></i>
                 
             </div>
@@ -89,6 +91,7 @@
         </div>
 
         <div class="mainContent">
+
             <div class="productCard" v-for="product in productsFilters">
                 <div class="productBody">
                     <div class="img" :style="'background-image: url('+product.urlImg+');'"></div>
@@ -102,7 +105,7 @@
                     <p class="priceProduct">${{product.price}}</p>
                 </div>
             </div>
-           
+
         </div>
 
     </main>
