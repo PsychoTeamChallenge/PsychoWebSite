@@ -24,8 +24,17 @@
 
 /* body */
 body {
-    background-image: url(../assets/background/newBackground.png);
+    background-image: url(../assets/index/welcomeGirl2.png);
+    backdrop-filter: blur(5px);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
     color: white;
+    height: 150vh;
+}
+
+main{
+    max-width: 100vw;
 }
 
 /* --------------- MAIN ----------------------*/
@@ -35,21 +44,24 @@ body {
 
 a {
     text-decoration: none;
-    color: #1ab188;
+    color: var(--lightblue);
     transition: 0.5s ease;
+    font-family: "Argh";
+    font-size: 2rem;
 }
 
 a:hover {
-    color: #179b77;
+    color: var(--lightblue);
+    font-family: "Argh";
 }
 
 .form {
-    background: rgba(19, 35, 47, 0.9);
+    background: transparent;
     padding: 40px;
     max-width: 600px;
     margin: 40px auto;
     border-radius: 4px;
-    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+    /* box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3); */
 }
 
 .tab-group {
@@ -67,10 +79,10 @@ a:hover {
 .tab-group li a {
     display: block;
     text-decoration: none;
-    padding: 15px;
-    background: rgba(160, 179, 176, 0.25);
-    color: #a0b3b0;
-    font-size: 20px;
+    padding: 10px;
+    color: white;
+    font-size: 29px;
+    letter-spacing: 2px;
     float: left;
     width: 50%;
     text-align: center;
@@ -79,13 +91,15 @@ a:hover {
 }
 
 .tab-group li a:hover {
-    background: #179b77;
+    /* background: var(--lightblue); */
+    background: rgba(160, 179, 176, 0.25);
     color: #ffffff;
 }
 
 .tab-group .active a {
-    background: #1ab188;
+   /*  background:var(--lightblue); */
     color: #ffffff;
+    border-bottom: solid 3.5px aqua;
 }
 
 .tab-content>div:last-child {
@@ -101,7 +115,7 @@ h1 {
 
 label {
     position: absolute;
-    transform: translateY(6px);
+    transform: translateY(-1px);
     left: 13px;
     color: rgba(255, 255, 255, 0.5);
     transition: all 0.25s ease;
@@ -112,11 +126,13 @@ label {
 
 label .req {
     margin: 2px;
-    color: #1ab188;
+    color: var(--lightblue);;
+    font-size: 2rem;
+    
 }
 
 label.active {
-    transform: translateY(50px);
+    transform: translateY(19px);
     left: 2px;
     font-size: 14px;
 }
@@ -147,7 +163,7 @@ textarea {
 input:focus,
 textarea:focus {
     outline: 0;
-    border-color: #1ab188;
+    border-color: var(--lightblue);;
 }
 
 textarea {
@@ -168,7 +184,7 @@ textarea {
 
 .top-row>div {
     float: left;
-    width: 48%;
+    width: 100%;
     margin-right: 4%;
 }
 
@@ -182,18 +198,22 @@ textarea {
     border-radius: 0;
     padding: 15px 0;
     font-size: 2rem;
-    font-weight: 600;
-    text-transform: uppercase;
+   /*  font-weight: 600; */
+    /* text-transform: uppercase; */
+    font-family: Argh;
     letter-spacing: 0.1em;
-    background: #1ab188;
+   /*  background: var(--darklightblue); */
     color: #ffffff;
     transition: all 0.5s ease;
     -webkit-appearance: none;
+    border: 1px solid var(--lightblue);
+    background-color: transparent;
+
 }
 
 .button:hover,
 .button:focus {
-    background: #179b77;
+    background: var(--lightblue);
 }
 
 .button-block {
@@ -205,3 +225,52 @@ textarea {
     margin-top: -20px;
     text-align: right;
 }
+/* ----------------- NEON SIGN --------------------*/
+@font-face {
+    font-family: "Graffity";
+    src: url(../assets/fonts/fontsAlternativas/aAnotherTag.ttf);
+}
+
+h1{
+    font-family: "Argh";
+    color: white;
+    animation: neon 1s infinite;
+    font-size: 10vh;
+    letter-spacing: 2px;
+}
+@keyframes neon{
+    0% , 39%, 41%, 59%, 61%, 100%{
+        text-shadow:
+        #fff 0 0 12px,
+        rgb(0, 224, 224)  0 0 24px,
+        rgb(0, 224, 224) 0 0 36px;
+    }
+        
+        40%, 60%{
+        text-shadow:none; 
+        }
+}
+/* ----------------------- MEDIA QUERIES --------------------*/
+
+@media screen and (min-width:650px) {
+
+    .form{
+        box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.39);
+    }
+
+    body{
+        height: 130vh;
+    }
+    
+}
+
+@media screen and (min-width:800px) {
+
+    body{
+        height: 125vh;
+    }
+    
+}
+
+
+
