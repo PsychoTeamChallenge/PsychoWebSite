@@ -117,7 +117,6 @@
                  </div>
                  <div class="cardProductOptions">
                    <p> <span @click="addProduct(product)" class = "productIcon"> <i class="fa-solid fa-square-plus"></i></span> <span> {{ product.quantity }} </span> <span @click="subProduct(product)" class = "productIcon"> <i class="fa-solid fa-square-minus"></i> </span> </p>
-                   <p> <span>  </span> </p>
                    <p> <i class="fa-solid fa-trash productIcon" @click="removeProduct(product)"></i> </p>
                  </div>
                </div>
@@ -166,9 +165,7 @@
                  </div>
                  <div class="cardProductOptions">
                    <p> <span @click="addProduct(product)" class = "productIcon"> + </span> <span> {{ product.quantity }} </span> <span @click="subProduct(product)" class = "productIcon"> - </span> </p>
-                   <p> <span>  </span> </p>
                    <p> <i class="fa-solid fa-trash productIcon" @click="removeProduct(product)"></i> </p>
-                   <p> <i class="fa-solid fa-heart productIcon"></i> </p>
                  </div>
                </div>
             </div>
