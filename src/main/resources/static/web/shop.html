@@ -116,10 +116,10 @@
                    <p> ${{ product.price.toLocaleString('de-DE') }} </p>
                  </div>
                  <div class="cardProductOptions">
-                   <p @click="addProduct(product)"> + </p>
-                   <p> {{ product.quantity }} </p>
-                   <p> <i class="fa-solid fa-trash" @click = "removeProduct(product.id)"></i> </p>
-                   <p @click="subProduct(product)"> - </p>
+                   <p> <span @click="addProduct(product)" class = "productIcon"> + </span> <span> {{ product.quantity }} </span> <span @click="subProduct(product)" class = "productIcon"> - </span> </p>
+                   <p> <span>  </span> </p>
+                   <p> <i class="fa-solid fa-trash productIcon" @click="removeProduct(product)"></i> </p>
+                   <p> <i class="fa-solid fa-heart productIcon"></i> </p>
                  </div>
                </div>
             </div>
@@ -166,10 +166,10 @@
                    <p> ${{ product.price.toLocaleString('de-DE') }} </p>
                  </div>
                  <div class="cardProductOptions">
-                   <p @click="addProduct(product)"> + </p>
-                   <p> {{ product.quantity }} </p>
-                   <p> <i class="fa-solid fa-trash" @click = "removeProduct(product.id)"></i> </p>
-                   <p @click="subProduct(product)"> - </p>
+                   <p> <span @click="addProduct(product)" class = "productIcon"> + </span> <span> {{ product.quantity }} </span> <span @click="subProduct(product)" class = "productIcon"> - </span> </p>
+                   <p> <span>  </span> </p>
+                   <p> <i class="fa-solid fa-trash productIcon" @click="removeProduct(product)"></i> </p>
+                   <p> <i class="fa-solid fa-heart productIcon"></i> </p>
                  </div>
                </div>
             </div>

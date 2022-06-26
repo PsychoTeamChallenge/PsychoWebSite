@@ -144,12 +144,18 @@ Vue.createApp({
               });
         },
         addProduct(product){
-          axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + 1).then(this.actualizarClient).catch(
-            Swal.fire(
+          axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + 1)
+          .then((response) => {
+            this.actualizarClient();
+          })
+            .catch((error) => {
+              Swal.fire(
               'Error!',
               'Not enought stock for this product.',
               'error'
-            )
+            );
+
+          }
           );
         },
         subProduct(product){
@@ -173,7 +179,12 @@ Vue.createApp({
               }
             });
           } else {
-            axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + (-1)).then(this.actualizarClient).catch(console.log("error"));
+            axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + (-1))
+            .then((response) => {
+                this.actualizarClient();
+              }).catch((error) => {
+                console.log("error");
+              });
           }
 
         },

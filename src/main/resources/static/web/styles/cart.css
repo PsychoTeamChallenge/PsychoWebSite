@@ -10,6 +10,10 @@
   transition: all 1s ease;
 }
 
+.productIcon{
+  cursor: pointer;
+}
+
 #cartMobileContainer{
   display: none;
 }
@@ -71,6 +75,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.cardProductTrash span {
+  display: block;
+}
+
+.cardProductTrash i{
+  display: none;
+}
+
+.cardProductTrash:hover > span {
+  display: none;
+}
+
+.cardProductTrash:hover > i{
+  display: block;
 }
 
 .cardProductImage{

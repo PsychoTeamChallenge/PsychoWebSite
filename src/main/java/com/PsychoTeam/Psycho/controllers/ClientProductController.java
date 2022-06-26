@@ -55,9 +55,9 @@ public class ClientProductController {
 
         Product product = clientProduct.getProduct();
 
-
-        if(quantity > 0 && product.getStock() < quantity)
+        if(quantity > 0 && product.getStock() < quantity){
             return new ResponseEntity<>("Not enough items in stock", HttpStatus.FORBIDDEN);
+        }
 
         if (clientProduct.getQuantity() + quantity < 1) {
             product.setStock(product.getStock() + clientProduct.getQuantity());
