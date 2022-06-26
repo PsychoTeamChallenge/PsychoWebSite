@@ -121,24 +121,32 @@ a {
   flex-direction: row;
 }
 #sideBill{
-  width:40vw;
+  width: 27vw;
   height:auto; 
+  display: flex !important;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border: 0.1rem solid #fff;
+  box-shadow: 0 0 0.1rem #fff, 0 0 1rem var(--pink);
 }
 #sideInformation{
   width: 25vw;
+ 
 }
+
 .sidePriceInfo{
     display: flex;
     justify-content: space-between;
     width: 25vw;
     flex-direction: row-reverse;
-    border-bottom: 1px solid #fff;
 }
 .container {
   padding: 0;
   margin: .5rem;
   width: 95vw;
   height: 19vh;
+  border: 0.1rem solid #fff;
+  box-shadow: 0 0 0.1rem #fff, 0 0 1rem var(--pink);
 }
 
 #image {
