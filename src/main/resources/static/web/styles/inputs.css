@@ -4,19 +4,20 @@
 }
 
 .inp {
+
   position: relative;
   padding: auto;
-  margin: 0.2rem;
-  width: 100%;
-  max-width: 280px;
+  margin: 1rem;
+  width: 90%;
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 1rem var(--pink), 0 0 0.1rem var(--pink), 0 0 0.1rem, inset 0 0 1.1rem var(--pink);
 
 }
+
 .inp .label {
   position: absolute;
-  top: 20px;
+  top: 12px;
   left: 12px;
   font-size: 20px;
   color: white;
@@ -26,6 +27,7 @@
   transition: all 0.2s ease;
   pointer-events: none;
 }
+
 .inp .focus-bg {
   position: absolute;
   top: 0;
@@ -37,75 +39,84 @@
   transform: scaleX(0);
   transform-origin: left;
 }
+
 .inp input {
   -webkit-appearance: none;
   -moz-appearance: none;
-       appearance: none;
+  appearance: none;
   width: 100%;
   border: 0.1rem solid #fff;
-  box-shadow:   0 0 0.1rem #fff, 0 0 1rem var(--pink);
+  box-shadow: 0 0 0.1rem #fff, 0 0 1rem var(--pink);
   font-family: inherit;
   padding: 16px 30px 0 30px;
   height: 56px;
   font-size: 16px;
   font-weight: 400;
-   background: transparent;
+  background: transparent;
   color: white;
   transition: all 0.15s ease;
 }
+
 .inp input:hover {
   background: transparent;
   border: 0.1rem solid #fff;
-  box-shadow:  0 0 0.1rem #fff, 0 0 1rem var(--pink);
+  box-shadow: 0 0 0.1rem #fff, 0 0 1rem var(--pink);
 }
-.inp input:not(:-moz-placeholder-shown) + .label {
+
+.inp input:not(:-moz-placeholder-shown)+.label {
   color: rgb(10, 10, 10);
   transform: translate3d(0, -12px, 0) scale(0.75);
 }
-.inp input:not(:-ms-input-placeholder) + .label {
+
+.inp input:not(:-ms-input-placeholder)+.label {
   color: rgba(0, 0, 0, 0.5);
   transform: translate3d(0, -12px, 0) scale(0.75);
 }
-.inp input:not(:placeholder-shown) + .label {
+
+.inp input:not(:placeholder-shown)+.label {
   color: rgba(0, 0, 0, 0.5);
   transform: translate3d(0, -12px, 0) scale(0.75);
 }
+
 .inp input:focus {
   background: rgba(0, 0, 0, 0.05);
   outline: none;
   box-shadow: inset 0 -2px 0 var(--pink);
 }
-.inp input:focus + .label {
+
+.inp input:focus+.label {
   color: white;
   transform: translate3d(0, -12px, 0) scale(0.75);
 }
-.inp input:focus + .label + .focus-bg {
+
+.inp input:focus+.label+.focus-bg {
   transform: scaleX(1);
   transition: all 0.1s ease;
 }
 
 /* card inputs */
-.cardNumber{
+
+.payment {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+}
+
+.half {
   display: flex;
 }
-.inpExpiry{
-  width: 30%;
-  
-  
-}
-.payment{
-display: flex;
-flex-direction: column;
-align-items: center;
-}
 
-#steps{
-      font-size: 1em;
+#steps {
+  font-size: 1em;
 
 }
+
 /*  button style */
-button{
-  margin-top: 1rem;
+button {
+  margin-top: 16rem;
 }
 
 .button-49 {
@@ -120,7 +131,7 @@ button{
   letter-spacing: 2px;
   text-transform: uppercase;
   position: absolute;
-    right: 130px;
+  right: 130px;
   cursor: pointer;
   transition: 1s;
 }
@@ -166,54 +177,108 @@ button{
     background-position: 400%;
   }
 }
-@media screen and (min-width: 600px) {
-  .button-49{
-    right: 240px;
+@media screen and (min-width: 300px) {
+  .button-49 {
+    right: 110px;
+    top: 270px;
   }
 }
+@media screen and (min-width: 390px){
+.button-49 {
+    right: 110px;
+    top: 400px;
+}
+}
+@media screen and (min-width: 400px) {
+  .button-49 {
+    right: 150px;
+    top: 430px;
+  }
+}
+@media screen and (min-width: 500px) {
+  .button-49 {
+    right: 245px;
+    top: 430px;
+  }
+}
+@media screen and (min-width: 600px) {
+  .button-49 {
+    right: 260px;
+    top: 430px;
+  }
+
+  .payment {
+    width: 40vh;
+  }
+
+}
+
 @media screen and (min-width: 690px) {
-  .button-49{
+  .button-49 {
     right: 280px;
   }
+
+
+
 }
+
 @media screen and (min-width: 760px) {
-  .button-49{
+  .button-49 {
     right: 300px;
+    top: 600px;
+  }
+
+  .inp {
+    width: 70%;
   }
 }
+
 @media screen and (min-width: 820px) {
-  .button-49{
+  .button-49 {
     right: 330px;
   }
-  
+
 }
+
 @media screen and (min-width: 900px) {
-  .button-49{
+  .button-49 {
     right: 360px;
   }
 }
+
 @media screen and (min-width: 1000px) {
-  .button-49{
+  .button-49 {
     right: 500px;
+    margin-top: -12rem;
+  }
+  .payment {
+    width: 190vh;
+}
+  .half {
+    justify-content: center;
   }
 }
+
 @media screen and (min-width: 1100px) {
-  .button-49{
+  .button-49 {
     right: 550px;
   }
 }
+
 @media screen and (min-width: 1200px) {
-  .button-49{
+  .button-49 {
     right: 600px;
   }
 }
+
 @media screen and (min-width: 1300px) {
-  .button-49{
+  .button-49 {
     right: 650px;
   }
 }
+
 @media screen and (min-width: 1400px) {
-  .button-49{
+  .button-49 {
     right: 700px;
   }
 }

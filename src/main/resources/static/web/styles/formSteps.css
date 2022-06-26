@@ -104,6 +104,7 @@ a {
 
 .tab-steps {
   display: flex;
+  align-items: center;
   flex-direction: column;
 }
 
@@ -120,12 +121,15 @@ a {
   padding: 0;
   margin: .5rem;
   width: 95vw;
-  height: 18vh;
+  height: 19vh;
 }
 
 #image {
-  width: 20vw;
-
+  width: 17vh;
+  height: 7rem;
+  background: url(https://www.redeszone.net/app/uploads-redeszone.net/2018/07/comprar-seguridad-online.jpg?x=480&y=375&quality=40);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .d-flex {
@@ -133,10 +137,11 @@ a {
   justify-content: center;
   align-content: center;
   align-items: center;
+  flex-wrap: nowrap;
 }
 
 #information {
-  width: 72vw;
+  width: 50vw;
   font-size: 15px;
 }
 
@@ -157,6 +162,7 @@ h5 {
 #itemQuantity {
   outline: none;
   border: none;
+  width: 0.3rem;
 }
 
 .priceInfo {
@@ -168,9 +174,9 @@ h5 {
 }
 
 #delete {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  width: 33%;
 }
 
 #breadcrumb {
@@ -184,12 +190,16 @@ h5 {
     width: 100%;
   }
 
+  #image {
+    height: 19vh;
+  }
+
   #breadcrumb {
     width: 100vw;
   }
 
   #information {
-    width: 59vw;
+    width: 54vw;
   }
 
   .container {
@@ -198,9 +208,50 @@ h5 {
 
   .d-flex {
     display: flex !important;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 }
-.expiry{
-  background-color: #fff;
+
+#main-form {
+  width: 100vw;
+}
+
+@media screen and (max-width: 600px) {
+  .tab-steps {
+    height: 69vh;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    height: 20vh;
+    width: 68vw;
+  }
+
+  #image {
+    height: 15vh;
+    width: 27vh;
+    height: 6rem;
+
+  }
+
+  #data {
+    align-items: center;
+    flex-direction: column;
+    margin-top: -14vh;
+  }
+
+  .inp {
+    width: 40% !important;
+  }
+
+  #shipping {
+    margin-top: -14vh;
+  }
+
+  #cardNumber {
+    width: 100vw;
+  }
+
+
 }
