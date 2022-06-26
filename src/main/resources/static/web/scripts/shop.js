@@ -40,10 +40,11 @@ Vue.createApp({
         actualizarClient(){
             axios.get("/api/clients/current")
             .then(response => {
-                this.client = response.data
+                this.client = response.data;
                 this.isClient = true;
                 this.cart = this.client.cart
                 this.favouritesIds =  this.client.favourites.map(fav => fav.id)
+
                 this.totalCart = 0;
                 this.cart.forEach(product => {
                   this.totalCart += product.quantity * product.price;
@@ -142,12 +143,18 @@ Vue.createApp({
               });
         },
         addProduct(product){
-          axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + 1).then(this.actualizarClient).catch(
-            Swal.fire(
+          axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + 1)
+          .then((response) => {
+            this.actualizarClient();
+          })
+            .catch((error) => {
+              Swal.fire(
               'Error!',
               'Not enought stock for this product.',
               'error'
-            )
+            );
+
+          }
           );
         },
         subProduct(product){
@@ -171,7 +178,12 @@ Vue.createApp({
               }
             });
           } else {
-            axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + (-1)).then(this.actualizarClient).catch(console.log("error"));
+            axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + (-1))
+            .then((response) => {
+                this.actualizarClient();
+              }).catch((error) => {
+                console.log("error");
+              });
           }
 
         },
@@ -204,12 +216,21 @@ Vue.createApp({
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-              axios.patch("/api/cart/current/empty").then(this.actualizarClient).catch(console.log("error"));
-              Swal.fire(
-                'Deleted!',
-                'Your cart has been removed.',
-                'success'
-              )
+              if(this.cart.length == 0){
+                Swal.fire(
+                  'Error!',
+                  'Cart is empty.',
+                  'error'
+                )
+              } else {
+                axios.patch("/api/cart/current/empty").then(this.actualizarClient).catch(console.log("error"));
+                Swal.fire(
+                  'Deleted!',
+                  'Your cart has been removed.',
+                  'success'
+                )
+              }
+
             }
           });
 
