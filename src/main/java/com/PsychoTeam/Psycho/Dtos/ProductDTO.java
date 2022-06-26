@@ -38,6 +38,8 @@ public class ProductDTO {
         this.stock = product.getStock();
         this.price = product.getPrice();
         this.urlImg = product.getUrlImg();
+        this.category = product.getCategory();
+        this.filter = product.getFilter();
     }
 
 

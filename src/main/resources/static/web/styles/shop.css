@@ -28,20 +28,6 @@
 
 /*------------------------------ ANIMATIONS -----------------------------------------*/
 
-@-webkit-keyframes fade-in-fwd {
-    0% {
-        -webkit-transform: translateZ(-80px);
-        transform: translateZ(-80px);
-        opacity: 0
-    }
-
-    100% {
-        -webkit-transform: translateZ(0);
-        transform: translateZ(0);
-        opacity: 1
-    }
-}
-
 @keyframes fade-in-fwd {
     0% {
         -webkit-transform: translateZ(-80px);
@@ -52,20 +38,6 @@
     100% {
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
-        opacity: 1
-    }
-}
-
-@-webkit-keyframes fade-in-right {
-    0% {
-        -webkit-transform: translateX(50px);
-        transform: translateX(50px);
-        opacity: 0
-    }
-
-    100% {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
         opacity: 1
     }
 }
@@ -86,6 +58,10 @@
 
 /*------------------------------ ANIMATIONS -----------------------------------------*/
 
+html.active{
+    overflow: hidden;
+}
+
 
 /* body */
 body {
@@ -99,12 +75,26 @@ body {
 
 .mobileHeader {
     height: 7rem;
-    background-color: rgb(50, 50, 50);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: .1rem;
     justify-content: center;
+    position: relative;
+    padding-bottom: .5rem;
+}
+
+.mobileHeaderBackground {
+    height: 7rem;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    z-index: -1;
+    background-image: url(../assets/index/welcomeGirl2.png);
+    background-position: center;
+    background-size: cover;
+    background-position-y: -23px;
+    filter: blur(1px) saturate(0) opacity(0.4);
 }
 
 .upSeccion {
@@ -117,12 +107,25 @@ body {
 
 .upSeccion h1 {
     font-family: "Argh";
-    font-size: 2.6rem;
+    font-size: 2.7rem;
     margin: 0;
+    color: rgb(223 40 144);
+    font-weight: bolder;
+    text-shadow: 0 0 20px rgb(147 9 87);
 }
 
 .upSeccion i {
-    font-size: 2rem;
+    font-size: 1.4rem;
+    background: rgb(230 0 130 / 53%);
+    padding: 0.5rem;
+    border-radius: 50%;
+    position: relative;
+}
+
+.upSeccion i span {
+    position: absolute;
+    top: -1px;
+    font-size: 0.9rem;
 }
 
 .downSeccion {
@@ -130,59 +133,131 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
-    gap:0.7rem;
+    gap: 0.7rem;
     width: 100%;
+    z-index: 2;
+    color: var(--darkpink);
 }
 
 .downSeccion .typesProducts {
-    display: flex;
-    align-items: center;
     height: 100%;
-    gap: 0.7rem;
+    position: relative;
 }
 
-.downSeccion .typesProducts p {
-    margin: 0;
-    font-family: "Text";
-    font-size: 1.3rem;
-    letter-spacing: 1px;
+
+.optionPiercing,
+.optionClothing,
+.optionPiercingSelect,
+.optionClothingSelect {
+    width: 3rem;
+    opacity: 0;
+    transition: .2s;
+    bottom: -15px;
+    transform: scale(.9);
 }
 
+.optionClothing,
+.optionClothingSelect {
+    position: absolute;
+    left: -6px;
+}
+
+.optionPiercing,
+.optionPiercingSelect {
+    position: absolute;
+    left: 2.7rem;
+}
+
+.optionPiercing.active,
+.optionClothing.active,
+.optionPiercingSelect.active,
+.optionClothingSelect.active {
+    width: 3rem;
+    opacity: 100;
+    transition: .2s;
+}
+
+.optionPiercingSelect.active,
+.optionClothingSelect.active {
+    filter: brightness(0.7);
+}
+
+.optionPiercingSelect.active {
+    filter: brightness(0.7) hue-rotate(26deg);
+}
+.optionClothingSelect.active {
+    filter: brightness(0.7) hue-rotate(25deg);
+}
 
 .downSeccion .filters {
     display: flex;
     align-items: center;
     height: 100%;
-    gap: 0.2rem
+    gap: 0.4rem;
 }
-.downSeccion .filters i{
+
+.downSeccion .filters i {
     font-size: 1.4rem;
+    background: #951b60;
+    color: white;
+    padding: .3rem;
+    border-radius: 50%;
 }
 
 .downSeccion .filters input {
-    width: 7rem;
+    width: 8rem;
     border: none;
     border-radius: 22px 93px 90px 96px;
-    background: #484646;
+    background: #ffffff;
     outline: none;
     padding: 0 0 0 0.4rem;
 }
 
+.barbedWire {
+    position: absolute;
+    background-image: url(../assets/index/alambrePuasSeparador.png);
+    width: 100%;
+    z-index: 1;
+    height: 17vh;
+    top: 69.6%;
+    /* background-position-x: 112px; */
+    background-size: 77.1rem;
+    background-repeat: no-repeat;
+    filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+}
+
+
 /* ===================OPTIONS FILTER VIEW================== */
+
+
 
 .filterMobileContainer {
     display: flex;
     flex-direction: column;
     padding: 0 1rem;
-    position: relative;
-    height: 90vh;
+    position: fixed;
+    height: 100vh;
+    z-index: -20;
+    opacity: 0;
+    background-image: url(../assets/background/newBackground.png);
+    background-color: black;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    transition: .7s;
 }
-.filterMobileContainer .bx.bx-left-arrow-alt{
+.filterMobileContainer.active{
+    opacity: 100;
+    z-index: 90;
+    left: 0;
+}
+.filterMobileContainer .bx.bx-left-arrow-alt {
     position: absolute;
     font-size: 2rem;
     top: 0.1rem;
 }
-.filterMobileContainer .title{
+
+.filterMobileContainer .title {
     position: absolute;
     top: 0.3rem;
     left: 22%;
@@ -200,7 +275,9 @@ body {
     justify-content: space-around;
 }
 
-.filterMobileContainer .orderDiv div,  .clothingOptions div, .piercingOptions div {
+.filterMobileContainer .orderDiv div,
+.clothingOptions div,
+.piercingOptions div {
     background-color: #16091b;
     padding: .5rem;
     border: 50%;
@@ -211,21 +288,27 @@ body {
     align-items: center;
     text-align: center;
 }
-.clothingOptions div, .piercingOptions div {
+
+.clothingOptions div,
+.piercingOptions div {
     width: 30.2%;
     height: 3.3rem;
 }
-.filterMobileContainer .orderDiv div.active,  .clothingOptions div.active, .piercingOptions div.active  {
+
+.filterMobileContainer .orderDiv div.active,
+.clothingOptions div.active,
+.piercingOptions div.active {
     background-color: var(--pink);
 }
 
-.filterMobileContainer .typeDiv .clothingOptions,.filterMobileContainer .typeDiv .piercingOptions{
+.filterMobileContainer .typeDiv .clothingOptions,
+.filterMobileContainer .typeDiv .piercingOptions {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.filterMobileContainer .btnApply{
+.filterMobileContainer .btnApply {
     position: absolute;
     bottom: 11px;
     left: 71%;
@@ -235,8 +318,9 @@ body {
     font-weight: bold;
     transition: .3s;
 }
-.filterMobileContainer .btnApply:hover{
-    background:rgb(45 167 167);
+
+.filterMobileContainer .btnApply:hover {
+    background: rgb(45 167 167);
 
 }
 
@@ -244,7 +328,7 @@ body {
 
 /* ===================PRODUCTS LIST================== */
 
-.mainContent{
+.mainContent {
     justify-content: center;
     min-height: 69vh;
     width: 100%;
@@ -254,28 +338,43 @@ body {
     flex-wrap: wrap;
     margin-bottom: 5rem;
 }
-.mainContent .productCard{
+
+.mainContent .productCard {
     width: 9rem;
     background: #323232;
     height: 8rem;
     position: relative;
     border-radius: 19px;
-    margin-bottom: 3rem;
+    margin-bottom: 3.3rem;
 }
 
-.productBody{
+.productBody {
     width: 100%;
-    background: #323232;
     height: 8rem;
     position: relative;
     border-radius: 19px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    background-color: transparent;
+    z-index: 1;
 }
 
-.productBody .img{
-   
+.productBodyBackground {
+    width: 100%;
+    height: 8rem;
+    position: absoluta;
+    border-radius: 19px;
+    background-image: url(../assets/background/backgroundHeaderMobile.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 127%;
+    filter: hue-rotate(309deg) blur(1.1px) brightness(0.5);
+    z-index: -1;
+}
+
+.productBody .img {
+
     height: 7rem;
     width: 8rem;
     background-position: center;
@@ -286,19 +385,26 @@ body {
     filter: drop-shadow(7px 8px 21px black);
 }
 
-.favouriteIcon{
+.favouriteIcon {
     position: absolute;
-    right: 17px;
+    right: 7px;
     bottom: 6px;
 }
-.favouriteIcon i{
-    background: #626060;
+
+.favouriteIcon i {
+    background: #912160;
     padding: .5rem;
     border-radius: 50%;
 }
-.productText{
+
+.productText {
     text-align: center;
 }
-.productText p{
+
+.productText p {
     margin: 0;
+}
+
+.priceProduct{
+    color: var(--lightblue);
 }

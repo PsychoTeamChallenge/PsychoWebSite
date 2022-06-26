@@ -24,7 +24,6 @@ public class Utils {
             token = RandomString.make(tokenL);
         } while (tokensCreated.contains(token));
         tokensCreated.add(token);
-
         return token;
     }
 
