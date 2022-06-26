@@ -21,75 +21,57 @@
 <body>
   <div class="container-fluid h-100">
     <div class="w-100 h-100 d-flex">
-      <div id="bill" class="w-40 h-100">
-        <h3 class="text-center">Bill</h3>
-        <div class="data">
-          <div>Product Image</div>
-          <div>Description</div>
-          <div>Quantity</div>
-          <div>Product Value</div>
-        </div>
-
-        <div class="data">
-          <div>Product Image</div>
-          <div>Description</div>
-          <div>Quantity</div>
-          <div>Product Value</div>
-        </div>
-        <div class="data">
-          <div>Product Image</div>
-          <div>Description</div>
-          <div>Quantity</div>
-          <div>Product Value</div>
-        </div>
-
-        <div>Total</div>
-
-      </div>
       <div id="steps" class="w-60 h-100">
         <div class="h-90 d-flex justify-content-center align-items-center">
           <form id="main-form">
             <!-- form 1 (checkout) -->
             <div class="tab-steps hidden">
+              <h1 class="text-center">Bill</h1>
               <div class="container border d-flex row">
-                <div id="image" class="border">Image</div>
-                <div id="information" class="border">
-                  <h2>Example information title</h2>
+                <div id="image"></div>
+                <div id="information">
+                  <h4>Example information title</h4>
                   <h5>Subtitle information</h5>
+                  <span class="line"></span>
                   <div class="priceInfo">
                     <div id="precio">$4000
                     </div>
-                    <div id="units">Units
-                    <input type="number" name="itemQuantity" id="itemQuantity" min="1" max="10">
+                    <div id="units">
+                      <i class="fa-solid fa-minus"></i>Units
+                      <input type="number" name="itemQuantity" id="itemQuantity" min="1" max="10">
+                      <i class="fa-solid fa-plus"></i>
+                    </div>
                   </div>
+                  <div id="delete" >
+                    <a href="http://">Delete</a>
+                    <a href="http://">Home</a>
                   </div>
-                </div>
-                <div id="delete">
-                  <a href="http://">Delete</a>
-                  <a href="http://">Home</a>
                 </div>
               </div>
               <div class="container border d-flex row">
-                <div id="image" class="border">Image</div>
-                <div id="information" class="border">
-                  <h2>Example information title</h2>
+                <div id="image">Image</div>
+                <div id="information">
+                  <h4>Example information title</h4>
                   <h5>Subtitle information</h5>
                   <div class="priceInfo">
                     <div id="precio">$4000
                     </div>
-                    <div>Units
+                    <div id="units">
+                      <i class="fa-solid fa-minus"></i>Units
                       <input type="number" name="itemQuantity" id="itemQuantity" min="1" max="10">
+                      <i class="fa-solid fa-plus"></i>
                     </div>
                   </div>
-                </div>
-                <div id="delete">
-                  <a href="http://">Delete</a>
-                  <a href="http://">Home</a>
+                  <div id="delete" >
+                    <a href="http://">Delete</a>
+                    <a href="http://">Home</a>
+                  </div>
                 </div>
               </div>
             </div>
             <!-- form 2 (form data) -->
-            <div class="tab-steps hidden">
+            <div class="tab-steps hidden" id="data">
+              <h1 class="text-center">Personal Data</h1>
               <label for="firstName" class="inp">
                 <input type="text" id="firstName" placeholder="&nbsp;">
                 <span class="label">First name</span>
@@ -116,38 +98,36 @@
             </div>
             <!-- form 3 (payment form) -->
             <div class="tab-steps hidden">
+              <h1 class="text-center">Payment</h1>
               <div class="payment">
-                <label for="cardHolder" class="inp">
-                  <input type="text" id="cardHolder" placeholder="&nbsp;">
+                <label for="cardNumber" class="inp">
+                  <input type="text" id="cardNumber" placeholder="&nbsp;">
                   <span class="label">Number of card</span>
                   <span class="focus-bg"></span>
-                  <label for="cardNumber" class="inp"> yy/ee mm/ee cvv
+                </label>
+                <div class="half">
+                <label for="month" class="inp">
+                  <input type="text" id="expiry" placeholder="&nbsp;">
+                  <span class="label">mm/yy</span>
+                  <span class="focus-bg"></span>
                   </label>
-                  <label for="mont" class="inpExpiry">
-                    <!-- <span class="label">Expiry Month</span> -->
-                    <input type="number" id="month" placeholder="&nbsp;">
-                  </label>
-                  <label for="year" class="inpExpiry">
-                    <input type="number" id="month" placeholder="&nbsp;">
-                    <!-- <span class="label">Expiry Year</span> -->
-                  </label>
-                  <label for="cvv" class="inpExpiry">
-                    <input type="number" id="years" placeholder="cvv">
-                    <!-- <span class="label">cvv</span> -->
-
+                  <label for="cvv" class="inp">
+                    <input type="text" id="cvv" placeholder="&nbsp;">
+                    <span class="label">cvv</span>
                     <span class="focus-bg"></span>
-                  </label>
-
-                  <label for="cardHolder" class="inp">
-                    <input type="text" id="cardHolder" placeholder="&nbsp;">
-                    <span class="label">Name Of The Card</span>
-                    <span class="focus-bg"></span>
-                  </label>
+                    </label>
+                  </div>
+                    <label for="cardHolder" class="inp">
+                      <input type="text" id="cardHolder" placeholder="&nbsp;">
+                      <span class="label">card holder</span>
+                      <span class="focus-bg"></span>
+                      </label>
               </div>
             </div>
 
             <!-- form 4(shipping) -->
-            <div class="tab-steps hidden">
+            <div class="tab-steps hidden" id="shipping">
+              <h1 class="text-center">shipment information</h1>
               <label for="location" class="inp">
                 <input type="text" id="location" placeholder="&nbsp;">
                 <span class="label">Location</span>
@@ -163,11 +143,6 @@
                 <span class="label">Street</span>
                 <span class="focus-bg"></span>
               </label>
-              <label for="streetNumber" class="inp">
-                <input type="text" id="streetNumber" placeholder="&nbsp;">
-                <span class="label">Street Number</span>
-                <span class="focus-bg"></span>
-              </label>
               <label for="phoneNumber" class="inp">
                 <input type="text" id="phoneNumber" placeholder="&nbsp;">
                 <span class="label">Phone Number</span>
@@ -179,7 +154,7 @@
           </form>
         </div>
         <!-- footer form(?) -->
-        <div class="h-10 bg-red">
+        <div class="h-10 bg-red" id="breadcrumb">
           <nav class="first w-100 h-100">
             <ul class="breadcrumb-nav w-100 h-100 align-items-center">
               <li onclick="switchTab(0)"><a href="#"><span><i
