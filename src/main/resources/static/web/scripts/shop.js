@@ -179,8 +179,10 @@ Vue.createApp({
         closeCart(){
           if($(window).width() < 800){
             $('#cartMobileContainer').css("left", "-100%");
+            $('html').toggleClass("active");
           } else {
             $('#cartDesktopContainer').css("left", "-40%");
+            $('html').toggleClass("active");
           }
         },
         openCart(){
