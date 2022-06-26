@@ -43,11 +43,16 @@ Vue.createApp({
                 this.isClient = true;
                 this.cart = this.client.cart
                 this.favouritesIds =  this.client.favourites.map(fav => fav.id)
+
             })
 
             .catch(error => {
                 this.isClient = false;
             })
+        },
+
+        showCart(){
+          console.log(this.cart);
         },
 
         changeFilterCategory(category) {
@@ -110,8 +115,35 @@ Vue.createApp({
             .then(response =>{
                 this.actualizarClient()
             })
+        },
+        removeProduct(id){
+          /*'../transactions/create',
+              "monto=" + monto + "&description="*/
+          axios.patch("/api/cart/current","clientProduct_id=" + id).then(this.actualizarClient).catch(console.log("error"));
+        },
+        addProduct(product){
+          axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + 1).then(this.actualizarClient).catch(console.log("error"));
+        },
+        subProduct(product){
+          axios.patch("/api/cart/current/modify", "clientProduct_id=" + product.id + "&quantity=" + (-1)).then(this.actualizarClient).catch(console.log("error"));
+        },
+        closeCart(){
+          if($(window).width() < 800){
+            $('#cartMobileContainer').css("display", "none");
+          } else {
+            $('#cartDesktopContainer').css("display", "none");
+          }
+        },
+        openCart(){
+          if($(window).width() < 800){
+            $('#cartMobileContainer').css("display", "block");
+          } else {
+            $('#cartDesktopContainer').css("display", "block");
+          }
+        },
+        removeCart(){
+          axios.patch("/api/cart/current/empty").then(this.actualizarClient).catch(console.log("error"));
         }
-
     },
     computed: {
         shearch() {
