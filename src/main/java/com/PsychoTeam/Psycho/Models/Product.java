@@ -36,7 +36,7 @@ public class Product {
 
     public Product(){}
 
-    public Product(String name, String description,String urlImg, int stock, double price, ArrayList<Double> sizes, ArrayList<String> colors, String category, String filter) {
+    public Product(String name, String description,String urlImg, int stock, double price, String category, String filter) {
         this.name = name;
         this.description = description;
         this.stock = stock;
@@ -53,4 +53,10 @@ public class Product {
         clientProducts.add(clientProduct);
     }
 
+    public void addColor(String color){
+        this.colors.add(color);
+    }
+    public void addSize(double size){
+        this.sizes.add(size);
+    }
 }
