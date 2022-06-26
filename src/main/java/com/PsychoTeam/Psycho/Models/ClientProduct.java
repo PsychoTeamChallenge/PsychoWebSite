@@ -24,13 +24,13 @@ public class ClientProduct {
     @JoinColumn(name="product_id")
     private Product product;
 
-    private String size,color, url, name;
-    private double price;
+    private String color, url, name;
+    private double price,size;
     private int quantity;
 
     public ClientProduct(){}
 
-    public ClientProduct(Client client, Product product, String size, String color, double price, int quantity, String url, String name) {
+    public ClientProduct(Client client, Product product, double size, String color, double price, int quantity, String url, String name) {
         this.client = client;
         this.product = product;
         this.size = size;

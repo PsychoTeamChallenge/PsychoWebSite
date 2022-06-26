@@ -30,9 +30,9 @@ Vue.createApp({
                 this.products = response.data;
                 this.productsFilters = this.products;
                 this.changeFilterCategory("CLOTHING")
-
+                this.actualizarClient();
             })
-       this.actualizarClient();
+      
     },
 
     methods: {
@@ -44,6 +44,7 @@ Vue.createApp({
                 this.isClient = true;
                 this.cart = this.client.cart
                 this.favouritesIds =  this.client.favourites.map(fav => fav.id)
+                this.totalCart = 0;
                 this.cart.forEach(product => {
                   this.totalCart += product.quantity * product.price;
                 });
@@ -121,8 +122,6 @@ Vue.createApp({
             })
         },
         removeProduct(id){
-          /*'../transactions/create',
-              "monto=" + monto + "&description="*/
               Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",

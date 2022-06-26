@@ -7,8 +7,8 @@ import lombok.Getter;
 public class ClientProductDTO {
 
     private long id,idProduct;
-    private String size,color, url, name;
-    private double price;
+    private String color, url, name;
+    private double  size,price;
     private int quantity;
 
     public ClientProductDTO(ClientProduct clientProduct){

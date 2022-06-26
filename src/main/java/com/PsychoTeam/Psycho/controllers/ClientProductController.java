@@ -92,13 +92,13 @@ public class ClientProductController {
     @Transactional
     @PostMapping("/cart/current")
     public ResponseEntity<Object> createProduct(
-            @RequestParam String size, @RequestParam String color, @RequestParam int id_product, Authentication auth) throws MessagingException, UnsupportedEncodingException {
+            @RequestParam double size, @RequestParam String color, @RequestParam int id_product, Authentication auth) throws MessagingException, UnsupportedEncodingException {
 
         if(auth.getName() == null){
             return new ResponseEntity<>("Invalid credentials", HttpStatus.FORBIDDEN);
         }
 
-        if (size.isEmpty() || color.isEmpty())
+        if (size < 1 || color.isEmpty())
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
 
         if (clientService.getClient(auth.getName()) == null || productService.getProductById(id_product) == null)
@@ -111,7 +111,7 @@ public class ClientProductController {
 
         Set<ClientProduct> productExist = client.getCart().stream()
                 .filter(product1 ->  product1.getProduct() == product
-                        && product1.getSize().equals(size)
+                        && product1.getSize() == size
                         && product1.getColor().equals(color)).collect(Collectors.toSet());
 
         if (productExist.size() > 0){

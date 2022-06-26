@@ -156,7 +156,7 @@ public class ClientController {
         }
         client.addFavourite(product);
         clientService.saveClient(client);
-        return new ResponseEntity<>(client, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("Product remove success", HttpStatus.ACCEPTED);
     }
 
     @PatchMapping("/clients/current/favourites")
@@ -172,7 +172,7 @@ public class ClientController {
         }
         client.removeFavourite(product);
         clientService.saveClient(client);
-        return new ResponseEntity<>(client, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("Product remove success", HttpStatus.ACCEPTED);
     }
 
     private void sendVerificationEmail(Client client)
