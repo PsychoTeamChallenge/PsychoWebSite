@@ -35,10 +35,13 @@ body {
     margin: 1%;
 }
 
-.success img{
+#logo{
     width: 100px;
 }
- 
+
+#autentication{
+    width: 250px;
+}
 /* verification error */
 .error{
     text-align: center;
@@ -65,7 +68,7 @@ h2 {
 
 @media screen and (min-width:800px){
     .success{
-        margin: 5%;
+        margin: 2.5%;
     }
 
     .error{
