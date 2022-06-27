@@ -27,3 +27,36 @@ body {
 }
 
 /* --------------------------------------- MAIN ---------------------------------- */
+
+/* verification success */
+.success{
+    text-align: center;
+    padding: 2%;
+    margin: 1%;
+}
+
+.success img{
+    width: 100px;
+}
+ 
+/* verification error */
+.error{
+    text-align: center;
+    padding: 1%;
+}
+
+/* ------------------------------------ TITLE -----------------------*/
+h2,
+h1 {
+    font-family: 'Argh';
+    font-weight: normal;
+
+}
+
+h1 {
+    font-size: 2.3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
