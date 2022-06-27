@@ -87,7 +87,9 @@
 .optionPiercing,
 .optionClothing,
 .optionPiercingSelect,
-.optionClothingSelect {
+.optionClothingSelect,
+.optionTattoo,
+.optionTattooSelect {
   width: 3rem;
   opacity: 0;
   transition: .2s;
@@ -96,7 +98,9 @@
 }
 
 .optionClothing,
-.optionClothingSelect {
+.optionClothingSelect,
+.optionTattoo,
+.optionTattooSelect {
   position: absolute;
   left: -6px;
 }
@@ -110,18 +114,22 @@
 .optionPiercing.active,
 .optionClothing.active,
 .optionPiercingSelect.active,
-.optionClothingSelect.active {
+.optionClothingSelect.active,
+.optionTattoo.active,
+.optionTattooSelect.active {
   width: 3rem;
   opacity: 100;
   transition: .2s;
 }
 
 .optionPiercingSelect.active,
-.optionClothingSelect.active {
+.optionClothingSelect.active,
+.optionTattooSelect.active {
   filter: brightness(0.7);
 }
 
-.optionPiercingSelect.active {
+.optionPiercingSelect.active,
+.optionTattooSelect.active {
   filter: brightness(0.7) hue-rotate(26deg);
 }
 
@@ -267,6 +275,7 @@
   .downSeccion .filters input {
     width: 12rem;
   }
+
   .logo-tongue {
     position: absolute;
     left: 5vw;
@@ -280,6 +289,7 @@
   .productBodyBackground {
     height: 10rem;
   }
+
   .logo-tongue {
     position: absolute;
     left: 5vw;
@@ -369,13 +379,13 @@
     background-color: white;
   }
 
-    .nav-icon{
-      color: black;
-      padding: 0.3rem 0.6rem 0.3rem 0.6rem;
-      background-color: white;
-      border-radius: 50%;
-      transition: all 0.5s ease;
-    }
+  .nav-icon {
+    color: black;
+    padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+    background-color: white;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+  }
 
   .nav-icon:hover {
     color: black;
@@ -385,6 +395,7 @@
   .mobileHeaderBackground {
     background-position-y: -103.1px;
   }
+
   .logo-tongue {
     position: absolute;
     left: 5vw;
