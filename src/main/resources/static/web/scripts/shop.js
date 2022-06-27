@@ -252,6 +252,9 @@ Vue.createApp({
             }
           });
 
+        },
+        finishBuy(){
+          window.location.href = "/web/formSteps.html"
         }
     },
     computed: {
