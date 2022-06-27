@@ -102,9 +102,9 @@ public class ProductController {
         @RequestParam int id,
         @RequestParam String name, @RequestParam String description,@RequestParam String urlImg,
         @RequestParam int stock, @RequestParam double price, @RequestParam() ArrayList<Double> sizes,
-        @RequestParam ArrayList<String> colors, @RequestParam String category, @RequestParam String filter) throws MessagingException, UnsupportedEncodingException {
+        @RequestParam ArrayList<String> colors) throws MessagingException, UnsupportedEncodingException {
 
-            if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty() || category.isEmpty() || filter.isEmpty())
+            if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty())
                 if (name.isEmpty() || description.isEmpty() || sizes.isEmpty() || colors.isEmpty() || urlImg.isEmpty())
                     return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
 
@@ -121,8 +121,8 @@ public class ProductController {
             product.setColors(colors);
             product.setSizes(sizes);
             product.setDescription(description);
-            product.setCategory(category);
-            product.setFilter(filter);
+//            product.setCategory(category);
+//            product.setFilter(filter);
             product.setName(name);
             product.setPrice(price);
             product.setStock(stock);

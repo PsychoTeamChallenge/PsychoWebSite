@@ -49,16 +49,15 @@ public class ClientProductController {
             @RequestParam int clientProduct_id, @RequestParam int quantity){
 
         ClientProduct clientProduct =  clientProductService.getClientProductById(clientProduct_id);
-
         if( clientProduct == null){
             return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
         }
 
         Product product = clientProduct.getProduct();
 
-
-        if(quantity > 0 && product.getStock() < quantity)
+        if(quantity > 0 && product.getStock() < quantity){
             return new ResponseEntity<>("Not enough items in stock", HttpStatus.FORBIDDEN);
+        }
 
         if (clientProduct.getQuantity() + quantity < 1) {
             product.setStock(product.getStock() + clientProduct.getQuantity());
@@ -81,6 +80,11 @@ public class ClientProductController {
             return new ResponseEntity<>("Invalid authentication credentials", HttpStatus.FORBIDDEN);
         }
         Client client = clientService.getClient(auth.getName());
+
+        if(client == null){
+            return new ResponseEntity<>("Invalid authentication credentials", HttpStatus.FORBIDDEN);
+        }
+
         List<ClientProductDTO> cartListDTO = clientProductService.getClientProductsByClient(client);
         return new ResponseEntity<>(cartListDTO, HttpStatus.ACCEPTED);
     }
@@ -88,13 +92,13 @@ public class ClientProductController {
     @Transactional
     @PostMapping("/cart/current")
     public ResponseEntity<Object> createProduct(
-            @RequestParam String size, @RequestParam String color, @RequestParam int id_product, Authentication auth) throws MessagingException, UnsupportedEncodingException {
+            @RequestParam double size, @RequestParam String color, @RequestParam int id_product, Authentication auth) throws MessagingException, UnsupportedEncodingException {
 
         if(auth.getName() == null){
             return new ResponseEntity<>("Invalid credentials", HttpStatus.FORBIDDEN);
         }
 
-        if (size.isEmpty() || color.isEmpty())
+        if (size < 1 || color.isEmpty())
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
 
         if (clientService.getClient(auth.getName()) == null || productService.getProductById(id_product) == null)
@@ -103,16 +107,16 @@ public class ClientProductController {
 
         Client client = clientService.getClient(auth.getName());
         Product product = productService.getProductById(id_product);
-        ClientProduct clientProduct = new ClientProduct(client, product, size, color, product.getPrice(), 1);
+        ClientProduct clientProduct = new ClientProduct(client, product, size, color, product.getPrice(), 1, product.getUrlImg(), product.getName());
 
         Set<ClientProduct> productExist = client.getCart().stream()
                 .filter(product1 ->  product1.getProduct() == product
-                        && product1.getSize().equals(size)
+                        && product1.getSize() == size
                         && product1.getColor().equals(color)).collect(Collectors.toSet());
 
         if (productExist.size() > 0){
             ClientProduct clientProduct1 =  productExist.stream().findFirst().orElse(null);
-            if(clientProduct1.getProduct().getStock() < clientProduct1.getQuantity() + 1){
+            if(clientProduct1.getProduct().getStock() == 0){
                 return new ResponseEntity<>("Not enough items in stock", HttpStatus.FORBIDDEN);
             }
 
@@ -142,26 +146,34 @@ public class ClientProductController {
     }
 
     @Transactional
-    @DeleteMapping("/cart/current")
+    @PatchMapping("/cart/current")
     public ResponseEntity<Object> removeProductFromCart(
-            @RequestParam int clientProduct_id){
+            @RequestParam long clientProduct_id){
 
         if(clientProductService.getClientProductById(clientProduct_id) == null){
             return new ResponseEntity<>("Invalid data", HttpStatus.FORBIDDEN);
         }
         ClientProduct clientProduct = clientProductService.getClientProductById(clientProduct_id);
+        Product product = clientProduct.getProduct();
+        product.setStock(product.getStock() + clientProduct.getQuantity());
+        productService.saveProduct(product);
         clientProductService.removeClientProduct(clientProduct);
         return new ResponseEntity<>("Product removed successfully", HttpStatus.ACCEPTED);
     }
 
     @Transactional
-    @DeleteMapping("/cart/current/empty")
+    @PatchMapping("/cart/current/empty")
     public ResponseEntity<Object> emptyCart(Authentication auth){
-        if(auth.getName() == null){
+        if(auth.getName() == null) {
             return new ResponseEntity<>("Invalid authentication credentials", HttpStatus.FORBIDDEN);
         }
 
         Client client = clientService.getClient(auth.getName());
+        client.getCart().forEach(clientProduct -> {
+            Product product = clientProduct.getProduct();
+            product.setStock(product.getStock() + clientProduct.getQuantity());
+            productService.saveProduct(product);
+        });
         clientProductService.removeClientProducts(client);
         return new ResponseEntity<>("Product removed successfully", HttpStatus.ACCEPTED);
     }
