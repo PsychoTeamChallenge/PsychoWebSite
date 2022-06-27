@@ -1,53 +1,254 @@
 /* colores */
-:root{
-    --lightblue:  rgb(0, 224, 224);
-    --pink: rgb(230, 0, 130);
-    --darklightblue: #00748E;
-    --blue: #00313E;
-    --darkpink: #C3007D;
- }
+:root {
+  --lightblue: rgb(0, 224, 224);
+  --pink: rgb(230, 0, 130);
+  --darklightblue: #00748E;
+  --blue: #00313E;
+  --darkpink: #C3007D;
+}
+
+/* // ==================HEADER==================== // */
+
+/* ===================OPTIONS VIEW================== */
+
+
+.mobileHeader {
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .1rem;
+  justify-content: center;
+  position: relative;
+  padding-bottom: .5rem;
+}
+
+.mobileHeaderBackground {
+  height: 7rem;
+  width: 100%;
+  top: 0;
+  position: absolute;
+  z-index: -1;
+  background-image: url(../assets/index/welcomeGirl2.png);
+  background-position: center;
+  background-size: cover;
+  background-position-y: -23px;
+  filter: blur(1px) saturate(0) opacity(0.4);
+}
+
+.upSeccion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.upSeccion h1 {
+  font-family: "Argh";
+  font-size: 2.7rem;
+  margin: 0;
+  color: rgb(223 40 144);
+  font-weight: bolder;
+  text-shadow: 0 0 20px rgb(147 9 87);
+}
+
+.upSeccion i {
+  font-size: 1.4rem;
+  background: rgb(230 0 130 / 53%);
+  padding: 0.5rem;
+  border-radius: 50%;
+  position: relative;
+}
+
+.upSeccion i span {
+  position: absolute;
+  top: -1px;
+  font-size: 0.9rem;
+}
+
+.downSeccion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  gap: 0.7rem;
+  width: 100%;
+  z-index: 2;
+  color: var(--darkpink);
+}
+
+.downSeccion .typesProducts {
+  height: 100%;
+  position: relative;
+}
+
+
+.optionPiercing,
+.optionClothing,
+.optionPiercingSelect,
+.optionClothingSelect {
+  width: 3rem;
+  opacity: 0;
+  transition: .2s;
+  bottom: -15px;
+  transform: scale(.9);
+}
+
+.optionClothing,
+.optionClothingSelect {
+  position: absolute;
+  left: -6px;
+}
+
+.optionPiercing,
+.optionPiercingSelect {
+  position: absolute;
+  left: 2.7rem;
+}
+
+.optionPiercing.active,
+.optionClothing.active,
+.optionPiercingSelect.active,
+.optionClothingSelect.active {
+  width: 3rem;
+  opacity: 100;
+  transition: .2s;
+}
+
+.optionPiercingSelect.active,
+.optionClothingSelect.active {
+  filter: brightness(0.7);
+}
+
+.optionPiercingSelect.active {
+  filter: brightness(0.7) hue-rotate(26deg);
+}
+
+.optionClothingSelect.active {
+  filter: brightness(0.7) hue-rotate(25deg);
+}
+
+.downSeccion .filters {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 0.4rem;
+}
+
+.downSeccion .filters i {
+  font-size: 1.4rem;
+  background: #951b60;
+  color: white;
+  padding: .3rem;
+  border-radius: 50%;
+}
+
+.downSeccion .filters input {
+  width: 8rem;
+  border: none;
+  border-radius: 22px 93px 90px 96px;
+  background: #ffffff;
+  outline: none;
+  padding: 0 0 0 0.4rem;
+}
+
+.barbedWire {
+  position: absolute;
+  background-image: url(../assets/index/alambrePuasSeparador.png);
+  width: 100%;
+  z-index: 1;
+  height: 17vh;
+  top: 69.6%;
+  /* background-position-x: 112px; */
+  background-size: 77.1rem;
+  background-repeat: repeat-x;
+  filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+}
+
+.barbedWire-navbar {
+  position: fixed;
+  background-image: url(../assets/index/alambrePuasSeparador.png);
+  background-size: 77.1rem;
+  background-repeat: repeat-x;
+  width: 100%;
+  z-index: 1;
+  height: 17vh;
+  margin-top: 1%;
+  top: 20px;
+  filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+  z-index: 10001;
+  pointer-events: none;
+}
+
+.logo-tongue {
+  position: absolute;
+  left: -2vw;
+  bottom: -6vh;
+  z-index: 2;
+  width: 150px;
+}
+
+.logo-tongue-navbar {
+  position: fixed;
+  bottom: -9vh;
+  left: 11vw;
+  top: 1vh;
+  z-index: 2;
+  width: 150px;
+  z-index: 10002;
+  transform: scale(1);
+
+}
+
+.hidden {
+  display: none;
+}
 
 
 
 /* // ==================MOBILE==================== // */
 
-.mobileNav{
-    width: 100%;
-    height: 4rem;
-    position: fixed;
-    z-index: 10;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #0000009c;
-    backdrop-filter: blur(4px) saturate(180%);
-    -webkit-backdrop-filter: blur(7px) saturate(180%);
-    border-radius: 12px;
+.mobileNav {
+  width: 100%;
+  height: 4rem;
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #0000009c;
+  backdrop-filter: blur(4px) saturate(180%);
+  -webkit-backdrop-filter: blur(7px) saturate(180%);
+  border-radius: 12px;
 }
-.mobileNav a{
+
+.mobileNav a {
   z-index: 14;
 }
-.mobileNav i{
-    font-size: 1.6rem;
-    color: white;
-    transition: .3s;
+
+.mobileNav i {
+  font-size: 1.6rem;
+  color: white;
+  transition: .3s;
 
 }
 
-.mobileNav i.active, .mobileNav i:hover{
-    color: #d155f9;
+.mobileNav i.active,
+.mobileNav i:hover {
+  color: #d155f9;
 }
 
-.desktopNav{
-    display: none;
+.desktopNav {
+  display: none;
 }
 
 
 
 /* --------------LOADER -----------------*/
 
-#loading{
+#loading {
   background: url(../assets/loaderTres.gif) 50% 50% no-repeat rgb(0, 0, 0);
   background-repeat: no-repeat;
   background-size: contain;
@@ -62,21 +263,41 @@
 /* --------------LOADER -----------------*/
 
 
-@media (min-width: 800px) {
-  .navbar{
+@media (min-width:460px) {
+  .downSeccion .filters input {
+    width: 12rem;
+  }
+}
 
+@media (min-width:690px) {
+  .productBodyBackground {
+    height: 10rem;
+  }
+}
+
+@media (min-width: 740px) {
+  .logo-tongue {
+    position: absolute;
+    left: 5vw;
+    bottom: -6vh;
+    z-index: 2;
+    width: 150px;
   }
 
-  ul{
+}
+
+@media (min-width: 800px) {
+
+  ul {
     margin: 0;
     padding: 0;
   }
 
-  a{
+  a {
     text-decoration: none;
   }
 
-  .nav-bar{
+  .nav-bar {
     margin: 0;
     padding: 0;
     background-color: black;
@@ -84,16 +305,16 @@
     height: 10%;
   }
 
-  .nav-item{
+  .nav-item {
     padding: 1rem;
   }
 
 
-  .nav-bar ul li{
+  .nav-bar ul li {
     height: 100%;
   }
 
-  .nav-bar ul li a{
+  .nav-bar ul li a {
     color: transparent;
     color: white;
     display: block;
@@ -103,48 +324,82 @@
     transition: all 500ms ease;
   }
 
-  .nav-bar ul li a:hover{
+  .nav-bar ul li a:hover {
     background-color: white;
     color: black;
   }
 
-    .mobileNav{
-        display: none;
-    }
+  .mobileNav {
+    display: none;
+  }
 
-    .desktopNav{
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-    }
+  .desktopNav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 
-    .nav-container{
-      display: flex;
-      align-items: center;
-    }
+  .nav-container {
+    display: flex;
+    align-items: center;
+  }
 
-    .nav-item{
-      display: block;
-      height: 100%;
-      color: white;
-      transition: all 0.5s ease;
-    }
+  .nav-item {
+    display: block;
+    height: 100%;
+    color: white;
+    transition: all 0.5s ease;
+  }
 
-    .nav-item:hover{
-      color: black;
-      background-color: white;
-    }
+  .nav-item:hover {
+    color: black;
+    background-color: white;
+  }
 
-    .nav-icon{
-      color: black;
-      padding: 0.7rem 1rem 0.7rem 1rem;
-      background-color: white;
-      border-radius: 50%;
-      transition: all 0.5s ease;
-    }
+  .nav-icon {
+    color: black;
+    padding: 0.7rem 1rem 0.7rem 1rem;
+    background-color: white;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+  }
 
-    .nav-icon:hover{
-      color: black;
-      box-shadow: 0 0 0 4px #1f1f1f, 0 0 0 5px white;
-    }
- }
+  .nav-icon:hover {
+    color: black;
+    box-shadow: 0 0 0 4px #1f1f1f, 0 0 0 5px white;
+  }
+
+  .mobileHeaderBackground {
+    background-position-y: -103.1px;
+  }
+
+  .logo-tongue {
+    position: absolute;
+    left: 5vw;
+    bottom: -6vh;
+    z-index: 2;
+    width: 170px;
+  }
+
+}
+
+@media (min-width: 1080px) {
+  .logo-tongue {
+    position: absolute;
+    left: 5vw;
+    bottom: -9vh;
+    z-index: 2;
+    width: 200px;
+  }
+}
+
+@media (min-width: 1100px) {
+
+  .downSeccion .filters input {
+    width: 18rem;
+  }
+
+  .mobileHeaderBackground {
+    background-position-y: -156.1px;
+  }
+}

@@ -52,56 +52,6 @@ body {
 
 }
 
-.logo-tongue {
-    position: absolute;
-    left: -2vw;
-    bottom: -6vh;
-    z-index: 2;
-    width: 150px;
-}
-
-.logo-tongue-navbar {
-    position: fixed;
-    bottom: -9vh;
-    left: 11vw;
-    top: 1vh;
-    z-index: 2;
-    width: 150px;
-    z-index: 10002;
-    transform: scale(1);
-
-}
-
-.hidden {
-    display: none;
-}
-
-/* #barbedWire{
-
-} */
-
-.barbedWire {
-    position: absolute;
-    background-image: url(../assets/index/alambrePuasSeparador.png);
-    width: 100%;
-    z-index: 1;
-    height: 17vh;
-    top: 79.6%;
-    filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
-}
-
-.barbedWire-navbar {
-    position: fixed;
-    background-image: url(../assets/index/alambrePuasSeparador.png);
-    width: 100%;
-    z-index: 1;
-    height: 16vh;
-    margin-top: 1%;
-    top: 0.6%;
-    filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
-    z-index: 10001;
-    pointer-events: none;
-}
 
 /* ----------------------- INFO --------------------- */
 .infoContactContainer {
@@ -338,13 +288,6 @@ h2 {
         align-items: center;
     }
 
-    .logo-tongue {
-        position: absolute;
-        left: 5vw;
-        bottom: -6vh;
-        z-index: 2;
-        width: 150px;
-    }
 
 
 }
@@ -353,13 +296,7 @@ h2 {
     .imgDivForm {
         display: inline;
     }
-    .logo-tongue {
-        position: absolute;
-        left: 5vw;
-        bottom: -6vh;
-        z-index: 2;
-        width: 170px;
-    }
+   
 }
 
 
@@ -380,12 +317,6 @@ h2 {
         display: inline;
     }
 
-    .logo-tongue {
-        position: absolute;
-        left: 5vw;
-        bottom: -9vh;
-        z-index: 2;
-        width: 200px;
-    }
+   
 
 }

@@ -23,6 +23,9 @@ body {
 
   background-image: url("../assets/newBackground.png");
 }
+#app{
+  min-height: 100vh;
+}
 
 /* contentedor de cards*/
 .d-flex {
