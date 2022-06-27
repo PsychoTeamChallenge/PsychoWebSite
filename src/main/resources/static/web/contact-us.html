@@ -5,16 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/logo/favicon-32x32.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <!-- navbar -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./styles/navBar.css">
-    <!-- navbar -->
+    <!-- footer -->
+    <link rel="stylesheet" href="./styles/footer.css">
+
+
     <link rel="stylesheet" href="./styles/contact.css">
     <title>Contact Us</title>
 </head>
 
 <body>
-    <header></header>
     <!-- nav mobile -->
     <nav class="mobileNav">
         <a href="./index.html"><i class='bx bx-home-circle active'></i></a>
@@ -24,64 +30,117 @@
         <a href="./account.html"><i class='bx bx-user'></i></a>
     </nav>
     <!-- nav desktop -->
-    <nav class="desktopNav">
-
+    <nav class="desktopNav nav-bar fixed-top justify-content-around">
+        <div class="nav-item">
+        </div>
+        <div>
+            <ul class="d-flex list-unstyled">
+                <li><a href="#" class="nav-item"><span> Products </span></a></li>
+                <li><a href="#" class="nav-item"><span> Services </span></a></li>
+                <li></li>
+            </ul>
+        </div>
+        <div>
+            <ul class="d-flex list-unstyled">
+                <li><a href="#"><i class="fa-solid fa-user nav-icon"></i></a></li>
+                <li><a href="#"><i class="fa-solid fa-cart-shopping nav-icon"></i></a></li>
+            </ul>
+        </div>
     </nav>
 
 
     <main>
-        <div class="contact">
-            <h1>Contact Us</h1>
-            <!-- <img src="./assets/index/xGraffittiVioleta.png" alt="xGraffiti" id="xGraffiti"> -->
+
+        <!--  img girl -->
+        <div class="welcome">
+            <img src="./assets/logo/sketchLogo2.png" alt="logoToungue" id="logoTongue" class="logo-tongue">
+            <!-- <img src="./assets/index/chicaLandingPage2.png" alt="girlWelcome" id="girlWelcome"> -->
+            <div id="barbedWire" class="barbedWire-navbar"></div>
         </div>
+        <!-- LOADER -->
+        <div id="loading"></div>
 
-        <!-- info (phone,email,whatsapp,adress) -->
-        <section class="info">
-            <div class="map">
-                <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAdVJREFUSEu1VdFVAjEQnKlArUCpQKhArUCsQKhAqESsQKhArUCsQDoQO9AK1jf3dnkhJHfnB/m5e7nNzO7MZo848uKR8dFJYGYXAB4AXAMYekIbAGsATyS3bUm2EpjZwsHbMBYk57WAKoGZKctLP7gCICDtwcxUyQzAfVREclQiKRIkmf9KmgDOAZxIUp24XCLdWwcErvmXR40E7nuPmQdz6e8knx4/yD0pEYTuMnDm4AI4zZL7AaAERLJ0uZozaVyJILSP7F8B3AL4ADDxwwK8AvBGcpxUscm9KBGYQEg238xMmUrjXfmJjFuSA4/bOxdV/IfgjKTIRKq7IZ++Sepde70J1BUqP5dI+1PP7NkvXkikS/guGUnqfbdKFYRh6pKFZytfJFO61MJDN1nGqstWJMOnJrZEMAbwAiDVVzKou9JRMYuWNDONi3MAdyTVFPUKXM84MCWpiqrLzJSxJNv50YcgqpCp6p7G3HyZme6GzNbzIPuiRAFiZmH2muRNhSDuzIG51TZNCJSVpJK5S5LRQU1Icntl9kWtyq5xLVNjmO1IMvDqMGyVKKlkj8T1lketk7ZTolTzbCzrUy/wXhVklUTLTmr/iLwZOv/JbXegz7ejE/wBXP7vGWPMnI8AAAAASUVORK5CYII="/> -->
-                <box-icon name='map' color='#ffff' ></box-icon>
-                <p>Via Casilina,183</p>
-            </div>
-            <!-- phone -->
-            <div class="wpp">
-                <!-- <img
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAd5JREFUSEvFlYExBEEQRf/PgAiQgQyQARFwESACRIAIyIAMEAEiIANE0OpN9VzN7c7eKVXKVE3t3m1P/+7/u3usP17+Y//6f4CI2JV0KGk796ekF0mPkp5s85xckxlExKakG0kAfDVO1xJoJ73eS5rZBni0ugARQbQPUqHwyvZ573BEnEi6lITzg142I4CIIMK3jHrfNnRMrgzmVtKGpK1hJj0AUoaWXZwn4Jrt9ymUBHmWdG/7oLVbAGgML6AldeDgp+2tFZlUuqCKIMsaAlxJOpa0TqoNx9giJFQsoyskXdsGrAtQSs42FGkAsBDZhOgL53sZwPOj7aMEoFQRHIrWl0Wf9jBw2NoOKQLgxfZ+ddZkcWt7toIiyvnM9tzvEGCUYkYG93Qzz1NJtQkRE85Lk0UEv7dt832pyNTzQllGRC0AnLGrk1JxCcD/lGqhuKdB5Xx+qKUk5xLO6phghNR+wSmjZa/t6F6jdWkaABEIG70oZ97pl9dagd0MMs1RLa8QlrlF5DRiyaa1H4pM9dylkB85MtBiLmRTXcwsmpKmws/IeU+DKmQvaKgDDCGJujQjd4Kko6lZNcyA9EqzZcMx7OCXKHHKO5Fjx6ZifnfhrOran37//zv5p5FO2X0Dr4jpGRYc/iQAAAAASUVORK5CYII=" /> -->
-                    <box-icon name='whatsapp' type='logo' color='#ffffff'></box-icon>
-                    <p>919-808.8606</p>
-            </div>
-            <div class="phone">
-                <!-- <img
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAU5JREFUSEvFlWFRQzEQhHcVgANAAaAAUABVAHUACgoOqAJaBYACWgfgAAk4WGaZpJOG5M174XW4n226XzZ3eyV2XNyxPv4HIOkRwAGAKcmvv7jcciBpH8AzgPMguiJ5MSbgHcBxJrggOW2F5A5UEWqG9AWYe0fSvRlUOWAF4Kyi8EryapA6sD2mkhYArgsiH258y0TlDnxDT1FazeIWKY3pJ4C9hHBE0p811a8kF57pgeR9k3ruwCKSDgE4D9GFk3yauwihfALgMM5rFyjuIkm+8Sz5kYGTCAnibwBOwplqTqrLTtILgMsEYifOwTIMQhSPR4qQLoD3knORr46udvi8nW4WZOe6Dk9hJ7XwlWBLkjfxi17/B6Ent9n41pzMSfrsT/UCJNPl5juMaU5S0JpkXPXDAFElPJshFvJIx+crJr63g9GC1io0KGhjQr4BmPdtGWiiH+cAAAAASUVORK5CYII=" /> -->
-                    <box-icon name='phone' type='solid' color='#ffffff' ></box-icon>
-                    <p>2468-9099</p>
-            </div>
-            <div>
-                <box-icon name='gmail' type='logo' color='#ffffff' ></box-icon>
-                <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAR1JREFUSEvtldFRwzAQRN9WAB0AHdABdEDoACogVEBSAaQCKAE6gA4oISWECo5Zj5xRjGzFGcLwkfuRx9btu9uTxmLPoT3rcwBUHV5bFBE3wDOwAmaSFtXsbEPKf0yv7iW9+DkHLIGTLOcVuJVkYG9ExDFgYRfYxlLSWRcQBRVDryV9lggRcZ669roRkpri8w5KgDZp2rUss8Qd/IixAAs0liUlz2oyZN0uAOvZMsfpkHhjzUiLano7WfQGXAJHFfUv4B24yvdt08EceEreX/RAPtIspsDDaICkmZMiwuuGADAf+r5VB61AgtgunyTHRJJtaaJUwGhAEmrOfPd2/xqgb9j/BuATc5dVuR5i7RIUOlhI8sk6/NFq5v2BRd87VowZDYN9IAAAAABJRU5ErkJggg=="/> -->
-                <p>info@psychotattoo.com</p>
-            </div>
 
-            <div class="hours">
-                <!-- <h2>our opening hours</h2> -->
-                <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAZlJREFUSEu9VYFNwzAQvNsAJgAmgE5A2QAmgA3aTkI7ATABZQOYgHaDdoNu8Oikd7AdO44qiqUoiuz8/f3fn4kTL544PpoAZvYE4BbAjT/KaePPmuTHUJJVADO7B/AM4LLBcgdgQXJdOlcEMLMlgJn/sAeg70+SyhxmJjZTAHMAF35uSXKRg/QAsuDKTMGry8wEIqZaK5L67lYC4GV5991JyLglBGf07ece4nLlAKqnKBczNzNTEJIl5oHJjuRVSKo76Gp5AbAnWWzsEID3JiTYsYgBXgE81rL3AFUGvh9YvJGUvH/nwMykkGsA1dqPYCB1qRcbkpMcYDC7mAGAc5KHUvPzJOISjQEILPW+K4EMAYwp0ZkGzkvZA4nkuiWpciU9aDbZyxSDJJqPhq7YZHmPhizRcaXOApnm/mNmdZlmOm5aRA4cZZ/M0f9ahbOInXROcvVnZhcCZY6qugr0K7NrXUKa3GArPSdNVFSoqZquwMHva0R0X4jp+AsnjuQWLjDpWlaitY2uzGLgnpu2PP/Y/ealf2zg8N8Pa73kGXQA7YMAAAAASUVORK5CYII=" /> -->
-
-                <box-icon name='time-five' color='#ffffff' ></box-icon>
-                <p>10 A.M - 8 P.M</p>
+        <div class="infoContactContainer">
+            <div class="contact">
+                <h1>Stay in touch with us</h1>
+                <img src="./assets/index/xGraffittiVioleta.png" alt="XGraffitty" id="xGraffity">
             </div>
-        </section>
+            <!-- info (phone,email,whatsapp,adress) -->
+            <section class="info">
+                <div class="map">
+                    <i class='bx bx-map' style='color:#ffffff'></i>
+                    <h4>Via Casilina,183</h4>
+                </div>
+                <!-- phone -->
+                <div class="wpp">
+                    <i class='bx bxl-whatsapp' style='color:#ffffff'></i>
+                    <h4>919-808.8606</h4>
+                </div>
+                <div class="phone">
+
+                    <i class='bx bxs-phone' style='color:#ffffff'></i>
+                    <h4>2468-9099</h4>
+                </div>
+                <div>
+                    <i class='bx bxl-gmail' style='color:#ffffff'></i>
+                    <h4>info@psychotattoo.com</h4>
+                </div>
+
+                <div class="hours">
+                    <i class='bx bx-time-five' style='color:#ffffff'></i>
+                    <h4>10 A.M - 8 P.M</h4>
+                </div>
+            </section>
+        </div>
         <!-- form -->
-        <form>
-            <h2>Give us a call or send a message</h2>
-            <input type="fname" name="fname" id="fname" placeholder="FIRST NAME">
-            <input type="lname" name="lname" id="lname" placeholder="LAST NAME">
-            <input type="email" name="email" id="email" placeholder="EMAIL">
-            <input type="phone" name="phone" id="phone" placeholder="PHONE">
-            <textarea name="message" id="message" cols="30" rows="10" placeholder="MESSAGE"></textarea>
-        <button type="submit">SEND</button>
-        </form>
-    </main>
+        <div class="imgFormContainer">
 
-    <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+            <div class="formContainer">
+                <div class="formTitleContainer">
+                    <h2>Give us a call or send a message</h2>
+                    <img src="./assets/index/xGraffittiVioleta.png" alt="XGraffitty" id="xGraffityForm">
+                </div>
+                <form>
+                    <input type="fname" name="fname" id="fname" placeholder="NAME">
+                    <input type="email" name="email" id="email" placeholder="EMAIL">
+                    <input type="phone" name="phone" id="phone" placeholder="PHONE">
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="MESSAGE"></textarea>
+                    <button type="submit">SEND</button>
+                </form>
+            </div>
+
+            <div class="imgDivForm"></div>
+        </div>
+    </main>
+    <!-- footer -->
+
+    <footer>
+        <div class="barbedWireFooter"></div>
+
+        <section class="partLeft">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21986774.32852471!2d-10.792978169464016!3d36.87236600987632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f618bea6d8e59%3A0xb30315dbfd075191!2sPsycho%20Tattoo%20Studio!5e0!3m2!1ses-419!2sar!4v1656102980381!5m2!1ses-419!2sar"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="findUs">
+                <h5>FIND US</h5>
+                <p>Via Casilina, 183,</p>
+                <p>00176 Roma RM, Italia</p>
+            </div>
+            <div class="d-flex flex-column gap-2 socialsMedia">
+                <i class='bx bxl-instagram'></i>
+                <i class='bx bxl-whatsapp'></i>
+                <i class='bx bxl-facebook'></i>
+            </div>
+
+        </section>
+
+        <section class="partRight">
+            <img src="./assets/logo/sketchLogo2.png" alt="logo">
+        </section>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./scripts/contact.js"></script>
 </body>
 
 </html>

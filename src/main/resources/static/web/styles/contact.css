@@ -3,6 +3,7 @@
     padding: 0%;
     box-sizing: border-box;
 }
+
 /* colores */
 :root {
     --lightblue: rgb(0, 224, 224);
@@ -25,58 +26,150 @@ body {
     color: white;
 }
 
-/* ----------------------- MAIN --------------------- */
+/* --------------------------------------- MAIN ---------------------------------- */
+
+/* IMAGES */
+.welcome {
+    width: 100%;
+    height: 16rem;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 6vh;
+    padding-top: 0px;
+    margin-top: 0;
+    box-sizing: border-box;
+    display: block;
+    background-position: center;
+    background-image: url(../assets/index/welcomeGirl.png);
+    background-size: cover;
+
+}
+
+#girlWelcome {
+    width: 100%;
+    filter: grayscale();
+
+}
+
+.logo-tongue {
+    position: absolute;
+    left: -2vw;
+    bottom: -6vh;
+    z-index: 2;
+    width: 150px;
+}
+
+.logo-tongue-navbar {
+    position: fixed;
+    bottom: -9vh;
+    left: 11vw;
+    top: 1vh;
+    z-index: 2;
+    width: 150px;
+    z-index: 10002;
+    transform: scale(1);
+
+}
+
+.hidden {
+    display: none;
+}
+
+/* #barbedWire{
+
+} */
+
+.barbedWire {
+    position: absolute;
+    background-image: url(../assets/index/alambrePuasSeparador.png);
+    width: 100%;
+    z-index: 1;
+    height: 17vh;
+    top: 79.6%;
+    filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+}
+
+.barbedWire-navbar {
+    position: fixed;
+    background-image: url(../assets/index/alambrePuasSeparador.png);
+    width: 100%;
+    z-index: 1;
+    height: 17vh;
+    top: 0.6%;
+    filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+    z-index: 10001;
+}
 
 /* ----------------------- INFO --------------------- */
-
-.contact{
-    margin: 2%;
+.infoContactContainer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5vh;
 }
-.info{
-     display: flex;
+
+.contact {
+    position: relative;
+    width: 300px !important;
+    display: flex;
+    align-self: center;
+}
+
+#xGraffity {
+    position: absolute;
+    bottom: -2.5vh;
+    right: 4vh;
+    z-index: -1;
+    width: 80px;
+}
+
+.info {
+    display: flex;
     justify-content: center;
     flex-direction: column;
     align-self: center;
-    gap: 2vh;
+    gap: 5vh;
     margin: 4%;
     text-align: left;
+    flex-wrap: wrap;
+    padding-bottom: 3vh;
 }
- .info div{
+
+.info div {
     display: flex;
     align-content: center;
     justify-content: center;
     align-items: center;
     flex-direction: column;
- }
+}
+
+.info .bx {
+    font-size: 2.5rem;
+    padding: 0.6rem;
+    border-radius: 60px;
+    box-shadow: 0 0 2px #FFFF;
+    margin-bottom: 2%;
+}
 
 
 /* ----------------------- FORM --------------------- */
-/* input */
-form input {
-    width: 80vw;
-    background-color: transparent;
-    background-image: url(../assets/index/imputTexto.png);
-    border: none;
-    margin-top: 2vh;
+.imgFormContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    /*     background-color: red; */
 }
 
-form input[type="name"] {
-    height: 50px;
-}
-
-form input[type="email"] {
-    height: 50px;
-}
-
-/* text messange texterea */
-form textarea {
-    width: 80vw;
-    max-height: 150px;
-    background-image: url(../assets/index/imputTextoGrande.png);
-    background-color: transparent;
-    border: none;
-    margin-top: 2vh;
-
+.formContainer {
+    padding-top: 3vh;
+    max-width: 90%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-content: center;
+    padding-bottom: 2vh;
+    /*  background-color: aqua; */
 }
 
 /* form contact */
@@ -88,12 +181,58 @@ form {
     gap: 0.5rem;
     padding-top: 5vh;
     padding-bottom: 6vh;
+    /* background-color: yellow; */
+    width: 100%;
+
 }
+
+
+
+.formTitleContainer {
+    width: 100%;
+    position: relative;
+    /*  background-color: green; */
+}
+
+#xGraffityForm {
+    position: absolute;
+    top: -2.5vh;
+    left: 2.5vh;
+    z-index: -1;
+    width: 80px;
+    /* height: 12vh; */
+}
+
+
+
+/* input */
+form input {
+    width: 100%;
+    background-color: transparent;
+    background-image: url(../assets/index/imputTexto.png);
+    border: none;
+    margin-top: 2vh;
+    height: 40px;
+    margin-bottom: 2vh;
+}
+
+
+/* text messange texterea */
+form textarea {
+    width: 100%;
+    max-height: 107px;
+    background-image: url(../assets/index/imputTextoGrande.png);
+    background-color: transparent;
+    border: none;
+    margin-top: 2vh;
+
+}
+
 
 /* button submit form */
 form button[type="submit"] {
-    width: 90px;
-    height: 50px;
+    width: 85px;
+    height: 39px;
     align-self: center;
     background-image: url(../assets/index/buttonTurquesa.png);
     background-color: transparent;
@@ -131,10 +270,115 @@ form textarea::-webkit-input-placeholder {
     color: white !important;
 }
 
-/* --------------------------- TITLES -------------------------*/
+
+.imgDivForm {
+    background-image: url(../assets/contact/contact1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 42%;
+    height: 95vh;
+    display: none;
+}
 
 /* ------------------------------------ TITLE -----------------------*/
 h2,
 h1 {
     font-family: 'Argh';
+    font-weight: normal;
+
+}
+
+h1 {
+    font-size: 2.3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+
+@media screen and (min-width:550px) and (max-width:739px) {
+
+    .info {
+        display: flex;
+        flex-direction: row;
+    }
+
+
+    .formContainer {
+        width: 70%;
+    }
+}
+
+
+@media screen and (min-width:740px) {
+    .info {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .info .bx {
+        font-size: 3rem;
+    }
+
+    .formContainer {
+        width: 50%;
+    }
+
+
+    .formContainer {
+        padding-top: 0;
+        padding-bottom: 0;
+        /* justify-content: flex-start; */
+        align-items: center;
+    }
+
+    .logo-tongue {
+        position: absolute;
+        left: 5vw;
+        bottom: -6vh;
+        z-index: 2;
+        width: 150px;
+    }
+
+
+}
+
+@media screen and (min-width:800px) {
+    .imgDivForm {
+        display: inline;
+    }
+    .logo-tongue {
+        position: absolute;
+        left: 5vw;
+        bottom: -6vh;
+        z-index: 2;
+        width: 170px;
+    }
+}
+
+
+@media screen and (min-width:1080px) {
+
+    .info {
+        display: flex;
+        gap: 5vw;
+    }
+
+    .formContainer {
+        width: 40%;
+    }
+
+    .imgDivForm {
+        display: inline;
+    }
+
+    .logo-tongue {
+        position: absolute;
+        left: 5vw;
+        bottom: -9vh;
+        z-index: 2;
+        width: 200px;
+    }
+
 }
