@@ -302,7 +302,7 @@
     padding: 0;
     background-color: black;
     transition: .3s;
-    height: 10%;
+    height: 70px;
   }
 
   .nav-item {
@@ -356,13 +356,13 @@
     background-color: white;
   }
 
-  .nav-icon {
-    color: black;
-    padding: 0.7rem 1rem 0.7rem 1rem;
-    background-color: white;
-    border-radius: 50%;
-    transition: all 0.5s ease;
-  }
+    .nav-icon{
+      color: black;
+      padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+      background-color: white;
+      border-radius: 50%;
+      transition: all 0.5s ease;
+    }
 
   .nav-icon:hover {
     color: black;
