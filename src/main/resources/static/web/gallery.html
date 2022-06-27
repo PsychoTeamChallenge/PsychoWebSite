@@ -55,23 +55,23 @@
             </div>
 
             <div class="downSeccion">
-                <!-- <div class="typesProducts">
-            <img src="./assets/shop/option1.png" alt="" class="optionClothing " :class="{active: !clothOrPier}"
-              @click="changeFilterCategory('CLOTHING')">
-            <img src="./assets/shop/option1Active.png" alt="" class="optionClothingSelect " :class="{active: clothOrPier}"
-              @click="changeFilterCategory('CLOTHING')">
-  
-            <img src="./assets/shop/option2.png" alt="" class="optionPiercing " :class="{active:clothOrPier}"
-              @click="changeFilterCategory('PIERCING')">
-            <img src="./assets/shop/option2Active.png" alt="" class="optionPiercingSelect "
-              :class="{active: !clothOrPier}" @click="changeFilterCategory('PIERCING')">
-          </div> -->
-                <div class="filters">
-                    <i class='bx bx-slider-alt' @click="openFilters()"></i>
-                    <input type="search" name="shearch" v-model="shearchInput">
-                    <!-- {{shearch}} -->
+                <div class="typesProducts">
+                  <img src="./assets/shop/option3.png" alt="" class="optionTattoo  " :class="{active: !tattoo}"
+                    @click="changeFilterCategory('TATTOO')">
+                  <img src="./assets/shop/option3Active.png" alt="" class="optionTattooSelect  " :class="{active: tattoo}"
+                    @click="changeFilterCategory('TATTOO')">
+        
+                  <img src="./assets/shop/option2.png" alt="" class="optionPiercing " :class="{active:!piercing}"
+                    @click="changeFilterCategory('PIERCING')">
+                  <img src="./assets/shop/option2Active.png" alt="" class="optionPiercingSelect "
+                    :class="{active: piercing}" @click="changeFilterCategory('PIERCING')">
                 </div>
-            </div>
+                <div class="filters">
+                  <i class='bx bx-slider-alt' @click="openFilters()"></i>
+                  <input type="search" name="shearch" v-model="shearchInput">
+                  {{shearch}}
+                </div>
+              </div>
 
             <div id="barbedWire" class="barbedWire barbedWire-navbar"></div>
         </section>

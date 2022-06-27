@@ -6,8 +6,8 @@ Vue.createApp({
             postsFiltrados: [],
             client: {},
             isClient: false,
-            piercing: false,
-            tattoo: false,
+            piercing: true,
+            tattoo: true,
             shearchInput:""
         }
     },
@@ -30,8 +30,14 @@ Vue.createApp({
 
     methods: {
 
-        changePost() {
+        changeFilterCategory(category) {
            
+            if(category == "TATTOO"){
+                this.tattoo = !this.tattoo
+            }
+            else if(category == "PIERCING"){
+                this.piercing = !this.piercing
+            }
         },
        
 
@@ -55,6 +61,7 @@ Vue.createApp({
                 this.postsFiltrados = this.filtradosCategory
             }
         }
+
     }
 
 }).mount('#app')

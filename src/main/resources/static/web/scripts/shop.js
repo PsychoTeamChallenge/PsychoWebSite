@@ -10,6 +10,7 @@ Vue.createApp({
 
             client: {},
             cart: [],
+            currentProduct: {},
             totalCart: 0,
             favouritesIds:[],
 
@@ -32,7 +33,7 @@ Vue.createApp({
                 this.changeFilterCategory("CLOTHING")
                 this.actualizarClient();
             })
-      
+
     },
 
     methods: {
@@ -204,6 +205,25 @@ Vue.createApp({
               });
           }
 
+        },
+        openCheckProduct(product){
+          this.currentProduct = product;
+          console.log(this.currentProduct);
+          if($(window).width() < 800){
+            $('#productMobileContainer').css("top", "0%");
+            $('html').toggleClass("active");
+          } else {
+
+          }
+        },
+        closeCheckProduct(){
+          this.currentProduct = {};
+          if($(window).width() < 800){
+            $('#productMobileContainer').css("top", "100%");
+            $('html').toggleClass("active");
+          } else {
+
+          }
         },
         closeCart(){
           if($(window).width() < 800){

@@ -107,7 +107,7 @@ body {
     border-radius: 60px;
     box-shadow: 0 0 15px #C3007D!important;
     transform: scale(1.2);
-
+    cursor: pointer;
 }
 
 /* ----------------------- FORM --------------------- */
