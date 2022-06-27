@@ -122,7 +122,7 @@ Vue.createApp({
                   confirmButtonText: 'Yes, log in!'
                 }).then((result) => {
                   if (result.isConfirmed) {
-                   
+                   window.location.href= "/web/login.html"
                   }
                 });
               }
