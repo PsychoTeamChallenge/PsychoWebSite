@@ -56,7 +56,7 @@ main {
     position: absolute;
     width: 105px;
     top: -143px;
-    right: -180px;
+    right: -160px;
 }
 
 /* ----- Form----- */
@@ -314,9 +314,9 @@ h1 {
 
     .logo-tongue {
         position: absolute;
-        width: 105px;
+        width: 121px;
         top: -143px;
-        right: -180px;
+        right: -208px;
     }
 }
 
@@ -347,9 +347,9 @@ h1 {
 
     .logo-tongue {
         position: absolute;
-        width: 128px;
-        top: -21vh;
-        right: -8vw;
+        width: 121px;
+        top: -104px;
+        right: -295px;
     }
 }
 
@@ -362,8 +362,8 @@ h1 {
 
     .logo-tongue {
         position: absolute;
-        width: 130px;
-        top: -21vh;
-        right: -5vw;
+        width: 131px;
+        top: -113px;
+        right: -309px;
     }
 }
