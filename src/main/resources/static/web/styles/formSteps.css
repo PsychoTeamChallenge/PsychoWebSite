@@ -124,7 +124,7 @@ a {
 
 #sideBill {
   width: 27vw;
-  height: auto;
+  height: 27rem;
   display: flex !important;
   flex-wrap: wrap;
   flex-direction: column;
