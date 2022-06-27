@@ -150,7 +150,10 @@ body {
     box-shadow: 0 0 2px #FFFF;
     margin-bottom: 2%;
 }
-
+.info .bx:hover{
+    border-radius: 60px;
+    box-shadow: 0 0 2px #fd00d7 !important;
+}
 
 /* ----------------------- FORM --------------------- */
 .imgFormContainer {
@@ -364,6 +367,8 @@ h2 {
         display: flex;
         gap: 5vw;
     }
+
+
 
     .formContainer {
         width: 40%;
