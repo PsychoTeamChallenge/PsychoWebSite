@@ -149,10 +149,13 @@ body {
     border-radius: 60px;
     box-shadow: 0 0 2px #FFFF;
     margin-bottom: 2%;
+    transition: .3s;
 }
 .info .bx:hover{
     border-radius: 60px;
-    box-shadow: 0 0 2px #fd00d7 !important;
+    box-shadow: 0 0 15px #C3007D!important;
+    transform: scale(1.2);
+
 }
 
 /* ----------------------- FORM --------------------- */
