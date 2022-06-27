@@ -8,7 +8,7 @@
   position: relative;
   padding: auto;
   margin: 1rem;
-  width: 90%;
+  width: 100%;
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 1rem var(--pink), 0 0 0.1rem var(--pink), 0 0 0.1rem, inset 0 0 1.1rem var(--pink);
@@ -107,6 +107,7 @@
 
 .half {
   display: flex;
+  width: 58vw;
 }
 
 #steps {
@@ -115,9 +116,7 @@
 }
 
 /*  button style */
-button {
-  margin-top: 16rem;
-}
+
 
 .button-49 {
   height: 3rem;
@@ -130,8 +129,8 @@ button {
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
-  position: absolute;
-  right: 130px;
+ /*  position: absolute;
+  right: 130px; */
   cursor: pointer;
   transition: 1s;
 }
@@ -178,35 +177,37 @@ button {
   }
 }
 @media screen and (min-width: 300px) {
-  .button-49 {
+ /*  .button-49 {
     right: 110px;
     top: 270px;
-  }
+  } */
 }
 @media screen and (min-width: 390px){
-.button-49 {
+/* .button-49 {
     right: 110px;
     top: 400px;
-}
+} */
 }
 @media screen and (min-width: 400px) {
-  .button-49 {
+  /* .button-49 {
     right: 150px;
     top: 430px;
-  }
+  } */
 }
 @media screen and (min-width: 500px) {
-  .button-49 {
+ /*  .button-49 {
     right: 245px;
     top: 430px;
-  }
+  } */
 }
 @media screen and (min-width: 600px) {
-  .button-49 {
+  /* .button-49 {
     right: 260px;
     top: 430px;
-  }
-
+  } */
+  .inp {
+    width: 60%!important;
+}
   .payment {
     width: 40vh;
   }
@@ -223,23 +224,27 @@ button {
 }
 
 @media screen and (min-width: 760px) {
-  .button-49 {
+  /* .button-49 {
     right: 300px;
     top: 600px;
-  }
-
+  } */
+  .half {
+    width: 54vw;
+}
   .inp {
-    width: 70%;
+   
+    width: 90%!important;
+
   }
 }
 
-@media screen and (min-width: 820px) {
-  .button-49 {
-    right: 330px;
+ @media screen and (min-width: 800px) {
+  .payment {
+    width: 91vh;
   }
 
 }
-
+/*
 @media screen and (min-width: 900px) {
   .button-49 {
     right: 360px;
@@ -281,4 +286,15 @@ button {
   .button-49 {
     right: 700px;
   }
+} */
+
+@media screen and (min-width: 1000px){
+.payment {
+  width: 120vh
+}
+.half {
+
+  width: 46vw;
+  justify-content: center;
+}
 }

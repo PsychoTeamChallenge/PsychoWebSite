@@ -12,6 +12,8 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 import org.springframework.web.cors.CorsConfiguration;
 
+import javax.servlet.http.HttpServletResponse;
+
 @EnableWebSecurity
 @Configuration
 public class WebAuthorization extends WebSecurityConfigurerAdapter {
@@ -20,8 +22,9 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/api/clients","/api/activateAccount/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/clients","/api/activateAccount/**","/api/login").permitAll()
                 .antMatchers(HttpMethod.GET,"/api/post","/api/products/**").permitAll()
+                .antMatchers("/web/productManager.html").hasAnyAuthority("ADMIN")
                 .antMatchers("/web/**").permitAll()
                 .antMatchers("/api/clients/current/**","api/post/**","/api/purchase/**","api/cart/current/**").hasAnyAuthority("CLIENT", "ADMIN")
                 .antMatchers("/rest/**", "/h2-console", "/api/**").hasAuthority("ADMIN")
@@ -42,12 +45,14 @@ public class WebAuthorization extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true);
 
-        http.exceptionHandling()
-                .authenticationEntryPoint(((request, response, authException) ->                {
-                    if(request.getRequestURI().contains("/web") && !request.getRequestURI().contains("login")){
-                        response.sendRedirect("/web/401.html");
-                    }}))
-                .accessDeniedHandler(accessDeniedHandler());
+//        http.exceptionHandling()
+//                .authenticationEntryPoint(((request, response, authException) ->                {
+//                    if(request.getRequestURI().contains("/web") && !request.getRequestURI().contains("login") && !request.getRequestURI().contains("shop")){
+//                        response.sendRedirect("/web/401.html");
+//                    }}))
+//                .accessDeniedHandler(accessDeniedHandler());
+
+        http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
 
         http.csrf().disable();
         http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
