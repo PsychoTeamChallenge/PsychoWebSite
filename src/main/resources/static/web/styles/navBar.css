@@ -87,7 +87,9 @@
 .optionPiercing,
 .optionClothing,
 .optionPiercingSelect,
-.optionClothingSelect {
+.optionClothingSelect,
+.optionTattoo,
+.optionTattooSelect {
   width: 3rem;
   opacity: 0;
   transition: .2s;
@@ -96,7 +98,9 @@
 }
 
 .optionClothing,
-.optionClothingSelect {
+.optionClothingSelect,
+.optionTattoo,
+.optionTattooSelect {
   position: absolute;
   left: -6px;
 }
@@ -110,18 +114,22 @@
 .optionPiercing.active,
 .optionClothing.active,
 .optionPiercingSelect.active,
-.optionClothingSelect.active {
+.optionClothingSelect.active,
+.optionTattoo.active,
+.optionTattooSelect.active {
   width: 3rem;
   opacity: 100;
   transition: .2s;
 }
 
 .optionPiercingSelect.active,
-.optionClothingSelect.active {
+.optionClothingSelect.active,
+.optionTattooSelect.active {
   filter: brightness(0.7);
 }
 
-.optionPiercingSelect.active {
+.optionPiercingSelect.active,
+.optionTattooSelect.active {
   filter: brightness(0.7) hue-rotate(26deg);
 }
 
@@ -183,7 +191,7 @@
 
 .logo-tongue {
   position: absolute;
-  left: -2vw;
+  right: 2vw;
   bottom: -6vh;
   z-index: 2;
   width: 150px;
@@ -267,11 +275,27 @@
   .downSeccion .filters input {
     width: 12rem;
   }
+
+  .logo-tongue {
+    position: absolute;
+    left: 5vw;
+    bottom: -10vh;
+    z-index: 2;
+    width: 150px;
+  }
 }
 
 @media (min-width:690px) {
   .productBodyBackground {
     height: 10rem;
+  }
+
+  .logo-tongue {
+    position: absolute;
+    left: 5vw;
+    bottom: -10vh;
+    z-index: 2;
+    width: 150px;
   }
 }
 
@@ -279,11 +303,10 @@
   .logo-tongue {
     position: absolute;
     left: 5vw;
-    bottom: -6vh;
+    bottom: -10vh;
     z-index: 2;
     width: 150px;
   }
-
 }
 
 @media (min-width: 800px) {
@@ -356,13 +379,13 @@
     background-color: white;
   }
 
-    .nav-icon{
-      color: black;
-      padding: 0.3rem 0.6rem 0.3rem 0.6rem;
-      background-color: white;
-      border-radius: 50%;
-      transition: all 0.5s ease;
-    }
+  .nav-icon {
+    color: black;
+    padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+    background-color: white;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+  }
 
   .nav-icon:hover {
     color: black;
@@ -376,11 +399,10 @@
   .logo-tongue {
     position: absolute;
     left: 5vw;
-    bottom: -6vh;
+    bottom: -9vh;
     z-index: 2;
-    width: 170px;
+    width: 150px;
   }
-
 }
 
 @media (min-width: 1080px) {
@@ -389,7 +411,7 @@
     left: 5vw;
     bottom: -9vh;
     z-index: 2;
-    width: 200px;
+    width: 170px;
   }
 }
 
@@ -401,5 +423,13 @@
 
   .mobileHeaderBackground {
     background-position-y: -156.1px;
+  }
+
+  .logo-tongue {
+    position: absolute;
+    left: 5vw;
+    bottom: -9vh;
+    z-index: 2;
+    width: 170px;
   }
 }
