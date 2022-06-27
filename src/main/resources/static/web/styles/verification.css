@@ -1,0 +1,29 @@
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+/* colores */
+:root {
+    --lightblue: rgb(0, 224, 224);
+    --pink: rgb(230, 0, 130);
+    --darklightblue: #00748E;
+    --blue: #00313E;
+    --darkpink: #C3007D;
+    --purple: #ca00fd;
+}
+
+/* tipografia */
+@font-face {
+    font-family: "Argh";
+    src: url(../assets/fonts/argh/ArghDemo.otf);
+}
+
+/* body */
+body {
+    background-image: url(../assets/background/newBackground.png);
+    color: white;
+}
+
+/* --------------------------------------- MAIN ---------------------------------- */
