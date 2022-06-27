@@ -54,9 +54,9 @@ main {
 
 .logo-tongue {
     position: absolute;
-    width: 105px;
+    width: 99px;
     top: -143px;
-    right: -180px;
+    right: -134px;
 }
 
 /* ----- Form----- */
@@ -314,10 +314,11 @@ h1 {
 
     .logo-tongue {
         position: absolute;
-        width: 105px;
+        width: 121px;
         top: -143px;
-        right: -180px;
+        left: 426px;
     }
+    
 }
 
 @media screen and (min-width:650px) {
@@ -347,9 +348,9 @@ h1 {
 
     .logo-tongue {
         position: absolute;
-        width: 128px;
-        top: -21vh;
-        right: -8vw;
+        width: 121px;
+        top: -142px;
+        right: -295px;
     }
 }
 
@@ -362,8 +363,8 @@ h1 {
 
     .logo-tongue {
         position: absolute;
-        width: 130px;
-        top: -21vh;
-        right: -5vw;
+        width: 131px;
+        top: -145px;
+        left: 425px;
     }
 }

@@ -96,16 +96,16 @@ body {
 }
 
 /* #logoTongue{
-  transition: all 1s ease; 
+  transition: all 1s ease;
 } */
 
 .logo-tongue {
     position: absolute;
-    /* bottom: -9vh; */
-    left: -2vw;
-    top: 58vh;
+    bottom: -9vh;
+    left: 2vw;
+    /* top: 69vh; */
     z-index: 2;
-    width: 150px;
+    width: 130px;
 }
 
 .logo-tongue-navbar {
@@ -134,7 +134,7 @@ body {
     width: 100%;
     z-index: 1;
     height: 17vh;
-    top: 87.6%;
+    top: 91.6%;
     filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
 }
 
@@ -143,10 +143,12 @@ body {
     background-image: url(../assets/index/alambrePuasSeparador.png);
     width: 100%;
     z-index: 1;
-    height: 17vh;
+    height: 16vh;
+    margin-top: 1%;
     top: 0.6%;
     filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
     z-index: 10001;
+    pointer-events: none;
 }
 
 
@@ -519,7 +521,8 @@ h3 {
 
     .logo-tongue {
         position: absolute;
-        bottom: -11vh;
+        /* bottom: -11vh; */
+        /* top: 65vh; */
         left: 5vw;
         z-index: 2;
         width: 200px;
@@ -534,13 +537,13 @@ h3 {
 
 @media screen and (min-width:1080px) {
 
-    /* #logoToungue {
+    #logoToungue {
         position: absolute;
-        bottom: -7vh;
+        top:10vh;
         left: 5vw;
         width: 250px;
 
-    } */
+    }
     .aboutUsAndContactUsContainer {
         display: flex;
         gap: 5vw;
