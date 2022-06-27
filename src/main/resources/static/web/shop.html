@@ -182,7 +182,7 @@
               Total: ${{ (totalCart + 1000).toLocaleString('de-DE') }}
             </div>
             <div class="cartCheckout">
-              <button class = "cartBtn" type="button" name="button"><span> Checkout</span>
+              <button class = "cartBtn" type="button" name="button" @click="finishBuy()"><span> Checkout</span>
                 <i class="fa-solid fa-arrow-right-long btnIcon"></i></button>
             </div>
           </div>

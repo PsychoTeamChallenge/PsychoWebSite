@@ -5,7 +5,6 @@ $(document).ready(function () {
     })
 
     if ($(window).width() < 800) {
-        console.log("ye");
         /*
         $('#logoTongue').addClass('logo-tongue');
         $('#logoTongue').removeClass('logo-tongue-navbar');*/
@@ -17,6 +16,7 @@ $(document).ready(function () {
 function checkScroll() {
     let navbar = $('.nav-bar');
     let scrollPositionY = $(window).scrollTop();
+    console.log(scrollPositionY);
     if (($(window).width() < 800)) {
         $('#logoTongue').addClass('logo-tongue');
         $('#logoTongue').removeClass('logo-tongue-navbar');
@@ -24,7 +24,7 @@ function checkScroll() {
         $('#barbedWire').addClass('barbedWire');
         $('#barbedWire').removeClass('barbedWire-navbar');
     } else {
-        if (scrollPositionY > 351) {
+        if (scrollPositionY > 200) {
             navbar.css("background-color", "black");
             $('#logoTongue').addClass('logo-tongue-navbar');
             $('#logoTongue').removeClass('logo-tongue');
@@ -48,15 +48,14 @@ function checkScroll() {
 /* function hideLoader() {
   $('#loading').hide();
 }
- 
+
 $(window).ready(hideLoader);
- 
+
 // Strongly recommended: Hide loader after 20 seconds, even if the page hasn't finished loading
 setTimeout(hideLoader, 20 * 1000);
  */
 
 window.onload = function () {
-    //display loader on page load 
+    //display loader on page load
     $('#loading').fadeOut();
 }
-
