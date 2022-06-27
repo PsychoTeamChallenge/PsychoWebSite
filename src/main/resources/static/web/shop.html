@@ -54,7 +54,7 @@
     <section class="mobileHeader">
       <div class="upSeccion">
         <h1>Psycho Shop</h1>
-        <i class="fa-solid fa-bag-shopping" @click="openCart"><span v-if="cart.length > 0">{{cart.length}}</span
+        <i class="fa-solid fa-bag-shopping" @click="openCart()"><span v-if="cart.length > 0">{{cart.length}}</span
             v-else><span></span></i>
       </div>
 
@@ -79,8 +79,56 @@
 
       <div id="barbedWire" class="barbedWire barbedWire-navbar"></div>
     </section>
-    <div class="mobileHeaderBackground"></div>
 
+    <div class="productMobileContainer" id = "productMobileContainer">
+      <div class="productMobileTop">
+        <div class="productExit" @click ="closeCheckProduct()">
+          <a href="#"><i class="fa-solid fa-arrow-left bigProductIcon"></i></a>
+        </div>
+        <div class="productFavourite">
+          <a href="#"><i class="fa-solid fa-heart bigProductIcon"></i></a>
+        </div>
+      </div>
+      <div class="productMobileDetails">
+        <div class="productPriceImage">
+          <div class="productImg">
+            <div class="productMobileBody">
+              <div class="img" :style="'background-image: url('+currentProduct.urlImg+');'"></div>
+              <div class="productMobileBackground"></div>
+            </div>
+          </div>
+          <div class="productPrice">
+            <p style = "font-size: 18px;"> {{ currentProduct.name }} </p>
+            <p style = "font-size: 14px;"> $ {{ currentProduct.price }} </p>
+          </div>
+        </div>
+        <div class="productColor">
+          <div>
+            <span> Colours: </span>
+          </div>
+          <div class="colorPicker">
+            <div v-for = "size in currentProduct.sizes" class="sizeCard">
+              <a href="#"><span style = "visibility: hidden">14</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="productSizes">
+          <div class="">
+            <span> Sizes: </span>
+          </div>
+          <div class="sizeContainer">
+            <div v-for = "size in currentProduct.sizes" class="sizeCard">
+              <a href="#">{{ size }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="productMobileFooter">
+        <button type="button" class ="cartBtn" name="button"> Add to cart <i style = "margin-left: 1rem;" class="fa-solid fa-cart-arrow-down"></i> </button>
+      </div>
+    </div>
+
+    <div class="mobileHeaderBackground"></div>
 
     <div class="filterMobileContainer" :class="{active:filtersShow}">
       <i class='bx bx-left-arrow-alt' @click="openFilters()"></i>
@@ -221,7 +269,7 @@
 
     <div class="mainContent">
       <div class="productCard" v-for="product in productsList">
-        <div class="productBody">
+        <div class="productBody" @click = "openCheckProduct(product)">
           <div class="img" :style="'background-image: url('+product.urlImg+');'" :class="{piercing:!clothOrPier}"></div>
           <div class="favouriteIcon">
             <i class='bx bxs-heart' v-if="favouritesIds.includes(product.id)" @click="removeFavourite(product.id)"></i>

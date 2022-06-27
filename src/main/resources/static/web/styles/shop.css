@@ -70,6 +70,170 @@ body {
     color: white;
 }
 
+a{
+  text-decoration: none;
+}
+
+p{
+  padding: 0;
+  margin: 0;
+}
+
+/* ===================OPTIONS VIEW================== */
+
+
+.mobileHeader {
+    height: 7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .1rem;
+    justify-content: center;
+    position: relative;
+    padding-bottom: .5rem;
+}
+
+.mobileHeaderBackground {
+    height: 7rem;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    z-index: -1;
+    background-image: url(../assets/index/welcomeGirl2.png);
+    background-position: center;
+    background-size: cover;
+    background-position-y: -23px;
+    filter: blur(1px) saturate(0) opacity(0.4);
+}
+
+.upSeccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
+}
+
+.upSeccion h1 {
+    font-family: "Argh";
+    font-size: 2.7rem;
+    margin: 0;
+    color: rgb(223 40 144);
+    font-weight: bolder;
+    text-shadow: 0 0 20px rgb(147 9 87);
+}
+
+.upSeccion i {
+    font-size: 1.4rem;
+    background: rgb(230 0 130 / 53%);
+    padding: 0.5rem;
+    border-radius: 50%;
+    position: relative;
+}
+
+.upSeccion i span {
+    position: absolute;
+    top: -1px;
+    font-size: 0.9rem;
+}
+
+.downSeccion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    gap: 0.7rem;
+    width: 100%;
+    z-index: 2;
+    color: var(--darkpink);
+}
+
+.downSeccion .typesProducts {
+    height: 100%;
+    position: relative;
+}
+
+
+.optionPiercing,
+.optionClothing,
+.optionPiercingSelect,
+.optionClothingSelect {
+    width: 3rem;
+    opacity: 0;
+    transition: .2s;
+    bottom: -15px;
+    transform: scale(.9);
+}
+
+.optionClothing,
+.optionClothingSelect {
+    position: absolute;
+    left: -6px;
+}
+
+.optionPiercing,
+.optionPiercingSelect {
+    position: absolute;
+    left: 2.7rem;
+}
+
+.optionPiercing.active,
+.optionClothing.active,
+.optionPiercingSelect.active,
+.optionClothingSelect.active {
+    width: 3rem;
+    opacity: 100;
+    transition: .2s;
+}
+
+.optionPiercingSelect.active,
+.optionClothingSelect.active {
+    filter: brightness(0.7);
+}
+
+.optionPiercingSelect.active {
+    filter: brightness(0.7) hue-rotate(26deg);
+}
+.optionClothingSelect.active {
+    filter: brightness(0.7) hue-rotate(25deg);
+}
+
+.downSeccion .filters {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 0.4rem;
+}
+
+.downSeccion .filters i {
+    font-size: 1.4rem;
+    background: #951b60;
+    color: white;
+    padding: .3rem;
+    border-radius: 50%;
+}
+
+.downSeccion .filters input {
+    width: 8rem;
+    border: none;
+    border-radius: 22px 93px 90px 96px;
+    background: #ffffff;
+    outline: none;
+    padding: 0 0 0 0.4rem;
+}
+
+.barbedWire {
+    position: absolute;
+    background-image: url(../assets/index/alambrePuasSeparador.png);
+    width: 100%;
+    z-index: 1;
+    height: 17vh;
+    top: 69.6%;
+    /* background-position-x: 112px; */
+    background-size: 77.1rem;
+    background-repeat: no-repeat;
+    filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+}
 
 /* ===================OPTIONS FILTER VIEW================== */
 
@@ -204,6 +368,20 @@ body {
     z-index: 1;
 }
 
+.productBody:hover  {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+.favouriteIcon {
+  z-index: 1;
+}
+
+.favouriteIcon:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 .productBodyBackground {
     width: 100%;
     height: 8rem;
@@ -256,7 +434,6 @@ body {
 }
 
 
-
 @media (min-width:460px){
     .mainContent{
         justify-content: space-between;
@@ -288,7 +465,7 @@ body {
         transform: scale(1.5);
         left: 2rem;
     }
-  
+
     .upSeccion i {
         font-size: 1.6rem;
         position: fixed;
@@ -303,7 +480,7 @@ body {
         top: 88vh;
         left: 5%;
     }
-   
+
 }
 @media (min-width:1100px){
     .mainContent .productCard {
@@ -322,5 +499,155 @@ body {
         left: 3rem;
     }
 
-    
+
+}
+
+.productMobileContainer{
+  position: fixed;
+  background-image: url(../assets/newBackground.png);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+}
+
+.productMobileTop{
+  height: 15%;
+  /*background-color: red;*/
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.productMobileDetails{
+  height: 70%;
+  /*background-color: green;*/
+}
+
+.productPriceImage{
+  height: 80%;
+}
+
+.productColor{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 10%;
+  background-color: rgb(230 0 130 / 53%);
+  border-bottom: 1px black solid;
+}
+
+.colorPicker{
+  display: flex;
+}
+
+.productSizes{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 10%;
+  background-color: rgb(230 0 130 / 53%);
+}
+
+.productMobileFooter{
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bigProductIcon{
+  color: white;
+  padding: 0.7rem;
+  background-color: rgb(230 0 130 / 53%);
+  border-radius: 50%;
+  transition: all 500ms ease;
+}
+
+.bigProductIcon:hover{
+  box-shadow: 0 0 0 4px #1f1f1f, 0 0 0 5px white;
+}
+
+.productIconn{
+  margin-left: 1rem;
+}
+
+.sizeContainer{
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.sizeCard{
+  flex: 1 0 20%;
+}
+
+.sizeCard a{
+  display: block;
+  height: 100%;
+  padding: 0.5rem;
+  color: white;;
+  background-color: rgb(230 0 130 / 0%);
+  border-left: 1px black solid;
+  transition: all 300ms ease;
+}
+
+.sizeCard:last-child a{
+  border-right: 1px black solid;
+}
+
+.sizeCard a:hover{
+  color: white;
+  background-color: rgb(81 2 47 / 53%);
+}
+
+.productPrice{
+  height: 20%;
+}
+
+.productImg{
+  width: 80%;
+  height: 80%;
+  float: right;
+}
+
+.productMobileBackground{
+    width: 98%;
+    height: 11rem;
+    position: absoluta;
+    border-radius: 19px;
+    background-image: url(../assets/background/backgroundHeaderMobile.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 127%;
+    filter: hue-rotate(309deg) blur(1.1px) brightness(0.5);
+    z-index: -1;
+}
+
+.productMobileBody {
+  width: 99%;
+  height: 11rem;
+  position: relative;
+  border-radius: 19px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.productMobileBody .img {
+  height: 14rem;
+  width: 14rem;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 1.2rem;
+  filter: drop-shadow(7px 8px 21px black);
+  pointer-events: none;
+}
+.productMobileBody .img.piercing {
+    transform: scale(1.3);
+    filter: drop-shadow(7px 8px 15px black);
 }
