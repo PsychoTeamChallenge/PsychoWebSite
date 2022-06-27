@@ -42,7 +42,7 @@ Vue.createApp({
             .then(response => {
                 this.client = response.data;
                 this.isClient = true;
-                this.cart = this.client.cart
+                this.cart = this.client.cart.sort((a,b)=>Intl.Collator('en').compare(a.id, b.id))
                 this.favouritesIds =  this.client.favourites.map(fav => fav.id)
 
                 this.totalCart = 0;
@@ -56,11 +56,6 @@ Vue.createApp({
                 this.isClient = false;
             })
         },
-
-        showCart(){
-          console.log(this.cart);
-        },
-
         changeFilterCategory(category) {
             this.productsFilters = this.products.filter(product => product.category == category);
             category == "CLOTHING" ? this.clothOrPier = true : this.clothOrPier = false
@@ -114,6 +109,23 @@ Vue.createApp({
             axios.post("/api/clients/current/favourites",`idProduct=${id}`)
             .then(response =>{
                 this.actualizarClient()
+            })
+            .catch(error=>{
+              if(error.code == "ERR_BAD_REQUEST"){
+                Swal.fire({
+                  title: 'Oh woow!',
+                  text: "You can't do that! Do you want to log in?",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, log in!'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                   
+                  }
+                });
+              }
             })
         },
         removeFavourite(id){
