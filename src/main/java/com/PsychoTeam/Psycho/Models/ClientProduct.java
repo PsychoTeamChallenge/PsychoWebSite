@@ -24,19 +24,21 @@ public class ClientProduct {
     @JoinColumn(name="product_id")
     private Product product;
 
-    private String size,color;
-    private double price;
+    private String color, url, name;
+    private double price,size;
     private int quantity;
 
     public ClientProduct(){}
 
-    public ClientProduct(Client client, Product product, String size, String color, double price, int quantity) {
+    public ClientProduct(Client client, Product product, double size, String color, double price, int quantity, String url, String name) {
         this.client = client;
         this.product = product;
         this.size = size;
         this.color = color;
         this.price = price;
         this.quantity = quantity;
+        this.url = url;
+        this.name = name;
     }
 
 }

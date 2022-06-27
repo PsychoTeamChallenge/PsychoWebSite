@@ -1,7 +1,9 @@
 package com.PsychoTeam.Psycho.controllers;
 import com.PsychoTeam.Psycho.Dtos.ClientDTO;
 import com.PsychoTeam.Psycho.Models.Client;
+import com.PsychoTeam.Psycho.Models.Product;
 import com.PsychoTeam.Psycho.services.ClientService;
+import com.PsychoTeam.Psycho.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,9 @@ public class ClientController {
 
     @Autowired
     private ClientService clientService;
+
+    @Autowired
+    ProductService productService;
 
     @Autowired
     private JavaMailSender mailSender;
@@ -78,7 +83,7 @@ public class ClientController {
             return new ResponseEntity<>("Username too long", HttpStatus.FORBIDDEN);
 
 
-        Client client = new Client(firstName, lastName, email, passwordEncoder.encode(password), userName);
+        Client client = new Client(firstName, lastName, userName, email, passwordEncoder.encode(password));
 
         String randomCode = GenerateToken(64);
         client.setToken(randomCode);
@@ -138,18 +143,49 @@ public class ClientController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @PostMapping("/clients/current/favourites")
+    public ResponseEntity<?> addFavourite(@RequestParam long idProduct, Authentication authentication){
+        Client client = clientService.getClient(authentication.getName());
+        if(client == null){
+            return new ResponseEntity<>("Client unauthorized", HttpStatus.FORBIDDEN);
+        }
+
+        Product product = productService.getProductById(idProduct);
+        if(product == null){
+            return new ResponseEntity<>("Product not exist", HttpStatus.FORBIDDEN);
+        }
+        client.addFavourite(product);
+        clientService.saveClient(client);
+        return new ResponseEntity<>("Product remove success", HttpStatus.ACCEPTED);
+    }
+
+    @PatchMapping("/clients/current/favourites")
+    public ResponseEntity<?> removeFavourite(@RequestParam long idProduct, Authentication authentication){
+        Client client = clientService.getClient(authentication.getName());
+        if(client == null){
+            return new ResponseEntity<>("Client unauthorized", HttpStatus.FORBIDDEN);
+        }
+
+        Product product = productService.getProductById(idProduct);
+        if(product == null){
+            return new ResponseEntity<>("Product not exist", HttpStatus.FORBIDDEN);
+        }
+        client.removeFavourite(product);
+        clientService.saveClient(client);
+        return new ResponseEntity<>("Product remove success", HttpStatus.ACCEPTED);
+    }
+
     private void sendVerificationEmail(Client client)
             throws MessagingException, UnsupportedEncodingException {
 
         String toAddress = client.getEmail();
-        String fromAddress = "psychoTeam@gmail.com";
+        String fromAddress = "psychoteammh@gmail.com";
         String senderName = "PsychoTeam";
         String subject = "Please verify your registration";
-        String content = "<h2 style=\"color:black;\">Hi [[name]]!</h2>"
-                + "<p style=\"color:black;\"> Please click the link below to verify your registration: </p>"
-                +"<img src=\"https://i.imgur.com/DjW6seD.png\" alt=\"ImgRegister\" width=\"450\" height=\"302\"/> <br>"
-                + "<h3><a href=\"[[URL]]\" target=\"_self\" style=\"color:#ff5e14;\">VERIFY YOUR ACCOUNT</a></h3>"
-                + "<div style=\"display:flex;gap: 0.4rem;\"> <p style=\"color:black;\"> Thank you, </p> <p style=\"color:rgb(232, 91, 26);font-weight: bold;\"> Psycho teams. </p> </div> "
+        String content = "<img src=\"https://i.imgur.com/vfyatKL.png\" style=\"width:100%; \" alt=\"ImgRegister\" width=\"450\" height=\"302\"/> <br>" +
+                "<h2 style=\"font-family: system-ui;color: #720651;font-weight: bold;font-size: 2rem;letter-spacing: 0.1px;\">Hi [[name]]!</h2>"
+                + "<p style=\"color:black;font-weight:bolder;font-size:1.1rem;display:flex;gap: 0.4rem;\"> Thank you very much for trusting our website! Below you will find a link to verify <a href=\"[[URL]]\" target=\"_self\" style=\" color:#00c4ff;text-decoration:underline;margin-left: 0.4rem;\"> your account. </a> </p>"
+                + "<div style=\"display:flex;font-size: 1rem;\"> <p style=\"color:black;font-weight: bold;\"> See you soon, </p> <p style=\"color: rgb(114 6 81);font-weight:bold\"> <a style=\"color: #720651;text-decoration: none;font-weight: bold; \" href=\"https://github.com/PsychoTeamChallenge\" target=\"_self\"  > Psycho teams. </a>  </p> </div> "
                 ;
 
         MimeMessage message = mailSender.createMimeMessage();

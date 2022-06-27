@@ -106,6 +106,7 @@ a {
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: -10rem;
 }
 
 .hidden {
@@ -116,12 +117,36 @@ a {
   border: 1px solid;
   background-color: rgba(0, 0, 0, 0.603);
 }
+#row{
+  flex-direction: row;
+}
+#sideBill{
+  width: 27vw;
+  height:auto; 
+  display: flex !important;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border: 0.1rem solid #fff;
+  box-shadow: 0 0 0.1rem #fff, 0 0 1rem var(--pink);
+}
+#sideInformation{
+  width: 25vw;
+ 
+}
 
+.sidePriceInfo{
+    display: flex;
+    justify-content: space-between;
+    width: 25vw;
+    flex-direction: row-reverse;
+}
 .container {
   padding: 0;
   margin: .5rem;
   width: 95vw;
   height: 19vh;
+  border: 0.1rem solid #fff;
+  box-shadow: 0 0 0.1rem #fff, 0 0 1rem var(--pink);
 }
 
 #image {
@@ -191,7 +216,8 @@ h5 {
   }
 
   #image {
-    height: 19vh;
+    height: 15vh;
+    width: 27vw;
   }
 
   #breadcrumb {
@@ -218,7 +244,12 @@ h5 {
 
 @media screen and (max-width: 600px) {
   .tab-steps {
-    height: 69vh;
+    height: auto;
+  }
+}
+@media screen and (max-width: 800px) {
+  #showBill {
+    display: none;
   }
 }
 
@@ -234,24 +265,21 @@ h5 {
     height: 6rem;
 
   }
+}
 
-  #data {
-    align-items: center;
-    flex-direction: column;
-    margin-top: -14vh;
-  }
-
-  .inp {
-    width: 40% !important;
-  }
-
-  #shipping {
-    margin-top: -14vh;
-  }
-
-  #cardNumber {
-    width: 100vw;
-  }
+.inp {
+  width: 100% !important;
+}
 
 
+#cardNumber {
+  width: 100vw;
+}
+
+.tab-steps {
+  margin-top: 0rem;
+}
+
+#labelCardNumber {
+  width: 50vw !important;
 }

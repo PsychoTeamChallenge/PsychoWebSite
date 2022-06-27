@@ -15,8 +15,8 @@
     <!-- footer -->
     <link rel="stylesheet" href="./styles/footer.css">
 
-    <link rel="stylesheet" href="./styles/cart.css">
     <link rel="stylesheet" href="./styles/shop.css">
+    <link rel="stylesheet" href="./test.css">
     <title>Psycho Tattoo & Piercing Shop</title>
 </head>
 
@@ -39,7 +39,8 @@
         <section class="mobileHeader">
             <div class="upSeccion">
                 <h1>Psycho Shop</h1>
-                <i class="fa-solid fa-bag-shopping" @click="openCart"><span v-if="cart.length > 0">{{cart.length}}</span v-else><span></span></i>
+                <i class="fa-solid fa-bag-shopping" onClick = "openCart()"><span>1</span></i>
+                <button type="button" @click = "showCart()" name="button">asdasdas</button>
             </div>
 
             <div class="downSeccion">
@@ -52,8 +53,7 @@
                 </div>
                 <div class="filters">
                     <i class='bx bx-slider-alt' @click="openFilters()"></i>
-                    <input type="search" name="shearch" v-model="shearchInput">
-                    {{shearch}}
+                    <input type="search" name="shearch">
                 </div>
             </div>
 
@@ -66,36 +66,33 @@
             <p class="title">Search Options</p>
             <h3>Order by:</h3>
             <div class="orderDiv">
-                <div  :class="{active:order == 'lowPrice'}"><i class='bx bx-chevron-down' @click="changeOrder('lowPrice')"></i>Price</div>
-                <div  :class="{active:order == 'highPrice'}"><i class='bx bx-chevron-up' @click="changeOrder('highPrice')" ></i>Price</div>
-                <div  :class="{active:order == 'lowApha'}"><i class='bx bx-chevron-up' @click="changeOrder('lowApha')" ></i>A-Z</div>
-                <div  :class="{active:order == 'highApha'}"><i class='bx bx-chevron-down' @click="changeOrder('highApha')"></i>Z-A</div>
+                <div class="active"><i class='bx bx-chevron-up'></i>Price</div>
+                <div><i class='bx bx-chevron-down'></i>Price</div>
+                <div><i class='bx bx-chevron-up'></i>A-Z</div>
+                <div><i class='bx bx-chevron-down'></i>Z-A</div>
             </div>
 
             <h3>Filter by:</h3>
             <div class="typeDiv">
                 <div class="clothingOptions" v-if="clothOrPier">
-                    <div  @click="changeCategory('ALL')"  :class="{active:category == 'ALL'}">All</div>
-                    <div  @click="changeCategory('HAT')"  :class="{active:category == 'HAT'}">Hat</div>
-                    <div @click="changeCategory('T-SHIRT')"  :class="{active:category == 'T-SHIRT'}">T-shirt</div>
-                    <div @click="changeCategory('SWEATSHIRT')"  :class="{active:category == 'SWEATSHIRT'}">Sweatshirt</div>
+                    <div class="active">Hat</div>
+                    <div>T-shirt</div>
+                    <div>Sweatshirt</div>
                 </div>
                 <div class="piercingOptions" v-if="!clothOrPier">
-                    <div  @click="changeCategory('ALL')"  :class="{active:category == 'ALL'}">All</div>
-                    <div @click="changeCategory('BODY')"  :class="{active:category == 'BODY'}">Body</div>
-                    <div @click="changeCategory('MOUTH')"  :class="{active:category == 'MOUTH'}">Mouth</div>
-                    <div @click="changeCategory('NOSE')"  :class="{active:category == 'NOSE'}">Nose</div>
-                    <div @click="changeCategory('EYEBROW')" :class="{active:category == 'EYEBROW'}">Eyebrow</div>
-                    <div @click="changeCategory('EAR')"  :class="{active:category == 'EAR'}">Ear</div>
+                    <div>Body</div>
+                    <div>Mouth</div>
+                    <div>Eyebrow</div>
+                    <div>Ear</div>
                 </div>
             </div>
-            <div class="btnApply" @click="orderProducts(),openFilters()">APPLY</div>
+            <div class="btnApply">APPLY</div>
         </div>
 
         <div class="cartMobileContainer" id = "cartDesktopContainer">
           <div class="cartMobileTop">
             <div class="cartExit">
-              <i @click="closeCart();" class="fa-solid fa-arrow-left"></i>
+              <i onclick = "closeCart();" class="fa-solid fa-arrow-left"></i>
             </div>
             <div class="cartTitle">
               My Cart
@@ -112,26 +109,28 @@
                  </div>
                  <div class="cardProductDetails">
                    <p style = "font-size: 12px;"> {{ product.name }}</p>
-                   <p> ${{ product.price.toLocaleString('de-DE') }} </p>
+                   <p> {{ product.price }} </p>
                  </div>
                  <div class="cardProductOptions">
-                   <p> <span @click="addProduct(product)" class = "productIcon"> <i class="fa-solid fa-square-plus"></i></span> <span> {{ product.quantity }} </span> <span @click="subProduct(product)" class = "productIcon"> <i class="fa-solid fa-square-minus"></i> </span> </p>
-                   <p> <i class="fa-solid fa-trash productIcon" @click="removeProduct(product)"></i> </p>
+                   <p @click="addProduct(product)"> + </p>
+                   <p> {{ product.quantity }} </p>
+                   <p> <i class="fa-solid fa-trash" @click = "removeProduct(product.id)"></i> </p>
+                   <p @click="subProduct(product)"> - </p>
                  </div>
                </div>
             </div>
             <div class="cartBodyDetails">
               <div class="">
-                Subtotal: ${{ totalCart.toLocaleString('de-DE') }}
+                Subtotal: $99.000
               </div>
               <div class="">
-                Shippment: $1.000
+                Taxes: $1.000
               </div>
             </div>
           </div>
           <div class="cartMobileFooter">
             <div class="cartTotal">
-              Total: ${{ (totalCart + 1000).toLocaleString('de-DE') }}
+              Total: $100.000
             </div>
             <div class="cartCheckout">
               <button class = "cartBtn" type="button" name="button"><span> Checkout</span>
@@ -143,7 +142,7 @@
         <div class="cartMobileContainer" id = "cartMobileContainer">
           <div class="cartMobileTop">
             <div class="cartExit">
-              <i @click= "closeCart();" class="fa-solid fa-arrow-left"></i>
+              <i onclick = "closeCart();" class="fa-solid fa-arrow-left"></i>
             </div>
             <div class="cartTitle">
               My Cart
@@ -160,26 +159,28 @@
                  </div>
                  <div class="cardProductDetails">
                    <p style = "font-size: 12px;"> {{ product.name }}</p>
-                   <p> ${{ product.price.toLocaleString('de-DE') }} </p>
+                   <p> {{ product.price }} </p>
                  </div>
                  <div class="cardProductOptions">
-                   <p> <span @click="addProduct(product)" class = "productIcon"> + </span> <span> {{ product.quantity }} </span> <span @click="subProduct(product)" class = "productIcon"> - </span> </p>
-                   <p> <i class="fa-solid fa-trash productIcon" @click="removeProduct(product)"></i> </p>
+                   <p @click="addProduct(product)"> + </p>
+                   <p> {{ product.quantity }} </p>
+                   <p> <i class="fa-solid fa-trash" @click = "removeProduct(product.id)"></i> </p>
+                   <p @click="subProduct(product)"> - </p>
                  </div>
                </div>
             </div>
             <div class="cartBodyDetails">
               <div class="">
-                Subtotal: ${{ totalCart.toLocaleString('de-DE') }}
+                Subtotal: $99.000
               </div>
               <div class="">
-                Shippment: $1.000
+                Taxes: $1.000
               </div>
             </div>
           </div>
           <div class="cartMobileFooter">
             <div class="cartTotal">
-              Total: ${{ (totalCart + 1000).toLocaleString('de-DE') }}
+              Total: $100.000
             </div>
             <div class="cartCheckout">
               <button class = "cartBtn" type="button" name="button"><span> Checkout</span>
@@ -189,18 +190,17 @@
         </div>
 
         <div class="mainContent">
-            <div class="productCard" v-for="product in productsList">
+            <div class="productCard" v-for="product in productsFilters">
                 <div class="productBody">
-                    <div class="img" :style="'background-image: url('+product.urlImg+');'" :class="{piercing:!clothOrPier}"></div>
+                    <div class="img" :style="'background-image: url('+product.urlImg+');'"></div>
                     <div class="favouriteIcon">
-                        <i class='bx bxs-heart' v-if="favouritesIds.includes(product.id)"  @click="removeFavourite(product.id)"></i>
-                        <i class='bx bx-heart'v-else @click="addFavourite(product.id)"></i>
+                        <i class='bx bx-heart'></i>
                     </div>
                     <div class="productBodyBackground"></div>
                 </div>
                 <div class="productText">
                     <p class="nameProduct">{{product.name}}</p>
-                    <p class="priceProduct">${{product.price.toLocaleString('de-DE')}}</p>
+                    <p class="priceProduct">${{product.price}}</p>
                 </div>
             </div>
 
@@ -234,17 +234,18 @@
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>
     <script src="https://kit.fontawesome.com/14ea8811f4.js" crossorigin="anonymous"></script>
+
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/vue-dragscroll"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
 
     <script src="./scripts/shop.js"></script>
+    <script src="./test.js"></script>
 </body>
 
 </html>

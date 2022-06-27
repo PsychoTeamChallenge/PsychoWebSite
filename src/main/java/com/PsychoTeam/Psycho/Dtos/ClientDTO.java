@@ -17,7 +17,7 @@ public class ClientDTO {
 
     private Set<ClientProductDTO> cart;
 
-    private Set<Product> favourites;
+    private Set<ProductDTO> favourites;
     private Set<PostDTO> posts;
 
     public ClientDTO(Client client){
@@ -27,7 +27,7 @@ public class ClientDTO {
         this.userName = client.getUserName();
         this.email = client.getEmail();
         this.cart = client.getCart().stream().map(clientProduct -> new ClientProductDTO(clientProduct)).collect(Collectors.toSet());
-        this.favourites = client.getFavourites();
+        this.favourites = client.getFavourites().stream().map(product -> new ProductDTO(product)).collect(Collectors.toSet());
         this.posts = client.getPosts().stream().map(post -> new PostDTO(post)).collect(Collectors.toSet());
     }
 
