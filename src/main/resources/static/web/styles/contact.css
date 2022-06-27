@@ -95,10 +95,12 @@ body {
     background-image: url(../assets/index/alambrePuasSeparador.png);
     width: 100%;
     z-index: 1;
-    height: 17vh;
+    height: 16vh;
+    margin-top: 1%;
     top: 0.6%;
     filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
     z-index: 10001;
+    pointer-events: none;
 }
 
 /* ----------------------- INFO --------------------- */
