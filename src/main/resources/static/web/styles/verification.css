@@ -24,63 +24,139 @@
 body {
     background-image: url(../assets/background/newBackground.png);
     color: white;
+    box-sizing: border-box;
+}
+
+a{
+    color: white;
 }
 
 /* --------------------------------------- MAIN ---------------------------------- */
 
 /* verification success */
-.success{
+.success {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    padding-top: 5vh;
+    /* display: none; */
+    
+}
+
+/* verification error */
+.error {
     text-align: center;
     padding: 2%;
-    margin: 1%;
+    /* display: none; */
 }
 
-.success img{
-    width: 100px;
-}
- 
-/* verification error */
-.error{
-    text-align: center;
-    padding: 1%;
+/* ----------------- IMG --------------*/
+#verification1 {
+    width: 300px;
 }
 
+#verification2 {
+    width: 300px;
+}
+img{
+    padding-top: 3vh;
+}
 /* ------------------------------------ TITLE -----------------------*/
 h3,
 h2,
 h1 {
     font-family: 'Argh';
     font-weight: normal;
+    padding-top: 2vh;
 
 }
 
 h1 {
-    font-size: 3rem;
-}
-
-h2 {
-    font-size: 2rem;
-}
-
-
-@media screen and (min-width:800px){
-    .success{
-        margin: 5%;
-    }
-
-    .error{
-        padding: 3%;
-        margin: 5%;
-    }
-
-h1{
     font-size: 4rem;
 }
 
-h2{
-font-size: 3rem;
+h2, h3 {
+    font-size: 1.5rem;
 }
-h3{
-    font-size: 2rem;
+
+/* ---------------- TITLES ANIMATIONS -----------------*/
+.success h1 {
+    font-family: "Argh";
+    color: white;
+    animation: neon1 1s infinite;
+    font-size: 308%;
+    letter-spacing: 2.5px;
 }
+
+@keyframes neon1 {
+
+    0%,
+    39%,
+    41%,
+    59%,
+    61%,
+    100% {
+        text-shadow:
+            #fff 0 0 12px,
+            rgb(0, 224, 224) 0 0 24px,
+            rgb(0, 224, 224) 0 0 36px;
+    }
+
+    40%,
+    60% {
+        text-shadow: none;
+    }
+}
+
+.error h1 {
+    font-family: "Argh";
+    color: white;
+    animation: neon2 1s infinite;
+    font-size: 308%;
+    letter-spacing: 2.5px;
+}
+
+@keyframes neon2 {
+
+    0%,
+    39%,
+    41%,
+    59%,
+    61%,
+    100% {
+        text-shadow:
+            #fff 0 0 12px,
+            var(--darkpink) 0 0 24px,
+            var(--purple) 0 0 36px;
+    }
+
+    40%,
+    60% {
+        text-shadow: none;
+    }
+}
+
+/* ------------ MEDIA QUERIES ------------- */
+
+@media screen and (min-width:800px) {
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    #verification1 {
+        width: 400px;
+    }
+    
+    #verification2 {
+        width: 400px;
+    }
 }
