@@ -5,7 +5,6 @@ $(document).ready(function(){
   })
 
   if($(window).width() < 800){
-    console.log("ye");
     /*
     $('#logoTongue').addClass('logo-tongue');
     $('#logoTongue').removeClass('logo-tongue-navbar');*/
@@ -55,9 +54,8 @@ $(window).ready(hideLoader);
 setTimeout(hideLoader, 20 * 1000);
  */
 
-window.onload = function() 
+window.onload = function()
 {
-    //display loader on page load 
+    //display loader on page load
     $('#loading').fadeOut();
 }
-
