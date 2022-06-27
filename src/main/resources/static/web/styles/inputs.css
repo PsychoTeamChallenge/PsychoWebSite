@@ -97,7 +97,7 @@
 /* card inputs */
 
 .payment {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -133,6 +133,7 @@
   right: 130px; */
   cursor: pointer;
   transition: 1s;
+  margin-top: .5rem;
 }
 
 .button-49:last-child:hover {
@@ -214,14 +215,12 @@
 
 }
 
-@media screen and (min-width: 690px) {
+/* @media screen and (min-width: 690px) {
   .button-49 {
     right: 280px;
   }
 
-
-
-}
+} */
 
 @media screen and (min-width: 760px) {
   /* .button-49 {
@@ -232,9 +231,7 @@
     width: 54vw;
 }
   .inp {
-   
-    width: 90%!important;
-
+    width: 45%!important
   }
 }
 
@@ -242,7 +239,9 @@
   .payment {
     width: 91vh;
   }
-
+  .inp {
+    width: 44%!important;
+}
 }
 /*
 @media screen and (min-width: 900px) {
@@ -294,7 +293,11 @@
 }
 .half {
 
-  width: 46vw;
+  width: 54vw;
   justify-content: center;
 }
+.inp {
+  width: 45%!important;
+}
+
 }
