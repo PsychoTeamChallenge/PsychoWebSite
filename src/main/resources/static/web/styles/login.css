@@ -5,6 +5,7 @@
     padding: 0%;
     box-sizing: border-box;
 }
+
 html {
     min-height: 100vh;
     max-width: 100vw;
@@ -39,21 +40,23 @@ body {
     height: 160vh;
 }
 
-main{
+main {
     max-width: 100vw;
 }
 
 /* --------------- MAIN ----------------------*/
 
 /* ---- logo ----*/
-.tongueContainer{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 3vh;
+.tongueContainer {
+    width: 50%;
+    position: relative;
 }
+
 .logo-tongue {
-    width: 160px;
+    position: absolute;
+    width: 105px;
+    top: -143px;
+    right: -180px;
 }
 
 /* ----- Form----- */
@@ -81,7 +84,7 @@ a:hover {
     /* box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3); */
 }
 
-.tabContainer{
+.tabContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -127,7 +130,7 @@ a:hover {
 }
 
 .tab-group .active a {
-   /*  background:var(--lightblue); */
+    /*  background:var(--lightblue); */
     color: #ffffff;
     border-bottom: solid 3.5px aqua;
 }
@@ -156,9 +159,10 @@ label {
 
 label .req {
     margin: 2px;
-    color: var(--lightblue);;
+    color: var(--lightblue);
+    ;
     font-size: 2rem;
-    
+
 }
 
 label.active {
@@ -193,7 +197,8 @@ textarea {
 input:focus,
 textarea:focus {
     outline: 0;
-    border-color: var(--lightblue);;
+    border-color: var(--lightblue);
+    ;
 }
 
 textarea {
@@ -222,11 +227,11 @@ textarea {
     margin: 0;
 }
 
-.buttonContainer{
+.buttonContainer {
     width: 100%;
     display: flex;
     justify-content: center;
-    
+
 }
 
 .button {
@@ -269,27 +274,36 @@ textarea {
     src: url(../assets/fonts/fontsAlternativas/aAnotherTag.ttf);
 }
 
-h1{
+h1 {
     font-family: "Argh";
     color: white;
     animation: neon 1s infinite;
     font-size: 308%;
     letter-spacing: 2px;
 }
-@keyframes neon{
-    0% , 39%, 41%, 59%, 61%, 100%{
+
+@keyframes neon {
+
+    0%,
+    39%,
+    41%,
+    59%,
+    61%,
+    100% {
         text-shadow:
-        #fff 0 0 12px,
-        rgb(0, 224, 224)  0 0 24px,
-        rgb(0, 224, 224) 0 0 36px;
+            #fff 0 0 12px,
+            rgb(0, 224, 224) 0 0 24px,
+            rgb(0, 224, 224) 0 0 36px;
     }
-        
-        40%, 60%{
-        text-shadow:none; 
-        }
+
+    40%,
+    60% {
+        text-shadow: none;
+    }
 }
+
 /* ----------------------- MEDIA QUERIES --------------------*/
-@media screen and (min-width: 430px){
+@media screen and (min-width: 430px) {
     .tab-group {
         width: 60%;
     }
@@ -297,20 +311,27 @@ h1{
     .button {
         width: 50% !important;
     }
+
+    .logo-tongue {
+        position: absolute;
+        width: 105px;
+        top: -143px;
+        right: -180px;
+    }
 }
 
 @media screen and (min-width:650px) {
 
-    .form{
+    .form {
         box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.39);
         max-height: 95%;
     }
 
-    body{
+    body {
         height: 160vh;
         filter: none;
     }
-    
+
     .tab-group li a {
         width: 31%;
 
@@ -323,16 +344,26 @@ h1{
     .logo-tongue {
         width: 170px;
     }
+
+    .logo-tongue {
+        position: absolute;
+        width: 128px;
+        top: -21vh;
+        right: -8vw;
+    }
 }
 
 @media screen and (min-width:800px) {
 
-    body{
+    body {
         height: 140vh;
         filter: none;
     }
-    
+
+    .logo-tongue {
+        position: absolute;
+        width: 130px;
+        top: -21vh;
+        right: -5vw;
+    }
 }
-
-
-
