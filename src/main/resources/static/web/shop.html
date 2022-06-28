@@ -106,13 +106,15 @@
           </div>
         </div>
         <div class="productColor">
-          <div>
-            <span> Colours: </span>
+          <div class="colourTitle">
+            <span class = "productAttribute">Colours</span>
           </div>
-          <div class="colorPicker">
-            <div v-for = "size in currentProduct.sizes" class="sizeCard">
-              <a href="#"><span style = "visibility: hidden">14</span></a>
-            </div>
+          <div class="colourPicker">
+            <label v-for="color in currentProduct.colors" class="colour">
+              <input type="radio" name="colorProduct" :value="color">
+              <div class="layer"></div>
+              <div class="button"><span :style="'background-color: '+color+''"></span></div>
+            </label>
           </div>
         </div>
         <div class="productSizes">
@@ -160,22 +162,29 @@
                 <span class = "productAttribute">Colours</span>
               </div>
               <div class="colourPicker">
-                <label v-for="color in currentProduct.colors" class="orange">
-                  <input type="radio" name="color" value="orange">
+                <label v-for="color in currentProduct.colors" class="colour">
+                  <input type="radio" name="colorProduct" :value="color">
                   <div class="layer"></div>
                   <div class="button"><span :style="'background-color: '+color+''"></span></div>
                 </label>
-
               </div>
             </div>
-            <div >
+            <div class="colourTitle">
               <span class = "productAttribute">Sizes</span>
-              <p>{{ currentProduct.description }}</p>
+            </div>
+            <div class="colourPicker">
+              <label v-for="size in currentProduct.sizes" class="sizeLabel">
+                <input type="radio" name="sizeProduct" :value="size">
+                <div class="layer"></div>
+                <div class="sizeCard">
+                  <span href="#">{{ size }}</span>
+                </div>
+              </label>
             </div>
           </div>
           <div class="productDesktopFooter">
             <div>
-              
+              <button @click="addToCart(currentProduct.id)" type="button" class ="cartBtn" name="button"> Add to cart <i style = "margin-left: 1rem;" class="fa-solid fa-cart-arrow-down"></i> </button>
             </div>
             </div>
         </div>

@@ -25,10 +25,30 @@ input {
   transform: translate(-50%, -50%);
   border-radius: 100%;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-  transition: ease .3s;
+  transition: all 0.2s ease;
   border: 1px white solid;
 }
 
 .button span:hover {
   padding: 10px;
+  box-shadow: 0 0 0 4px #1f1f1f, 0 0 0 5px white;
+}
+
+
+.colour input:checked ~ .button span{
+  padding: 10px;
+  box-shadow: 0 0 0 4px #1f1f1f, 0 0 0 5px white;
+}
+
+.sizeLabel input:checked ~ .sizeCard span{
+  box-shadow: 0 0 0 0px #1f1f1f, 0 0 0 1px white;
+}
+
+.sizeLabel{
+  cursor: pointer;
+  margin-left: 1%;
+}
+
+.sizeLabel .sizeCard span{
+  background-color: rgb(230 0 130 / 40%);
 }

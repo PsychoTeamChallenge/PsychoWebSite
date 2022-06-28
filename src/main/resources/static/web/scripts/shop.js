@@ -207,6 +207,30 @@ Vue.createApp({
           }
 
         },
+        addToCart(id_product){
+          let colorValue = $('input[name="colorProduct"]:checked').val();
+          console.log(id_product);
+          /*
+          //@RequestParam double size, @RequestParam String color, @RequestParam int id_product
+          axios.post("api/cart/current", "size=" + size + "&color=" + color + "&id_product=" + id_product)
+          .then((response) => {
+            Swal.fire(
+              'Product added!',
+              'Your product has been added to the shopping cart',
+              'success'
+            );
+            this.closeCheckProduct();
+          })
+          .catch((error) => {
+            Swal.fire(
+              'Error!',
+              'Error: ' + error,
+              'error'
+            );
+            console.log(error);
+            this.closeCheckProduct();
+          });*/
+        },
         openCheckProduct(product){
           this.currentProduct = product;
           console.log(this.currentProduct);
@@ -222,9 +246,12 @@ Vue.createApp({
           if($(window).width() < 800){
             $('#productMobileContainer').css("top", "100%");
             $('html').toggleClass("active");
+            $("input[type=radio][name=colorProduct]").prop('checked', false);
           } else {
             $('#productDesktopContainer').css('top', '100%');
             $('html').toggleClass("active");
+            $("input[type=radio][name=colorProduct]").prop('checked', false);
+            $("input[type=radio][name=sizeProduct]").prop('checked', false);
           }
         },
         closeCart(){
