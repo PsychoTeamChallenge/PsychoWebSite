@@ -194,6 +194,7 @@ Vue.createApp({
                   'Your product has been removed.',
                   'success'
                 )
+                .then(this.actualizarClient())
               }
             });
           } else {
