@@ -41,6 +41,7 @@ body {
 }
 
 main {
+    padding: 3rem 0;
     max-width: 100vw;
 }
 
@@ -79,7 +80,7 @@ a:hover {
     background: transparent;
     padding: 40px;
     max-width: 600px;
-    margin: 40px auto;
+    margin: 0 auto;
     border-radius: 4px;
     /* box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3); */
 }
@@ -321,9 +322,15 @@ h1 {
         position: absolute;
         width: 121px;
         top: -143px;
-        left: 426px;
+        left: 260px;
     }
-    
+
+}
+
+@media screen and (min-width:670px) {
+    .logo-tongue {
+        width: -295px;
+    }
 }
 
 @media screen and (min-width:650px) {

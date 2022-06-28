@@ -16,10 +16,11 @@
 
 <body>
     <!-- LOADER -->
-    <div id="loading"></div>
+    <!-- <div id="loading"></div> -->
 
 
-    <div class="success">
+   <main id="app">
+    <div class="success" v-if="isActive" v-cloak>
         <h1 class="welcomeTitle">Welcome</h1>
         <h2> Thanks for signing up for Psycho Tattoo and Piercing Store!</h2>
         <h2>We're happy you're here.</h2>
@@ -27,15 +28,20 @@
         <img src="./assets/verification/autenticacion1.png" id="verification1">
     </div>
 
-    <!-- <div class="error">
+    <div class="error" v-if="!isActive" v-cloak>
         <h1> Oops!</h1>
         <h2>something came wrong, we can't verifed your account</h2>
         <h3><a href="./index.html">Go back</a></h3>
         <img src="./assets/verification/autenticacion2.png" id="verification2">
-    </div> -->
+    </div>
+   </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <script src="./scripts/navBar.js"></script>
+    <script src="./scripts/validation.js"></script>
 </body>
 
 </html>

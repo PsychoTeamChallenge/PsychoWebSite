@@ -39,7 +39,6 @@ Vue.createApp({
                 this.piercing = !this.piercing
             }
         },
-       
 
     },
     computed: {
@@ -50,8 +49,11 @@ Vue.createApp({
             else if (this.posts.length > 0 && this.tattoo && !this.piercing) {
                 this.filtradosCategory = this.posts.filter(post => post.postType == "TATTOO")
             }
-            else{
+            else if(this.tattoo && this.piercing){
                 this.filtradosCategory = this.posts;
+            }
+            else{
+                this.filtradosCategory = []
             }
 
             if(this.shearchInput != ""){
