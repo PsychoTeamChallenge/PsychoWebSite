@@ -357,131 +357,151 @@ public class PsychoApplication {
 
 			/// ------ PIERCING
 			sizes = asList(1.2,4.0);
-			colors = asList("titanium");
-			Product piercing = new Product("Polar Star Titanium Labret", "Star shaped labret with zirconia in the center, perfect for healed and healing piercings. You can use it in all the piercings of your little ear. Piece size: 3mm. In addition to being Implant Grade Titanium you can anodize it in various colors, we believe that in Blue it can be perfect.","https://cdn.filestackcontent.com/oJTUG62RTZu6WNi2oiGc",25,3100,"PIERCING","EAR");
+			colors = asList("grey");
+			Product piercing = new Product("Polar Star Titanium Labret", "Star shaped labret with zirconia in the center, perfect for healed and healing piercings. ","https://cdn.filestackcontent.com/oJTUG62RTZu6WNi2oiGc",25,3100,"PIERCING","EAR");
 			piercing.setColors(colors);
 			piercing.setSizes(sizes);
+			productService.saveProduct(piercing);
 
 
 			sizes = asList(1.2,10.0);
-			colors = asList("titanium");
+			colors = asList("grey");
 			Product piercing2 = new Product("Soul Titanium", "Ring decorated with a row of zircons covered with ball details. Clicker ring perfect for your Daith and Septum piercing. Remember that being Implant Grade Titanium you can anodize it in a wide variety of colors.","https://cdn.filestackcontent.com/jhEhMMw2R46tNu4z3MtC",14,4000,"PIERCING","EAR");
 			piercing2.setColors(colors);
 			piercing2.setSizes(sizes);
+			productService.saveProduct(piercing2);
 
 
 			sizes = asList(1.2,4.0);
-			colors = asList("titanium");
+			colors = asList("grey");
 			Product piercing3 = new Product("Circular Barbell earring Titanium Ring", "Perfect jewel for any of your piercings. Available in various sizes and colors, so that it adapts 100% to what you need and your personality.","https://cdn.filestackcontent.com/Pnh1LPaLRUqSyuwjgFF6",26,2220,"PIERCING","NOSE");
 			piercing3.setColors(colors);
 			piercing3.setSizes(sizes);
+			productService.saveProduct(piercing3);
 
 
 			sizes = asList(1.2,4.0);
-			colors = asList("titanium");
+			colors = asList("grey");
 			Product piercing4 = new Product("Ball with Titanium Flat Disc", "Ball labret perfect for any of your ear or lip piercings. A versatile jewel, and combinable with all the other jewels you can wear.","https://cdn.filestackcontent.com/ldagbJ1XSwKVBEsECvOD",18,1230,"PIERCING","BODY");
 			piercing4.setColors(colors);
 			piercing4.setSizes(sizes);
+			productService.saveProduct(piercing4);
 
 			sizes = asList(1.2,4.0);
-			colors = asList("titanium");
+			colors = asList("grey");
 			Product piercing5 = new Product("BCR Titanium Ring", "Earing BCR with Ball perfect for any of your piercings, available in different sizes and measurements. And also, being made of Titanium, it can be anodized in various colors to find your perfect design.","https://cdn.filestackcontent.com/FKley2HHRravDJeX5uzC",45,4300,"PIERCING","BODY");
 			piercing5.setColors(colors);
 			piercing5.setSizes(sizes);
+			productService.saveProduct(piercing5);
 
 
 			sizes = asList(1.0,6.0);
-			colors = asList("titanium");
+			colors = asList("grey");
 			Product piercing6 = new Product("Nostril White Gold","Nostril White Gold 14k for your nose piercing already healed or in the process of healing.","https://cdn.filestackcontent.com/RurrRkR0SeK0aKtoBavz",23,4500,"PIERCING","NOSE");
 			piercing6.setSizes(sizes);
 			piercing6.setColors(colors);
+			productService.saveProduct(piercing6);
 
 			sizes = asList(1.2, 8.0);
-			colors = asList("titanium");
+			colors = asList("grey");
 			Product piercing7 = new Product("Banana Diamonds","Piece with a diamond, made with 316L surgical steel, recommended for Rook, Daith or Vertical Labret already cured or in the process of healing.","https://cdn.filestackcontent.com/2DGxhBE6SMCZ6eGNgNH7",43,1200,"PIERCING","BODY");
 			piercing7.setSizes(sizes);
 			piercing7.setColors(colors);
+			productService.saveProduct(piercing7);
 
 
 			sizes = asList(14.0);
-			colors = asList("titanium");
+			colors = asList("grey");
 			Product piercing8 = new Product("Surgical Steel Labret","Surgical Steel Labret perfect for any of your ear piercings already healed or in the process of healing.","https://cdn.filestackcontent.com/8U0r0XYpSVqGIESwIfAe",12,3400,"PIERCING","EAR");
 			piercing8.setSizes(sizes);
 			piercing8.setColors(colors);
+			productService.saveProduct(piercing8);
 
 
 			sizes = asList(2.0,3.0);
-			colors = asList("titanium");
+			colors = asList("grey");
 			Product piercing9 = new Product("Big BCR Piercing","Recommended piece for dilations and dilated septum already cured or in the process of healing.","https://cdn.filestackcontent.com/k7LastX2QnuYTK97egNF",33,1500,"PIERCING","EAR");
 			piercing9.setSizes(sizes);
 			piercing9.setColors(colors);
+			productService.saveProduct(piercing9);
 
 			sizes = asList(1.6,34.0);
-			colors = asList("titanium");
+			colors = asList("grey");
 			Product piercing10 = new Product("Zirconia Industrial Barbell","Perfect for your industrial piercing. Customize your little ear with this unique piece. Possibility of anodizing it in various colors to convey your personality to the jewel.","https://cdn.filestackcontent.com/cv4OYwMQjWe1i7ONBhea",22,1340,"PIERCING","EAR");
 			piercing10.setSizes(sizes);
 			piercing10.setColors(colors);
+			productService.saveProduct(piercing10);
 
 			sizes = asList(14.0,16.0,18.5);
-			colors = asList("titanium");
+			colors = asList("grey");
 			Product piercing11 = new Product("Barbell Titanium Balls","Ball labret perfect for any of your ear or lip piercings. A versatile jewel, and combinable with all the other jewels you can wear.","https://cdn.filestackcontent.com/zxZNndrdQJU1l69m7qKq",15,1000,"PIERCING", "MOUTH");
 			piercing11.setSizes(sizes);
 			piercing11.setColors(colors);
+			productService.saveProduct(piercing11);
 
 			sizes = asList(1.2);
-			colors = asList("titanium,blue");
+			colors = asList("grey","lightblue");
 			Product piercing12 = new Product("Labret Dawn Flower Titanium","Perfect jewel to combine all your piercings and make a perfect design of your little ear. The measurement of the top is 5.4mm Remember that being Implant Grade Titanium it can be anodized in various colors. Choose yours in our dropdown.","https://cdn.filestackcontent.com/zdvZOM0QTQiMZ0VlLNXU",20,2100,"PIERCING","MOUTH");
 			piercing12.setSizes(sizes);
 			piercing12.setColors(colors);
+			productService.saveProduct(piercing12);
 
 			sizes = asList(1.6);
-			colors = asList("titanium,blue");
+			colors = asList("grey","lightblue");
 			Product piercing13 = new Product("Industrial Opal Heart","Piercing for Industrial with heart-shaped balls on the sides. Heart in blue opal. Single measurement: 1.6 mm x 37 mm.","https://cdn.filestackcontent.com/hHy0Xh4SomsZ4BAySsMg",12,3050,"PIERCING","EAR");
 			piercing13.setSizes(sizes);
 			piercing13.setColors(colors);
+			productService.saveProduct(piercing13);
 
 			sizes = asList(1.6);
-			colors = asList("titanium,blue");
+			colors = asList("grey","lightblue");
 			Product piercing14 = new Product("Navel Piercing – Turquoise","Navel piercing with ethnic details and turquoise Opal Stone in the center. Single measurement: 1.6mm x 12mm. Standard navel measurement.","https://cdn.filestackcontent.com/DSK5Jz5DTOqJ6YBVTVIg",24,1540,"PIERCING","BODY");
 			piercing14.setSizes(sizes);
 			piercing14.setColors(colors);
+			productService.saveProduct(piercing14);
 
 			sizes = asList(8.0);
-			colors = asList("titanium,blue");
+			colors = asList("grey","lightblue");
 			Product piercing15 = new Product("Labret Opal Stone Aquamarine","Labret Opal Stone in Aquamarine color for healed piercings. The top is available in various sizes. internal thread","https://cdn.filestackcontent.com/66Kc6RRSEyuHDK2tlGfQ",10,1300,"PIERCING","EAR");
 			piercing15.setSizes(sizes);
 			piercing15.setColors(colors);
+			productService.saveProduct(piercing15);
 
 			sizes = asList(1.2,7.0);
-			colors = asList("titanium");
-			Product piercing16 = new Product("Nebula Titanium Labret","Labret with flat zirconia and decorated with a chain ending with another zirconia. A nebula of fantasy for the senses that will make your little ear an interstellar paradise. Remember that being Implant Grade Titanium we can anodize it in many different colors so that your nebula is totally personalized for you.","https://cdn.filestackcontent.com/h5oXezqST0ufhVYJVJss",26,1500,"PIERCING","BODY");
+			colors = asList("grey");
+			Product piercing16 = new Product("Nebula Titanium Labret","Labret with flat zirconia and decorated with a chain ending with another zirconia.","https://cdn.filestackcontent.com/h5oXezqST0ufhVYJVJss",26,1500,"PIERCING","BODY");
 			piercing16.setSizes(sizes);
 			piercing16.setColors(colors);
+			productService.saveProduct(piercing16);
 
 			sizes = asList(1.6);
-			colors = asList("titanium");
+			colors = asList("grey");
 			Product piercing17 = new Product("Barbell Colors Titanium","Perfect barbell for nipple piercing, with two Opal tips available in various colors. The material is Implant Grade Titanium so you can anodize it in the color you want.","https://cdn.filestackcontent.com/ZVtRZqN9RNdnVuufOV5Q",16,2800,"PIERCING","BODY");
 			piercing17.setSizes(sizes);
 			piercing17.setColors(colors);
+			productService.saveProduct(piercing17);
 
 			sizes = asList(1.6);
-			colors = asList("titanium");
+			colors = asList("grey");
 			Product piercing18 = new Product("Septum Piercing – Hindú","316L Surgical Steel.Septum Piercing. Single measure."," https://cdn.filestackcontent.com/hhZe9lVORdWBNIook2qk",25,1099,"PIERCING","NOSE");
 			piercing18.setSizes(sizes);
 			piercing18.setColors(colors);
+			productService.saveProduct(piercing18);
 
 			sizes = asList(1.6);
-			colors = asList("titanium");
+			colors = asList("grey");
 			Product piercing19 = new Product("Surface with Flat Disc","Surface Bar with Flat Disc. Perfect jewel for your Superficial Piercing or vertical Labret. Available in various sizes and measurements, it can also be anodized in various colors.","https://cdn.filestackcontent.com/rvPoSrFmQmOCH21fLHLm",25,2100,"PIERCING","EAR");
 			piercing19.setSizes(sizes);
 			piercing19.setColors(colors);
+			productService.saveProduct(piercing19);
 
 			sizes = asList(6.0,8.0,10.0,14.0);
-			colors = asList("titanium");
-			Product piercing20 = new Product("Banana Roof Titanium Balls","Labret Roof made of 3.4mm balls perfect for your Rook, Lip and Snug Piercing... Also remember that being Implant Grade Titanium it can be anodized in various colors, to achieve the perfect design adapted to other piercings or earrings.","https://cdn.filestackcontent.com/0fnSq1S6RZuwTmm7580s",30,1100,"PIERCING","EAR");
+			colors = asList("grey");
+			Product piercing20 = new Product("Banana Roof Titanium Balls","Labret Roof made of 3.4mm balls perfect for your Rook, Lip and Snug Piercing","https://cdn.filestackcontent.com/0fnSq1S6RZuwTmm7580s",30,1100,"PIERCING","EAR");
 			piercing20.setSizes(sizes);
 			piercing20.setColors(colors);
-			
+			productService.saveProduct(piercing20);
+
 
 
 //	        DECLARACION DE POST: NOMBRE | TITULO | FOTO | DESCRIPCION | TATUADOR | TIPO DE POST (TATTOO O PIERCING) | FUEGOS (1 al 5)

@@ -204,7 +204,7 @@ cursor: pointer;
   margin-top: 1%;
   top: 24px;
   filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
-  z-index: 10001;
+  z-index: 10;
   pointer-events: none;
 }
 
