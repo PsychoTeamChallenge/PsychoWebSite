@@ -33,7 +33,7 @@
   <!-- LOADER -->
   <div id="loading"></div>
   <!-- nav desktop -->
-  <nav class="desktopNav nav-bar fixed-top justify-content-around">
+  <nav class="desktopNav nav-bar  justify-content-around">
     <div class="">
 
     </div>
@@ -80,7 +80,7 @@
       <div id="barbedWire" class="barbedWire barbedWire-navbar"></div>
     </section>
 
-    <div class="productMobileContainer" id = "productMobileContainer">
+    <!-- <div class="productMobileContainer" id = "productMobileContainer">
       <div class="productMobileTop">
         <div class="productExit" @click ="closeCheckProduct()">
           <a href="#"><i class="fa-solid fa-arrow-left bigProductIcon"></i></a>
@@ -126,7 +126,7 @@
       <div class="productMobileFooter">
         <button type="button" class ="cartBtn" name="button"> Add to cart <i style = "margin-left: 1rem;" class="fa-solid fa-cart-arrow-down"></i> </button>
       </div>
-    </div>
+    </div> -->
 
     <div class="mobileHeaderBackground"></div>
 
@@ -135,14 +135,14 @@
       <p class="title">Search Options</p>
       <h3>Order by:</h3>
       <div class="orderDiv">
-        <div :class="{active:order == 'lowPrice'}"><i class='bx bx-chevron-down'
-            @click="changeOrder('lowPrice')"></i>Price</div>
-        <div :class="{active:order == 'highPrice'}"><i class='bx bx-chevron-up'
-            @click="changeOrder('highPrice')"></i>Price</div>
-        <div :class="{active:order == 'lowApha'}"><i class='bx bx-chevron-up' @click="changeOrder('lowApha')"></i>A-Z
+        <div :class="{active:order == 'lowPrice'}" @click="changeOrder('lowPrice')"><i class='bx bx-chevron-down'
+            ></i>Price</div>
+        <div :class="{active:order == 'highPrice'}"  @click="changeOrder('highPrice')"><i class='bx bx-chevron-up'
+           ></i>Price</div>
+        <div :class="{active:order == 'lowApha'}" @click="changeOrder('lowApha')"><i class='bx bx-chevron-up'></i>A-Z
         </div>
-        <div :class="{active:order == 'highApha'}"><i class='bx bx-chevron-down'
-            @click="changeOrder('highApha')"></i>Z-A</div>
+        <div :class="{active:order == 'highApha'}" @click="changeOrder('highApha')"><i class='bx bx-chevron-down'
+            ></i>Z-A</div>
       </div>
 
       <h3>Filter by:</h3>

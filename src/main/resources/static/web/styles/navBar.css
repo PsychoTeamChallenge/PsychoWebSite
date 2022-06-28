@@ -190,7 +190,7 @@
   z-index: 1;
   height: 17vh;
   margin-top: 1%;
-  top: 20px;
+  top: 24px;
   filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
   z-index: 10001;
   pointer-events: none;
@@ -333,6 +333,11 @@
     background-color: black;
     transition: .3s;
     height: 70px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9
   }
 
   .nav-item {

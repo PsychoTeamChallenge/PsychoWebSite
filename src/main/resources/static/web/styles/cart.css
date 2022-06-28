@@ -145,14 +145,20 @@ border: 1px solid rgba(255, 255, 255, 0.125);
   background-color: rgb(230 0 130 / 53%);
   border-radius: 50%;
   padding: 0.5rem;
+  transition: .3s;
 }
 
 .cartRemove i{
   background-color: rgb(230 0 130 / 53%);
   border-radius: 50%;
   padding: 0.5rem;
-}
+  transition: .3s;
 
+}
+.cartExit i:hover,.cartRemove i:hover{
+  cursor: pointer;
+  transform: scale(1.2);
+}
 .cartBtn{
   background-color: rgb(230 0 130 / 53%);
   color: white;

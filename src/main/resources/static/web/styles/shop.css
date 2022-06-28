@@ -98,18 +98,7 @@ p{
     padding-bottom: .5rem;
 }
 
-.mobileHeaderBackground {
-    height: 7rem;
-    width: 100%;
-    top: 0;
-    position: absolute;
-    z-index: -1;
-    background-image: url(../assets/index/welcomeGirl2.png);
-    background-position: center;
-    background-size: cover;
-    background-position-y: -23px;
-    filter: blur(1px) saturate(0) opacity(0.4);
-}
+
 
 .upSeccion {
     display: flex;
@@ -134,6 +123,11 @@ p{
     padding: 0.5rem;
     border-radius: 50%;
     position: relative;
+    transition: .3s;
+}
+.upSeccion i:hover {
+cursor: pointer;
+transform: scale(1.2);
 }
 
 .upSeccion i span {
@@ -169,6 +163,14 @@ p{
     bottom: -15px;
     transform: scale(.9);
 }
+
+.optionPiercing:hover,
+.optionClothing:hover,
+.optionPiercingSelect:hover,
+.optionClothingSelect:hover {
+cursor: pointer;
+}
+
 
 .optionClothing,
 .optionClothingSelect {
@@ -217,6 +219,9 @@ p{
     padding: .3rem;
     border-radius: 50%;
 }
+.downSeccion .filters i:hover {
+cursor: pointer;
+}
 
 .downSeccion .filters input {
     width: 8rem;
@@ -236,7 +241,6 @@ p{
     top: 69.6%;
     /* background-position-x: 112px; */
     background-size: 77.1rem;
-    background-repeat: no-repeat;
     filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
 }
 
@@ -269,6 +273,9 @@ p{
     font-size: 2rem;
     top: 0.1rem;
 }
+.filterMobileContainer .bx.bx-left-arrow-alt:hover{
+    cursor: pointer;
+}
 
 .filterMobileContainer .title {
     position: absolute;
@@ -300,6 +307,7 @@ p{
     justify-content: center;
     align-items: center;
     text-align: center;
+    cursor: pointer;
 }
 
 .clothingOptions div,
@@ -439,73 +447,6 @@ p{
 }
 
 
-@media (min-width:460px){
-    .mainContent{
-        justify-content: space-between;
-        min-height: 69vh;
-        width: 90%;
-        display: flex;
-        gap: 1rem;
-        margin-top: 2.5rem;
-        flex-wrap: wrap;
-        margin-bottom: 5rem;
-        align-self: center;
-    }
-    #app{
-        display: flex;
-        flex-direction: column;
-    }
-}
-
-@media (min-width:690px){
-    .mainContent .productCard {
-        width: 12rem;
-        height: 10rem;
-    }
-
-    .productBody {
-        height: 10rem;
-    }
-    .productBody .img{
-        transform: scale(1.5);
-        left: 2rem;
-    }
-
-    .upSeccion i {
-        font-size: 1.6rem;
-        position: fixed;
-        top: 80vh;
-        left: 6%;
-        z-index: 3;
-    }
-
-}
-@media (min-width:800px){
-    .upSeccion i {
-        top: 88vh;
-        left: 5%;
-    }
-
-}
-@media (min-width:1100px){
-    .mainContent .productCard {
-        width: 14rem;
-        height: 12rem;
-    }
-    .productBody {
-        height: 12rem;
-    }
-    .productBodyBackground {
-        height: 12rem;
-    }
-    .productBody .img{
-        bottom: 3.2rem;
-        transform: scale(1.7);
-        left: 3rem;
-    }
-
-
-}
 
 .productMobileContainer{
   position: fixed;
@@ -655,4 +596,110 @@ p{
 .productMobileBody .img.piercing {
     transform: scale(1.3);
     filter: drop-shadow(7px 8px 15px black);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width:460px){
+    .mainContent{
+        justify-content: space-between;
+        min-height: 69vh;
+        width: 90%;
+        display: flex;
+        gap: 1rem;
+        margin-top: 2.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 5rem;
+        align-self: center;
+    }
+    #app{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width:690px){
+    .mainContent .productCard {
+        width: 12rem;
+        height: 10rem;
+    }
+
+    .productBody {
+        height: 10rem;
+    }
+    .productBody .img{
+        transform: scale(1.5);
+        left: 2rem;
+    }
+
+    .upSeccion i {
+        font-size: 1.6rem;
+        position: fixed;
+        top: 80vh;
+        left: 6%;
+        z-index: 3;
+    }
+
+}
+@media (min-width:800px){
+    .upSeccion i {
+        top: 88vh;
+        left: 5%;
+    }
+    .filterMobileContainer{
+        left: 100%;
+        width: 40%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        z-index: 10;
+        transition: all 1s ease;
+        backdrop-filter: blur(7px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        background-color: rgb(22 16 21 / 75%);
+        background-image: none;
+        border: 1px solid rgba(255, 255, 255, 0.125);
+    }
+    .filterMobileContainer.active{
+        left: 60%;
+    }
+
+}
+@media (min-width:1100px){
+    .mainContent .productCard {
+        width: 14rem;
+        height: 12rem;
+    }
+    .productBody {
+        height: 12rem;
+        transition: 0.4s;
+    }
+    .productBodyBackground {
+        height: 12rem;
+    }
+    .productBody .img{
+        bottom: 3.2rem;
+        transform: scale(1.7);
+        left: 3rem;
+    }
+
+
 }
