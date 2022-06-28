@@ -47,9 +47,7 @@ public class PsychoApplication {
 			clientService.saveClient(clientAdmin2);
 
 
-//			DECLARACION DE PRODUCTO: NOMBRE | DESCRIPCION | FOTO | STOCK | PRECIO | CATEGORIA (CLOTHING O PIERCING) | SUBCATEGORIA
-//	        PARA OBTENER LAS URL DE LAS IMAGENES IR A  subidorImagenes.html Y COPIAR LA URL QUE LES DE EL SWEETALERT
-//			PARA LOS TAMAÑOS Y COLORES USAR SIZES (O COLORS) = asList(ACA LOS DATOS)
+
 
 			List<Double> sizes = asList(14.0,16.0);
 			List<String> colors = asList("yellow");
@@ -57,6 +55,12 @@ public class PsychoApplication {
 			Product beanie = new Product("Beanie", "yellow beanie","./assets/productosPrueba/gorrito1.png",30,2600,"CLOTHING","HAT");
 			beanie.setColors(colors);
 			beanie.setSizes(sizes);
+
+
+//			DECLARACION DE PRODUCTO: NOMBRE | DESCRIPCION | FOTO | STOCK | PRECIO | CATEGORIA (CLOTHING O PIERCING) | SUBCATEGORIA
+//	        PARA OBTENER LAS URL DE LAS IMAGENES IR A  subidorImagenes.html Y COPIAR LA URL QUE LES DE EL SWEETALERT
+//			PARA LOS TAMAÑOS Y COLORES USAR SIZES (O COLORS) = asList(ACA LOS DATOS)
+
 
 			sizes = asList(14.0,16.0,18.5);
 			colors = asList("brown");

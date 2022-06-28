@@ -16,7 +16,6 @@ $(document).ready(function () {
 function checkScroll() {
     let navbar = $('.nav-bar');
     let scrollPositionY = $(window).scrollTop();
-    console.log(scrollPositionY);
     if (($(window).width() < 800)) {
         $('#logoTongue').addClass('logo-tongue');
         $('#logoTongue').removeClass('logo-tongue-navbar');
@@ -54,7 +53,6 @@ $(window).ready(hideLoader);
 // Strongly recommended: Hide loader after 20 seconds, even if the page hasn't finished loading
 setTimeout(hideLoader, 20 * 1000);
  */
-
 window.onload = function () {
     //display loader on page load
     $('#loading').fadeOut();

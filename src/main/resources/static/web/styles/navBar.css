@@ -18,7 +18,6 @@
 
 /* ===================OPTIONS VIEW================== */
 
-
 .mobileHeader {
   height: 7rem;
   display: flex;
@@ -103,6 +102,16 @@
   bottom: -15px;
   transform: scale(.9);
 }
+
+.optionPiercing:hover,
+.optionClothing:hover,
+.optionPiercingSelect:hover,
+.optionClothingSelect:hover,
+.optionTattoo:hover,
+.optionTattooSelect:hover {
+cursor: pointer;
+}
+
 
 .optionClothing,
 .optionClothingSelect,
@@ -270,7 +279,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   z-index: 9999999;
 }
