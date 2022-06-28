@@ -26,6 +26,21 @@
     src: url(../assets/fonts/fontsAlternativas/aAnotherTag.ttf);
 }
 
+@font-face {
+    font-family: "Fester";
+    src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+
+@font-face {
+    font-family: "Hopes Letter";
+    src: url(../assets/fonts/hopesLetter/Hopes\ Letter.ttf);
+}
+
+@font-face {
+    font-family: "Welcome Summer";
+    src: url(../assets/fonts/welcomeSummer/WelcomeSummer.ttf);
+}
+
 
 /*------------------------------ ANIMACIONES -----------------------------------------*/
 
@@ -299,9 +314,8 @@ body {
 }
 
 .aboutUsContainer p {
-    /* font-family: 'Nanum Gothic', sans-serif; */
-    font-family: 'Text', sans-serif;
-    font-size: 1.3rem;
+    font-family: "Fester";
+    font-size: 1.5rem;
 }
 
 h4 {

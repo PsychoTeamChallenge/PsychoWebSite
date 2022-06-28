@@ -2,6 +2,13 @@
 footer{
     display: none;
 }
+
+/* tipografia*/
+@font-face {
+    font-family: "Fester";
+    src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+
 /* ---------------------- FOOTER ----------------------*/
 @media (min-width: 800px) { 
 footer {

@@ -274,6 +274,11 @@ textarea {
     src: url(../assets/fonts/fontsAlternativas/aAnotherTag.ttf);
 }
 
+@font-face {
+    font-family: "Fester";
+    src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+
 h1 {
     font-family: "Argh";
     color: white;

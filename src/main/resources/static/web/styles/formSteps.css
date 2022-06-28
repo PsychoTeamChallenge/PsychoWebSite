@@ -13,6 +13,11 @@ body {
   src: url("../assets/fonts/argh/ArghDemo-Italic.otf");
 }
 
+@font-face {
+  font-family: "Fester";
+  src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+
 * {
   margin: 0;
   padding: 0;

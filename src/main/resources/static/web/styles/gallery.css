@@ -10,6 +10,11 @@
   src: url("../assets/fonts/argh/ArghDemo-Italic.otf");
 }
 
+@font-face {
+  font-family: "Fester";
+  src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+
 /* Reseteo */
 * {
   margin: 0;

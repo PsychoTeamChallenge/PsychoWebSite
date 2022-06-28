@@ -3,6 +3,11 @@
   --pink: rgb(230, 0, 130);
 }
 
+@font-face {
+  font-family: "Fester";
+  src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+
 .inp {
 
   position: relative;

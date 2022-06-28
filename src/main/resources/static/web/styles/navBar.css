@@ -7,6 +7,13 @@
   --darkpink: #C3007D;
 }
 
+/* Tipografias*/
+
+@font-face {
+  font-family: "Fester";
+  src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+
 /* // ==================HEADER==================== // */
 
 /* ===================OPTIONS VIEW================== */
