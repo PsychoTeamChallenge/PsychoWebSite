@@ -26,6 +26,21 @@
     src: url(../assets/fonts/fontsAlternativas/aAnotherTag.ttf);
 }
 
+@font-face {
+    font-family: "Fester";
+    src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+
+@font-face {
+    font-family: "Hopes Letter";
+    src: url(../assets/fonts/hopesLetter/Hopes\ Letter.ttf);
+}
+
+@font-face {
+    font-family: "Welcome Summer";
+    src: url(../assets/fonts/welcomeSummer/WelcomeSummer.ttf);
+}
+
 
 /*------------------------------ ANIMACIONES -----------------------------------------*/
 
@@ -280,11 +295,6 @@ body {
     }
 }
 
-h2 {
-    /* animation:  fade-in-right .6s cubic-bezier(.39, .575, .565, 1.000) both; */
-    /* animation-delay: 1s; */
-}
-
 
 
 /* ----------------ABOUT US AND CONTACT US --------------------*/
@@ -304,9 +314,8 @@ h2 {
 }
 
 .aboutUsContainer p {
-    /* font-family: 'Nanum Gothic', sans-serif; */
-    font-family: 'Text', sans-serif;
-    font-size: 1.3rem;
+    font-family: "Fester";
+    font-size: 1.5rem;
 }
 
 h4 {
@@ -333,6 +342,8 @@ h4 {
 
 
 /* ----------------------CONTACT US ------------------------*/
+
+/* ------- FORM -------*/
 
 .contactUsContainer {
     display: flex;
@@ -384,15 +395,7 @@ form textarea {
 
 /* form contact */
 form {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    flex-direction: column;
-    /* margin-left: 6%; */
-    gap: 0.5rem;
-    padding-top: 5vh;
-    padding-bottom: 6.5vh;
+display: none;
 }
 
 /* button submit form */
@@ -436,10 +439,66 @@ form textarea::-webkit-input-placeholder {
     color: white !important;
 }
 
+/* ------- Contact us IMG -------*/
+
+.contactUsImgContainer{
+    width: 100% !important;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 15vh;
+}
+
+#contactUsImg{
+    max-width: 80%;
+}
+
+h6{
+    max-width: 80%;
+    width: 80%;
+    height: 18rem;
+    z-index: 20 !important;
+    position: absolute;
+    top: -15px;
+    left: 35px;
+    font-size: 3.9rem;
+    letter-spacing: 5px;
+    animation: neon 1s infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contactUsImgContainer a{
+    text-decoration: none;
+    color: white;
+}
+
+@keyframes neon {
+
+    0%,
+    39%,
+    41%,
+    59%,
+    61%,
+    100% {
+        text-shadow:
+            #fff 0 0 12px,
+            rgb(0, 224, 224) 0 0 24px,
+            rgb(0, 224, 224) 0 0 36px;
+    }
+
+    40%,
+    60% {
+        text-shadow: none;
+    }
+}
+
 
 /* ------------------------------------ TITLE -----------------------*/
 h2,
-h3 {
+h3,
+h6 {
     font-family: 'Argh';
 }
 
@@ -451,8 +510,15 @@ h3 {
     font-size: 2rem;
 }
 
-
 /* ---------------------- MEDIA QUERIES ----------------------*/
+@media screen and (min-width:380px){
+    h6{
+        position: absolute;
+        top: 19px;
+        left: 39.9px;
+        font-size: 4.6rem;
+    }
+}
 
 @media screen and (min-width:550px) and (max-width:739px) {
 
@@ -533,6 +599,25 @@ h3 {
         padding-top: 1.3rem;
     }
 
+}
+
+@media screen and (min-width: 800px){
+    .contactUsImgContainer{
+        display: none;
+    }
+
+    form {
+        display: inline;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        flex-direction: column;
+        /* margin-left: 6%; */
+        gap: 0.5rem;
+        padding-top: 5vh;
+        padding-bottom: 6.5vh;
+    }
 }
 
 @media screen and (min-width:1080px) {

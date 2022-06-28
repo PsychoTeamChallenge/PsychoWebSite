@@ -19,6 +19,11 @@
     src: url(../assets/fonts/argh/ArghDemo.otf);
 }
 
+@font-face {
+    font-family: "Fester";
+    src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+
 * {
     font-family: "Argh";
 }

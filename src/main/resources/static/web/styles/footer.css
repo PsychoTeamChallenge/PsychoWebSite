@@ -2,6 +2,13 @@
 footer{
     display: none;
 }
+
+/* tipografia*/
+@font-face {
+    font-family: "Fester";
+    src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+
 /* ---------------------- FOOTER ----------------------*/
 @media (min-width: 800px) { 
 footer {
@@ -17,11 +24,13 @@ footer {
 .barbedWireFooter {
     position: absolute;
     background-image: url(../assets/index/alambrePuasSeparador.png);
+    background-repeat: repeat-x ;
     width: 100%;
     z-index: 1;
     height: 17vh;
     top: -53px;
     filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+
 }
 
 .partLeft {

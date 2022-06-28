@@ -20,6 +20,11 @@
     src: url(../assets/fonts/argh/ArghDemo.otf);
 }
 
+@font-face {
+    font-family: "Fester";
+    src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+
 /* body */
 body {
     background-image: url(../assets/background/newBackground.png);
@@ -29,6 +34,7 @@ body {
 
 a{
     color: white;
+    text-decoration: underline;
 }
 
 /* --------------------------------------- MAIN ---------------------------------- */
