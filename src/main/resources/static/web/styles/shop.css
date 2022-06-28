@@ -600,12 +600,65 @@ cursor: pointer;
 
 
 
+/* SWEET ALERTS COLORS */
 
+.swal2-popup{  
+    border: 1px solid !important;
+    background: black !important;
+    color: var(--pink) !important;
+    font-family: Argh !important;
+    background-image: url(../assets/newBackground.png) !important;
+}
+.swal2-title,.swal2-html-container {
+    color: white !important;
+    letter-spacing: 2px;
+}
+.swal2-html-container {
+    font-family: Fester !important;
+}
+.swal2-icon.swal2-warning {
+    display: inline-block;
+    border: 0.1rem solid var(--lightblue)!important;
+    box-shadow: 0 0 0.1rem #fff, 0 0 1rem var(--lightblue);
+    color: var(--lightblue)!important;
+}
+.swal2-styled.swal2-confirm {
+    border: 0.1rem solid #fff !important;
+    background-color: var(--lightblue) !important;
+    box-shadow: 0 0 0.1rem #fff, 0 0 1rem var(--lightblue)!important;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px black;
+    font-size: 1.3rem!important;
+}
+.swal2-styled.swal2-cancel {
+    border: 0.1rem solid #fff !important;
+    background-color: var(--pink) !important;
+    box-shadow: 0 0 0.1rem #fff, 0 0 1rem var(--pink)!important;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px black;
+    font-size: 1.3rem!important;
+}
+.swal2-icon.swal2-error {
+    border-color: var(--pink) !important;
+    color:  var(--pink) !important;
+}
+.swal2-icon.swal2-error [class^=swal2-x-mark-line] {
 
+    background-color: var(--pink) !important;
+}
+.swal2-icon.swal2-success .swal2-success-ring {
+    border: 0.1rem solid #fff !important;
+    color: var(--lightblue)!important;
+    box-shadow: 0 0 0.1rem #fff, 0 0 1rem var(--lightblue)!important;
+}
+.swal2-icon.swal2-success {
+   color: var(--lightblue)!important;
+   border-color: var(--lightblue)!important;
+}
+.swal2-icon.swal2-success [class^=swal2-success-line] {
 
-
-
-
+    background-color: var(--lightblue)!important;
+}
 
 
 
