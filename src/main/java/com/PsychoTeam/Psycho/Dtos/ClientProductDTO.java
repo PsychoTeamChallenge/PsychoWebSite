@@ -7,7 +7,7 @@ import lombok.Getter;
 public class ClientProductDTO {
 
     private long id,idProduct;
-    private String color, url, name;
+    private String color, url, name, description;
     private double  size,price;
     private int quantity;
 
@@ -20,5 +20,6 @@ public class ClientProductDTO {
         this.quantity = clientProduct.getQuantity();
         this.url = clientProduct.getUrl();
         this.name = clientProduct.getName();
+        this.description = clientProduct.getProduct().getDescription();
     }
 }

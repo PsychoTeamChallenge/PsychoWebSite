@@ -13,6 +13,9 @@
   font-family: "Fester";
   src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
 }
+[v-cloak]{
+  opacity: 0;
+}
 
 /* // ==================HEADER==================== // */
 

@@ -109,15 +109,37 @@ function switchTab(number){
   switchIcon(number);
 }
 
+Vue.createApp({
+  data() {
+      return {
+        client:{},
+        cart:[],
+       
+       
+        isClient:false,
+        
+      }
+  },
 
-  /*for(let i = 0; i < tabs.length; i++){
-    if(i != n){
-      if($(tabs[i]).hasClass('hidden') == false){
-        $(tabs[i]).toggleClass('hidden');
-      }
-    } else {
-      if($(tabs[i]).hasClass('hidden') == true){
-        $(tabs[i]).toggleClass('hidden');
-      }
-    }
-  }*/
+  created() {
+     axios.get("/api/clients/current")
+        .then(response=> {
+            this.isClient = true;
+            this.client = response.data;
+            this.cart = this.client.cart;
+            console.log(this.cart)
+        })
+
+  },
+
+  methods: {
+
+
+
+  },
+  computed: {
+  
+
+  }
+
+}).mount('#app')
