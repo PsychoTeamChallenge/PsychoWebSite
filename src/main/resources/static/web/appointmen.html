@@ -56,60 +56,56 @@
             </div>
             <div class="form__body">
                 <label for="name">
-                    <span class="form__label">Name</span>
-                    <input class="form__input" type="text" name="name" id="client-name"  place>
+                    <input class="form__input" type="text" name="name" id="client-name" placeholder="name">
                 </label>
                 <label for="last-name">
-                    <span class="form__label">Last name</span>
-                    <input class="form__input" type="text" name="last-name" id="client-last-name" place>
+                    <input class="form__input" type="text" name="last-name" id="client-last-name"
+                        placeholder="last name">
                 </label>
                 <label for="telephone">
-                    <span class="form__label">telephone</span>
-                    <input class="form__input" type="tel" name="telephone" id="tel" place>
+                    <input class="form__input" type="tel" name="telephone" id="tel" placeholder="telephone">
                 </label>
-                <select class="form__select">
-                    <option value="">picke an artist</option>
-                <option name="1" id="1">polli</option>
-                <option name="1" id="2">celes</option>
-                <option name="1" id="3">zeke</option>
-                <option name="1" id="4">david</option>
-                <option name="1" id="5">lauteh</option>
-                <option name="1" id="6">fla</option>
-            </select>
+                <fieldset class="form__fieldset">
+                    <select class="form__select">
+                        <option selected disabled>picke an artist</option>
+                        <option name="1" id="1">Polli</option>
+                        <option name="1" id="2">Celes</option>
+                        <option name="1" id="3">Zeke</option>
+                        <option name="1" id="4">David</option>
+                        <option name="1" id="5">Lauteh</option>
+                        <option name="1" id="6">Fla</option>
+                    </select>
+                </fieldset>
                 <label for="idea">
-                    <span class="form__label">explain your idea:
-                    <textarea name="idea" id="client-idea" cols="30" rows="10" place></textarea>
-                </span>
+                    <textarea name="idea" id="client-idea" cols="30" rows="10"
+                        placeholder="explain your idea:"></textarea>
                 </label>
                 <label for="body">
-                    <span class="form__label">which part do you prefer to tattoo?
-                    <input class="form__input" type="text" name="body" id="body-part" place>
-                </span>
+                    <input class="form__input" type="text" name="body" id="body-part"
+                        placeholder="which part do you prefer to tattoo?">
                 </label>
                 <label for="size">
-                    <span class="form__label">tatoo size
-                    <input class="form__input" type="number" name="size" id="size-tatoo" place>
-                </span>
+                    <input class="form__input" type="number" name="size" id="size-tatoo" placeholder="tatoo size">
                 </label>
-                <label for="color">
-                    <span class="form__label">what do you prefer?
-                    <input class="form__input" type="radio" name="color" id="color-tatoo">color
-                    <input class="form__input" type="radio" name="color" id="b &amp; g">b & w
-                </span>
-                </label>
-                <label for="date">
-                    <span class="form__label">pick a date
-                    <input class="form__input" type="datetime-local" name="date" id="date-appointment">
-                </span>
-                </label>
-                <label for="send">
-                    <span class="form__label">send a idea:
-                    <input class="form__input" type="file" name="send-idea" id="client-idea">
-                </span>
-                </label>
+                <fieldset class="form__fieldset">what do you prefer?
+                    <label class="center" for="color">
+                        <input class="form__input" type="radio" name="color" id="color-tatoo">color
+                        <input class="form__input" type="radio" name="color" id="b &amp; g">b & w
+                    </label>
+                </fieldset>
+                <span class="line"></span>
+                <fieldset class="form__fieldset">pick a date
+                    <label class="center" for="date">
+                        <input class="form__input" type="datetime-local" name="date" id="date-appointment">
+                    </label>
+                </fieldset>
+                <fieldset class="form__fieldset">send a idea:
+                    <label for="send">
+                        <input class="form__input" type="file" name="send" id="client-idea">
+                    </label>
+                </fieldset>
                 <button class="form__input" type="submit">send application</button>
             </div>
-
         </form>
     </main>
 

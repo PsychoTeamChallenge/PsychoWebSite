@@ -60,8 +60,6 @@
     }
 }
 
-/*------------------------------ ANIMACIONES -----------------------------------------*/
-
 
 /* body */
 body {
@@ -71,28 +69,125 @@ body {
 }
 
 
-/*------------------------------ MENU -----------------------------------------*/
-.form__input {
-    width: 40vw;
-    background-color: transparent;
-    background-image: url(../assets/index/imputTexto.png);
-    border: none;
-    margin-top: 2vh;
-  }
+/*formulario*/
+@font-face {
+    font-family: "Graffity";
+    src: url(../assets/fonts/fontsAlternativas/aAnotherTag.ttf);
+}
 
+h1 {
+    font-family: "Argh";
+    color: white;
+    animation: neon 1s infinite;
+    font-size: 2em;
+    letter-spacing: 2px;
+}
 
-form textarea {
-    width: 80vw;
-    max-height: 150px;
-    background-image: url(../assets/index/imputTextoGrande.png);
-    background-color: transparent;
-    border: none;
-    margin-top: 2vh;
+@keyframes neon {
+
+    0%,
+    39%,
+    41%,
+    59%,
+    61%,
+    100% {
+        text-shadow:
+            #fff 0 0 12px,
+            rgb(230, 0, 130) 0 0 24px,
+            rgb(230, 0, 130) 0 0 36px;
+    }
+
+    40%,
+    60% {
+        text-shadow: none;
+    }
+}
+
+main {
+    width: 100%;
+    margin-top: 1.5rem;
+    margin-bottom: 5rem;
+}
+
+form {
+    text-align: center;
+}
+
+legend {
+    padding: 1em;
+    font-size: 18px;
+}
+
+fieldset {
+    padding-bottom: 1em;
 
 }
-form button[type="submit"] {
-    width: 90px;
+
+.form__fieldset {
+    font-size: medium;
+    display: block;
+    text-align: -webkit-center;
+    font-size: 21px;
+    font-family: 'Argh';
+}
+
+label {
+    text-align: -webkit-center;
+    display: block;
+    cursor: pointer;
+}
+
+.form__input input,
+.form__select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+input,
+input::-webkit-input-placeholder {
+    background-color: transparent;
+    border: none;
+    margin-top: 2vh;
+    background-image: url(../assets/index/imputTexto.png);
+    background-repeat: no-repeat;
     height: 50px;
+    text-align: center;
+    font-family: 'Argh';
+    color: white !important;
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+textarea,
+textarea::-webkit-input-placeholder {
+    background-color: transparent;
+    border: none;
+    margin-top: 2vh;
+    background-image: url(../assets/index/imputTextoGrande.png);
+    background-repeat: no-repeat;
+
+    height: 50px;
+    text-align: center;
+    font-family: 'Argh';
+    color: white !important;
+}
+
+textarea:focus-visible {
+    outline: none;
+}
+
+.color {
+    padding: 5px 0 5px 60px;
+}
+
+
+
+form button[type="submit"] {
+    width: 50vw;
+    height: 13vh;
     align-self: center;
     background-image: url(../assets/index/buttonTurquesa.png);
     background-color: transparent;
@@ -101,7 +196,57 @@ form button[type="submit"] {
     margin-top: 3%;
     font-family: 'Argh';
     color: white;
-    font-size: 1.7rem;
-    text-shadow: 3px 3px 5px rgb(0, 0, 0);
+    text-shadow: 3px 3px 5px rgb(0 0 0);
     letter-spacing: 3px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.form__select {
+    max-width: 250px;
+    position: relative;
+}
+
+.form__select select {
+    outline: 0;
+    border: 0;
+    border-radius: 0;
+    background: #f0f0f0;
+    color: #7b7b7b;
+    color: #999;
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+select,
+select:hover {
+    background-color: var(--pink);
+}
+
+@media screen and (min-width:320px) and (max-width:480px) {
+    .form__input {
+        width: 100vw;
+    }
+
+    form textarea {
+        width: 100vw;
+    }
+}
+@media screen and (min-width:480px) and (max-width:1024px) {
+    .form__input {
+        width: 35vw;
+        font-size: 1.5em;
+    }
+
+    textarea {
+        width: 35vw;
+        font-size: 1.5em;
+    }
+    form button[type="submit"] {
+        width: 19vw;
+    }
+    .center input{
+    
+            width: 1vw;
+    }
 }
