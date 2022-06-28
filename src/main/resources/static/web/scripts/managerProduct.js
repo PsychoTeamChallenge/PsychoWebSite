@@ -7,8 +7,13 @@ Vue.createApp({
             productImgUrl: "",
             productStock: 0,
             productPrice: 0.0,
+            category:"",
+            subCategory:"",
             productSizes: [],
             productColors: [],
+            categorys:["CLOTHING","PIERCING"],
+            subCategorysCloth:["HAT","T-SHIRT","SWEATSHIRT"],
+            subCategorysPier:["BODY","MOUTH","NOSE","EYEBROW","EAR"],
 
             productoToModificar: {},
             productFocusName: "",
@@ -16,6 +21,8 @@ Vue.createApp({
             productFocusUrlImg: "",
             productFocusStock: 0,
             productFocusPrice: 0.0,
+            productFocusCategory:"",
+            productFocusSubCategory:"",
             productFocusSizes: [],
             productFocusColors: [],
 
@@ -54,6 +61,8 @@ Vue.createApp({
             this.productFocusPrice = ""
             this.productFocusUrlImg = ""
             this.productFocusStock = ""
+            this.productFocusCategory = ""
+            this.productFocusSubCategory = ""
             this.productoToModificar = {}
         },
 
@@ -85,11 +94,29 @@ Vue.createApp({
         removeColor(colorD) {
             this.productColors = this.productColors.filter(color => color != colorD);
         },
+        changeCategory(category){
+            this.category = category;
+            let options = document.querySelectorAll(".categoryDiv li");
+            options.forEach(option=> option.classList.remove("active"))
+            let option = document.querySelector("#" + category);
+            option.classList.add("active")
+
+            let optionsSub = document.querySelectorAll(".subCategoryDiv li");
+            optionsSub.forEach(option=> option.classList.remove("active"))
+            this.subCategory =""
+        },
+        changeSubCategory(category){
+            this.subCategory = category;
+            let options = document.querySelectorAll(".subCategoryDiv li");
+            options.forEach(option=> option.classList.remove("active"))
+            let option = document.querySelector("#" + category);
+            option.classList.add("active")
+        },
         createProduct() {
             if (this.productColors.length >= 1 && this.productSizes.length >= 1
                 && this.productName != "" && this.productDescription != "" && this.productPrice > 0 && this.productImgUrl != "") {
 
-                axios.post("/api/products", `name=${this.productName}&description=${this.productDescription}&urlImg=${this.productImgUrl}&stock=${this.productStock}&price=${this.productPrice}&sizes=${this.productSizes}&colors=${this.productColors}`)
+                axios.post("/api/products", `name=${this.productName}&description=${this.productDescription}&urlImg=${this.productImgUrl}&stock=${this.productStock}&price=${this.productPrice}&sizes=${this.productSizes}&colors=${this.productColors}&category=${this.category}&filter=${this.subCategory}`)
                     .then(response => {
                         if (response.data == "Product created successfully") {
                             swal("Nice", "Product created!", "success")

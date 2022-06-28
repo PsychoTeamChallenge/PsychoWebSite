@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            background-color: black;
+            width:98vw;
+            height:97vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button{
+            background-color: aliceblue;
+            padding: 1rem;
+            color: black;
+            font-size: 2rem;
+        }
+    </style>
+
+
+<button onclick="subirImg()">SUBIR IMAGEN</button>
+
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="//static.filestackapi.com/filestack-js/3.x.x/filestack.min.js"></script>
+
+    <script>
+        function subirImg(){
+            const client = filestack.init("A9oZryZIQq2zxTic8yRnDz");
+            const options = {
+                onUploadDone: (res) => {
+                    swal("Nice", "url de imagen:  " +  res.filesUploaded[0].url , "success")
+                },
+            };
+            client.picker(options).open();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,8 +1,10 @@
 package com.PsychoTeam.Psycho;
 import com.PsychoTeam.Psycho.Models.Client;
+import com.PsychoTeam.Psycho.Models.Post;
 import com.PsychoTeam.Psycho.Models.Product;
 import com.PsychoTeam.Psycho.repositories.ClientRepository;
 import com.PsychoTeam.Psycho.services.ClientService;
+import com.PsychoTeam.Psycho.services.PostService;
 import com.PsychoTeam.Psycho.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.List;
 import java.util.Set;
 
+import static com.PsychoTeam.Psycho.Models.PostType.TATTOO;
 import static java.util.Arrays.asList;
 
 @SpringBootApplication
@@ -27,13 +30,26 @@ public class PsychoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initData(ClientService clientService, ProductService productService) {
+	public CommandLineRunner initData(ClientService clientService, ProductService productService, PostService postService) {
 		return (args) -> {
+
+//			DECLARACION DE CLIENTE: NOMBRE | APELLIDO | USERNAME | EMAIL | CONTRASEÑA
+
 			Client clientAdmin = new Client("Ezequiel", "Priotto", "Zeke","zeke@psycho.com",passwordEncoder.encode("admin123") );
 			Client clientAdmin2 = new Client("David", "Pereira", "Davey", "davey@psycho.com",passwordEncoder.encode("admin123"));
 
 			clientAdmin.setEnabled(true);
 			clientAdmin2.setEnabled(true);
+
+
+
+			clientService.saveClient(clientAdmin);
+			clientService.saveClient(clientAdmin2);
+
+
+//			DECLARACION DE PRODUCTO: NOMBRE | DESCRIPCION | FOTO | STOCK | PRECIO | CATEGORIA (CLOTHING O PIERCING) | SUBCATEGORIA
+//	        PARA OBTENER LAS URL DE LAS IMAGENES IR A  subidorImagenes.html Y COPIAR LA URL QUE LES DE EL SWEETALERT
+//			PARA LOS TAMAÑOS Y COLORES USAR SIZES (O COLORS) = asList(ACA LOS DATOS)
 
 			List<Double> sizes = asList(14.0,16.0);
 			List<String> colors = asList("yellow");
@@ -106,6 +122,15 @@ public class PsychoApplication {
 
 
 
+//	        DECLARACION DE POST: NOMBRE | TITULO | FOTO | DESCRIPCION | TATUADOR | TIPO DE POST (TATTOO O PIERCING) | FUEGOS (1 al 5)
+//	        PARA OBTENER LAS URL DE LAS IMAGENES IR A  subidorImagenes.html Y COPIAR LA URL QUE LES DE EL SWEETALERT
+
+			Post post = new Post("Post de muestra","https://cdn.filestackcontent.com/yOUujPVMQ2yC5IBboLLX", "es un tatuaje","pepito", TATTOO, 4 );
+			clientAdmin.addPost(post);
+
+
+
+
 			productService.saveProduct(beanie);
 			productService.saveProduct(beanie2);
 			productService.saveProduct(sweatshirt);
@@ -117,11 +142,12 @@ public class PsychoApplication {
 			productService.saveProduct(piercing4);
 			productService.saveProduct(piercing5);
 
+			postService.savePost(post);
+
+
+
 			clientService.saveClient(clientAdmin);
 			clientService.saveClient(clientAdmin2);
-
-			clientService.saveClient(clientAdmin);
-
 
 
 			System.out.println("PROGRAMA INICIADO :D");
