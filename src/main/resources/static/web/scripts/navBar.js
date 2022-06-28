@@ -24,7 +24,7 @@ function checkScroll() {
         $('#barbedWire').addClass('barbedWire');
         $('#barbedWire').removeClass('barbedWire-navbar');
     } else {
-        if (scrollPositionY > 200) {
+        if (scrollPositionY > 48) {
             navbar.css("background-color", "black");
             $('#logoTongue').addClass('logo-tongue-navbar');
             $('#logoTongue').removeClass('logo-tongue');
