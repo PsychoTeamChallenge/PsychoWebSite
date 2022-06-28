@@ -28,7 +28,7 @@
             <div class="tab-steps hidden data">
               <h1 class="text-center">Bill Information</h1>
               <div class="container border d-flex row">
-                <div id="image"></div>
+                <div id="image" style="background-image:url('./assets/productosPrueba/gorrito1.png')"></div>
                 <div id="information">
                   <h4>Example information title</h4>
                   <h5>Subtitle information</h5>
@@ -49,7 +49,7 @@
                 </div>
               </div>
               <div class="container border d-flex row">
-                <div id="image">Image</div>
+                <div id="image" style="background-image:url('./assets/productosPrueba/gorrito2.png')"></div>
                 <div id="information">
                   <h4>Example information title</h4>
                   <h5>Subtitle information</h5>
@@ -68,12 +68,12 @@
                   </div>
                 </div>
               </div>
-              <div class="d-flex">
+              <div class="d-flex ">
                 <button class="button-49" id="nextBtn" onclick="nextTab()"> Continue </button>
               </div>
             </div>
             <!-- form 2 (form data) -->
-            <div class="tab-steps hidden" id="row">
+            <div class="tab-steps hidden " id="row">
               <div id="showBill">
                 <h1 class="text-center">Bill</h1>
                 <div class="container border d-flex" id="sideBill">
@@ -96,7 +96,7 @@
                   <div>Total:$8000</div>
                 </div>
               </div>
-              <div>
+              <div class="form">
                 <h1 class="text-center">Personal Data</h1>
                 <label for="firstName" class="inp">
                   <input type="text" id="firstName" placeholder="&nbsp;">
@@ -125,7 +125,7 @@
                   <button class="button-49" id="nextBtn" onclick="nextTab()"> Continue </button>
                 </div>
               </div>
-           
+             
             </div>
             <!-- form 3 (payment form) -->
             <div class="tab-steps hidden" id="row">
@@ -175,7 +175,11 @@
                   <span class="label">card holder</span>
                   <span class="focus-bg"></span>
                 </label>
+                <div class="d-flex ">
+                  <button class="button-49" id="nextBtn" onclick="nextTab()"> Continue </button>
+                </div>
               </div>
+            
             </div>
 
             <!-- form 4(shipping) -->
@@ -202,7 +206,7 @@
                   <div>Total:$8000</div>
                 </div>
               </div>
-              <div>
+              <div class="shipping">
                 <h1 class="text-center">shipment information</h1>
                 <label for="location" class="inp">
                   <input type="text" id="location" placeholder="&nbsp;">
@@ -224,7 +228,11 @@
                   <span class="label">Phone Number</span>
                   <span class="focus-bg"></span>
                 </label>
+                <div class="d-flex ">
+                  <button class="button-49" id="nextBtn" onclick="nextTab()"> Continue </button>
+                </div>
               </div>
+            
             </div>
            
           </form>
