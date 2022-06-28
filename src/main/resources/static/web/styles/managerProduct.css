@@ -113,6 +113,13 @@ fieldset ul li {
     padding: 1rem;
     width: 7rem;
 }
+fieldset ul li:hover{
+cursor: pointer;
+}
+fieldset ul li.active {
+    color: white;
+    background-color: var(--darklightblue);
+}
 
 fieldset ul li i {
     background-color: #00313E;

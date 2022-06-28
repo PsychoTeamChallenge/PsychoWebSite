@@ -47,7 +47,7 @@ public class PostController {
         if (client == null)
             return new ResponseEntity<>("User no have Client rol", HttpStatus.FORBIDDEN);
 
-        Post post = new Post(client, title, urlImage, description, tattooer, postType, fires);
+        Post post = new Post( title, urlImage, description, tattooer, postType, fires);
         client.addPost(post);
 
         postService.savePost(post);

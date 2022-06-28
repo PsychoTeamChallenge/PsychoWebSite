@@ -25,8 +25,7 @@ public class Post {
 
     public Post() {}
 
-    public Post(Client client, String title, String urlImage, String description, String tattooer, PostType postType, int fires) {
-        this.client = client;
+    public Post(String title, String urlImage, String description, String tattooer, PostType postType, int fires) {
         this.title = title;
         this.urlImage = urlImage;
         this.description = description;

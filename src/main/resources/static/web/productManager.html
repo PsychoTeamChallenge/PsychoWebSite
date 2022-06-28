@@ -70,6 +70,19 @@
                             @click="removeColor(color)"></i></li>
                 </ul>
             </fieldset>
+            <fieldset>
+                <label for="inputColor">Add the product <span>sub category</span> </label>
+                <ul class="categoryDiv align-self-start">
+                    <li v-for="categoryInput in categorys" :id="categoryInput" class="text-white" @click="changeCategory(categoryInput)">{{categoryInput}}</i></li>
+                </ul>
+            </fieldset>
+            <fieldset>
+                <label for="inputColor">Add the product <span>sub category</span> </label>
+                <ul class="subCategoryDiv align-self-start">
+                    <li v-for="categoryInput in subCategorysCloth" v-if="category == 'CLOTHING'" :id="categoryInput" class="text-white" @click="changeSubCategory(categoryInput)">{{categoryInput}}</i></li>
+                    <li v-for="categoryInput in subCategorysPier" v-if="category == 'PIERCING'" :id="categoryInput" class="text-white" @click="changeSubCategory(categoryInput)">{{categoryInput}}</i></li>
+                </ul>
+            </fieldset>
 
             <button type="submit" class="align-self-center btnCreate">CREATE PRODUCT</button>
         </form>
