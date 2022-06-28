@@ -213,16 +213,17 @@ Vue.createApp({
             $('#productMobileContainer').css("top", "0%");
             $('html').toggleClass("active");
           } else {
-
+            $('#productDesktopContainer').css('top', '0%');
+            $('html').toggleClass("active");
           }
         },
         closeCheckProduct(){
-          this.currentProduct = {};
           if($(window).width() < 800){
             $('#productMobileContainer').css("top", "100%");
             $('html').toggleClass("active");
           } else {
-
+            $('#productDesktopContainer').css('top', '100%');
+            $('html').toggleClass("active");
           }
         },
         closeCart(){

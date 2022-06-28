@@ -398,7 +398,7 @@ cursor: pointer;
 .productBodyBackground {
     width: 100%;
     height: 10rem;
-    position: absoluta;
+    position: absolute;
     border-radius: 19px;
     background-image: url(../assets/background/backgroundHeaderMobile.jpg);
     background-position: center;
@@ -446,20 +446,24 @@ cursor: pointer;
     color: var(--lightblue);
 }
 
+/* Single product page */
 
+#productDesktopContainer{
+  display: none;
+}
 
 .productMobileContainer{
   position: fixed;
   background-image: url(../assets/newBackground.png);
   height: 100%;
   width: 100%;
-  top: 0;
+  top: 100%;
   z-index: 10;
+  transition: all 0.5s ease;
 }
 
 .productMobileTop{
   height: 15%;
-  /*background-color: red;*/
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -467,10 +471,13 @@ cursor: pointer;
 
 .productMobileDetails{
   height: 70%;
-  /*background-color: green;*/
 }
 
 .productPriceImage{
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-end;
+  align-items: flex-end;
   height: 80%;
 }
 
@@ -498,7 +505,7 @@ cursor: pointer;
 .productMobileFooter{
   height: 15%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -548,13 +555,19 @@ cursor: pointer;
 }
 
 .productPrice{
+  position: absolute;
+  left: 10%;
+  top: 49%;
+  z-index: 1;
   height: 20%;
+  font-size: 40px;
 }
 
 .productImg{
   width: 80%;
   height: 80%;
   float: right;
+  padding-top: 40px;
 }
 
 .productMobileBackground{
@@ -571,7 +584,7 @@ cursor: pointer;
 }
 
 .productMobileBody {
-  width: 99%;
+  width: 270px;
   height: 11rem;
   position: relative;
   border-radius: 19px;
@@ -580,43 +593,224 @@ cursor: pointer;
   justify-content: flex-end;
   background-color: transparent;
   z-index: 1;
+  float: right;
 }
 
 .productMobileBody .img {
   height: 14rem;
   width: 14rem;
+  left: -11%;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
-  bottom: 1.2rem;
+  bottom: 0.2rem;
   filter: drop-shadow(7px 8px 21px black);
   pointer-events: none;
+
 }
 .productMobileBody .img.piercing {
     transform: scale(1.3);
     filter: drop-shadow(7px 8px 15px black);
 }
 
+.currentDescription{
+  display: none;
+}
+
+@media (min-width: 480px){
+  #productDesktopContainer{
+    display: none;
+  }
+
+  .productImg{
+    width: 55%;
+    height: 80%;
+    float: right;
+    padding-top: 40px;
+  }
+
+  .currentProductName{
+    font-size: 36px;
+  }
+
+  .productPriceImage{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-items: center;
+    align-items: center;
+    height: 80%;
+  }
+
+  .productPrice{
+    width: 45%;
+    position: relative;
+    left: 0%;
+    top: -18%;
+    z-index: 1;
+    height: 20%;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    text-align-last: justify;
+  }
+
+  .currentDescription{
+    display: block;
+  }
+
+}
+
+@media (min-width: 800px){
+  #productMobileContainer{
+    display: none;
+  }
+
+  #productDesktopContainer{
+    top: 100%;
+    display: block;
+    display:flex;
+    transition: all 1s ease;
+  }
+
+  .productDesktopContainer{
+    z-index: 10;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/newBackground.png);
+
+  }
+
+  .productDesktopImage{
+    width: 40%;
+    height: 100%;
+  }
+
+  .productDesktopImage .img{
+    z-index: 10;
+    height: 34rem;
+    width: 32rem;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    filter: drop-shadow(7px 8px 21px black);
+  }
+
+  .productImageBackground{
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/background/backgroundHeaderMobile.jpg);
+    background-position: center;
+    background-
+    background-size: 127%;
+    filter: hue-rotate(309deg) blur(1.1px) brightness(0.5);
+  }
+
+  .productDesktopDetails{
+    width: 60%;
+    height: 100%;
+  }
+
+  .productDesktopTop{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 20%;
+  }
+
+  .productDesktopMiddle{
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 40%;
+  }
+
+  .productDesktopName{
+    font-size: 40px;
+  }
+
+  .productDesktopFooter{
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .productAttribute{
+    color: var(--lightblue);
+  }
+
+  .productValue{
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1000px){
+
+  .productDesktopImage .img{
+    z-index: 10;
+    height: 34rem;
+    width: 32rem;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    filter: drop-shadow(7px 8px 21px black);
+  }
+
+  .productDesktopMiddle{
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 20%;
+    font-size: 20px;
+  }
+
+  .productDesktopName{
+    font-size: 40px;
+  }
+
+  .productValue{
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 1250px){
+  .productDesktopImage .img{
+    left: 10%;
+    width: 36rem;
+    height: 36rem;
+  }
+
+  .productDesktopMiddle{
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: 20%;
+    font-size: 22px;
+  }
+
+  .productDesktopName{
+    font-size: 40px;
+  }
+
+  .productValue{
+    font-size: 24px;
+  }
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Single product page */
 
 @media (min-width:460px){
     .mainContent{
@@ -700,6 +894,4 @@ cursor: pointer;
         transform: scale(1.7);
         left: 3rem;
     }
-
-
 }
