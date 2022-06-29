@@ -185,13 +185,7 @@ public class PsychoApplication {
 			sweatshirt.setColors(colors);
 			sweatshirt.setSizes(sizes);
 
-			sizes = asList(14.0,16.0,18.5);
-			colors = asList("beige");
 
-
-			Product sweatshirt2 = new Product("Sweatshirt", "beige sweatshirt","./assets/productosPrueba/remera.png",45,4300,"CLOTHING","SWEATSHIRT");
-			sweatshirt2.setColors(colors);
-			sweatshirt2.setSizes(sizes);
 
 			sizes = asList(14.0,16.0,18.5);
 			colors = asList("beige");
@@ -582,7 +576,7 @@ public class PsychoApplication {
 			clientR.addPost(postR);
 			postService.savePost(postR);
 
-			Post postS = new Post("Old school","https://cdn.filestackcontent.com/sPDeUYSiCUzYXPcn10Sg"," I love she ","Lauteh",TATTOO,5);
+			Post postS = new Post("Casper","https://cdn.filestackcontent.com/XzBzOqkeTZKI7KKG2vvA"," mini casper ","Lauteh",TATTOO,5);
 			clientS.addPost(postS);
 			postService.savePost(postS);
 
@@ -594,7 +588,7 @@ public class PsychoApplication {
 			clientU.addPost(postU);
 			postService.savePost(postU);
 
-			Post postV = new Post("Old school","https://cdn.filestackcontent.com/sPDeUYSiCUzYXPcn10Sg"," I love she ","Lauteh",TATTOO,5);
+			Post postV = new Post("Flowers","https://cdn.filestackcontent.com/7p0QEtPEQk6f7GZBLDmj"," I love she part 2 ","Lauteh",TATTOO,5);
 			clientV.addPost(postV);
 			postService.savePost(postV);
 
@@ -624,7 +618,6 @@ public class PsychoApplication {
 			productService.saveProduct(beanie);
 			productService.saveProduct(beanie2);
 			productService.saveProduct(sweatshirt);
-			productService.saveProduct(sweatshirt2);
 
 			productService.saveProduct(piercing);
 			productService.saveProduct(piercing2);
