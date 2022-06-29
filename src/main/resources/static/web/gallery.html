@@ -94,6 +94,9 @@
             <!-- _________________ end card ___________________________ -->
         </div>
 
+        <div v-else class="nothing">
+            <h2>Nothing here</h2>
+        </div>
 <!-- _________________ new post ______________ -->
         <div class="newPostContainer" :class="{active:newPost}">
             <i class='bx bx-left-arrow-alt newPostArrow' @click="openNewPost()"></i>
@@ -162,10 +165,6 @@
 
         </div>
 
-        <div v-else class="nothing">
-            <h2>Nothing here</h2>
-    
-        </div>
        
 
     </main>
