@@ -693,6 +693,10 @@ p {
 
 }
 
+.colourPicker{
+  width: 20%;
+}
+
 @media (min-width:460px) {
   .mainContent {
     justify-content: space-between;
@@ -750,6 +754,12 @@ p {
 }
 
 @media (min-width: 800px) {
+
+  .colourPicker{
+    width: auto;
+  }
+
+
   #productMobileContainer {
     display: none;
   }
