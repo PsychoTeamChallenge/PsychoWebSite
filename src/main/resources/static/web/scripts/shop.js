@@ -149,15 +149,16 @@ Vue.createApp({
                   axios.patch("/api/cart/current","clientProduct_id=" + id)
                   .then((response) => {
                     this.actualizarClient();
+                    Swal.fire(
+                      'Deleted!',
+                      'Your product has been removed.',
+                      'success'
+                    )
                   })
                   .catch((error) => {
-                    console.log("error");
+                    console.log(error);
                   });
-                  Swal.fire(
-                    'Deleted!',
-                    'Your product has been removed.',
-                    'success'
-                  )
+                  
                 }
               });
         },
@@ -217,7 +218,6 @@ Vue.createApp({
               'error'
             );
           } else {
-            //@RequestParam double size, @RequestParam String color, @RequestParam int id_product
             axios.post("/api/cart/current", "size=" + sizeValue + "&color=" + colorValue + "&id_product=" + id_product)
             .then((response) => {
               Swal.fire(
@@ -225,6 +225,7 @@ Vue.createApp({
                 'Your product has been added to the shopping cart',
                 'success'
               );
+              this.actualizarClient();
               this.closeCheckProduct();
             })
             .catch((error) => {
@@ -233,20 +234,22 @@ Vue.createApp({
                 'Error: ' + error,
                 'error'
               );
-              console.log(error);
               this.closeCheckProduct();
             });
           }
         },
         openCheckProduct(product){
           this.currentProduct = product;
-          console.log(this.currentProduct);
           if($(window).width() < 800){
             $('#productMobileContainer').css("top", "0%");
-            $('html').toggleClass("active");
+            // $('html').toggleClass("active");
+            this.closeCart();
+            this.filtersShow = false;
           } else {
             $('#productDesktopContainer').css('top', '0%');
-            $('html').toggleClass("active");
+            // $('html').toggleClass("active");
+            this.closeCart();
+            this.filtersShow = false;
           }
         },
         closeCheckProduct(){
