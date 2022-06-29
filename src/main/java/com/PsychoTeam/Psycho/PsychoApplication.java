@@ -187,11 +187,11 @@ public class PsychoApplication {
 
 
 
-<<<<<<< HEAD
+
 			Product sweatshirt2 = new Product("Sweatshirt", "beige sweatshirt","./assets/productosPrueba/remera.png",45,4300,"CLOTHING","SWEATSHIRT");
 			sweatshirt2.setColors(colors);
 			sweatshirt2.setSizes(sizes);
-=======
+
 			sizes = asList(14.0,16.0,18.5);
 			colors = asList("beige");
 
@@ -502,7 +502,6 @@ public class PsychoApplication {
 			productService.saveProduct(piercing20);
 
 
->>>>>>> beac039193964e1db33cf3c018f2e8bb3af59dd7
 
 //	        DECLARACION DE POST: NOMBRE | TITULO | FOTO | DESCRIPCION | TATUADOR | TIPO DE POST (TATTOO O PIERCING) | FUEGOS (1 al 5)
 //	        PARA OBTENER LAS URL DE LAS IMAGENES IR A  subidorImagenes.html Y COPIAR LA URL QUE LES DE EL SWEETALERT

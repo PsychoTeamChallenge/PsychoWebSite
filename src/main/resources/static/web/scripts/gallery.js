@@ -39,12 +39,9 @@ Vue.createApp({
                 this.piercing = !this.piercing
             }
         },
-<<<<<<< HEAD
         requestAppointment(){
             window.location.href = "http://localhost:8080/web/appointment.html"
            }
-=======
->>>>>>> beac039193964e1db33cf3c018f2e8bb3af59dd7
 
     },
     computed: {
