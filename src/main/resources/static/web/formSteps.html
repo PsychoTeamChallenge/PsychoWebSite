@@ -82,28 +82,28 @@
               <div class="form">
                 <h1 class="text-center">Personal Data</h1>
                 <label for="firstName" class="inp">
-                  <input type="text" id="firstName" placeholder="&nbsp;">
+                  <input type="text" id="firstName" placeholder="&nbsp;" v-model="nameInput">
                   <span class="label">First name</span>
                   <span class="focus-bg"></span>
                 </label>
 
                 <label for="lastName" class="inp">
-                  <input type="text" id="lastName" placeholder="&nbsp;">
+                  <input type="text" id="lastName" placeholder="&nbsp;" v-model="lastNameInput">
                   <span class="label">Last name</span>
-                  <span class="focus-bg"></span>
-                </label>
-
-                <label for="address" class="inp">
-                  <input type="text" id="address" placeholder="&nbsp;">
-                  <span class="label">Address</span>
                   <span class="focus-bg"></span>
                 </label>
 
                 <label for="inp" class="inp">
                   <input type="text" id="inp" placeholder="&nbsp;">
-                  <span class="label">Something else idk</span>
+                  <span class="label">City</span>
                   <span class="focus-bg"></span>
                 </label>
+                <label for="address" class="inp">
+                  <input type="text" id="address" placeholder="&nbsp;" >
+                  <span class="label">Address</span>
+                  <span class="focus-bg"></span>
+                </label>
+
                 <div class="d-flex">
                   <button class="button-49" id="nextBtn" onclick="nextTab()"> Continue </button>
                 </div>
@@ -116,50 +116,50 @@
                 <h1 class="text-center">Bill</h1>
                 <div class="container border d-flex" id="sideBill">
                   <div id="sideInformation">
-                    <h4>Example information title</h4>
-                    <h5>Subtitle information</h5>
+                    <h4>Purchase Summary</h4>
+                    <h5>{{dateToday()}}</h5>
                     <div class="sidePriceInfo">
-                      <div id="price">$4000</div>
-                      <div>Products: 4</div>
+                      <div id="price">${{totalExpense()}}</div>
+                      <div>Products: {{cart.length}}</div>
                     </div>
                   </div>
                   <div id="sideInformation">
-                    <h4>Example information title</h4>
-                    <h5>Subtitle information</h5>
+                    <h4 class="mt-4">Recipient of the purchase</h4>
+                    <h5>{{nameInput}} {{lastNameInput}}</h5>
                     <div class="sidePriceInfo">
-                      <div id="price">$4000</div>
-                      <div>Products: 3</div>
+                      <div id="price">$1000</div>
+                      <div class=" text-white">Type Shiping: Home Delivery</div>
                     </div>
                   </div>
-                  <div>Total:$8000</div>
+                  <div class="total">Total: ${{totalExpense() + 1000}}</div>
                 </div>
               </div>
               <div class="payment">
                 <h1 class="text-center">Payment</h1>
                 <label for="cardNumber" class="inp" id="labelCardNumber">
-                  <input type="text" id="cardNumber" placeholder="&nbsp;">
+                  <input type="text" id="cardNumber" placeholder="&nbsp;" v-model="cardNumber">
                   <span class="label">Number of card</span>
                   <span class="focus-bg"></span>
                 </label>
                 <div class="half">
                   <label for="month" class="inp">
-                    <input type="text" id="expiry" placeholder="&nbsp;">
+                    <input type="text" id="expiry" placeholder="&nbsp;" v-model="expiry">
                     <span class="label">mm/yy</span>
                     <span class="focus-bg"></span>
                   </label>
                   <label for="cvv" class="inp">
-                    <input type="text" id="cvv" placeholder="&nbsp;">
+                    <input type="text" id="cvv" placeholder="&nbsp;" v-model="cvv">
                     <span class="label">cvv</span>
                     <span class="focus-bg"></span>
                   </label>
                 </div>
                 <label for="cardHolder" class="inp" id="labelCardNumber">
-                  <input type="text" id="cardHolder" placeholder="&nbsp;">
+                  <input type="text" id="cardHolder" placeholder="&nbsp;" v-model="cardHolder">
                   <span class="label">card holder</span>
                   <span class="focus-bg"></span>
                 </label>
                 <div class="d-flex ">
-                  <button class="button-49" id="nextBtn" onclick="nextTab()"> Continue </button>
+                  <button class="button-49" id="nextBtn" @click="makePayment"> Continue </button>
                 </div>
               </div>
 
@@ -171,22 +171,22 @@
                 <h1 class="text-center">Bill</h1>
                 <div class="container border d-flex" id="sideBill">
                   <div id="sideInformation">
-                    <h4>Example information title</h4>
-                    <h5>Subtitle information</h5>
+                    <h4>Purchase Summary</h4>
+                    <h5>{{dateToday()}}</h5>
                     <div class="sidePriceInfo">
-                      <div id="price">$4000</div>
-                      <div>Products: 3</div>
+                      <div id="price">${{totalExpense()}}</div>
+                      <div>Products: {{cart.length}}</div>
                     </div>
                   </div>
                   <div id="sideInformation">
-                    <h4>Example information title</h4>
-                    <h5>Subtitle information</h5>
+                    <h4 class="mt-4">Recipient of the purchase</h4>
+                    <h5 >{{nameInput}} {{lastNameInput}}</h5>
                     <div class="sidePriceInfo">
-                      <div id="price">$4000</div>
-                      <div>Products: 3</div>
+                      <div id="price">$1000</div>
+                      <div class=" text-white">Type Shiping: Home Delivery</div>
                     </div>
                   </div>
-                  <div>Total:$8000</div>
+                  <div class="total">Total: ${{totalExpense() + 1000}}</div>
                 </div>
               </div>
               <div class="shipping">
