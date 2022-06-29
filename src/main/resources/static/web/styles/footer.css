@@ -46,6 +46,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-family: 'Fester';
 }
 .findUs h5{
     font-family: "Argh";

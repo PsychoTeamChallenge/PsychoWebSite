@@ -86,7 +86,7 @@
                     <img class="stars" src="../web/assets/gallery/fireEmoji.png" alt="stars" v-for="fire in post.fires">
                 </div>
                 <span class="username">@{{post.username}}</span>
-                <button class="requestTurn">Request Appointment</button>
+                <button class="requestTurn"  v-on:click="requestAppointment()">Request Appointment</button>
             </div>
 
             <!-- _________________ end card ___________________________ -->

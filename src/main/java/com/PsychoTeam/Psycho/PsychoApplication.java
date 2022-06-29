@@ -187,6 +187,11 @@ public class PsychoApplication {
 
 
 
+
+			Product sweatshirt2 = new Product("Sweatshirt", "beige sweatshirt","./assets/productosPrueba/remera.png",45,4300,"CLOTHING","SWEATSHIRT");
+			sweatshirt2.setColors(colors);
+			sweatshirt2.setSizes(sizes);
+
 			sizes = asList(14.0,16.0,18.5);
 			colors = asList("beige");
 
@@ -619,11 +624,7 @@ public class PsychoApplication {
 			productService.saveProduct(beanie2);
 			productService.saveProduct(sweatshirt);
 
-			productService.saveProduct(piercing);
-			productService.saveProduct(piercing2);
-			productService.saveProduct(piercing3);
-			productService.saveProduct(piercing4);
-			productService.saveProduct(piercing5);
+
 
 
 

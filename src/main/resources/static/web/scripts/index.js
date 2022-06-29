@@ -59,4 +59,21 @@ $(document).ready(function(){
       //display loader on page load
       $('#loading').fadeOut();
   }
+
+
+  Vue.createApp({
+    data() {
+        return {}
+      },
+      created() {},
+      methods: {
+          requestAppointment(){
+           window.location.href = "http://localhost:8080/web/appointment.html"
+          }
+      },
+       computed: {
+      }
+  
+  }).mount('#app')
+  
   

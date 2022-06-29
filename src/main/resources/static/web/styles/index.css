@@ -254,6 +254,7 @@ body {
     cursor: pointer;
     transition: 1s;
     margin-bottom: 3%;
+    font-family: 'Fester';
 }
 
 .request:last-child:hover {
@@ -273,6 +274,7 @@ body {
     filter: blur(20px);
     opacity: 0;
     transition: opacity 0.5s;
+
 }
 
 .request:last-child:hover:before {
