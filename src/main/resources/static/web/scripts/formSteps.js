@@ -15,34 +15,38 @@ $('body').ready(function () {
 });
 
 var n = 0;
+var current = 0;
 var s = false;
 
 function nextTab() {
-  let tabs = Array.from($('#main-form').children('.tab-steps'));
-  if (s == true) {
-    s = false;
-    n++;
-  }
-  if (n >= tabs.length) {
-    return false;
-  } else {
-    var i = 0;
-    while (i < tabs.length) {
-      if (i == n) {
-        if ($(tabs[i]).hasClass('hidden') == true) {
-          $(tabs[i]).toggleClass('hidden');
-        }
-        i++;
-      } else {
-        if ($(tabs[i]).hasClass('hidden') == false) {
-          $(tabs[i]).toggleClass('hidden');
-
-        }
-        i++;
-      }
+    let tabs = Array.from($('#main-form').children('.tab-steps'));
+    if (s == true) {
+      s = false;
+      n++;
+      current = n;
     }
-    nextIcon(n);
+    if(validateSingleForm() == true){
+    if (n >= tabs.length) {
+      return false;
+    } else {
+      var i = 0;
+      while (i < tabs.length) {
+        if (i == n) {
+          if ($(tabs[i]).hasClass('hidden') == true) {
+            $(tabs[i]).toggleClass('hidden');
+          }
+          i++;
+        } else {
+          if ($(tabs[i]).hasClass('hidden') == false) {
+            $(tabs[i]).toggleClass('hidden');
+          }
+          i++;
+        }
+      }
+      nextIcon(n);
+    }
   }
+
 }
 
 function switchIcon(number) {
@@ -84,28 +88,67 @@ function nextIcon(number) {
   n++;
 }
 
-function switchTab(number) {
+function validateSingleForm(){
+  var tabs = document.getElementsByClassName('tab-steps');
+  var variableN = n - 1;
+  if(variableN == -1){
 
+  } else {
+    var currentTab = tabs[variableN].getElementsByTagName('input');
+    if(currentTab == undefined){}
+    for(let i = 0; i < currentTab.length; i++){
+      if(currentTab[i].value == ""){
+        console.log(currentTab[i]);
+        console.log("Error, missing input value");
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+function validateAllForms(variableN){
+  var tabs = document.getElementsByClassName('tab-steps');
+  if(variableN == -1){
+
+  } else {
+    for(let j = 0; j < variableN; j++){
+      var currentTab = tabs[j].getElementsByTagName('input');
+      for(let i = 0; i < currentTab.length; i++){
+        if(currentTab[i].value == ""){
+          console.log(currentTab[i]);
+          console.log("Error, missing input value");
+          return false;
+        }
+      }
+    }
+  }
+  return true;
+}
+
+function switchTab(number) {
   let tabs = Array.from($('#main-form').children('.tab-steps'));
   if (number > tabs.length) {
     return false;
   }
-  var i = 0;
-  while (i < tabs.length) {
-    if (i == number) {
-      if ($(tabs[i]).hasClass('hidden') == true) {
-        $(tabs[i]).toggleClass('hidden');
-      }
-      i++;
-    } else {
-      if ($(tabs[i]).hasClass('hidden') == false) {
-        $(tabs[i]).toggleClass('hidden');
+  if(validateAllForms(number) == true){
+    var i = 0;
+    while (i < tabs.length) {
+      if (i == number) {
+        if ($(tabs[i]).hasClass('hidden') == true) {
+          $(tabs[i]).toggleClass('hidden');
+        }
+        i++;
+      } else {
+        if ($(tabs[i]).hasClass('hidden') == false) {
+          $(tabs[i]).toggleClass('hidden');
 
+        }
+        i++;
       }
-      i++;
     }
+    switchIcon(number);
   }
-  switchIcon(number);
 }
 
 Vue.createApp({
