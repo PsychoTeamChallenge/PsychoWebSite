@@ -1,0 +1,25 @@
+@media (max-width: 800px){
+  .accountSection{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .webpageContent{
+    padding-top: 6rem;
+  }
+
+  .accountSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px){
+  .postContainers{
+    display: flex;
+    flex-direction: column;
+  }
+
+}

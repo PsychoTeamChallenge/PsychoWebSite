@@ -2,13 +2,15 @@ Vue.createApp({
     data() {
         return {
             posts: [],
-            filtradosCategory:[],
+            filtradosCategory: [],
             postsFiltrados: [],
             client: {},
             isClient: false,
             piercing: true,
             tattoo: true,
-            shearchInput:""
+            shearchInput: "",
+
+            newPost: false,
         }
     },
 
@@ -31,38 +33,43 @@ Vue.createApp({
     methods: {
 
         changeFilterCategory(category) {
-           
-            if(category == "TATTOO"){
+
+            if (category == "TATTOO") {
                 this.tattoo = !this.tattoo
             }
-            else if(category == "PIERCING"){
+            else if (category == "PIERCING") {
                 this.piercing = !this.piercing
             }
         },
-        requestAppointment(){
+        requestAppointment() {
             window.location.href = "http://localhost:8080/web/appointment.html"
-           }
+        },
+
+        openNewPost(){
+            this.newPost = !this.newPost;
+            document.querySelector("html").classList.toggle("active")
+        }
 
     },
     computed: {
-        shearchFilter(){
+        shearchFilter() {
             if (this.posts.length > 0 && this.piercing && !this.tattoo) {
                 this.filtradosCategory = this.posts.filter(post => post.postType == "PIERCING")
             }
             else if (this.posts.length > 0 && this.tattoo && !this.piercing) {
                 this.filtradosCategory = this.posts.filter(post => post.postType == "TATTOO")
             }
-            else if(this.tattoo && this.piercing){
+            else if (this.tattoo && this.piercing) {
                 this.filtradosCategory = this.posts;
             }
-            else{
+            else {
                 this.filtradosCategory = []
             }
 
-            if(this.shearchInput != ""){
-                 this.postsFiltrados =  this.filtradosCategory.filter(post=> post.title.includes(this.shearchInput) ||  post.tattooer.includes(this.shearchInput) ||   post.description.includes(this.shearchInput))
+            if (this.shearchInput != "") {
+                this.postsFiltrados = this.filtradosCategory.filter(post => post.title.includes(this.shearchInput) || post.tattooer.includes(this.shearchInput) || post.description.includes(this.shearchInput))
             }
-            else{
+            else {
                 this.postsFiltrados = this.filtradosCategory
             }
         }

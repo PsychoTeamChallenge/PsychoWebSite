@@ -561,7 +561,7 @@ public class PsychoApplication {
 			clientM.addPost(postM);
 			postService.savePost(postM);
 
-			Post postN = new Post("It could have been better","https://cdn.filestackcontent.com/zDE88yWMQcewjQeZwvEA","I appreciate the art but...","Branko",TATTOO,1);
+			Post postN = new Post("It could have been better","https://cdn.filestackcontent.com/zDE88yWMQcewjQeZwvEA","I appreciate the art but...","Branko",TATTOO,3);
 			clientN.addPost(postN);
 			postService.savePost(postN);
 

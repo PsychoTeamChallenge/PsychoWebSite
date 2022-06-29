@@ -118,6 +118,8 @@ Vue.createApp({
 
       nameInput: "",
       lastNameInput: "",
+      cityInput:"",
+      addressInput:"",
       cardNumber: "",
       expiry: "",
       cvv: "",
@@ -225,7 +227,7 @@ Vue.createApp({
       this.cart.forEach(product => {
         this.expense += product.price * product.quantity
       });
-      return this.expense;
+      return this.expense ;
     },
     makePayment() {
       let payment={
@@ -233,15 +235,28 @@ Vue.createApp({
         'cardHolder': this.cardHolder,
          'category': "Others",
          'description': "Make purchase in Psycho Store",
+         'expiry': this.expiry,
          'cvv': this.cvv,
-         'amount': this.expense,
-         'expiry': this.expiry
+         'amount': this.expense + 1000
       }
+      console.log(payment)
      axios.post("https://bankrdox.herokuapp.com/api/transactions/makePayment",payment)
+     .then(response=> 
+       Swal.fire(
+      'Accepted!',
+      'Your payment was successful!',
+      'success'
+    )).then()
+     .catch(error =>{
+      Swal.fire(
+        'Opss!',
+        'There was a payment problem!',
+        'error'
+      )
+     })
     }
   },
   computed: {
-
 
   }
 

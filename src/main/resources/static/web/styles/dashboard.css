@@ -1,0 +1,212 @@
+
+@font-face {
+    font-family: "Graffity";
+    src: url(../assets/fonts/fontsAlternativas/aAnotherTag.ttf);
+}
+
+body{
+  background-color: white;
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+}
+
+#mobileSidebar{
+  display: none;
+}
+
+.desktopSidebar{
+  position: fixed;
+  width: 20%;
+  height: 100%;
+  background-image: url(../assets/background/newBackground.png);
+}
+
+.desktopSidebarTop{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoSidebar{
+  width: 100px;
+}
+
+.sidebarTitle{
+  font-family: "Graffity";
+  color: rgb(2 181 181);
+  font-size: 25px;
+}
+
+.desktopSidebarMiddle{
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarItem{
+  width: 100%;
+}
+
+.sidebarMenu{
+  display: flex;
+  flex-direction: column;
+}
+
+.desktopSidebarMiddle .sidebarMenu .sidebarItem a{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  transition: all 0.5s ease;
+  color: white;
+}
+
+.desktopSidebarMiddle .sidebarMenu .sidebarItem a i{
+  margin-left: 1rem;
+}
+
+.desktopSidebarMiddle .sidebarMenu .sidebarItem a:hover{
+  transform: translateX(10px);
+  background-color: white;
+  color: black;
+}
+
+.desktopSidebarFooter{
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+}
+
+.desktopSidebarFooter .sidebarItem a{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  transition: all 0.5s ease;
+  color: white;
+  text-align: center;
+}
+
+.desktopSidebarFooter .sidebarItem a i{
+  margin-left: 1rem;
+}
+
+.desktopSidebarFooter .sidebarItem a:hover{
+  transform: translateX(10px);
+  background-color: white;
+  color: black;
+}
+
+.activeSection{
+  border-left: 1px solid rgb(2 181 181);
+}
+
+.barbedWire-navbar{
+  position: fixed;
+  background-image: url(../assets/index/alambrePuasSeparador.png);
+  background-size: 77.1rem;
+  background-repeat: repeat-x;
+  width: 102%;
+  /* z-index: 1; */
+  height: 31vh;
+  margin-top: 1%;
+  top: 33%;
+  left: -36%;
+  filter: drop-shadow(2px 4px 6px rgb(201 32 127 / 93%));
+  z-index: 1;
+  pointer-events: none;
+  transform: rotate(90deg);
+}
+
+
+/* ------ CONTENT ---------- */
+
+.webpageContent{
+  margin-left: 20%;
+  width: 80%;
+  display: flex;
+  background-image: url(../assets/background/newBackground.png);
+}
+
+.accountSection{
+  padding-left: 5%;
+  padding-top: 5%;
+}
+
+.editAccountContainer{
+  width: 50%;
+}
+
+.accountDetails, .postsDetails{
+  color: white;
+}
+
+.accountDetails a, .postsDetails a{
+  color: white;
+}
+
+.postContainers{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mobileSidebar{
+  z-index: 2;
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  left: 0%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0000009c;
+  backdrop-filter: blur(4px) saturate(180%);
+  -webkit-backdrop-filter: blur(7px) saturate(180%);
+}
+
+.mobileSidebar a{
+  display: block;
+  color: white;
+  padding: 0.5rem;
+}
+
+.mobileSidebar a:hover{
+  background-color: white;
+  color: black;
+}
+
+.activeMobile{
+  border-bottom: 1px var(--lightblue) solid;
+}
+
+@media (min-width: 1080px){
+  .cards{
+    width: 13rem;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 800px){
+  #desktopSidebar, #barbedWireNavBar{
+    display: none;
+  }
+
+  #mobileSidebar{
+    display: flex;
+  }
+
+  .webpageContent{
+    width: 100%;
+    margin-left: 0%;
+    padding-top: 3rem;
+  }
+}

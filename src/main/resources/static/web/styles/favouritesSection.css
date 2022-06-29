@@ -1,0 +1,13 @@
+.mainContent{
+  padding-left: 5%;
+  width: 100%;
+}
+
+.productContainer{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.productCard{
+}

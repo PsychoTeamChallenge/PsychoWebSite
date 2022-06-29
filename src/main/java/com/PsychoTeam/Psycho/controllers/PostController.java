@@ -5,6 +5,7 @@ import com.PsychoTeam.Psycho.Dtos.PostDTO;
 import com.PsychoTeam.Psycho.Models.Client;
 import com.PsychoTeam.Psycho.Models.Post;
 import com.PsychoTeam.Psycho.Models.PostType;
+import com.PsychoTeam.Psycho.Models.Product;
 import com.PsychoTeam.Psycho.services.ClientService;
 import com.PsychoTeam.Psycho.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,23 @@ public class PostController {
         return new ResponseEntity<>("Post created", HttpStatus.OK);
     }
 
+    @Transactional
+    @PatchMapping("/post/delete/{id}")
+    public ResponseEntity<Object> deletePost(
+            @PathVariable long id,
+            Authentication auth){
 
+        if(auth.getName() == null || auth.getName() == ""){
+            return new ResponseEntity<>("Invalid credentials", HttpStatus.FORBIDDEN);
+        }
+
+        Post post = postService.getPostById(id);
+        if(post == null){
+            return new ResponseEntity<>("Post not found", HttpStatus.FORBIDDEN);
+        }
+
+        postService.removePost(post);
+        return new ResponseEntity<>("Post has been removed", HttpStatus.ACCEPTED);
+
+    }
 }

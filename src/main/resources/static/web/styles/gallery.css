@@ -3,6 +3,10 @@
 :root {
   --lightblue: rgb(0, 224, 224);
   --pink: rgb(230, 0, 130);
+  --darklightblue: #00748E;
+  --blue: #00313E;
+  --darkpink: #C3007D;
+  --purple: #ca00fd;
 }
 
 @font-face {
@@ -28,7 +32,8 @@ body {
 
   background-image: url("../assets/newBackground.png");
 }
-#app{
+
+#app {
   min-height: 100vh;
 }
 
@@ -47,13 +52,13 @@ body {
   position: relative;
   background-color: #361025;
   width: 13rem;
-  height:13rem;
+  height: 13rem;
   flex-direction: column;
   align-items: center;
   margin: 2.5rem;
   border: 0.1rem solid #fff;
   box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem var(--pink), 0 0 0.8rem var(--pink), 0 0 2.8rem, inset 0 0 1.3rem var(--pink);
-  transition:.8s;
+  transition: .8s;
   margin-bottom: 4rem;
   background-size: cover;
   background-position: center;
@@ -78,7 +83,7 @@ body {
   display: flex;
   align-items: center;
   transition: .8s;
- 
+
 }
 
 .fire {
@@ -88,6 +93,7 @@ body {
   justify-content: space-around;
   opacity: 0;
   transition: .8s;
+  filter: drop-shadow(2px 4px 6px white);
 }
 
 .stars {
@@ -107,17 +113,19 @@ body {
   transition: .8s;
 }
 
-.cards:hover .glass,.cards:hover .fire,.cards:hover .username {
+.cards:hover .glass,
+.cards:hover .fire,
+.cards:hover .username {
   opacity: 1;
-  
+
 }
 
-.cards:hover{
-    transform: scale(1.1);
-   }
+.cards:hover {
+  transform: scale(1.1);
+}
 
 /* boton search */
-#search{
+#search {
   width: 6rem;
   border: none;
   outline: none;
@@ -130,16 +138,19 @@ body {
   cursor: pointer;
   transition: 1s;
 }
+
 #search:last-child:hover {
   background: linear-gradient(90deg, #00dada, #c3007d, #c3007d, #00dada);
   background-size: 400%;
 }
+
 #search:hover {
   z-index: 1;
   animation: glow 8s linear infinite;
 }
+
 .form-check-input:focus {
-  
+
   outline: 0;
   box-shadow: 0 0 0 .25rem #c3007c60 !important;
 }
@@ -216,7 +227,164 @@ body {
 
 }
 
-/* media query */
+/* ------- NEW POST -----------*/
+
+.newPostDiv h6 {
+  color: white;
+  font-size: 2.3rem;
+  letter-spacing: 1px;
+}
+
+.newPostContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  position: fixed;
+  height: 100vh;
+  z-index: -20;
+  opacity: 0;
+  background-image: url(../assets/background/newBackground.png);
+  background-color: black;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  transition: .7s;
+}
+
+.newPostContainer.active {
+  opacity: 100;
+  z-index: 90;
+  left: 0;
+}
+
+.newPostArrow {
+  position: absolute;
+  font-size: 2rem;
+  top: 0.1rem;
+  color: white;
+}
+
+.newPostDiv {
+  padding-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.newPostTitle{
+  position: relative;
+}
+
+#xGraffitiTitle {
+  position: absolute;
+  top: -2vh;
+  right: -2vw;
+  z-index: -1;
+  width: 75px;
+}
+
+.newPostDiv .uploadButton {
+  border: none;
+  background-color: transparent;
+}
+
+.newPostDiv p {
+  color: white;
+  font-family: "Fester" !important;
+  font-size: 1rem;
+  margin-bottom: 0.5rem !important;
+}
+
+.newPostDiv h4 {
+  padding-top: 0.5rem;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.newPostDiv label {
+  color: white;
+  font-family: "Fester" !important;
+
+}
+
+.newPostDiv input:checked + label{
+  color: var(--purple);
+}
+
+
+.newPostDiv input[type=radio] {
+  display: none;
+}
+
+.newPostDiv .bx {
+  font-size: 2.5rem;
+}
+
+.newPostDiv .bx:hover {
+  cursor: pointer !important;
+  color: var(--purple) !important;
+  text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.568);
+}
+
+.newPostDiv select{
+  word-wrap: normal;
+  background-color: var(--purple);
+  border: none;
+  outline: none;
+  color: white;
+  letter-spacing: 2px;
+  padding: 5px;
+  font-size: 1.2rem;
+  border-radius: 4px;
+  text-shadow: 2px 2px 2px black;
+}
+
+.newPostDiv select option{
+  text-shadow: 2px 2px 2px black;
+}
+
+
+
+.selectTattooArtist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 0.4rem;
+}
+
+.newPostDiv button[type=submit] {
+  text-align: center;
+  width: 25vw;
+  border: none;
+  background-color: transparent;
+  background-image: url(../assets/index/buttonTurquesa.png);
+  color: white;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px #000000d6;
+}
+
+.fireValidationDiv {
+  padding-bottom: 1.3rem;
+  padding-top: 0.5rem;
+  display: flex;
+  gap: 5vw;
+}
+
+.piercingOrTattooDiv {
+  display: flex;
+  gap: 5vw;
+}
+
+.newPostDiv label:hover {
+  cursor: pointer !important;
+  color: var(--purple);
+  text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.568);
+}
+
+/* -------------- media query ----------------- */
 @media (min-width: 1080px) {
   .cards {
     width: 25%;
@@ -242,8 +410,8 @@ body {
   }
 
   .fire {
-    bottom: 0px;
-    right: 0px;
+    bottom: 9px;
+    right: 5px;
   }
 
   .stars {
