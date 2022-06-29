@@ -271,6 +271,7 @@ p {
   opacity: 100;
   z-index: 90;
   left: 0;
+  font-family: 'Fester';
 }
 
 .filterMobileContainer .bx.bx-left-arrow-alt {
@@ -448,10 +449,13 @@ p {
 
 .productText p {
   margin: 0;
+  font-family: 'Fester';
+  letter-spacing: 1px;
 }
 
 .priceProduct {
   color: var(--lightblue);
+  font-weight: bold;
 }
 
 /* Single product page */
@@ -479,6 +483,7 @@ p {
 
 .productMobileDetails {
   height: 70%;
+  font-family: 'Fester';
 }
 
 .productPriceImage {
@@ -515,6 +520,7 @@ p {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  font-family: 'Fester';
 }
 
 .bigProductIcon {
@@ -639,11 +645,9 @@ p {
   display: none;
 }
 
-
-
-
-
-
+.currentProductName{
+  font-family: 'Argh' !important;
+}
 
 
 
@@ -661,6 +665,7 @@ p {
 
   .currentProductName {
     font-size: 36px;
+    font-family: 'Argh' !important;
   }
 
   .productPriceImage {
@@ -691,6 +696,9 @@ p {
     display: block;
   }
 
+  .productDesktopName{
+    font-size: 'Argh' !important;
+  }
 }
 
 @media (min-width:460px) {
@@ -710,12 +718,19 @@ p {
     display: flex;
     flex-direction: column;
   }
+
+  .productDesktopName{
+    font-family: 'Argh'!important;
+  }
 }
 
 
 @media (min-width:460px) and (max-width:516px) {
   .mainContent {
     width: 102%
+  }
+  .productDesktopName{
+font-family: 'Argh';
   }
 }
 
@@ -746,7 +761,9 @@ p {
     left: 6%;
     z-index: 3;
   }
-
+.productDesktopName{
+  font-family: 'Argh' !important;
+}
 }
 
 @media (min-width: 800px) {
@@ -799,6 +816,7 @@ p {
   .productDesktopDetails {
     width: 60%;
     height: 100%;
+    font-family: 'Fester';
   }
 
   .productDesktopTop {
@@ -818,6 +836,7 @@ p {
 
   .productDesktopName {
     font-size: 40px;
+    font-family: 'Argh' !important;
   }
 
   .productDesktopFooter {
@@ -857,7 +876,10 @@ p {
 
   .filterMobileContainer.active {
     left: 60%;
+    font-family: 'Fester';
   }
+
+
 }
 
 @media (min-width: 1000px) {
@@ -885,6 +907,7 @@ p {
 
   .productDesktopName {
     font-size: 40px;
+    font-family: 'Argh' !important;
   }
 
   .productValue {
@@ -911,6 +934,10 @@ p {
     bottom: 3.2rem;
     left: 3rem;
   }
+
+  .productDesktopName{
+    font-family: 'Argh' !important;
+  }
 }
 
 @media (min-width: 1250px) {
@@ -931,9 +958,13 @@ p {
 
   .productDesktopName {
     font-size: 40px;
+    font-family: 'Argh'!important;
   }
 
   .productValue {
     font-size: 24px;
   }
+
+
+ 
 }

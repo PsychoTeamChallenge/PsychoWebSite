@@ -25,7 +25,7 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: Argh;
+  /* font-family: Argh; */
 }
 
 body {
@@ -168,12 +168,13 @@ body {
   outline: none;
   background: #111;
   color: #fff;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
   cursor: pointer;
   transition: 1s;
+  font-family: 'Fester';
 }
 
 .requestTurn:last-child:hover {
@@ -409,14 +410,19 @@ body {
 .rateYourExperienceTitle {
   position: relative;
 }
-
+/* 
 #fireEmojiExperience {
   width: 45px;
   position: absolute;
   top: -18px;
   left: 164px;
+} */
+#fireEmojiExperience {
+  width: 45px;
+  position: absolute;
+  top: -11px;
+  left: 160px;
 }
-
 /* -------------- media query ----------------- */
 @media screen and (min-width:800px){
 
@@ -433,6 +439,48 @@ body {
   .postDesktop{
     display: inline;
   }
+  .newPostDiv p {
+    color: white;
+    font-family: "Fester" !important;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem !important;
+    text-align: center;
+}
+
+.newPostDiv h4 {
+  padding-top: 0.5rem;
+  color: white;
+  font-size: 1.6rem;
+}
+
+.newPostDiv label {
+  color: white;
+  font-family: "Fester" !important;
+  font-size: 1.5rem;
+}
+
+.newPostDiv .bx {
+  font-size: 3rem;
+}
+
+#fireEmojiExperience {
+  width: 45px;
+  position: absolute;
+  top: -11px;
+  left: 202px;
+}
+
+.newPostDiv button[type=submit] {
+  text-align: center;
+  width: 14vw;
+  border: none;
+  background-color: transparent;
+  background-image: url(../assets/index/buttonTurquesa.png);
+  color: white;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px #000000d6;
+}
 }
 
 @media (min-width: 1080px) {
