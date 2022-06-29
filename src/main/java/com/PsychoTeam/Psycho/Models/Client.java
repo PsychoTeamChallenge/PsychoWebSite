@@ -36,6 +36,10 @@ public class Client {
 
     @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
     private Set<Purchase> purchases = new HashSet<>();
+
+    @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
+    private Set<Appointment> appointments = new HashSet<>();
+
     private boolean enabled;
 
     public Client(){}
@@ -72,6 +76,11 @@ public class Client {
     public void addPurchases(Purchase purchase){
         purchase.setClient(this);
         purchases.add(purchase);
+    }
+
+    public void addAppointments(Appointment appointment){
+        appointment.setClient(this);
+        appointments.add(appointment);
     }
 
     public void deleteToken() {

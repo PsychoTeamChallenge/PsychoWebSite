@@ -15,6 +15,7 @@ $('body').ready(function () {
 });
 
 var n = 0;
+var current = 0;
 var s = false;
 
 function nextTab() {
@@ -22,26 +23,28 @@ function nextTab() {
   if (s == true) {
     s = false;
     n++;
+    current = n;
   }
-  if (n >= tabs.length) {
-    return false;
-  } else {
-    var i = 0;
-    while (i < tabs.length) {
-      if (i == n) {
-        if ($(tabs[i]).hasClass('hidden') == true) {
-          $(tabs[i]).toggleClass('hidden');
+  if (validateSingleForm() == true) {
+    if (n >= tabs.length) {
+      return false;
+    } else {
+      var i = 0;
+      while (i < tabs.length) {
+        if (i == n) {
+          if ($(tabs[i]).hasClass('hidden') == true) {
+            $(tabs[i]).toggleClass('hidden');
+          }
+          i++;
+        } else {
+          if ($(tabs[i]).hasClass('hidden') == false) {
+            $(tabs[i]).toggleClass('hidden');
+          }
+          i++;
         }
-        i++;
-      } else {
-        if ($(tabs[i]).hasClass('hidden') == false) {
-          $(tabs[i]).toggleClass('hidden');
-
-        }
-        i++;
       }
+      nextIcon(n);
     }
-    nextIcon(n);
   }
 }
 
@@ -84,28 +87,74 @@ function nextIcon(number) {
   n++;
 }
 
-function switchTab(number) {
+function validateSingleForm() {
+  var tabs = document.getElementsByClassName('tab-steps');
+  var variableN = n - 1;
+  if (variableN == -1) {
 
+  } else {
+    var currentTab = tabs[variableN].getElementsByTagName('input');
+    if (currentTab == undefined) { }
+    for (let i = 0; i < currentTab.length; i++) {
+      if (currentTab[i].value == "") {
+        console.log(currentTab[i]);
+        Swal.fire(
+          'Error!',
+          'Missing fields to be completed',
+          'error'
+        );
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+function validateAllForms(variableN) {
+  var tabs = document.getElementsByClassName('tab-steps');
+  if (variableN == -1) {
+
+  } else {
+    for (let j = 0; j < variableN; j++) {
+      var currentTab = tabs[j].getElementsByTagName('input');
+      for (let i = 0; i < currentTab.length; i++) {
+        if (currentTab[i].value == "") {
+          Swal.fire(
+            'Error!',
+            'Missing fields to be completed',
+            'error'
+          );
+          return false;
+        }
+      }
+    }
+  }
+  return true;
+}
+
+function switchTab(number) {
   let tabs = Array.from($('#main-form').children('.tab-steps'));
   if (number > tabs.length) {
     return false;
   }
-  var i = 0;
-  while (i < tabs.length) {
-    if (i == number) {
-      if ($(tabs[i]).hasClass('hidden') == true) {
-        $(tabs[i]).toggleClass('hidden');
-      }
-      i++;
-    } else {
-      if ($(tabs[i]).hasClass('hidden') == false) {
-        $(tabs[i]).toggleClass('hidden');
+  if (validateAllForms(number) == true) {
+    var i = 0;
+    while (i < tabs.length) {
+      if (i == number) {
+        if ($(tabs[i]).hasClass('hidden') == true) {
+          $(tabs[i]).toggleClass('hidden');
+        }
+        i++;
+      } else {
+        if ($(tabs[i]).hasClass('hidden') == false) {
+          $(tabs[i]).toggleClass('hidden');
 
+        }
+        i++;
       }
-      i++;
     }
+    switchIcon(number);
   }
-  switchIcon(number);
 }
 
 Vue.createApp({
@@ -118,13 +167,13 @@ Vue.createApp({
 
       nameInput: "",
       lastNameInput: "",
-      cityInput:"",
-      addressInput:"",
+      cityInput: "",
+      addressInput: "",
       cardNumber: "",
       expiry: "",
       cvv: "",
       cardHolder: "",
-      expense:0
+      expense: 0
     }
   },
 
@@ -227,33 +276,59 @@ Vue.createApp({
       this.cart.forEach(product => {
         this.expense += product.price * product.quantity
       });
-      return this.expense ;
+      return this.expense;
     },
     makePayment() {
-      let payment={
-        "number": this.cardNumber,
-        'cardHolder': this.cardHolder,
-         'category': "Others",
-         'description': "Make purchase in Psycho Store",
-         'expiry': this.expiry,
-         'cvv': this.cvv,
-         'amount': this.expense + 1000
+      if (this.cart.length > 0) {
+        if (this.cardNumber != "" & this.expiry != "" & this.cvv != "" & this.cardHolder != "") {
+          $('#loading').css("display", "flex")
+
+          let payment = {
+            "number": this.cardNumber,
+            'cardHolder': this.cardHolder,
+            'category': "Others",
+            'description': "Make purchase in Psycho Store",
+            'expiry': this.expiry,
+            'cvv': this.cvv,
+            'amount': this.expense + 1000
+          }
+          axios.post("https://bankrdox.herokuapp.com/api/transactions/makePayment", payment)
+            .then(response => {
+              $('#loading').fadeOut();
+              Swal.fire(
+                'Accepted!',
+                'Your payment was successful!',
+                'success'
+              ).then(() => {
+                nextTab()
+              })
+
+            }
+            )
+            .catch(error => {
+              $('#loading').fadeOut();
+              Swal.fire(
+                'Opss!',
+                'There was a payment problem!',
+                'error'
+              )
+            })
+        }
+        else{
+          Swal.fire(
+            'Opss!',
+            "Missing data!",
+            'error'
+          )
+        }
       }
-      console.log(payment)
-     axios.post("https://bankrdox.herokuapp.com/api/transactions/makePayment",payment)
-     .then(response=> 
-       Swal.fire(
-      'Accepted!',
-      'Your payment was successful!',
-      'success'
-    )).then()
-     .catch(error =>{
-      Swal.fire(
-        'Opss!',
-        'There was a payment problem!',
-        'error'
-      )
-     })
+      else {
+        Swal.fire(
+          'Opss!',
+          "You don't have any products!",
+          'error'
+        )
+      }
     }
   },
   computed: {

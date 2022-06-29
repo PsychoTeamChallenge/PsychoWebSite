@@ -70,7 +70,8 @@ public class Utils {
        PdfWriter.getInstance(document, response.getOutputStream());
        document.open();
        PdfPTable table = new PdfPTable(6);
-        
+
+
 
        document.close();
 
