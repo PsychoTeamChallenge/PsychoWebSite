@@ -387,6 +387,7 @@
 }
 
 .nothing {
+  font-family: 'Argh';
   display: flex;
   justify-content: center;
   background-image: url(../assets/nothingHere.gif);
