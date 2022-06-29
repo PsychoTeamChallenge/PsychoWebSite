@@ -81,13 +81,18 @@
       <div id="barbedWire" class="barbedWire barbedWire-navbar"></div>
     </section>
 
-     <div class="productMobileContainer" id = "productMobileContainer">
+    <div class="productMobileContainer" id="productMobileContainer">
       <div class="productMobileTop">
-        <div class="productExit" @click ="closeCheckProduct()">
+        <div class="productExit" @click="closeCheckProduct()">
           <a href="#"><i class="fa-solid fa-arrow-left bigProductIcon"></i></a>
         </div>
         <div class="productFavourite">
-          <a href="#"><i class="fa-solid fa-heart bigProductIcon"></i></a>
+          <a href="#">
+            <i class="fa-solid fa-heart bigProductIcon" v-if="favouritesIds.includes(currentProduct.id)"
+              @click="removeFavourite(currentProduct.id)" style="cursor: pointer;"></i>
+            <i class="fa-regular fa-heart bigProductIcon" v-else @click="addFavourite(currentProduct.id)"
+              style="cursor: pointer;"></i>
+          </a>
         </div>
       </div>
       <div class="productMobileDetails">
@@ -101,13 +106,13 @@
             </div>
           </div>
           <div class="productPrice">
-            <p class = "currentProductName"> {{ currentProduct.name }} </p>
-            <p class = "currentDescription"> {{ currentProduct.description }} </p>
+            <p class="currentProductName"> {{ currentProduct.name }} </p>
+            <p class="currentDescription"> {{ currentProduct.description }} </p>
           </div>
         </div>
         <div class="productColor">
           <div class="colourTitle">
-            <span class = "productAttribute">Colours</span>
+            <span class="productAttribute">Colours</span>
           </div>
           <div class="colourPicker">
             <label v-for="color in currentProduct.colors" class="colour">
@@ -122,72 +127,74 @@
             <span> Sizes: </span>
           </div>
           <div class="sizeContainer">
-            <div v-for = "size in currentProduct.sizes" class="sizeCard">
+            <div v-for="size in currentProduct.sizes" class="sizeCard">
               <a href="#">{{ size }}</a>
             </div>
           </div>
         </div>
       </div>
       <div class="productMobileFooter">
-        <p style = ""> Price ${{ currentProduct.price }} </p>
-        <button type="button" class ="cartBtn" name="button"> Add to cart <i style = "margin-left: 1rem;" class="fa-solid fa-cart-arrow-down"></i> </button>
+        <p> Price ${{ currentProduct.price }} </p>
+        <button type="button" class="cartBtn" name="button" @click="addToCart(currentProduct.id)"> Add to cart <i
+            style="margin-left: 1rem;" class="fa-solid fa-cart-arrow-down"></i> </button>
       </div>
     </div>
 
-    <div class="productDesktopContainer" id = "productDesktopContainer">
-        <div class="productDesktopImage">
-          <div class="img" :style="'background-image: url('+currentProduct.urlImg+');pointer-events: none;'"></div>
-          <div class="productImageBackground"></div>
-        </div>
-        <div class="productDesktopDetails">
-          <div class="productDesktopTop">
-            <div class = "productDesktopName">
-              {{ currentProduct.name }}
-            </div>
-            <div>
-              <a href="#" @click = "closeCheckProduct()"><i class="fa-solid fa-arrow-left bigProductIcon"></i></a>
-            </div>
+    <div class="productDesktopContainer" id="productDesktopContainer">
+      <div class="productDesktopImage">
+        <div class="img" :style="'background-image: url('+currentProduct.urlImg+');pointer-events: none;'"></div>
+        <div class="productImageBackground"></div>
+      </div>
+      <div class="productDesktopDetails">
+        <div class="productDesktopTop">
+          <div class="productDesktopName">
+            {{ currentProduct.name }}
           </div>
-          <div class="productDesktopMiddle">
-            <div>
-              <span class = "productAttribute">Price</span>
-              <p class = "productValue"> $ {{ currentProduct.price }}</p>
-            </div>
-            <div>
-              <span class = "productAttribute">Description</span>
-              <p class = "productValue">{{ currentProduct.description }}</p>
-            </div>
-            <div>
-              <div class="colourTitle">
-                <span class = "productAttribute">Colours</span>
-              </div>
-              <div class="colourPicker">
-                <label v-for="color in currentProduct.colors" class="colour">
-                  <input type="radio" name="colorProduct" :value="color">
-                  <div class="layer"></div>
-                  <div class="button"><span :style="'background-color: '+color+''"></span></div>
-                </label>
-              </div>
-            </div>
+          <div>
+            <a href="#" @click="closeCheckProduct()"><i class="fa-solid fa-arrow-left bigProductIcon"></i></a>
+          </div>
+        </div>
+        <div class="productDesktopMiddle">
+          <div>
+            <span class="productAttribute">Price</span>
+            <p class="productValue"> $ {{ currentProduct.price }}</p>
+          </div>
+          <div>
+            <span class="productAttribute">Description</span>
+            <p class="productValue">{{ currentProduct.description }}</p>
+          </div>
+          <div>
             <div class="colourTitle">
-              <span class = "productAttribute">Sizes</span>
+              <span class="productAttribute">Colours</span>
             </div>
             <div class="colourPicker">
-              <label v-for="size in currentProduct.sizes" class="sizeLabel">
-                <input type="radio" name="sizeProduct" :value="size">
+              <label v-for="color in currentProduct.colors" class="colour">
+                <input type="radio" name="colorProduct" :value="color">
                 <div class="layer"></div>
-                <div class="sizeCard">
-                  <span href="#">{{ size }}</span>
-                </div>
+                <div class="button"><span :style="'background-color: '+color+''"></span></div>
               </label>
             </div>
           </div>
-          <div class="productDesktopFooter">
-            <div>
-              <button @click="addToCart(currentProduct.id)" type="button" class ="cartBtn" name="button"> Add to cart <i style = "margin-left: 1rem;" class="fa-solid fa-cart-arrow-down"></i> </button>
-            </div>
-            </div>
+          <div class="colourTitle">
+            <span class="productAttribute">Sizes</span>
+          </div>
+          <div class="colourPicker">
+            <label v-for="size in currentProduct.sizes" class="sizeLabel">
+              <input type="radio" name="sizeProduct" :value="size">
+              <div class="layer"></div>
+              <div class="sizeCard">
+                <span href="#">{{ size }}</span>
+              </div>
+            </label>
+          </div>
         </div>
+        <div class="productDesktopFooter">
+          <div>
+            <button @click="addToCart(currentProduct.id)" type="button" class="cartBtn" name="button"> Add to cart <i
+                style="margin-left: 1rem;" class="fa-solid fa-cart-arrow-down"></i> </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="mobileHeaderBackground"></div>
@@ -197,14 +204,14 @@
       <p class="title">Search Options</p>
       <h3>Order by:</h3>
       <div class="orderDiv">
-        <div :class="{active:order == 'lowPrice'}" @click="changeOrder('lowPrice')"><i class='bx bx-chevron-down'
-            ></i>Price</div>
-        <div :class="{active:order == 'highPrice'}"  @click="changeOrder('highPrice')"><i class='bx bx-chevron-up'
-           ></i>Price</div>
+        <div :class="{active:order == 'lowPrice'}" @click="changeOrder('lowPrice')"><i
+            class='bx bx-chevron-down'></i>Price</div>
+        <div :class="{active:order == 'highPrice'}" @click="changeOrder('highPrice')"><i
+            class='bx bx-chevron-up'></i>Price</div>
         <div :class="{active:order == 'lowApha'}" @click="changeOrder('lowApha')"><i class='bx bx-chevron-up'></i>A-Z
         </div>
-        <div :class="{active:order == 'highApha'}" @click="changeOrder('highApha')"><i class='bx bx-chevron-down'
-            ></i>Z-A</div>
+        <div :class="{active:order == 'highApha'}" @click="changeOrder('highApha')"><i
+            class='bx bx-chevron-down'></i>Z-A</div>
       </div>
 
       <h3>Filter by:</h3>
@@ -304,7 +311,7 @@
             <div class="cardProductOptions">
               <p> <span @click="addProduct(product)" class="productIcon"> + </span> <span> {{ product.quantity }}
                 </span> <span @click="subProduct(product)" class="productIcon"> - </span> </p>
-              <p> <i class="fa-solid fa-trash productIcon" @click="removeProduct(product)"></i> </p>
+              <p> <i class="fa-solid fa-trash productIcon" @click="removeProduct(product.id)"></i> </p>
             </div>
           </div>
         </div>
@@ -330,26 +337,29 @@
 
 
     <div class="mainContent">
-      <div class="productCard" v-for="product in productsList">
-        <div class="productBody" >
-          <div class="img" :style="'background-image: url('+product.urlImg+');'" :class="{piercing:!clothOrPier}" @click = "openCheckProduct(product)"></div>
+      <div class="productCard" v-for="product in productsList" v-if="productsList.length > 0">
+        <div class="productBody">
+          <div class="img" :style="'background-image: url('+product.urlImg+');'" :class="{piercing:!clothOrPier}"
+            @click="openCheckProduct(product)"></div>
           <div class="favouriteIcon">
-            <i class='bx bxs-heart' v-if="favouritesIds.includes(product.id)" @click="removeFavourite(product.id)" style="cursor: pointer;"></i>
+            <i class='bx bxs-heart' v-if="favouritesIds.includes(product.id)" @click="removeFavourite(product.id)"
+              style="cursor: pointer;"></i>
             <i class='bx bx-heart' v-else @click="addFavourite(product.id)" style="cursor: pointer;"></i>
           </div>
-          <div class="productBodyBackground" @click = "openCheckProduct(product)"></div>
+          <div class="productBodyBackground" @click="openCheckProduct(product)"></div>
         </div>
         <div class="productText">
           <p class="nameProduct">{{product.name}}</p>
           <p class="priceProduct">${{product.price.toLocaleString('de-DE')}}</p>
         </div>
       </div>
-      <div v-if="productsList.length == 0">
-
+      <div v-if="productsList.length == 0" class="nothing">
+        <img src="./assets/nothingHere.gif" alt="" srcset="" class="">
       </div>
     </div>
 
   </main>
+
   <!-- footer -->
   <footer>
     <div class="barbedWireFooter"></div>

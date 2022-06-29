@@ -35,8 +35,9 @@
                   <h5>{{product.description}}</h5>
                   <span class="line"></span>
                   <div class="priceInfo">
-                    <div id="price">${{product.price}}
-                    </div>
+                    <div id="price">${{product.price}}</div>
+                    <div id="color"> color: <div :style="'background-color:'+ product.color + ';'"></div></div>
+                    <div id="size">size: {{product.size}}</div>
                     <div id="units">
                       <i class="fa-solid fa-minus" @click="subUnit(product)"></i>
                       Units

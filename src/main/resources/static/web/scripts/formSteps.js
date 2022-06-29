@@ -1,4 +1,5 @@
-$(document).ready(function () {
+
+$('body').ready(function () {
   $('.first ul li a').click(function () {
     $('.first ul li a span.active').removeClass('active');
     let closestA = $(this).closest('a');

@@ -9,6 +9,7 @@
 html {
     min-height: 100vh;
     max-width: 100vw;
+    transition: 1s;
 }
 
 /* colores */
@@ -38,6 +39,7 @@ body {
     background-position: bottom;
     color: white;
     height: 160vh;
+    transition: 1s;
 }
 
 main {
