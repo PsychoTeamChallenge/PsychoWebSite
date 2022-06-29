@@ -106,13 +106,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
-
 }
 
-.half {
+.payment .half {
   display: flex;
-  width: 58vw;
+  width: 70vw;
+  justify-content: space-between;
+}
+
+.payment .half .inp {
+  margin: 1rem 0;
+  width: 44%;
+}
+
+.payment #labelCardNumber {
+  width: 70vw !important;
 }
 
 #steps {
@@ -134,7 +142,7 @@
   font-weight: 500;
   letter-spacing: 2px;
   text-transform: uppercase;
- /*  position: absolute;
+  /*  position: absolute;
   right: 130px; */
   cursor: pointer;
   transition: 1s;
@@ -182,38 +190,50 @@
     background-position: 400%;
   }
 }
+
 @media screen and (min-width: 300px) {
- /*  .button-49 {
+  /*  .button-49 {
     right: 110px;
     top: 270px;
   } */
 }
-@media screen and (min-width: 390px){
-/* .button-49 {
+
+@media screen and (min-width: 390px) {
+  /* .button-49 {
     right: 110px;
     top: 400px;
 } */
 }
+
 @media screen and (min-width: 400px) {
   /* .button-49 {
     right: 150px;
     top: 430px;
   } */
 }
+
 @media screen and (min-width: 500px) {
- /*  .button-49 {
+  /*  .button-49 {
     right: 245px;
     top: 430px;
   } */
 }
+
 @media screen and (min-width: 600px) {
+
   /* .button-49 {
     right: 260px;
     top: 430px;
   } */
   .inp {
-    width: 60%!important;
-}
+    width: 60% !important;
+  }
+
+  .payment .half .inp {
+    margin: 1rem 0;
+    width: 44% !important;
+  }
+
   .payment {
     width: 40vh;
   }
@@ -228,81 +248,61 @@
 } */
 
 @media screen and (min-width: 760px) {
+
   /* .button-49 {
     right: 300px;
     top: 600px;
   } */
   .half {
     width: 54vw;
-}
+  }
+
   .inp {
-    width: 45%!important
+    width: 45% !important
   }
 }
 
- @media screen and (min-width: 800px) {
+@media screen and (min-width: 800px) {
   .payment {
     width: 91vh;
   }
+
   .inp {
-    width: 44%!important;
+    width: 44% !important;
+  }
+
+
+  .payment .half,
+  .payment #labelCardNumber {
+    width: 55vw !important;
+  }
 }
-}
-/*
+
 @media screen and (min-width: 900px) {
-  .button-49 {
-    right: 360px;
+
+  .payment .half,
+  .payment #labelCardNumber {
+    width: 42vw !important;
+
   }
 }
 
 @media screen and (min-width: 1000px) {
-  .button-49 {
-    right: 500px;
-    margin-top: -12rem;
-  }
   .payment {
-    width: 190vh;
-}
+    width: 61vw;
+  }
+  .shipping{
+    width: 61vw;
+  }
+
   .half {
+
+    width: 54vw;
     justify-content: center;
   }
-}
 
-@media screen and (min-width: 1100px) {
-  .button-49 {
-    right: 550px;
+  .inp {
+    width: 45% !important;
   }
-}
-
-@media screen and (min-width: 1200px) {
-  .button-49 {
-    right: 600px;
-  }
-}
-
-@media screen and (min-width: 1300px) {
-  .button-49 {
-    right: 650px;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .button-49 {
-    right: 700px;
-  }
-} */
-
-@media screen and (min-width: 1000px){
-.payment {
-  width: 120vh
-}
-.half {
-
-  width: 54vw;
-  justify-content: center;
-}
-.inp {
-  width: 45%!important;
-}
 
 }

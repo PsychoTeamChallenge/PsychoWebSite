@@ -46,7 +46,7 @@ public class ClientProductController {
     @Transactional
     @PatchMapping("/cart/current/modify")
     public ResponseEntity<Object> modifyProduct(
-            @RequestParam int clientProduct_id, @RequestParam int quantity){
+            @RequestParam long clientProduct_id, @RequestParam int quantity){
 
         ClientProduct clientProduct =  clientProductService.getClientProductById(clientProduct_id);
         if( clientProduct == null){

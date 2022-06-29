@@ -114,6 +114,13 @@ a {
   margin-top: -10rem;
 }
 
+.tab-steps .form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .hidden {
   display: none;
 }
@@ -123,12 +130,16 @@ a {
   background-color: rgba(0, 0, 0, 0.603);
 }
 
+#showBill {
+  display: none;
+}
+
 #row {
   flex-direction: row;
 }
 
 #sideBill {
-  width: 27vw;
+  width: 30vw;
   height: 27rem;
   display: flex !important;
   flex-wrap: wrap;
@@ -153,17 +164,30 @@ a {
   padding: 0;
   margin: .5rem;
   width: 95vw;
-  height: 19vh;
+  height: auto;
   border: 0.1rem solid #fff;
   box-shadow: 0 0 0.1rem #fff, 0 0 1rem var(--pink);
+  backdrop-filter: blur(3px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgb(38 20 35 / 51%);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding: 0.3rem 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 #image {
-  width: 17vh;
-  height: 7rem;
+  width: 40%;
+  height: 8rem;
   background: url(https://www.redeszone.net/app/uploads-redeszone.net/2018/07/comprar-seguridad-online.jpg?x=480&y=375&quality=40);
   background-size: contain;
+  background-position-y: 11px;
   background-repeat: no-repeat;
+  margin-bottom: 2rem;
 }
 
 .d-flex {
@@ -191,24 +215,35 @@ h5 {
   margin: 3px;
   padding: 0.2rem;
   background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
 }
 
 #itemQuantity {
   outline: none;
   border: none;
-  width: 0.3rem;
+  width: 2rem;
+  background: #d7c8e3;
+  border-radius: 5px;
+}
+
+.fa-solid,
+.fas {
+  margin-right: 9px;
 }
 
 .priceInfo {
   display: flex;
   justify-content: space-between;
-  width: 50vw;
-  flex-direction: row-reverse;
+  width: 42vw;
+  flex-direction: column;
   border-bottom: 1px solid #fff;
 }
 
 #delete {
-  width: 100%;
+  width: 87%;
   display: flex;
   justify-content: space-between;
 }
@@ -218,16 +253,60 @@ h5 {
   justify-content: center;
 }
 
+#main-form {
+  width: 100vw;
+}
+
+#cardNumber {
+  width: 100vw;
+}
+
+.tab-steps {
+  margin-top: 0rem;
+  justify-content: center;
+}
+
+
+#labelCardNumber {
+  width: 50vw !important;
+}
+
+.form label {
+  backdrop-filter: blur(3px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgb(38 20 35 / 51%);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
+.inp input:not(:placeholder-shown)+.label {
+  color: white !important;
+}
+
+.shipping {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 500px) {
+  .priceInfo {
+    justify-content: space-between;
+    width: 50vw;
+    flex-direction: row;
+  }
+
+  #units {
+    width: 8.5rem;
+  }
+}
+
 @media screen and (min-width: 600px) {
 
   #steps {
     width: 100%;
   }
 
-  #image {
-    height: 15vh;
-    width: 27vw;
-  }
 
   #breadcrumb {
     width: 100vw;
@@ -245,21 +324,46 @@ h5 {
     display: flex !important;
     flex-wrap: nowrap;
   }
-}
 
-#main-form {
-  width: 100vw;
-}
-
-@media screen and (max-width: 600px) {
   .tab-steps {
     height: auto;
   }
+
+  .container {
+    height: 21vh;
+  }
+
+  #image {
+    height: 128%;
+    width: 28%;
+    margin-bottom: 2rem;
+  }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 700px) {
+  .priceInfo {
+    justify-content: space-between;
+    width: 45vw;
+  }
+}
+
+@media screen and (min-width: 800px) {
+
   #showBill {
-    display: none;
+    display: inline-block;
+  }
+
+  .tab-steps .form {
+    width: 61vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1000px) {
+  .container {
+    width: 84vw;
   }
 }
 
@@ -269,24 +373,13 @@ h5 {
     width: 68vw;
   }
 
-  #image {
-    height: 15vh;
-    width: 27vh;
-    height: 6rem;
-
+  .inp {
+    width: 45% !important;
   }
-}
 
-#cardNumber {
-  width: 100vw;
-}
-
-.tab-steps {
-  margin-top: 0rem;
-  justify-content: center;
-}
-
-
-#labelCardNumber {
-  width: 50vw !important;
+  #image {
+    height: 128%;
+    width: 19%;
+    margin-bottom: 2rem;
+  }
 }

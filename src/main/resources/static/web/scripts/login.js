@@ -1,3 +1,41 @@
+Vue.createApp({
+    data() {
+        return {
+            loginEmail: "",
+            loginPass: "",
+
+            registerFirstName: "",
+            registerLastName: "",
+            registerUsername: "",
+            registerEmail: "",
+            registerPass: "",
+        }
+    },
+
+    created() {
+
+    },
+
+    methods: {
+        login() {
+            axios.post("/api/login","email=" + this.loginEmail +"&password="+this.loginPass)
+                .then(response => window.location.href = "/web/index.html")
+                .catch(error => console.log(error))
+        },
+        register() {
+            axios.post("/api/clients", "firstName=" + this.registerFirstName + "&lastName=" + this.registerLastName + "&email=" + this.registerEmail + "&password=" + this.registerPass + "&userName=" + this.registerUsername)
+            .then(alert("email send"))
+            .catch(error => console.log(error))
+        }
+    },
+    computed: {
+
+    }
+
+}).mount('#app')
+
+
+
 /* --------------- FORM  -----------*/
 
 $('.form').find('input, textarea').on('keyup blur focus', function (e) {
@@ -43,3 +81,4 @@ $('.tab a').on('click', function (e) {
     $(target).fadeIn(600);
 
 });
+

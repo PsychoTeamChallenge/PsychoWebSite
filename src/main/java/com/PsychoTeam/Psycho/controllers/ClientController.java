@@ -196,8 +196,7 @@ public class ClientController {
         helper.setSubject(subject);
 
         content = content.replace("[[name]]", client.getFullName());
-
-        String verifyURL = "/web/activateClient.html?token=" + client.getToken();
+        String verifyURL = "http://localhost:8080/web/verification.html?token=" + client.getToken();
 
         content = content.replace("[[URL]]", verifyURL);
 

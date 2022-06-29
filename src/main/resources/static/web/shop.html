@@ -17,6 +17,7 @@
 
   <link rel="stylesheet" href="./styles/cart.css">
   <link rel="stylesheet" href="./styles/shop.css">
+  <link rel="stylesheet" href="./styles/colorPicker.css">
   <title>Psycho Tattoo & Piercing Shop</title>
 </head>
 
@@ -80,7 +81,7 @@
       <div id="barbedWire" class="barbedWire barbedWire-navbar"></div>
     </section>
 
-    <!-- <div class="productMobileContainer" id = "productMobileContainer">
+     <div class="productMobileContainer" id = "productMobileContainer">
       <div class="productMobileTop">
         <div class="productExit" @click ="closeCheckProduct()">
           <a href="#"><i class="fa-solid fa-arrow-left bigProductIcon"></i></a>
@@ -94,22 +95,26 @@
           <div class="productImg">
             <div class="productMobileBody">
               <div class="img" :style="'background-image: url('+currentProduct.urlImg+');'"></div>
-              <div class="productMobileBackground"></div>
+              <div class="productMobileBackground">
+
+              </div>
             </div>
           </div>
           <div class="productPrice">
-            <p style = "font-size: 18px;"> {{ currentProduct.name }} </p>
-            <p style = "font-size: 14px;"> $ {{ currentProduct.price }} </p>
+            <p class = "currentProductName"> {{ currentProduct.name }} </p>
+            <p class = "currentDescription"> {{ currentProduct.description }} </p>
           </div>
         </div>
         <div class="productColor">
-          <div>
-            <span> Colours: </span>
+          <div class="colourTitle">
+            <span class = "productAttribute">Colours</span>
           </div>
-          <div class="colorPicker">
-            <div v-for = "size in currentProduct.sizes" class="sizeCard">
-              <a href="#"><span style = "visibility: hidden">14</span></a>
-            </div>
+          <div class="colourPicker">
+            <label v-for="color in currentProduct.colors" class="colour">
+              <input type="radio" name="colorProduct" :value="color">
+              <div class="layer"></div>
+              <div class="button"><span :style="'background-color: '+color+''"></span></div>
+            </label>
           </div>
         </div>
         <div class="productSizes">
@@ -124,9 +129,66 @@
         </div>
       </div>
       <div class="productMobileFooter">
+        <p style = ""> Price ${{ currentProduct.price }} </p>
         <button type="button" class ="cartBtn" name="button"> Add to cart <i style = "margin-left: 1rem;" class="fa-solid fa-cart-arrow-down"></i> </button>
       </div>
-    </div> -->
+    </div>
+
+    <div class="productDesktopContainer" id = "productDesktopContainer">
+        <div class="productDesktopImage">
+          <div class="img" :style="'background-image: url('+currentProduct.urlImg+');pointer-events: none;'"></div>
+          <div class="productImageBackground"></div>
+        </div>
+        <div class="productDesktopDetails">
+          <div class="productDesktopTop">
+            <div class = "productDesktopName">
+              {{ currentProduct.name }}
+            </div>
+            <div>
+              <a href="#" @click = "closeCheckProduct()"><i class="fa-solid fa-arrow-left bigProductIcon"></i></a>
+            </div>
+          </div>
+          <div class="productDesktopMiddle">
+            <div>
+              <span class = "productAttribute">Price</span>
+              <p class = "productValue"> $ {{ currentProduct.price }}</p>
+            </div>
+            <div>
+              <span class = "productAttribute">Description</span>
+              <p class = "productValue">{{ currentProduct.description }}</p>
+            </div>
+            <div>
+              <div class="colourTitle">
+                <span class = "productAttribute">Colours</span>
+              </div>
+              <div class="colourPicker">
+                <label v-for="color in currentProduct.colors" class="colour">
+                  <input type="radio" name="colorProduct" :value="color">
+                  <div class="layer"></div>
+                  <div class="button"><span :style="'background-color: '+color+''"></span></div>
+                </label>
+              </div>
+            </div>
+            <div class="colourTitle">
+              <span class = "productAttribute">Sizes</span>
+            </div>
+            <div class="colourPicker">
+              <label v-for="size in currentProduct.sizes" class="sizeLabel">
+                <input type="radio" name="sizeProduct" :value="size">
+                <div class="layer"></div>
+                <div class="sizeCard">
+                  <span href="#">{{ size }}</span>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="productDesktopFooter">
+            <div>
+              <button @click="addToCart(currentProduct.id)" type="button" class ="cartBtn" name="button"> Add to cart <i style = "margin-left: 1rem;" class="fa-solid fa-cart-arrow-down"></i> </button>
+            </div>
+            </div>
+        </div>
+    </div>
 
     <div class="mobileHeaderBackground"></div>
 
@@ -202,7 +264,7 @@
             Subtotal: ${{ totalCart.toLocaleString('de-DE') }}
           </div>
           <div class="">
-            Shippment: $1.000
+            Shipment: $1.000
           </div>
         </div>
       </div>
@@ -251,7 +313,7 @@
             Subtotal: ${{ totalCart.toLocaleString('de-DE') }}
           </div>
           <div class="">
-            Shippment: $1.000
+            Shipment: $1.000
           </div>
         </div>
       </div>

@@ -39,9 +39,12 @@ Vue.createApp({
                 this.piercing = !this.piercing
             }
         },
+<<<<<<< HEAD
         requestAppointment(){
             window.location.href = "http://localhost:8080/web/appointment.html"
            }
+=======
+>>>>>>> beac039193964e1db33cf3c018f2e8bb3af59dd7
 
     },
     computed: {
@@ -52,8 +55,11 @@ Vue.createApp({
             else if (this.posts.length > 0 && this.tattoo && !this.piercing) {
                 this.filtradosCategory = this.posts.filter(post => post.postType == "TATTOO")
             }
-            else{
+            else if(this.tattoo && this.piercing){
                 this.filtradosCategory = this.posts;
+            }
+            else{
+                this.filtradosCategory = []
             }
 
             if(this.shearchInput != ""){

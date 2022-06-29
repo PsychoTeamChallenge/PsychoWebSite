@@ -21,35 +21,49 @@
 </head>
 
 <body>
-    <!-- nav mobile -->
-    <nav class="mobileNav">
-        <a href="./index.html"><i class='bx bx-home-circle active'></i></a>
+      <!-- nav mobile -->
+      <nav class="mobileNav">
+        <a href="./index.html"><i class='bx bx-home-circle '></i></a>
         <a href="./gallery.html"><i class='bx bxs-grid-alt'></i></a>
         <a href="./gallery.html"><i class='bx bxs-plus-circle'></i></a>
-        <a href="./shop.html"><i class='bx bx-shopping-bag'></i></a>
+        <a href="./shop.html"><i class='bx bx-shopping-bag active'></i></a>
         <a href="./account.html"><i class='bx bx-user'></i></a>
     </nav>
+
+    <!-- LOADER -->
+    <div id="loading"></div>
     <!-- nav desktop -->
     <nav class="desktopNav nav-bar justify-content-around">
-        <div class="nav-item">
+        <div class="">
+
         </div>
-        <div>
-            <ul class="d-flex list-unstyled">
-                <li><a href="#" class="nav-item"><span> Products </span></a></li>
-                <li><a href="#" class="nav-item"><span> Services </span></a></li>
-                <li></li>
-            </ul>
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">Index</a>
+            <a href="shop.html" class="nav-item">Shop</a>
+            <a href="gallery.html" class="nav-item">Gallery</a>
+            <a href="contact-us.html" class="nav-item">Contact Us</a>
         </div>
-        <div>
-            <ul class="d-flex list-unstyled">
-                <li><a href="#"><i class="fa-solid fa-user nav-icon"></i></a></li>
-                <li><a href="#"><i class="fa-solid fa-cart-shopping nav-icon"></i></a></li>
-            </ul>
+        <div class="nav-container">
+            <a href="#" class="nav-icon"><i class="fa-solid fa-user"></i></a>
         </div>
     </nav>
 
 
     <main>
+
+        
+        <section class="mobileHeader">
+            <div class="upSeccion">
+                <h1>Appointmen</h1>
+            </div>
+
+            <img src="./assets/logo/sketchLogo2.png" alt="logoToungue" 
+            id="logoTongue" class="logo-tongue">
+
+            <div id="barbedWire" class="barbedWire barbedWire-navbar"></div>
+        </section>
+        <div class="mobileHeaderBackground"></div>
+
         <form class="form__container">
             <div class="form__header">
                 <h1>request appointmen</h1>
@@ -82,18 +96,17 @@
                 </label>
                 <label for="body">
                     <input class="form__input" type="text" name="body" id="body-part"
-                        placeholder="which part do you prefer to tattoo?">
+                        placeholder="body part for tattoo?">
                 </label>
                 <label for="size">
                     <input class="form__input" type="number" name="size" id="size-tatoo" placeholder="tatoo size">
                 </label>
-                <fieldset class="form__fieldset">what do you prefer?
+                <fieldset class="form__fieldset_color">what do you prefer?
                     <label class="center" for="color">
                         <input class="form__input" type="radio" name="color" id="color-tatoo">color
-                        <input class="form__input" type="radio" name="color" id="b &amp; g">b & w
+                        <input class="form__input" type="radio" name="color" id="bg">b & w
                     </label>
                 </fieldset>
-                <span class="line"></span>
                 <fieldset class="form__fieldset">pick a date
                     <label class="center" for="date">
                         <input class="form__input" type="datetime-local" name="date" id="date-appointment">
@@ -101,12 +114,17 @@
                 </fieldset>
                 <fieldset class="form__fieldset">send a idea:
                     <label for="send">
-                        <input class="form__input" type="file" name="send" id="client-idea">
+                        <input class="form__input" type="file" name="send" id="client-file">
                     </label>
                 </fieldset>
                 <button class="form__input" type="submit">send application</button>
             </div>
         </form>
     </main>
+  <script src="https://kit.fontawesome.com/14ea8811f4.js" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./scripts/navBar.js"></script>
 
 </body>

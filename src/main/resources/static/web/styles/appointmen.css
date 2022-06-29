@@ -79,7 +79,7 @@ h1 {
     font-family: "Argh";
     color: white;
     animation: neon 1s infinite;
-    font-size: 2em;
+  
     letter-spacing: 2px;
 }
 
@@ -105,29 +105,27 @@ h1 {
 
 main {
     width: 100%;
-    margin-top: 1.5rem;
     margin-bottom: 5rem;
 }
 
 form {
     text-align: center;
+     font-size: 1.5em; 
 }
 
 legend {
-    padding: 1em;
     font-size: 18px;
 }
 
 fieldset {
-    padding-bottom: 1em;
-
+    padding: 1em 0;
+    font-family: 'Argh';
 }
 
 .form__fieldset {
     font-size: medium;
     display: block;
     text-align: -webkit-center;
-    font-size: 21px;
     font-family: 'Argh';
 }
 
@@ -150,7 +148,7 @@ input::-webkit-input-placeholder {
     border: none;
     margin-top: 2vh;
     background-image: url(../assets/index/imputTexto.png);
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     height: 50px;
     text-align: center;
     font-family: 'Argh';
@@ -167,7 +165,7 @@ textarea::-webkit-input-placeholder {
     border: none;
     margin-top: 2vh;
     background-image: url(../assets/index/imputTextoGrande.png);
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
 
     height: 50px;
     text-align: center;
@@ -182,12 +180,17 @@ textarea:focus-visible {
 .color {
     padding: 5px 0 5px 60px;
 }
-
+#client-file{
+    text-align: center;
+  margin: auto;
+  width: 20vw;
+}
 
 
 form button[type="submit"] {
-    width: 50vw;
-    height: 13vh;
+    /* width: 50vw; */
+    height: 8vh;
+    font-size: 26px;
     align-self: center;
     background-image: url(../assets/index/buttonTurquesa.png);
     background-color: transparent;
@@ -198,13 +201,16 @@ form button[type="submit"] {
     color: white;
     text-shadow: 3px 3px 5px rgb(0 0 0);
     letter-spacing: 3px;
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-size: contain;
 }
 
 .form__select {
-    max-width: 250px;
+    font-size:26px;
+    height:50px;
+  width:200px;
     position: relative;
+    text-align: center;
 }
 
 .form__select select {
@@ -221,32 +227,41 @@ form button[type="submit"] {
 select,
 select:hover {
     background-color: var(--pink);
+    color: white;
 }
 
 @media screen and (min-width:320px) and (max-width:480px) {
     .form__input {
-        width: 100vw;
+        width: 49vw;
     }
 
     form textarea {
-        width: 100vw;
-    }
-}
-@media screen and (min-width:480px) and (max-width:1024px) {
-    .form__input {
-        width: 35vw;
-        font-size: 1.5em;
+        width: 49vw;
     }
 
-    textarea {
-        width: 35vw;
-        font-size: 1.5em;
+    #color-tatoo,
+    #bg {
+        width: 5vw;
     }
+
     form button[type="submit"] {
-        width: 19vw;
+        width: 35vw;
     }
-    .center input{
-    
-            width: 1vw;
-    }
+}
+
+@media screen and (min-width:961px) {
+form{
+    margin-top: 5rem;
+}
+input, input::-webkit-input-placeholder {
+    width: 20vw;
+}
+textarea, textarea::-webkit-input-placeholder {
+    width: 20vw;
+}
+#color-tatoo, #bg {
+    width: 1vw;
+    height: 2vw;
+}
+
 }
