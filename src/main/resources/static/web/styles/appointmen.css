@@ -75,33 +75,29 @@ body {
     src: url(../assets/fonts/fontsAlternativas/aAnotherTag.ttf);
 }
 
-h1 {
+h2 {
     font-family: "Argh";
     color: white;
-    animation: neon 1s infinite;
-  
+    /* font-size: 2em; */
     letter-spacing: 2px;
 }
 
-@keyframes neon {
 
-    0%,
-    39%,
-    41%,
-    59%,
-    61%,
-    100% {
-        text-shadow:
-            #fff 0 0 12px,
-            rgb(230, 0, 130) 0 0 24px,
-            rgb(230, 0, 130) 0 0 36px;
-    }
-
-    40%,
-    60% {
-        text-shadow: none;
-    }
+#xGraffityFormAppointment {
+    position: absolute;
+    top: 30.5vh;
+    left: 58.5vh;
+    z-index: -1;
+    width: 80px;
 }
+h5{
+    font-family: "Argh";
+    color: white;
+    font-size: 2.6rem;
+    margin-top: 20px;
+    
+}
+
 
 main {
     width: 100%;
@@ -110,11 +106,11 @@ main {
 
 form {
     text-align: center;
-     font-size: 1.5em; 
+    font-size: 2.5rem;  
 }
-
-legend {
-    font-size: 18px;
+.form__header {
+   
+    width: 99%;
 }
 
 fieldset {
@@ -182,15 +178,15 @@ textarea:focus-visible {
 }
 #client-file{
     text-align: center;
-  margin: auto;
-  width: 20vw;
+    margin: auto;
+    width: 39vw;
 }
 
 
 form button[type="submit"] {
     /* width: 50vw; */
     height: 8vh;
-    font-size: 26px;
+    /* font-size: 26px; */
     align-self: center;
     background-image: url(../assets/index/buttonTurquesa.png);
     background-color: transparent;
@@ -206,9 +202,9 @@ form button[type="submit"] {
 }
 
 .form__select {
-    font-size:26px;
+     font-size:2.5rem;
     height:50px;
-  width:200px;
+    width: 39vw;
     position: relative;
     text-align: center;
 }
@@ -229,39 +225,127 @@ select:hover {
     background-color: var(--pink);
     color: white;
 }
-
-@media screen and (min-width:320px) and (max-width:480px) {
-    .form__input {
-        width: 49vw;
+.mini-contain{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Argh';
+}
+@media screen and (min-width:280px) and (max-width:650px) {
+    .form__header{
+        margin-top: 2rem;
     }
+    #xGraffityFormAppointment {
+        position: relative;
+        left: 11.5vh;
+        top: -6vh;
+    }
+   .form__body{ flex-direction: column;
+align-items: center;}
 
-    form textarea {
+    input, input::-webkit-input-placeholder {
+        width: 99%;
+    }
+    /* .form__input {
         width: 49vw;
+    } */
+    .form__select {
+        width: 99%;
+    }
+    form textarea {
+        width: 99%;
+        height: 25vh;
     }
 
     #color-tatoo,
     #bg {
-        width: 5vw;
+        width: 3vw;
+        height: 2vh;
+        background-image: none !important;
     }
-
+    /* #date-appointment{
+         font-size: 2em; 
+    } */
+    #client-file{
+    padding-top: 8px;
+    width: 100%;
+    /* height: 1%; */
+    font-size: 20px;
+    text-align: -webkit-center;
+    padding-left: 36px;
+    }
     form button[type="submit"] {
-        width: 35vw;
+        width: 42vw;
+    font-size: 2rem;
+    /* background-size: contain; */
+    height: 14vh;
+    }
+    #logoTongue{
+        display: none;
+    }
+}
+@media screen and (min-width:660px) and (max-width:800px) {
+
+    .form__body {
+        margin-top: -5rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    input, input::-webkit-input-placeholder {
+    width: 99%;
+}
+    .form__select{
+    width: 99vw;
+    }
+    textarea{
+        height: 30vh;
+        width: 99%;
+        background-size: contain;
+    }
+    #client-file {
+        width: 99%;
+    }
+    #xGraffityFormAppointment {
+        position: relative;
+        left: 9.5vh;
+        top: -14vh;
     }
 }
 
-@media screen and (min-width:961px) {
+@media screen and (min-width:800px) {
 form{
     margin-top: 5rem;
 }
 input, input::-webkit-input-placeholder {
-    width: 20vw;
+    width: 39vw;
 }
 textarea, textarea::-webkit-input-placeholder {
-    width: 20vw;
+    width: 39vw;
+}
+.form__body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#half1,#half2 {
+    width: 50%;
 }
 #color-tatoo, #bg {
-    width: 1vw;
+    width: 2vw;
     height: 2vw;
 }
-
+#client-idea{
+    height:18vh;
 }
+.mini-contain{
+    font-size: 2rem;
+    display: flex;
+    letter-spacing: 4px;
+    width: 50vw;
+    flex-direction: column;
+    font-family: 'Argh';
+    /* align-content: center; */
+    /* justify-content: center; */
+    align-items: center;
+}
+}
+
