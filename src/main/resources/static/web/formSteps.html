@@ -26,7 +26,7 @@
         <div class="h-90 d-flex justify-content-center align-items-center">
           <form id="main-form">
             <!-- form 1 (checkout) -->
-            <div class="tab-steps hidden data">
+            <div class="tab-steps hidden data" v-dragscroll.y="true">
               <h1 class="text-center">Bill Information</h1>
               <div class="container border d-flex row" v-for="product in cart">
                 <div id="image" :style="'background-image:url(' + product.url + ');'"></div>
@@ -35,7 +35,7 @@
                   <h5>{{product.description}}</h5>
                   <span class="line"></span>
                   <div class="priceInfo">
-                    <div id="precio">${{product.price}}
+                    <div id="price">${{product.price}}
                     </div>
                     <div id="units">
                       <i class="fa-solid fa-minus" @click="subUnit(product)"></i>
@@ -61,22 +61,22 @@
                 <h1 class="text-center">Bill</h1>
                 <div class="container border d-flex" id="sideBill">
                   <div id="sideInformation">
-                    <h4>Example information title</h4>
-                    <h5>Subtitle information</h5>
+                    <h4>Purchase Summary</h4>
+                    <h5>{{dateToday()}}</h5>
                     <div class="sidePriceInfo">
-                      <div id="precio">$4000</div>
-                      <div>Products: 3</div>
+                      <div id="price">${{totalExpense()}}</div>
+                      <div>Products: {{cart.length}}</div>
                     </div>
                   </div>
                   <div id="sideInformation">
-                    <h4>Example information title</h4>
-                    <h5>Subtitle information</h5>
+                    <h4 class="mt-4">Recipient of the purchase</h4>
+                    <h5>{{nameInput}} {{lastNameInput}}</h5>
                     <div class="sidePriceInfo">
-                      <div id="precio">$4000</div>
-                      <div>Products: 3</div>
+                      <div id="price">$1000</div>
+                      <div class=" text-white">Type Shiping: Home Delivery</div>
                     </div>
                   </div>
-                  <div>Total:$8000</div>
+                  <div class="total">Total: ${{totalExpense() + 1000}}</div>
                 </div>
               </div>
               <div class="form">
@@ -119,7 +119,7 @@
                     <h4>Example information title</h4>
                     <h5>Subtitle information</h5>
                     <div class="sidePriceInfo">
-                      <div id="precio">$4000</div>
+                      <div id="price">$4000</div>
                       <div>Products: 4</div>
                     </div>
                   </div>
@@ -127,7 +127,7 @@
                     <h4>Example information title</h4>
                     <h5>Subtitle information</h5>
                     <div class="sidePriceInfo">
-                      <div id="precio">$4000</div>
+                      <div id="price">$4000</div>
                       <div>Products: 3</div>
                     </div>
                   </div>
@@ -174,7 +174,7 @@
                     <h4>Example information title</h4>
                     <h5>Subtitle information</h5>
                     <div class="sidePriceInfo">
-                      <div id="precio">$4000</div>
+                      <div id="price">$4000</div>
                       <div>Products: 3</div>
                     </div>
                   </div>
@@ -182,7 +182,7 @@
                     <h4>Example information title</h4>
                     <h5>Subtitle information</h5>
                     <div class="sidePriceInfo">
-                      <div id="precio">$4000</div>
+                      <div id="price">$4000</div>
                       <div>Products: 3</div>
                     </div>
                   </div>
@@ -247,7 +247,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+    
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <script src="https://unpkg.com/vue@next"></script>
+  <script src="https://unpkg.com/vue-dragscroll"></script>
+  
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/vue@3"></script>

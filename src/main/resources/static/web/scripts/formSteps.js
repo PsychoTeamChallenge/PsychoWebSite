@@ -205,6 +205,21 @@ Vue.createApp({
         }
       });
     },
+    dateToday(){
+      const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+      
+      let date = new Date();
+      let day = date.getDate() < 10 ? "0" + date.getDate(): date.getDate()
+
+      return day + " " + months[date.getMonth()].toLowerCase() + " " + date.getFullYear()
+    },
+    totalExpense(){
+      let expense = 0;
+      this.cart.forEach(product => {
+        expense += product.price * product.quantity
+      });
+      return expense;
+    },
 
   },
   computed: {
@@ -212,4 +227,4 @@ Vue.createApp({
 
   }
 
-}).mount('#app')
+}).directive('dragscroll', VueDragscroll).mount('#app')

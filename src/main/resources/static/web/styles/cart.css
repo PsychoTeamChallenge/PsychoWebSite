@@ -193,26 +193,6 @@ border: 1px solid rgba(255, 255, 255, 0.125);
   width: 100%;
 }
 
-/* width */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  border-radius: 1rem;
-  background-color: rgb(230 0 130 / 53%);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(230 0 130 / 53%);
-}
 
 
 @media only screen and (max-width: 800px){
