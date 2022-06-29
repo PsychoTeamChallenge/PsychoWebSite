@@ -21,8 +21,8 @@
 </head>
 
 <body>
-      <!-- nav mobile -->
-      <nav class="mobileNav">
+    <!-- nav mobile -->
+    <nav class="mobileNav">
         <a href="./index.html"><i class='bx bx-home-circle '></i></a>
         <a href="./gallery.html"><i class='bx bxs-grid-alt'></i></a>
         <a href="./gallery.html"><i class='bx bxs-plus-circle'></i></a>
@@ -51,14 +51,13 @@
 
     <main>
 
-        
+
         <section class="mobileHeader">
             <div class="upSeccion">
                 <h1>Appointmen</h1>
             </div>
 
-            <img src="./assets/logo/sketchLogo2.png" alt="logoToungue" 
-            id="logoTongue" class="logo-tongue">
+            <img src="./assets/logo/sketchLogo2.png" alt="logoToungue" id="logoTongue" class="logo-tongue">
 
             <div id="barbedWire" class="barbedWire barbedWire-navbar"></div>
         </section>
@@ -66,62 +65,73 @@
 
         <form class="form__container">
             <div class="form__header">
-                <h1>request appointmen</h1>
+                <h2 class="display-1">request appointment</h2>
+                <img src="./assets/index/xGraffittiVioleta.png" alt="XGraffitty" id="xGraffityFormAppointment">
             </div>
             <div class="form__body">
-                <label for="name">
-                    <input class="form__input" type="text" name="name" id="client-name" placeholder="name">
-                </label>
-                <label for="last-name">
-                    <input class="form__input" type="text" name="last-name" id="client-last-name"
-                        placeholder="last name">
-                </label>
-                <label for="telephone">
-                    <input class="form__input" type="tel" name="telephone" id="tel" placeholder="telephone">
-                </label>
-                <fieldset class="form__fieldset">
-                    <select class="form__select">
-                        <option selected disabled>picke an artist</option>
-                        <option name="1" id="1">Polli</option>
-                        <option name="1" id="2">Celes</option>
-                        <option name="1" id="3">Zeke</option>
-                        <option name="1" id="4">David</option>
-                        <option name="1" id="5">Lauteh</option>
-                        <option name="1" id="6">Fla</option>
-                    </select>
-                </fieldset>
-                <label for="idea">
-                    <textarea name="idea" id="client-idea" cols="30" rows="10"
-                        placeholder="explain your idea:"></textarea>
-                </label>
-                <label for="body">
-                    <input class="form__input" type="text" name="body" id="body-part"
-                        placeholder="body part for tattoo?">
-                </label>
-                <label for="size">
-                    <input class="form__input" type="number" name="size" id="size-tatoo" placeholder="tatoo size">
-                </label>
-                <fieldset class="form__fieldset_color">what do you prefer?
-                    <label class="center" for="color">
-                        <input class="form__input" type="radio" name="color" id="color-tatoo">color
-                        <input class="form__input" type="radio" name="color" id="bg">b & w
+                <div id="half1">
+                    <label for="name">
+                        <input class="form__input" type="text" name="name" id="client-name" placeholder="name">
                     </label>
-                </fieldset>
-                <fieldset class="form__fieldset">pick a date
-                    <label class="center" for="date">
-                        <input class="form__input" type="datetime-local" name="date" id="date-appointment">
+                    <label for="last-name">
+                        <input class="form__input" type="text" name="last-name" id="client-last-name"
+                            placeholder="last name">
                     </label>
-                </fieldset>
-                <fieldset class="form__fieldset">send a idea:
-                    <label for="send">
-                        <input class="form__input" type="file" name="send" id="client-file">
+                    <label for="telephone">
+                        <input class="form__input" type="tel" name="telephone" id="tel" placeholder="telephone">
                     </label>
-                </fieldset>
+                    <fieldset class="form__fieldset">
+                        <select class="form__select">
+                            <option selected disabled>picke an artist</option>
+                            <option name="1" id="1">Polli</option>
+                            <option name="1" id="2">Celes</option>
+                            <option name="1" id="3">Zeke</option>
+                            <option name="1" id="4">David</option>
+                            <option name="1" id="5">Lauteh</option>
+                            <option name="1" id="6">Fla</option>
+                        </select>
+                    </fieldset>
+                    <label for="idea">
+                        <textarea class=" name="idea" id="client-idea" cols="30" rows="10"
+                            placeholder="explain your idea:"></textarea>
+                    </label>
+                </div>
+                <div id="half2">
+                    <label for="body">
+                        <input class="form__input" type="text" name="body" id="body-part"
+                            placeholder="body part for tattoo?">
+                    </label>
+                
+                
+                    <label for="size">
+                        <input class="form__input" type="number" name="size" id="size-tatoo" placeholder="tatoo size">
+                    </label>
+                    <div class="mini-contain">what do you prefeer? 
+                        <div>
+                            <label for="color-tatoo">color</label>
+                            <input  type="checkbox" name="color" id="color-tatoo">
+                        </div>
+                            <div>
+                                <label for="bg">black and white</label>
+                            <input  type="checkbox" name="color" id="bg">
+                            </div>
+                        </div>
+                                <div class="mini-contain">pick a date
+                        <label class="center" for="date">
+                            <input class="form__input" type="datetime-local" name="date" id="date-appointment">
+                        </label>
+                    </div>
+                                  <div class="mini-contain"> send a idea:
+                        <label for="send">
+                            <input class="form__input " type="file" name="send" id="client-file">
+                        </label>
+                    </div> 
+                </div>
                 <button class="form__input" type="submit">send application</button>
             </div>
         </form>
     </main>
-  <script src="https://kit.fontawesome.com/14ea8811f4.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/14ea8811f4.js" crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
