@@ -23,6 +23,8 @@
 
     <main id="app">
 
+        <i class='bx bxs-plus-circle postDesktop' @click="openNewPost()"></i>
+
         <!-- nav mobile -->
         <nav class="mobileNav">
             <a href="./index.html"><i class='bx bx-home-circle '></i></a>
@@ -93,8 +95,13 @@
 
             <!-- _________________ end card ___________________________ -->
         </div>
+        <!-- nothing here animation -->
+        <div v-else class="nothing">
+            <h2>Nothing here</h2>
 
-<!-- _________________ new post ______________ -->
+        </div>
+
+        <!-- _________________ new post ______________ -->
         <div class="newPostContainer" :class="{active:newPost}">
             <i class='bx bx-left-arrow-alt newPostArrow' @click="openNewPost()"></i>
 
@@ -137,7 +144,10 @@
 
 
                 <!-- validacion de fueguitos hasta 5 -->
-                <h4>Rate your experience</h4>
+                <div class="rateYourExperienceTitle">
+                    <h4>Rate your experience</h4>
+                    <img src="../web/assets/gallery/fireEmoji.png" alt="fire emoji" id="fireEmojiExperience">
+                </div>
                 <div class="fireValidationDiv">
                     <input type="radio" id="1" name="rate" value="1">
                     <label for="1">1</label>
@@ -162,11 +172,8 @@
 
         </div>
 
-        <div v-else class="nothing">
-            <h2>Nothing here</h2>
-    
-        </div>
-       
+
+
 
     </main>
 

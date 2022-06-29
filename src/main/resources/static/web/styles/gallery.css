@@ -35,6 +35,7 @@ body {
 
 #app {
   min-height: 100vh;
+  position: relative;
 }
 
 /* contentedor de cards*/
@@ -229,6 +230,26 @@ body {
 
 /* ------- NEW POST -----------*/
 
+/* --- desktop ---- */
+.postDesktop {
+  color: var(--purple);
+  font-size: 3.3rem;
+  position: fixed;
+  bottom: 5vh;
+  right: 3.4vh;
+  z-index: 5;
+  display: none;
+}
+
+.postDesktop:hover {
+  cursor: pointer;
+  font-size: 3.5rem;
+  text-shadow: 0px 0px 10px rgb(255 255 255 / 39%);
+}
+
+
+/* -- mobile ---*/
+
 .newPostDiv h6 {
   color: white;
   font-size: 2.3rem;
@@ -271,7 +292,8 @@ body {
   justify-content: center;
   align-items: center;
 }
-.newPostTitle{
+
+.newPostTitle {
   position: relative;
 }
 
@@ -307,7 +329,7 @@ body {
 
 }
 
-.newPostDiv input:checked + label{
+.newPostDiv input:checked+label {
   color: var(--purple);
 }
 
@@ -326,7 +348,7 @@ body {
   text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.568);
 }
 
-.newPostDiv select{
+.newPostDiv select {
   word-wrap: normal;
   background-color: var(--purple);
   border: none;
@@ -339,7 +361,7 @@ body {
   text-shadow: 2px 2px 2px black;
 }
 
-.newPostDiv select option{
+.newPostDiv select option {
   text-shadow: 2px 2px 2px black;
 }
 
@@ -384,7 +406,35 @@ body {
   text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.568);
 }
 
+.rateYourExperienceTitle {
+  position: relative;
+}
+
+#fireEmojiExperience {
+  width: 45px;
+  position: absolute;
+  top: -18px;
+  left: 164px;
+}
+
 /* -------------- media query ----------------- */
+@media screen and (min-width:800px){
+
+  .newPostContainer.active{
+    left:50%
+  }
+
+  .newPostContainer {
+    left: 100%;
+    width: 50%;
+  }
+
+
+  .postDesktop{
+    display: inline;
+  }
+}
+
 @media (min-width: 1080px) {
   .cards {
     width: 25%;
