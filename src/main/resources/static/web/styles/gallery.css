@@ -93,6 +93,7 @@ body {
   justify-content: space-around;
   opacity: 0;
   transition: .8s;
+  filter: drop-shadow(2px 4px 6px white);
 }
 
 .stars {
@@ -409,8 +410,8 @@ body {
   }
 
   .fire {
-    bottom: 0px;
-    right: 0px;
+    bottom: 9px;
+    right: 5px;
   }
 
   .stars {

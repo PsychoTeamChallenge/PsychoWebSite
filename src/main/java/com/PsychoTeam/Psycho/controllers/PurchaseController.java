@@ -25,9 +25,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -96,11 +100,41 @@ public class PurchaseController {
         newPurchase.setDate(todayTime);
         newPurchase.setAddress(purchaseApplicationDTO.getAddress());
         newPurchase.setPayMethod(purchaseApplicationDTO.getPaymentMethod());
+        newPurchase.setTotalExpense(totalExpense);
         newPurchase.setEnable(true);
         clientUsed.addPurchases(newPurchase);
         clientService.saveClient(clientUsed);
         purchaseService.savePurchase(newPurchase);
         return new ResponseEntity<>("Purchase completed", HttpStatus.ACCEPTED);
+    }
+
+
+    @GetMapping("/purchase/resume")
+    public ResponseEntity<?> getResume(Authentication authentication, HttpServletResponse response, @RequestParam long idPurchase) throws DocumentException, IOException {
+
+        Client client = clientService.getClient(authentication.getName());
+
+        if(client == null)
+            return new ResponseEntity<>("Invalid Client", HttpStatus.FORBIDDEN);
+
+        Purchase purchase = client.getPurchases().stream().filter(purchaseClient -> purchaseClient.getId() == idPurchase).findAny().orElse(null);
+
+        if(purchase == null)
+        return new ResponseEntity<>("Invalid Purchase", HttpStatus.FORBIDDEN);
+
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm") ;
+        String currentDateTime = dateFormatter.format(new Date());
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=Psycho_Resume_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey,headerValue);
+
+
+        CreatePDF(response,purchase);
+        return new ResponseEntity<>("PDF SEND", HttpStatus.CREATED);
+
     }
 
     @Transactional

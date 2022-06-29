@@ -183,6 +183,13 @@ textarea:focus-visible {
     text-align: center;
     margin: auto;
     width: 39vw;
+    background-color: transparent;
+    border: none;
+    margin-top: 2vh;
+    background-image: url(../assets/index/imputTextoGrande.png);
+    height: 50px;
+    font-family: 'Argh';
+    color: white !important;
 }
 
 .font{

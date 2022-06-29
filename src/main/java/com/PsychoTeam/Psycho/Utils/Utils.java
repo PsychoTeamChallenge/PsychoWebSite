@@ -4,6 +4,7 @@ import com.PsychoTeam.Psycho.Models.Purchase;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
+import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import net.bytebuddy.utility.RandomString;
 
@@ -68,7 +69,8 @@ public class Utils {
        Document document = new Document();
        PdfWriter.getInstance(document, response.getOutputStream());
        document.open();
-
+       PdfPTable table = new PdfPTable(6);
+        
 
        document.close();
 
