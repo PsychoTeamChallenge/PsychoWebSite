@@ -92,13 +92,13 @@
             <div class="postsDetails">
               <h3>Posts you have done</h3>
               <div class="postContainers">
-                <div class="cards" v-for="post in postsFiltrados" :style="'background-image:url('+post.urlImage+');'">
+                <div class="cards" v-for="post in client.posts" :style="'background-image:url('+post.urlImage+');'">
                     <p class="glass">@{{post.tattooer}}</p>
                     <div class="fire">
                         <img class="stars" src="../web/assets/gallery/fireEmoji.png" alt="stars" v-for="fire in post.fires">
                     </div>
                     <span class="username">@{{post.username}}</span>
-                    <button class="requestTurn">Delete Post</button>
+                    <button class="requestTurn" @click ="removePost(post.id)">Delete Post</button>
                 </div>
               </div>
             </div>

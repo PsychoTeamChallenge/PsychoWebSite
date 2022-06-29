@@ -35,6 +35,15 @@ Vue.createApp({
       },
       closeEditAccount(){
         this.editAccount = false;
+      },
+      removePost(id){
+        axios.patch("/api/post/delete/" + id)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
       }
     },
     computed: {

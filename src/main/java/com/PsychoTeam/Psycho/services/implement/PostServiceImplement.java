@@ -17,6 +17,11 @@ public class PostServiceImplement implements PostService {
     PostRepository postRepository;
 
     @Override
+    public Post getPostById(long id) {
+        return postRepository.getReferenceById(id);
+    }
+
+    @Override
     public List<PostDTO> getPostsDTO() {
         return postRepository.findAll().stream().map(post -> new PostDTO(post)).collect(Collectors.toList());
     }
@@ -29,5 +34,10 @@ public class PostServiceImplement implements PostService {
     @Override
     public void savePost(Post post) {
         postRepository.save(post);
+    }
+
+    @Override
+    public void removePost(Post post) {
+        postRepository.delete(post);
     }
 }
