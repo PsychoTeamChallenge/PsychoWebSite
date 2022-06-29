@@ -265,6 +265,23 @@ color: black;
   border-bottom: 1px solid #fff;
 }
 
+
+#color{
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+#color div{
+  background-color: gray;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 1.5px solid white ;
+}
+#size,.priceInfo #price{
+  display: flex;
+  align-items: center;
+}
 #delete {
   width: 87%;
   display: flex;
@@ -318,7 +335,6 @@ color: black;
   .priceInfo {
     justify-content: space-between;
     width: 50vw;
-    flex-direction: row;
   }
 
   #units {
@@ -332,7 +348,9 @@ color: black;
     width: 100%;
   }
 
-
+  .priceInfo{
+    flex-direction: row;
+  }
   #breadcrumb {
     width: 100vw;
   }

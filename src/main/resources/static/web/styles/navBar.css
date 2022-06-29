@@ -307,6 +307,7 @@ cursor: pointer;
   z-index: 9999999;
 }
 
+
 /* --------------LOADER -----------------*/
 
 
@@ -372,9 +373,41 @@ cursor: pointer;
   background-color: var(--lightblue)!important;
 }
 
+.nothing{
+  background-image: url(../assets/nothingHere.gif);
+    width: 100%;
+    height: 83vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.nothing h2{
+  position: absolute;
+    left: 57%;
+    top: 26%;
+    font-size: 5rem;
+    color: white;
+    animation: neon 1s infinite;
+}
+@keyframes neon {
 
+  0%,
+  39%,
+  41%,
+  59%,
+  61%,
+  100% {
+      text-shadow:
+          #fff 0 0 12px,
+          rgb(224, 0, 187) 0 0 24px,
+          rgb(224, 0, 209) 0 0 36px;
+  }
 
-
+  40%,
+  60% {
+      text-shadow: none;
+  }
+}
 
 @media (min-width:460px) {
   .downSeccion .filters input {

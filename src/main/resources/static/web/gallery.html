@@ -78,7 +78,7 @@
       
         <!-- _________________ card start  ___________________________ -->
 
-        <div class="d-flex">
+        <div class="d-flex" v-if="postsFiltrados.length > 0">
             <div class="cards" v-for="post in postsFiltrados" :style="'background-image:url('+post.urlImage+');'">
                 <p class="glass">@{{post.tattooer}}</p>
 
@@ -91,6 +91,11 @@
 
             <!-- _________________ end card ___________________________ -->
         </div>
+        <div v-else class="nothing">
+            <h2>Nothing here</h2>
+    
+        </div>
+       
     </main>
 
 
