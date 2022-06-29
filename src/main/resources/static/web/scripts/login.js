@@ -24,8 +24,29 @@ Vue.createApp({
         },
         register() {
             axios.post("/api/clients", "firstName=" + this.registerFirstName + "&lastName=" + this.registerLastName + "&email=" + this.registerEmail + "&password=" + this.registerPass + "&userName=" + this.registerUsername)
-            .then(alert("email send"))
-            .catch(error => console.log(error))
+            .then(response=>{
+                if(response.data == "Email already in use" || response.data == "Username already in use"){
+                    Swal.fire(
+                        'Opss!',
+                        'Email or Username already in use',
+                        'error'
+                      );
+                }
+                else{
+                    Swal.fire(
+                        'Nice!',
+                        'Check your email, validation was sent to you to activate your account!',
+                        'success'
+                      );
+                }
+            })
+            .catch(error => {
+                Swal.fire(
+                    'Opss!',
+                    'Email or Username already in use',
+                    'error'
+                  );
+            } )
         }
     },
     computed: {

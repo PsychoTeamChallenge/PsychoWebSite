@@ -229,11 +229,19 @@ Vue.createApp({
               this.closeCheckProduct();
             })
             .catch((error) => {
-              Swal.fire(
-                'Error!',
-                'Error: ' + error,
-                'error'
-              );
+              Swal.fire({
+                title: 'Oh woow!',
+                text: "You can't do that! Do you want to log in?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, log in!'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                 window.location.href= "/web/login.html"
+                }
+              });
               this.closeCheckProduct();
             });
           }

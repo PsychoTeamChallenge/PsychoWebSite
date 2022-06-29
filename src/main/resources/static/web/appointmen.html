@@ -26,7 +26,7 @@
         <a href="./index.html"><i class='bx bx-home-circle '></i></a>
         <a href="./gallery.html"><i class='bx bxs-grid-alt'></i></a>
         <a href="./gallery.html"><i class='bx bxs-plus-circle'></i></a>
-        <a href="./shop.html"><i class='bx bx-shopping-bag active'></i></a>
+        <a href="./shop.html"><i class='bx bx-shopping-bag '></i></a>
         <a href="./account.html"><i class='bx bx-user'></i></a>
     </nav>
 
@@ -92,7 +92,7 @@
                         </select>
                     </fieldset>
                     <label for="idea">
-                        <textarea class=" name="idea" id="client-idea" cols="30" rows="10"
+                        <textarea class=" name=" idea" id="client-idea" cols="30" rows="10"
                             placeholder="explain your idea:"></textarea>
                     </label>
                 </div>
@@ -101,31 +101,37 @@
                         <input class="form__input" type="text" name="body" id="body-part"
                             placeholder="body part for tattoo?">
                     </label>
-                
-                
+
+
                     <label for="size">
                         <input class="form__input" type="number" name="size" id="size-tatoo" placeholder="tatoo size">
                     </label>
-                    <div class="mini-contain">what do you prefeer? 
-                        <div>
+                    <div class="font row d-flex align-items-end">
+                        <h5 class="col-12">what do you prefeer?</h5>
+                        <div class="col-6">
                             <label for="color-tatoo">color</label>
-                            <input  type="checkbox" name="color" id="color-tatoo">
+                            <input type="checkbox" name="color" id="color-tatoo">
                         </div>
-                            <div>
-                                <label for="bg">black and white</label>
-                            <input  type="checkbox" name="color" id="bg">
-                            </div>
+                        <div class="col-6">
+                            <label for="bg">black and white</label>
+                            <input type="checkbox" name="color" id="bg">
                         </div>
-                                <div class="mini-contain">pick a date
+                    
+                    </div>
+                    <div class="font">pick a date</div>
+                    <div class="mini-contain2">
                         <label class="center" for="date">
                             <input class="form__input" type="datetime-local" name="date" id="date-appointment">
                         </label>
                     </div>
-                                  <div class="mini-contain"> send a idea:
+                </div>
+                <div class="font">send a idea:
+                    <div class="mini-contain"> 
                         <label for="send">
                             <input class="form__input " type="file" name="send" id="client-file">
                         </label>
-                    </div> 
+                    </div>
+                </div>
                 </div>
                 <button class="form__input" type="submit">send application</button>
             </div>
