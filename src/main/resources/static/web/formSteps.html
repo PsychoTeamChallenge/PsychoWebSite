@@ -20,6 +20,8 @@
 </head>
 
 <body style="height: 100% !important;">
+   <!-- LOADER -->
+   <div id="loading"></div>
   <div class="container-fluid h-100"  id="app">
     <div class="w-100 h-100 d-flex" v-if="isClient">
       <div id="steps" class="w-60 h-100">
@@ -239,7 +241,7 @@
               <li onclick="switchTab(2)"><a href="#"><span><i class="fa-solid fa-receipt breadcrumb-icon"></i><span
                       class="breadcrumb-text">Paid</span></span></a></li>
               <li onclick="switchTab(3)"><a href="#"><span><i class="fa-solid fa-file-circle-check"></i><span
-                      class="breadcrumb-text">Shipping</span></span></a></li>
+                      class="breadcrumb-text">Checkout</span></span></a></li>
             </ul>
           </nav>
         </div>
@@ -263,6 +265,7 @@
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/vue@3"></script>
+  <script type="text/javascript" src="./scripts/navBar.js"></script>
   <script type="text/javascript" src="./scripts/formSteps.js"></script>
 
 </body>

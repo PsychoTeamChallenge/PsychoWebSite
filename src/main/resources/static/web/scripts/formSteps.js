@@ -99,10 +99,10 @@ function validateSingleForm() {
       if (currentTab[i].value == "") {
         console.log(currentTab[i]);
         Swal.fire(
-            'Error!',
-            'Missing fields to be completed',
-            'error'
-          );
+          'Error!',
+          'Missing fields to be completed',
+          'error'
+        );
         return false;
       }
     }
@@ -279,32 +279,56 @@ Vue.createApp({
       return this.expense;
     },
     makePayment() {
-      let payment = {
-        "number": this.cardNumber,
-        'cardHolder': this.cardHolder,
-        'category': "Others",
-        'description': "Make purchase in Psycho Store",
-        'expiry': this.expiry,
-        'cvv': this.cvv,
-        'amount': this.expense + 1000
-      }
-      axios.post("https://bankrdox.herokuapp.com/api/transactions/makePayment", payment)
-        .then(response => {
-          Swal.fire(
-            'Accepted!',
-            'Your payment was successful!',
-            'success'
-          ).then(()=>nextTab())
-         
+      if (this.cart.length > 0) {
+        if (this.cardNumber != "" & this.expiry != "" & this.cvv != "" & this.cardHolder != "") {
+          $('#loading').css("display", "flex")
+
+          let payment = {
+            "number": this.cardNumber,
+            'cardHolder': this.cardHolder,
+            'category': "Others",
+            'description': "Make purchase in Psycho Store",
+            'expiry': this.expiry,
+            'cvv': this.cvv,
+            'amount': this.expense + 1000
+          }
+          axios.post("https://bankrdox.herokuapp.com/api/transactions/makePayment", payment)
+            .then(response => {
+              $('#loading').fadeOut();
+              Swal.fire(
+                'Accepted!',
+                'Your payment was successful!',
+                'success'
+              ).then(() => {
+                nextTab()
+              })
+
+            }
+            )
+            .catch(error => {
+              $('#loading').fadeOut();
+              Swal.fire(
+                'Opss!',
+                'There was a payment problem!',
+                'error'
+              )
+            })
         }
-        ).then()
-        .catch(error => {
+        else{
           Swal.fire(
             'Opss!',
-            'There was a payment problem!',
+            "Missing data!",
             'error'
           )
-        })
+        }
+      }
+      else {
+        Swal.fire(
+          'Opss!',
+          "You don't have any products!",
+          'error'
+        )
+      }
     }
   },
   computed: {
