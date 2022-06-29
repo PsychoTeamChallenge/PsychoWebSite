@@ -155,9 +155,11 @@ body{
 
 .postContainers{
   display: flex;
+  flex-wrap: wrap;
 }
 
 .mobileSidebar{
+  z-index: 2;
   position: fixed;
   top: 0%;
   width: 100%;
