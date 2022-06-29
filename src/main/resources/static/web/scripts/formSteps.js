@@ -113,9 +113,15 @@ Vue.createApp({
       client: {},
       cart: [],
 
-
       isClient: false,
 
+      nameInput: "",
+      lastNameInput: "",
+      cardNumber: "",
+      expiry: "",
+      cvv: "",
+      cardHolder: "",
+      expense:0
     }
   },
 
@@ -205,11 +211,37 @@ Vue.createApp({
         }
       });
     },
+    dateToday() {
+      const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
+      let date = new Date();
+      let day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate()
+
+      return day + " " + months[date.getMonth()].toLowerCase() + " " + date.getFullYear()
+    },
+    totalExpense() {
+      this.expense = 0;
+      this.cart.forEach(product => {
+        this.expense += product.price * product.quantity
+      });
+      return this.expense;
+    },
+    makePayment() {
+      let payment={
+        "number": this.cardNumber,
+        'cardHolder': this.cardHolder,
+         'category': "Others",
+         'description': "Make purchase in Psycho Store",
+         'cvv': this.cvv,
+         'amount': this.expense,
+         'expiry': this.expiry
+      }
+     axios.post("https://bankrdox.herokuapp.com/api/transactions/makePayment",payment)
+    }
   },
   computed: {
 
 
   }
 
-}).mount('#app')
+}).directive('dragscroll', VueDragscroll).mount('#app')

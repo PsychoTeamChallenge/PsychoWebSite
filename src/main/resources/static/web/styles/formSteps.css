@@ -44,6 +44,9 @@ ul {
 a {
   text-decoration: none;
 }
+a:hover, .fa-solid, .fas:hover {
+ cursor: pointer;
+}
 
 .w-10 {
   width: 10%;
@@ -112,6 +115,9 @@ a {
   align-items: center;
   flex-direction: column;
   margin-top: -10rem;
+  overflow-y: auto;
+  height: 96vh;
+  overflow-x: hidden;
 }
 
 .tab-steps .form {
@@ -201,14 +207,26 @@ input::-webkit-inner-spin-button {
 #information {
   width: 50vw;
   font-size: 15px;
+  letter-spacing: 1px;
+}
+
+#showBill #price{
+  text-decoration: underline;
+  font-weight: bold;
+}
+.total{
+  margin-top: 2rem;
+    font-size: 1.6rem;
+    font-weight: bold;
 }
 
 h4 {
-  font-size: 16px;
+  font-size: 22px;
 }
 
 h5 {
   font-size: 13px;
+  color: white;
 }
 
 #units {
@@ -227,6 +245,11 @@ h5 {
   width: 2rem;
   background: #d7c8e3;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+align-items: center;
+text-align: center;
+color: black;
 }
 
 .fa-solid,
@@ -247,7 +270,10 @@ h5 {
   display: flex;
   justify-content: space-between;
 }
-
+#delete a{
+  color: var(--lightblue);
+  text-decoration: underline;
+}
 #breadcrumb {
   display: flex;
   justify-content: center;
@@ -263,7 +289,6 @@ h5 {
 
 .tab-steps {
   margin-top: 0rem;
-  justify-content: center;
 }
 
 
@@ -326,7 +351,8 @@ h5 {
   }
 
   .tab-steps {
-    height: auto;
+      height: 90vh;
+      overflow-y: auto;
   }
 
   .container {
@@ -351,6 +377,7 @@ h5 {
 
   #showBill {
     display: inline-block;
+    margin-left: 3rem;
   }
 
   .tab-steps .form {
@@ -369,7 +396,7 @@ h5 {
 
 @media screen and (min-width: 1000px) {
   .container {
-    height: 20vh;
+    height: 24vh;
     width: 68vw;
   }
 
@@ -380,6 +407,6 @@ h5 {
   #image {
     height: 128%;
     width: 19%;
-    margin-bottom: 2rem;
+    margin-bottom: 0.8rem;
   }
 }
