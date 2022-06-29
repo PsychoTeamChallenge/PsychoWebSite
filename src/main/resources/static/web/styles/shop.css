@@ -661,7 +661,7 @@ p {
   }
 
   .currentProductName {
-    font-size: 36px;
+    font-size: 20px;
   }
 
   .productPriceImage {
@@ -694,8 +694,8 @@ p {
 
 }
 
-.colourPicker{
-  width: 20%;
+.sizeePicker{
+  width: 40%;
 }
 
 @media (min-width:460px) {
@@ -756,7 +756,7 @@ p {
 
 @media (min-width: 800px) {
 
-  .colourPicker{
+  .sizeePicker{
     width: auto;
   }
 
