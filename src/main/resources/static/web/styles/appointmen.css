@@ -247,7 +247,11 @@ select:hover {
     align-items: flex-end;
     justify-content: center;
 }
-
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 
 @media screen and (min-width:270px) and (max-width:650px) {
     .form__header {
