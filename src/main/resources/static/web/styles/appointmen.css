@@ -90,12 +90,13 @@ h2 {
     z-index: -1;
     width: 80px;
 }
-h5{
+
+h5 {
     font-family: "Argh";
     color: white;
     font-size: 2.6rem;
     margin-top: 20px;
-    
+
 }
 
 
@@ -106,10 +107,11 @@ main {
 
 form {
     text-align: center;
-    font-size: 2.5rem;  
+    font-size: 2.5rem;
 }
+
 .form__header {
-   
+
     width: 99%;
 }
 
@@ -176,13 +178,16 @@ textarea:focus-visible {
 .color {
     padding: 5px 0 5px 60px;
 }
-#client-file{
+
+#client-file {
     text-align: center;
     margin: auto;
     width: 39vw;
 }
 
-
+.font{
+    font-family: 'Argh';
+}
 form button[type="submit"] {
     /* width: 50vw; */
     height: 8vh;
@@ -202,8 +207,8 @@ form button[type="submit"] {
 }
 
 .form__select {
-     font-size:2.5rem;
-    height:50px;
+    font-size: 2.5rem;
+    height: 50px;
     width: 39vw;
     position: relative;
     text-align: center;
@@ -225,64 +230,90 @@ select:hover {
     background-color: var(--pink);
     color: white;
 }
-.mini-contain{
+
+.mini-contain {
+    font-size: 2rem;
     display: flex;
-    flex-direction: column;
+    letter-spacing: 4px;
+    flex-direction: row;
     font-family: 'Argh';
+    align-items: flex-end;
+    justify-content: center;
 }
-@media screen and (min-width:280px) and (max-width:650px) {
-    .form__header{
+
+
+@media screen and (min-width:270px) and (max-width:650px) {
+    .form__header {
         margin-top: 2rem;
     }
+
     #xGraffityFormAppointment {
         position: relative;
         left: 11.5vh;
         top: -6vh;
     }
-   .form__body{ flex-direction: column;
-align-items: center;}
 
-    input, input::-webkit-input-placeholder {
-        width: 99%;
+    .form__body {
+        flex-direction: column;
+        align-items: center;
     }
-    /* .form__input {
-        width: 49vw;
-    } */
+
     .form__select {
-        width: 99%;
+        width: 66vw;
+        border: none;
+        outline: none;
     }
+
     form textarea {
-        width: 99%;
+        width: 75vw;
         height: 25vh;
     }
-
+    input[type=checkbox] {
+        transform: scale(1.5);
+      } 
+      
+    form button[type="submit"] {
+          width: 42vw;
+          font-size: 2rem;
+          /* background-size: contain; */
+          height: 14vh;
+      }
     #color-tatoo,
     #bg {
         width: 3vw;
         height: 2vh;
         background-image: none !important;
     }
-    /* #date-appointment{
-         font-size: 2em; 
-    } */
-    #client-file{
-    padding-top: 8px;
-    width: 100%;
-    /* height: 1%; */
-    font-size: 20px;
-    text-align: -webkit-center;
-    padding-left: 36px;
+
+    #client-file {
+        padding-top: 8px;
+        width: 65vw;
+        /* height: 1%; */
+        font-size: 20px;
+        text-align: -webkit-center;
+        padding-left: 36px;
     }
-    form button[type="submit"] {
-        width: 42vw;
-    font-size: 2rem;
-    /* background-size: contain; */
-    height: 14vh;
-    }
-    #logoTongue{
+
+    #logoTongue {
         display: none;
     }
+    input, input::-webkit-input-placeholder { 
+        width: 64vw;                                       
+        font-size: 32px; 
+    }    
+     .form__select {
+        width: 64vw;                      
+      }
+        
+     form textarea {
+        width: 64vw;                    
+      }
+        
+     #client-file {
+        width: 64vw;
+     }
 }
+
 @media screen and (min-width:660px) and (max-width:800px) {
 
     .form__body {
@@ -291,61 +322,100 @@ align-items: center;}
         align-items: center;
     }
     input, input::-webkit-input-placeholder {
-    width: 99%;
-}
-    .form__select{
-    width: 99vw;
+        background-color: transparent;
+        border: none;
+        width: 65vw;
     }
-    textarea{
-        height: 30vh;
-        width: 99%;
-        background-size: contain;
+    form button[type="submit"] {
+  
+        height: 12vw;
+  
     }
-    #client-file {
-        width: 99%;
-    }
-    #xGraffityFormAppointment {
-        position: relative;
-        left: 9.5vh;
-        top: -14vh;
-    }
+
+.form__select {
+    width: 55%;
 }
 
-@media screen and (min-width:800px) {
-form{
-    margin-top: 5rem;
+form textarea {
+    width: 65vw;
+    height: 25vh;
 }
-input, input::-webkit-input-placeholder {
-    width: 39vw;
+
+#client-file {
+    width: 55vw;
 }
-textarea, textarea::-webkit-input-placeholder {
-    width: 39vw;
+
+#xGraffityFormAppointment {
+    position: relative;
+    left: 9.5vh;
+    top: -14vh;
 }
-.form__body{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-#half1,#half2 {
-    width: 50%;
-}
-#color-tatoo, #bg {
-    width: 2vw;
-    height: 2vw;
-}
-#client-idea{
-    height:18vh;
-}
-.mini-contain{
+
+.mini-contain {
     font-size: 2rem;
     display: flex;
     letter-spacing: 4px;
-    width: 50vw;
-    flex-direction: column;
+
+    flex-direction: row;
     font-family: 'Argh';
-    /* align-content: center; */
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
+}
+
+#color-tatoo,#bg{
+    width:5vw;
 }
 }
 
+@media screen and (min-width:800px) {
+    form {
+        margin-top: 5rem;
+    }
+
+    input,
+    input::-webkit-input-placeholder {
+        width: 39vw;
+    }
+
+    textarea,
+    textarea::-webkit-input-placeholder {
+        width: 39vw;
+    }
+
+    .form__body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #half1,
+    #half2 {
+        width: 50%;
+    }
+
+    #color-tatoo,
+    #bg {
+        width: 2vw;
+        height: 2vw;
+    }
+
+    #client-idea {
+        height: 18vh;
+    }
+
+    .mini-contain {
+        font-size: 2rem;
+        display: flex;
+        letter-spacing: 4px;
+        width: 50vw;
+        flex-direction: row;
+        font-family: 'Argh';
+        justify-content: space-evenly;
+        /* justify-content: center; */
+        align-items: center;
+    }
+
+    form button[type="submit"] {
+        height: 12vh;
+    }
+}
