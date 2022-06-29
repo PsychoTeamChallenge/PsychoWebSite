@@ -83,45 +83,6 @@ public class PsychoApplication {
 			sweatshirt2.setColors(colors);
 			sweatshirt2.setSizes(sizes);
 
-			sizes = asList(14.0,16.0,18.5);
-			colors = asList("beige");
-
-
-			Product piercing = new Product("piercing1", "beige sweatshirt","./assets/piercings/piercing1.png",45,4300,"PIERCING","EAR");
-			sweatshirt2.setColors(colors);
-			sweatshirt2.setSizes(sizes);
-
-			sizes = asList(14.0,16.0,18.5);
-			colors = asList("beige");
-
-
-			Product piercing2 = new Product("piercing2", "beige sweatshirt","./assets/piercings/piercing2.png",45,4300,"PIERCING","EAR");
-			piercing2.setColors(colors);
-			piercing2.setSizes(sizes);
-
-			sizes = asList(14.0,16.0,18.5);
-			colors = asList("beige");
-
-
-			Product piercing3 = new Product("piercing3", "beige sweatshirt","./assets/piercings/piercing3.png",45,4300,"PIERCING","NOSE");
-			piercing3.setColors(colors);
-			piercing3.setSizes(sizes);
-
-			sizes = asList(14.0,16.0,18.5);
-			colors = asList("beige");
-
-
-			Product piercing4 = new Product("piercing4", "beige sweatshirt","./assets/piercings/piercing4.png",45,4300,"PIERCING","BODY");
-			piercing4.setColors(colors);
-			piercing4.setSizes(sizes);
-
-			Product piercing5 = new Product("piercing5", "beige sweatshirt","./assets/piercings/piercing5.png",45,4300,"PIERCING","BODY");
-			piercing5.setColors(colors);
-			piercing5.setSizes(sizes);
-
-
-
-
 //	        DECLARACION DE POST: NOMBRE | TITULO | FOTO | DESCRIPCION | TATUADOR | TIPO DE POST (TATTOO O PIERCING) | FUEGOS (1 al 5)
 //	        PARA OBTENER LAS URL DE LAS IMAGENES IR A  subidorImagenes.html Y COPIAR LA URL QUE LES DE EL SWEETALERT
 
@@ -136,11 +97,7 @@ public class PsychoApplication {
 			productService.saveProduct(sweatshirt);
 			productService.saveProduct(sweatshirt2);
 
-			productService.saveProduct(piercing);
-			productService.saveProduct(piercing2);
-			productService.saveProduct(piercing3);
-			productService.saveProduct(piercing4);
-			productService.saveProduct(piercing5);
+
 
 			postService.savePost(post);
 
