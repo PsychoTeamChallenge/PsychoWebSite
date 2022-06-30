@@ -17,13 +17,21 @@ Vue.createApp({
           let year = date.split("-")[0];
           let month = date.split("-")[1];
           let day = date.split("-")[2];
+
+
           let totalDate = new Date(year, (parseInt(month) - 1), day);
           this.appointmentDates.push(totalDate);
         });
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth()).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
         this.picker = MCDatepicker.create({
             el: '#datepicker',
             disableDates: [...this.appointmentDates],
-            dateFormat: 'yyyy-mm-dd'
+            dateFormat: 'yyyy-mm-dd',
+            minDate: new Date(yyyy, mm, dd)
         });
       })
       .catch((error) => {
