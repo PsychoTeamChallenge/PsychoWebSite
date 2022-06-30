@@ -1,3 +1,13 @@
+body{
+  position: relative;
+}
+
+.logOutArrow{
+  position: absolute;
+  top: 5vh;
+  left: 1vw;
+  z-index: 10;
+}
 @media (max-width: 800px){
   .accountSection{
     width: 100%;

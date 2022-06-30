@@ -3,13 +3,28 @@
   src: url(../assets/fonts/fontsAlternativas/aAnotherTag.ttf);
 }
 
+@font-face {
+  font-family: "Fester";
+  src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+
 body {
   background-color: white;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
+  position: relative;
 }
+
+.logOutArrow{
+  position: absolute;
+  top: 5vh;
+  left: 1vw;
+  z-index: 10;
+}
+
+
 
 #mobileSidebar {
   display: none;
@@ -21,6 +36,7 @@ body {
   height: 100%;
   z-index: 1;
   background-image: url(../assets/background/newBackground.png);
+  
 }
 
 .desktopSidebarTop {
@@ -36,9 +52,9 @@ body {
 }
 
 .sidebarTitle {
-  font-family: "Graffity";
-  color: rgb(2 181 181);
-  font-size: 25px;
+  font-family: "Argh";
+  color: white;
+  font-size: 27px;
 }
 
 .desktopSidebarMiddle {
@@ -59,12 +75,13 @@ body {
 
 .desktopSidebarMiddle .sidebarMenu .sidebarItem a {
   display: flex;
-  width: 100%;
+  width: 90%;
   flex-direction: column;
   justify-content: center;
   padding: 0.5rem 1rem 0.5rem 1rem;
   transition: all 0.5s ease;
   color: white;
+  font-family: "Fester";
 }
 
 .desktopSidebarMiddle .sidebarMenu .sidebarItem a i {
@@ -86,7 +103,7 @@ body {
 
 .desktopSidebarFooter .sidebarItem a {
   display: flex;
-  width: 100%;
+  width: 90%;
   flex-direction: column;
   justify-content: center;
   padding: 0.5rem 1rem 0.5rem 1rem;
@@ -215,6 +232,7 @@ body {
   font-size: 1.5rem;
   color: white !important;
   cursor: pointer;
+  transition: 0.8s;
 }
 
 .notLogin a:hover {
@@ -264,7 +282,7 @@ body {
   }
 
   .notLogin {
-    width: 80vw;
+    width: 70vw;
     padding-left: 15vh;
   }
 }
