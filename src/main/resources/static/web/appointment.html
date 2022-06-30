@@ -15,6 +15,7 @@
     <!-- footer -->
     <link rel="stylesheet" href="./styles/footer.css">
     <link rel="stylesheet" href="./styles/appointmen.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" />
     <title>Appointmet</title>
 </head>
@@ -63,12 +64,12 @@
         <div class="mobileHeaderBackground"></div>
 
         <form class="form__container" id = "app">
-            <div class="form__header">
-                <h2>request appointment</h2>
+            <div class="form__header" >
+                <h2 data-aos="fade-left">request appointment</h2>
                 <img src="./assets/index/xGraffittiVioleta.png" alt="XGraffitty" id="xGraffityFormAppointment">
             </div>
             <div class="form__body">
-                <div id="half1">
+                <div id="half1" data-aos="zoom-out">
                     <label for="name">
                         <input class="form__input" type="text" name="name" id="client-name" placeholder="name">
                     </label>
@@ -90,7 +91,7 @@
                             placeholder="explain your idea:"></textarea>
                     </label>
                 </div>
-                <div id="half2">
+                <div id="half2" data-aos="zoom-out-up">
                     <label for="body">
                         <input class="form__input" type="text" name="body" id="body-part"
                             placeholder="body part for tattoo?">
@@ -133,6 +134,8 @@
             </div>
         </form>
     </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://kit.fontawesome.com/14ea8811f4.js" crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -142,5 +145,8 @@
     <script src="https://unpkg.com/vue@3"></script>
     <script src="./scripts/navBar.js"></script>
     <script src="./scripts/appointment.js"></script>
+    <script>
+        AOS.init();
+    </script>
 
 </body>
