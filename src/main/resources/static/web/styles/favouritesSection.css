@@ -19,6 +19,16 @@
   gap: 1rem;
 }
 
+body{
+  position: relative;
+}
+
+.logOutArrow{
+  position: absolute;
+  top: 5vh;
+  left: 1vw;
+  z-index: 10;
+}
 
 /* ------ not login ---------*/
 /* 
