@@ -94,7 +94,7 @@ public class AppointmentController {
 
         Client client = clientService.getClient(auth.getName());
         Tattoer tattoer = tattoerService.getTattoerById(tattoer_id);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         System.out.println("Date: " + date);
         LocalDate dateUsed = LocalDate.parse(date, formatter);
 
@@ -105,9 +105,6 @@ public class AppointmentController {
 
         if (dateUsed == null)
             return new ResponseEntity<>("Invalid date", HttpStatus.FORBIDDEN);
-
-        if (!schedule.contains(dateUsed))
-            return new ResponseEntity<>("No disponibility on chosen date", HttpStatus.FORBIDDEN);
 
         Appointment newAppointment = new Appointment(client, phone, bodyPart, tattooSize, color, tattoer, dateUsed);
 

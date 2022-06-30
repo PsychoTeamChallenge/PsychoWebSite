@@ -52,11 +52,11 @@ Vue.createApp({
         let dayPick = this.picker.getDate();
         let monthPick = parseInt(this.picker.getMonth()) + 1;
         let yearPick = this.picker.getYear();
-        let fullDate = "";
+        var fullDate = "";
         if(monthPick > 9){
-          fullDate = yearPick + "-" + monthPick + "-" + dayPick
+          fullDate = yearPick + "-" + monthPick + "-" + dayPick;
         } else {
-          yearPick + "-0" + monthPick + "-" + dayPick
+          fullDate = yearPick + "-0" + monthPick + "-" + dayPick;
         }
         console.log(fullDate);
         let tattooSize = document.getElementById('size-tatoo').value;
