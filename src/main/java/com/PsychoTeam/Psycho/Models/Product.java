@@ -41,8 +41,6 @@ public class Product {
         this.description = description;
         this.stock = stock;
         this.price = price;
-        this.sizes = sizes;
-        this.colors = colors;
         this.urlImg = urlImg;
         this.category = category;
         this.filter = filter;
@@ -52,6 +50,7 @@ public class Product {
         clientProduct.setProduct(this);
         clientProducts.add(clientProduct);
     }
+
 
     public void addColor(String color){
         this.colors.add(color);

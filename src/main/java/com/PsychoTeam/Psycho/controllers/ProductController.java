@@ -117,7 +117,7 @@ public class ProductController {
 
             Product product = productService.getProductById(id);
             // ----------------------------- //
-            product.setClientProducts(product.getClientProducts());
+//            product.setClientProducts(product.getClientProducts());
             product.setColors(colors);
             product.setSizes(sizes);
             product.setDescription(description);

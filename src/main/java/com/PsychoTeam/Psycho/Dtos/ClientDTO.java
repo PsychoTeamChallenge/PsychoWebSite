@@ -17,6 +17,8 @@ public class ClientDTO {
     private Set<ProductDTO> favourites;
     private Set<PostDTO> posts;
     private Set<AppointmentDTO> appointments;
+    private Set<PurchaseDTO> purchases;
+
 
     public ClientDTO(Client client){
         this.id = client.getId();
@@ -28,6 +30,8 @@ public class ClientDTO {
         this.favourites = client.getFavourites().stream().map(product -> new ProductDTO(product)).collect(Collectors.toSet());
         this.posts = client.getPosts().stream().map(post -> new PostDTO(post)).collect(Collectors.toSet());
         this.appointments = client.getAppointments().stream().map(appointment -> new AppointmentDTO(appointment)).collect(Collectors.toSet());
+        this.purchases = client.getPurchases().stream().map(purchase -> new PurchaseDTO(purchase)).collect(Collectors.toSet());
+
     }
 
 

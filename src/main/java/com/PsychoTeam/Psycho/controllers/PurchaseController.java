@@ -5,7 +5,9 @@ import com.PsychoTeam.Psycho.Dtos.PurchaseDTO;
 import com.PsychoTeam.Psycho.Models.Client;
 import com.PsychoTeam.Psycho.Models.ClientProduct;
 
+import com.PsychoTeam.Psycho.Models.ProductCart;
 import com.PsychoTeam.Psycho.Models.Purchase;
+import com.PsychoTeam.Psycho.repositories.ProductCartRepository;
 import com.PsychoTeam.Psycho.services.ClientProductService;
 import com.PsychoTeam.Psycho.services.ClientService;
 import com.PsychoTeam.Psycho.services.ProductService;
@@ -37,6 +39,7 @@ import java.util.List;
 import java.util.Set;
 
 import static com.PsychoTeam.Psycho.Utils.Utils.CreatePDF;
+import static com.PsychoTeam.Psycho.Utils.Utils.GenerateToken;
 
 
 @RestController
@@ -51,6 +54,7 @@ public class PurchaseController {
 
     @Autowired
     private ClientService clientService;
+
 
     @Autowired
     private PurchaseService purchaseService;
@@ -88,22 +92,16 @@ public class PurchaseController {
             return new ResponseEntity<>("Not a single item in the cart", HttpStatus.FORBIDDEN);
 
 
-        LocalDate todayDate = LocalDate.now();
-        LocalDateTime todayTime = todayDate.atTime(LocalTime.now());
-
         double totalExpense = clientProductService.getTotalExpensesOfCart(clientUsed);
 
-        Set<ClientProduct> productsList = new HashSet<>(clientProductList);
-
-        Purchase newPurchase = new Purchase();
-        newPurchase.setProducts(productsList);
-        newPurchase.setDate(todayTime);
-        newPurchase.setAddress(purchaseApplicationDTO.getAddress());
-        newPurchase.setPayMethod(purchaseApplicationDTO.getPaymentMethod());
-        newPurchase.setTotalExpense(totalExpense);
+        Purchase newPurchase = new Purchase(clientUsed,totalExpense,purchaseApplicationDTO.getShipmentType(), purchaseApplicationDTO.getPaymentMethod(), purchaseApplicationDTO.getAddress());
         newPurchase.setEnable(true);
+
+        purchaseService.addProducts(clientUsed, newPurchase);
+
         clientUsed.addPurchases(newPurchase);
         clientService.saveClient(clientUsed);
+        clientProductService.removeClientProducts(clientUsed);
         purchaseService.savePurchase(newPurchase);
         return new ResponseEntity<>("Purchase completed", HttpStatus.ACCEPTED);
     }
