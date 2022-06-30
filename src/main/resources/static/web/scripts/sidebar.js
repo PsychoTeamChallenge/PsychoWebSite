@@ -22,7 +22,7 @@ Vue.createApp({
           this.purchases = this.client.purchases
           this.isClient = true;
       })
-      .catch(error => )
+      // .catch(error => )
 
     },
 
