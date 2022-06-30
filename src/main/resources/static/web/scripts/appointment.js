@@ -49,7 +49,6 @@ Vue.createApp({
 
     methods: {
       openDatePicker(){
-
         this.picker.open();
       },
       createAppointment(e){
@@ -76,16 +75,28 @@ Vue.createApp({
           }
 
         }
-
-        console.log(fullDate);
         let tattooSize = document.getElementById('size-tatoo').value;
         let color = true;
-
-        axios.post("/api/appointments/add", "tattoer_id=" + 1 + "&date=" + fullDate + "&phone=" + tel
-        + "&bodyPart=" + bodyPart + "&tattooSize=" + tattooSize + "&color=" + color)
-        .then((response) => {
-          console.log(response);
+        
+        Swal.fire({
+          title: 'Are tou sure do you want to make an appoinment?',
+          showDenyButton: true,
+          showCancelButton: true,
+          confirmButtonText: 'Yes,I am sure',
+          denyButtonText: `Don't make it`,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            Swal.fire('You have an apoinment', '', 'success')
+            axios.post("/api/appointments/add", "tattoer_id=" + 1 + "&date=" + fullDate + "&phone=" + tel
+            + "&bodyPart=" + bodyPart + "&tattooSize=" + tattooSize + "&color=" + color)
+            console.log(fullDate);
+          } else if (result.isDenied) {
+            Swal.fire('Your appoinment is cancel', '', 'info')
+          }
         })
+        .then(response => {
+          })
         .catch((error) => {
           console.log(error);
         })
