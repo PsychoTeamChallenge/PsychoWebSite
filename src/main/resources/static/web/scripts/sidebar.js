@@ -21,6 +21,7 @@ Vue.createApp({
           this.postsFiltrados = this.client.posts
           this.purchases = this.client.purchases
           this.isClient = true;
+
       })
       .catch(error => {console.log(error)})
 
