@@ -69,6 +69,15 @@ $(document).ready(function(){
       methods: {
           requestAppointment(){
            window.location.href = "http://localhost:8080/web/appointment.html"
+          },
+
+          alertContact(){
+              Swal.fire(
+                  "Excelent!",
+                  "We will send you an email soon",
+                   "success",
+                  "OK",
+          );
           }
       },
        computed: {
