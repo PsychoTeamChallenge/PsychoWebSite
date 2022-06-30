@@ -11,6 +11,14 @@ Vue.createApp({
             shearchInput: "",
 
             newPost: false,
+
+            postUrlImage:"",
+            postTattooer:"",
+            postType:"",
+            postFires:0,
+
+
+
         }
     },
 
@@ -28,6 +36,7 @@ Vue.createApp({
             })
             .catch(error => console.log(error))
 
+            
     },
 
     methods: {
@@ -48,6 +57,36 @@ Vue.createApp({
         openNewPost(){
             this.newPost = !this.newPost;
             document.querySelector("html").classList.toggle("active")
+        }, 
+
+        subirImg(){
+            let client = filestack.init("A9oZryZIQq2zxTic8yRnDz");
+            let options = {
+                onUploadDone: (res) => {
+                    this.postUrlImage = res.filesUploaded[0].url
+                },
+            };
+            client.picker(options).open();
+        },
+
+        refreshPost(){
+            axios.get("/api/post").then(response => {
+                this.posts = response.data;
+                this.postsFiltrados = this.posts;
+            })
+                .catch(error => console.log(error))
+        },
+
+        // ACA CELEEEEEEE n.n
+        uploadPost(){
+            axios.post("/api/post", "urlImage=" + this.postUrlImage + "&tattooer=" +
+            this.postTattooer + "&postType=" + this.postType + "&fires=" + this.postFires
+            ).then(response => {console.log("posteado perri") 
+            this.refreshPost();
+            this.openNewPost();
+
+        } 
+            ).catch(error => {console.log(error)})
         }
 
         

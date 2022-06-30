@@ -289,8 +289,10 @@ p {
   position: absolute;
   top: 0.3rem;
   left: 22%;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   margin: 0px;
+  font-family: 'Argh' !important;
+  letter-spacing: 2px;
 }
 
 .filterMobileContainer h3 {
@@ -346,6 +348,8 @@ p {
   border-radius: 8px;
   font-weight: bold;
   transition: .3s;
+  font-family: 'Argh';
+  letter-spacing: 2px;
 }
 
 .filterMobileContainer .btnApply:hover {
@@ -646,7 +650,7 @@ p {
   display: none;
 }
 
-.currentProductName{
+.currentProductName {
   font-family: 'Argh' !important;
 }
 
@@ -697,12 +701,12 @@ p {
     display: block;
   }
 
-  .productDesktopName{
+  .productDesktopName {
     font-size: 'Argh' !important;
   }
 }
 
-.sizeePicker{
+.sizeePicker {
   width: 40%;
 }
 
@@ -724,8 +728,8 @@ p {
     flex-direction: column;
   }
 
-  .productDesktopName{
-    font-family: 'Argh'!important;
+  .productDesktopName {
+    font-family: 'Argh' !important;
   }
 }
 
@@ -734,8 +738,9 @@ p {
   .mainContent {
     width: 102%
   }
-  .productDesktopName{
-font-family: 'Argh';
+
+  .productDesktopName {
+    font-family: 'Argh';
   }
 }
 
@@ -754,7 +759,8 @@ font-family: 'Argh';
     height: 10rem;
   }
 
-  .productBody .img, .productBody .img.piercing {
+  .productBody .img,
+  .productBody .img.piercing {
     transform: scale(2);
     left: 2rem;
   }
@@ -766,14 +772,15 @@ font-family: 'Argh';
     left: 6%;
     z-index: 3;
   }
-.productDesktopName{
-  font-family: 'Argh' !important;
-}
+
+  .productDesktopName {
+    font-family: 'Argh' !important;
+  }
 }
 
 @media (min-width: 800px) {
 
-  .sizeePicker{
+  .sizeePicker {
     width: auto;
   }
 
@@ -946,7 +953,7 @@ font-family: 'Argh';
     left: 3rem;
   }
 
-  .productDesktopName{
+  .productDesktopName {
     font-family: 'Argh' !important;
   }
 }
@@ -969,11 +976,10 @@ font-family: 'Argh';
 
   .productDesktopName {
     font-size: 40px;
-    font-family: 'Argh'!important;
+    font-family: 'Argh' !important;
   }
 
   .productValue {
     font-size: 24px;
   }
 }
-
