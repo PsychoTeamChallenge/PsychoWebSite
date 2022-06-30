@@ -77,19 +77,48 @@ Vue.createApp({
                 .catch(error => console.log(error))
         },
 
-        // ACA CELEEEEEEE n.n
+        // ACA CELEEEEEEE n.n GRACIASS
         uploadPost(){
             axios.post("/api/post", "urlImage=" + this.postUrlImage + "&tattooer=" +
             this.postTattooer + "&postType=" + this.postType + "&fires=" + this.postFires
-            ).then(response => {console.log("posteado perri") 
-            this.refreshPost();
-            this.openNewPost();
-
+            ).then(response => {
+                
+                this.refreshPost();
+                this.openNewPost();
+                
+                Swal.fire(
+                    "Excelent!",
+                    "Your picture has been succesfully posted",
+                     "success",
+                    "OK",);
         } 
-            ).catch(error => {console.log(error)})
+            ).catch(error => {
+                if(error.response.status == 403){
+                Swal.fire(
+                    'Opss!',
+                    'Missing data',
+                    'error'
+                );}
+                else if(error.response.status == 401){
+                    Swal.fire(
+                        'Opss!',
+                        'You are not an user, please sign up or log in',
+                        'error'
+                    );
+                }
+                else{
+                    Swal.fire(
+                        'Opss!',
+                        'Something came wrong',
+                        'error'
+                    );
+                }
+
+               
+            })
         }
 
-        
+
 
     },
     computed: {
