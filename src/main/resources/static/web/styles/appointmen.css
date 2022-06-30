@@ -135,7 +135,11 @@ label {
     cursor: pointer;
     letter-spacing: 2px;
 }
-
+#datepicker{
+    background-color: transparent;
+    background-image: url(../assets/index/buttonTurquesa.png);
+    width:27vw;
+}
 .form__input input,
 .form__select select {
     
@@ -199,7 +203,7 @@ textarea:focus-visible {
 .font{
     font-family: 'Argh';
 }
-form button[type="submit"] {
+.form__button {
     /* width: 50vw; */
     height: 8vh;
     /* font-size: 26px; */
@@ -216,7 +220,9 @@ form button[type="submit"] {
     /* background-repeat: no-repeat; */
     background-size: contain;
 }
-
+#datebutton{
+    background-image: none;
+}
 .form__select {
     font-size: 2rem;
     height: 50px;
@@ -303,12 +309,22 @@ input[type=number]::-webkit-outer-spin-button {
     }
 
     #client-file {
-        padding-top: 8px;
-        width: 65vw;
-        /* height: 1%; */
-        font-size: 20px;
-        text-align: -webkit-center;
-        padding-left: 36px;
+        /* text-align: center;
+        margin: auto;
+        width: 39vw;
+        background-color: transparent;
+        border: none;
+        /* background-repeat: no-repeat; */
+        /* background-size: contain;
+        margin-top: 2vh;
+         */
+        /* background-image: url(../assets/index/imputTextoGrande.png); */
+        /* height: 50px;
+        font-family: 'Argh';
+        color: white !important; */ 
+        opacity: 0;
+        position: absolute;
+        z-index: -1;
     }
 
     #logoTongue {

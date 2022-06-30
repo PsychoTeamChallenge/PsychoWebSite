@@ -179,7 +179,7 @@ public class PsychoApplication {
 			List<Double> sizes = asList(14.0,16.0);
 			List<String> colors = asList("yellow");
 
-			Product beanie = new Product("Beanie", "yellow beanie","./assets/productosPrueba/gorrito1.png",30,2600,"CLOTHING","HAT");
+			Product beanie = new Product("Beanie", "yellow beanie","https://cdn.filestackcontent.com/1vBFi0VYQqurNXBGd0mf",30,2600,"CLOTHING","HAT");
 			beanie.setColors(colors);
 			beanie.setSizes(sizes);
 
@@ -193,7 +193,7 @@ public class PsychoApplication {
 			colors = asList("brown");
 
 
-			Product beanie2 = new Product("Beanie", "brown beanie","./assets/productosPrueba/gorrito2.png",3,2450,"CLOTHING","HAT");
+			Product beanie2 = new Product("Beanie", "brown beanie","https://cdn.filestackcontent.com/W6tZF3x6QnyZNXsY1PlZ",3,2450,"CLOTHING","HAT");
 			beanie2.setColors(colors);
 			beanie2.setSizes(sizes);
 
@@ -202,14 +202,14 @@ public class PsychoApplication {
 			colors = asList("black");
 
 
-			Product sweatshirt = new Product("Hoodie", "black hoodie","./assets/productosPrueba/buzo.png",10,6000,"CLOTHING","SWEATSHIRT");
+			Product sweatshirt = new Product("Hoodie", "black hoodie","https://cdn.filestackcontent.com/mA3LrtoQEmuewpPjxExw",10,6000,"CLOTHING","SWEATSHIRT");
 			sweatshirt.setColors(colors);
 			sweatshirt.setSizes(sizes);
 
 
 
 
-			Product sweatshirt2 = new Product("Sweatshirt", "beige sweatshirt","./assets/productosPrueba/remera.png",45,4300,"CLOTHING","SWEATSHIRT");
+			Product sweatshirt2 = new Product("Sweatshirt", "beige sweatshirt","https://cdn.filestackcontent.com/jMStU04UTNeAwLeBU1Lc",45,4300,"CLOTHING","SWEATSHIRT");
 			sweatshirt2.setColors(colors);
 			sweatshirt2.setSizes(sizes);
 
