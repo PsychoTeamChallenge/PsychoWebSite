@@ -51,19 +51,19 @@
       <div class="desktopSidebarMiddle">
         <div class="sidebarMenu">
           <div class="sidebarItem ">
-            <a href="account.html" > Your account </a>
+            <a href="./account.html" > Your account </a>
           </div>
           <div class="sidebarItem">
-            <a href="lastPurchases.html" class = "activeSection"> Last purchases </a>
+            <a href="./lastPurchases.html" class = "activeSection"> Last purchases </a>
           </div>
           <div class="sidebarItem">
-            <a href="yourFavourites.html"> Your favourites </a>
+            <a href="./yourFavourites.html"> Your favourites </a>
           </div>
         </div>
       </div>
       <div class="desktopSidebarFooter">
         <div class = "sidebarItem">
-          <a href="#"> Logout </a>
+          <a href="#" onclick="logout()"> Logout </a>
         </div>
       </div>
     </div>
@@ -95,11 +95,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td> 29/06/2022 </td>
-                    <td> #123456 </td>
-                    <td> $100.000 </td>
-                    <td> Any adress here </td>
+                  <tr v-for="purchase in purchases">
+                    <td> {{formatDate(purchase.date)}} </td>
+                    <td> {{purchase.id}} </td>
+                    <td> {{purchase.totalExpense}} </td>
+                    <td> {{purchase.address}} </td>
                   </tr>
                 </tbody>
               </table>

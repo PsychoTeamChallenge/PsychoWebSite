@@ -63,7 +63,7 @@
       </div>
       <div class="desktopSidebarFooter">
         <div class = "sidebarItem">
-          <a href="#"> Logout </a>
+          <a href="#" onclick="logout()"> Logout </a>
         </div>
       </div>
     </div>
@@ -86,8 +86,8 @@
             <div class="accountDetails">
               <h2> My account </h2>
               <h3> Account Details </h3>
-              <p> David Pereira </p>
-              <p> david.pereira.ar1@gmail.com </p>
+              <p> {{client.firstName}} {{client.lastName}} </p>
+              <p> {{client.email}} </p>
               <p><a href="#" @click = "editAccountChange()"> Edit account </a> | <a href="#"> Change password </a></p>
             </div>
             <div class="postsDetails">

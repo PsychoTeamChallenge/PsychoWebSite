@@ -173,7 +173,8 @@ Vue.createApp({
       expiry: "",
       cvv: "",
       cardHolder: "",
-      expense: 0
+      expense: 0,
+      idPurchase:0,
     }
   },
 
@@ -292,36 +293,37 @@ Vue.createApp({
             'cvv': this.cvv,
             'amount': this.expense + 1000
           }
-          let purchase ={
-            "shipmentType":"ADDRESS",
-            "paymentMethod":"Credit card",
+          let purchase = {
+            "shipmentType": "ADDRESS",
+            "paymentMethod": "Credit card",
             "address": this.addressInput,
 
           }
           axios.post("https://bankrdox.herokuapp.com/api/transactions/makePayment", cardData)
-            .then(response=>{
-              axios.post("/api/purchase/complete",purchase)
-              .then(response => {
-                $('#loading').fadeOut();
-                Swal.fire(
-                  'Accepted!',
-                  'Your payment was successful!',
-                  'success'
-                ).then(() => {
-                  nextTab()
-                })
-  
-              }
-              )
-              .catch(error => {
-                $('#loading').fadeOut();
-                Swal.fire(
-                  'Opss!',
-                  'There was a psycho problem!',
-                  'error'
+            .then(response => {
+              axios.post("/api/purchase/complete", purchase)
+                .then(response => {
+                  $('#loading').fadeOut();
+                  Swal.fire(
+                    'Accepted!',
+                    'Your payment was successful!',
+                    'success'
+                  ).then(() => {
+                    this.idPurchase = response.data
+                    nextTab();
+                  })
+
+                }
                 )
-                console.log(error)
-              })
+                .catch(error => {
+                  $('#loading').fadeOut();
+                  Swal.fire(
+                    'Opss!',
+                    'There was a psycho problem!',
+                    'error'
+                  )
+                  console.log(error)
+                })
             })
             .catch(error => {
               $('#loading').fadeOut();
@@ -332,7 +334,7 @@ Vue.createApp({
               )
             })
         }
-        else{
+        else {
           Swal.fire(
             'Opss!',
             "Missing data!",
@@ -347,6 +349,18 @@ Vue.createApp({
           'error'
         )
       }
+    },
+    getPDF() {
+      axios.post("/api/purchase/resume", "idPurchase=" + this.idPurchase, { "responseType": 'blob' })
+        .then(response => {
+          console.log(response)
+          let blob = new Blob([response.data]);
+          let link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = `Pyscho_Resume_${this.client.firstName}_${this.client.lastName}.pdf`;
+          link.click();
+        })
+        .catch(error => console.log(error))
     }
   },
   computed: {

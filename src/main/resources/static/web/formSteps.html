@@ -28,6 +28,7 @@
         <div class="h-90 d-flex justify-content-center align-items-center">
           <form id="main-form">
             <!-- form 1 (checkout) -->
+       
             <div class="tab-steps hidden data" v-dragscroll.y="true">
               <h1 class="text-center">Bill Information</h1>
               <div class="container border d-flex row" v-for="product in cart">
@@ -173,7 +174,7 @@
             </div>
 
             <!-- form 4(shipping) -->
-            <div class="tab-steps hidden" id="row">
+            <div class="tab-steps hidden t4" id="row">
               <div id="showBill">
                 <h1 class="text-center">Bill</h1>
                 <div class="container border d-flex" id="sideBill">
@@ -196,32 +197,7 @@
                     </div>
                   </div>
                   <div class="total">Total: ${{totalExpense() + 1000}}</div>
-                </div>
-              </div>
-              <div class="shipping">
-                <h1 class="text-center">shipment information</h1>
-                <label for="location" class="inp">
-                  <input type="text" id="location" placeholder="&nbsp;">
-                  <span class="label">Location</span>
-                  <span class="focus-bg"></span>
-                </label>
-                <label for="postalCode" class="inp">
-                  <input type="text" id="postalCode" placeholder="&nbsp;">
-                  <span class="label">Postal Code</span>
-                  <span class="focus-bg"></span>
-                </label>
-                <label for="street" class="inp">
-                  <input type="text" id="street" placeholder="&nbsp;">
-                  <span class="label">Street</span>
-                  <span class="focus-bg"></span>
-                </label>
-                <label for="phoneNumber" class="inp">
-                  <input type="text" id="phoneNumber" placeholder="&nbsp;">
-                  <span class="label">Phone Number</span>
-                  <span class="focus-bg"></span>
-                </label>
-                <div class="d-flex ">
-                  <button class="button-49" type="button" id="nextBtn" onclick="nextTab()"> Continue </button>
+                  <div class="total download" @click="getPDF()"><i class="fa-solid fa-file-arrow-down"></i> Download summary purchase </div>
                 </div>
               </div>
 
