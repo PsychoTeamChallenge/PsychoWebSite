@@ -76,7 +76,7 @@ $(document).ready(function(){
                   "Excelent!",
                   "We will send you an email soon",
                    "success",
-                "OK",
+                  "OK",
           );
           }
       },
