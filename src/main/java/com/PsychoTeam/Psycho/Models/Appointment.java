@@ -27,12 +27,30 @@ public class Appointment {
     @JoinColumn(name="client_id")
     private Client client;
 
+    private long phone;
+
+    private String bodyPart;
+
+    private String tattooSize;
+
+    private boolean color;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="tattoer_id")
     private Tattoer tattoer;
 
     private LocalDate date;
 
-    public Appointment(){}
+    public Appointment(){
+    }
+    public Appointment(Client client, long phone, String bodyPart, String tattooSize, boolean color, Tattoer tattoer, LocalDate date){
+        this.client = client;
+        this.phone = phone;
+        this.bodyPart = bodyPart;
+        this.tattooSize = tattooSize;
+        this.color = color;
+        this.tattoer = tattoer;
+        this.date = date;
+    }
 
 }

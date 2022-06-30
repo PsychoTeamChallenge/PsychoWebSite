@@ -9,6 +9,7 @@ import com.PsychoTeam.Psycho.services.AppointmentService;
 import com.PsychoTeam.Psycho.services.ClientService;
 import com.PsychoTeam.Psycho.services.ProductService;
 import com.PsychoTeam.Psycho.services.TattoerService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -76,16 +78,25 @@ public class AppointmentController {
     @PostMapping("/appointments/add")
     public ResponseEntity<?> addAppointment(
             @RequestParam long tattoer_id,
-            @RequestParam LocalDate date,
+            @RequestParam String date,
+            @RequestParam long phone,
+            @RequestParam String bodyPart,
+            @RequestParam String tattooSize,
+            @RequestParam boolean color,
             Authentication auth
             ){
+
+        if (date == null ||bodyPart == null || tattooSize == null)
+            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
 
         if(auth.getName() == null)
             return new ResponseEntity<>("Invalid credentials", HttpStatus.FORBIDDEN);
 
         Client client = clientService.getClient(auth.getName());
         Tattoer tattoer = tattoerService.getTattoerById(tattoer_id);
-        LocalDate dateUsed = date;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd");
+        System.out.println("Date: " + date);
+        LocalDate dateUsed = LocalDate.parse(date, formatter);
 
         if (client == null || tattoer == null)
             return new ResponseEntity<>("Invalid client or tattoer", HttpStatus.FORBIDDEN);
@@ -98,10 +109,7 @@ public class AppointmentController {
         if (!schedule.contains(dateUsed))
             return new ResponseEntity<>("No disponibility on chosen date", HttpStatus.FORBIDDEN);
 
-        Appointment newAppointment = new Appointment();
-        newAppointment.setClient(client);
-        newAppointment.setDate(date);
-        newAppointment.setTattoer(tattoer);
+        Appointment newAppointment = new Appointment(client, phone, bodyPart, tattooSize, color, tattoer, dateUsed);
 
         client.addAppointments(newAppointment);
         tattoer.addAppointments(newAppointment);
