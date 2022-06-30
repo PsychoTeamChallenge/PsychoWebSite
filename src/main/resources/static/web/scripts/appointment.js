@@ -3,11 +3,17 @@ Vue.createApp({
         return {
             appointmentDates: [],
             tattoersList: [],
-            picker: ""
+            picker: "",
+            isClient:false,
         }
     },
 
     created() {
+      axios.get("/api/clients/current")
+      .then(response=>this.isClient = true)
+      .catch(error=>{
+        this.isClient = false;
+      })
       axios.get("/api/appointments")
       .then((response) => {
         let dataOwned = response.data;
@@ -29,9 +35,66 @@ Vue.createApp({
 
         this.picker = MCDatepicker.create({
             el: '#datepicker',
+            theme: {
+              date: {
+                active: {
+                    default: {
+                        foreground: 'rgb(255, 255, 255)'
+                    },
+                    picked: {
+                        foreground: 'rgb(255, 255, 255)',
+                        background: 'rgb(223, 40, 144)'
+                    },
+                    today: {
+                        foreground: 'rgb(255, 255, 255)',
+                        background: 'rgba(255, 0, 0, 0.9)'
+                    }
+                },
+                inactive: {
+                    default: {
+                        foreground: 'rgb(235 91 173)'
+                    },
+                    picked: {
+                        foreground: '#38ada9',
+                        background: '#38ada9'
+                    },
+                    today: {
+                        foreground: 'rgb(235 91 173)',
+                        background: 'rgb(235 91 173)'
+                    }
+                },
+                marcked: {
+                    foreground: '#ff0000'
+                }
+              },
+              display: {
+                  foreground: 'rgba(255, 255, 255, 0.9)',
+                  background: 'rgb(223, 40, 144)'
+              },
+              picker: {
+                  foreground: 'rgb(223, 40, 144)',
+                  background: '#020001'
+              },
+              picker_header: {
+                  active: 'rgb(255, 255, 255)',
+                  inactive: 'rgba(255, 255, 255, 0.8)'
+              },
+              weekday: {
+                  foreground: 'rgb(255, 255, 255)'
+              },
+              button: {
+                  success: {
+                      foreground: 'rgb(255, 255, 255)'
+                  },
+                  danger: {
+                      foreground: 'rgb(223, 40, 144)'
+                  }
+              }
+            },
             disableDates: [...this.appointmentDates],
             dateFormat: 'yyyy-mm-dd',
-            minDate: new Date(yyyy, mm, dd)
+            minDate: new Date(yyyy, mm, dd),
+
         });
       })
       .catch((error) => {
@@ -77,20 +140,19 @@ Vue.createApp({
         }
         let tattooSize = document.getElementById('size-tatoo').value;
         let color = true;
-        
+
         Swal.fire({
           title: 'Are tou sure do you want to make an appoinment?',
-          showDenyButton: true,
           showCancelButton: true,
           confirmButtonText: 'Yes,I am sure',
           denyButtonText: `Don't make it`,
         }).then((result) => {
-          /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            Swal.fire('You have an apoinment', '', 'success')
+
             axios.post("/api/appointments/add", "tattoer_id=" + 1 + "&date=" + fullDate + "&phone=" + tel
             + "&bodyPart=" + bodyPart + "&tattooSize=" + tattooSize + "&color=" + color)
-            console.log(fullDate);
+           .then(response=> Swal.fire('You have an apoinment', '', 'success'))
+           .catch(error=> Swal.fire('Upss', 'Something came wrong', 'error'))
           } else if (result.isDenied) {
             Swal.fire('Your appoinment is cancel', '', 'info')
           }
