@@ -233,6 +233,7 @@ p {
   background: #ffffff;
   outline: none;
   padding: 0 0 0 0.4rem;
+  display: flex;
 }
 
 .barbedWire {
@@ -701,6 +702,10 @@ p {
   }
 }
 
+.sizeePicker{
+  width: 40%;
+}
+
 @media (min-width:460px) {
   .mainContent {
     justify-content: space-between;
@@ -767,6 +772,12 @@ font-family: 'Argh';
 }
 
 @media (min-width: 800px) {
+
+  .sizeePicker{
+    width: auto;
+  }
+
+
   #productMobileContainer {
     display: none;
   }
@@ -964,7 +975,5 @@ font-family: 'Argh';
   .productValue {
     font-size: 24px;
   }
-
-
- 
 }
+

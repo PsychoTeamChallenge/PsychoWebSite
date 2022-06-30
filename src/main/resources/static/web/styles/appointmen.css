@@ -86,15 +86,15 @@ h2 {
 #xGraffityFormAppointment {
     position: absolute;
     top: 30.5vh;
-    left: 58.5vh;
+    left: 117.5vh;
     z-index: -1;
-    width: 80px;
+    width: 48px;
 }
 
 h5 {
     font-family: "Argh";
     color: white;
-    font-size: 2.6rem;
+    font-size: 2rem;
     margin-top: 20px;
 
 }
@@ -107,7 +107,7 @@ main {
 
 form {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .form__header {
@@ -128,13 +128,17 @@ fieldset {
 }
 
 label {
+    font-size: 2rem;
+    margin-top: 0.5rem;
     text-align: -webkit-center;
     display: block;
     cursor: pointer;
+    letter-spacing: 2px;
 }
 
 .form__input input,
 .form__select select {
+    
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -214,9 +218,10 @@ form button[type="submit"] {
 }
 
 .form__select {
-    font-size: 2.5rem;
+    font-size: 2rem;
     height: 50px;
     width: 39vw;
+    margin-top: 18px;
     position: relative;
     text-align: center;
 }
@@ -247,17 +252,22 @@ select:hover {
     align-items: flex-end;
     justify-content: center;
 }
-
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 
 @media screen and (min-width:270px) and (max-width:650px) {
     .form__header {
         margin-top: 2rem;
+        height: 6vh;
     }
 
     #xGraffityFormAppointment {
         position: relative;
-        left: 11.5vh;
-        top: -6vh;
+        left: 14.5vh;
+        top: -10vh;
     }
 
     .form__body {
@@ -287,8 +297,8 @@ select:hover {
       }
     #color-tatoo,
     #bg {
-        width: 3vw;
-        height: 2vh;
+        width: 4vw;
+        height: 6vw;
         background-image: none !important;
     }
 
@@ -322,7 +332,10 @@ select:hover {
 }
 
 @media screen and (min-width:660px) and (max-width:800px) {
-
+    #xGraffityFormAppointment {
+        top: 31.5vh;
+        left: 118.5vh;
+    }
     .form__body {
         margin-top: -5rem;
         flex-direction: column;
@@ -369,12 +382,23 @@ form textarea {
     align-items: center;
 }
 
-#color-tatoo,#bg{
-    width:5vw;
+#color-tatoo,
+#bg {
+    width: 2.5vw;
+height: 2vw;
 }
 }
 
 @media screen and (min-width:800px) {
+    #xGraffityFormAppointment {
+        position: absolute;
+        top: 30.5vh;
+        left: 82.5vh;
+    }
+    h2{
+        font-size: 2rem;
+        font-weight: normal;
+    }
     form {
         margin-top: 5rem;
     }
@@ -399,11 +423,12 @@ form textarea {
     #half2 {
         width: 50%;
     }
-
+    #color-tatoo:checked + label,#bg:checked + label{
+        color: var(--pink)!important;
+    }
     #color-tatoo,
     #bg {
-        width: 2vw;
-        height: 2vw;
+        display: none;
     }
 
     #client-idea {

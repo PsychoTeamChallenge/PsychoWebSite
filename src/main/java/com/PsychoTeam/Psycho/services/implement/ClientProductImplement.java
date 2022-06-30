@@ -5,12 +5,15 @@ import com.PsychoTeam.Psycho.Dtos.ClientProductDTO;
 import com.PsychoTeam.Psycho.Models.Client;
 import com.PsychoTeam.Psycho.Models.ClientProduct;
 import com.PsychoTeam.Psycho.repositories.ClientProductRepository;
+import com.PsychoTeam.Psycho.repositories.ClientRepository;
 import com.PsychoTeam.Psycho.services.ClientProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
@@ -19,6 +22,9 @@ public class ClientProductImplement implements ClientProductService {
 
     @Autowired
     ClientProductRepository clientProductRepository;
+    @Autowired
+    ClientRepository clientRepository;
+
 
     @Override
     public ClientProductDTO getClientProductDTO(long id) {
@@ -28,6 +34,7 @@ public class ClientProductImplement implements ClientProductService {
     public ClientProduct getClientProductById(long id) {
         return clientProductRepository.findById(id).orElse(null);
     }
+
     @Override
     public List<ClientProductDTO> getClientProductsByClient(Client client) {
         return clientProductRepository.findAllByClient(client).stream().map(ClientProductDTO::new).collect(Collectors.toList());
@@ -71,11 +78,8 @@ public class ClientProductImplement implements ClientProductService {
     @Override
     public void removeClientProducts(Client client) {
         List<ClientProduct> cart = clientProductRepository.findAllByClient(client);
-        for(int i = 0; i < cart.size(); i++){
-            ClientProduct cartProduct = cart.get(i);
-            clientProductRepository.delete(cartProduct);
-        }
+        cart.forEach(clientProduct -> {
+            clientProductRepository.delete(clientProduct);
+        });
     }
-
-
 }

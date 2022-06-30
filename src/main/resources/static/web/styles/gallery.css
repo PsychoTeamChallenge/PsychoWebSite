@@ -112,6 +112,7 @@ body {
   left: 0px;
   opacity: 0;
   transition: .8s;
+  font-family: 'Argh';
 }
 
 .cards:hover .glass,
@@ -255,6 +256,7 @@ body {
   color: white;
   font-size: 2.3rem;
   letter-spacing: 1px;
+  font-family: 'Argh';
 }
 
 .newPostContainer {
@@ -322,6 +324,7 @@ body {
   padding-top: 0.5rem;
   color: white;
   font-size: 1.3rem;
+  font-family: 'Argh';
 }
 
 .newPostDiv label {
@@ -360,6 +363,8 @@ body {
   font-size: 1.2rem;
   border-radius: 4px;
   text-shadow: 2px 2px 2px black;
+  font-family: 'Fester';
+  font-weight: 600;
 }
 
 .newPostDiv select option {
@@ -379,7 +384,7 @@ body {
 
 .newPostDiv button[type=submit] {
   text-align: center;
-  width: 25vw;
+  width: 95px;
   border: none;
   background-color: transparent;
   background-image: url(../assets/index/buttonTurquesa.png);
@@ -387,13 +392,14 @@ body {
   font-size: 2rem;
   letter-spacing: 2px;
   text-shadow: 2px 2px #000000d6;
+  font-family: 'Argh';
 }
 
 .fireValidationDiv {
   padding-bottom: 1.3rem;
   padding-top: 0.5rem;
   display: flex;
-  gap: 5vw;
+  gap: 4vw;
 }
 
 .piercingOrTattooDiv {
@@ -472,7 +478,6 @@ body {
 
 .newPostDiv button[type=submit] {
   text-align: center;
-  width: 14vw;
   border: none;
   background-color: transparent;
   background-image: url(../assets/index/buttonTurquesa.png);
@@ -480,6 +485,7 @@ body {
   font-size: 2rem;
   letter-spacing: 2px;
   text-shadow: 2px 2px #000000d6;
+
 }
 }
 
@@ -505,6 +511,9 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
+    font-family: 'Argh';
+    font-size: 1.1rem;
+    letter-spacing: 1px;
   }
 
   .fire {
