@@ -23,11 +23,7 @@ Vue.createApp({
           this.isClient = true;
 
       })
-<<<<<<< HEAD
       .catch(error => {console.log(error)})
-=======
-      // .catch(error => )
->>>>>>> b89deefc317f85a1caa7abf9ff1bb9321d184235
 
     },
 
