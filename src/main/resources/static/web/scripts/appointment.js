@@ -62,10 +62,21 @@ Vue.createApp({
         let yearPick = this.picker.getYear();
         var fullDate = "";
         if(monthPick > 9){
-          fullDate = yearPick + "-" + monthPick + "-" + dayPick;
+          if(dayPick > 9){
+            fullDate = yearPick + "-" + monthPick + "-" + dayPick;
+          } else {
+            fullDate = yearPick + "-" + monthPick + "-0" + dayPick;
+          }
+
         } else {
-          fullDate = yearPick + "-0" + monthPick + "-" + dayPick;
+          if(dayPick > 9){
+            fullDate = yearPick + "-0" + monthPick + "-" + dayPick;
+          } else {
+            fullDate = yearPick + "-0" + monthPick + "-0" + dayPick;
+          }
+
         }
+
         console.log(fullDate);
         let tattooSize = document.getElementById('size-tatoo').value;
         let color = true;
