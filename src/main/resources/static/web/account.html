@@ -81,7 +81,8 @@
         <div id="loading"></div>
         <!-- tattoArtists -->
         <div class="barbedWire-navbar" id = "barbedWireNavBar"></div>
-        <div class="webpageContent">
+      
+        <div class="webpageContent"  v-if="isClient" >
           <div class="accountSection">
             <div class="accountDetails">
               <h2> My account </h2>
@@ -90,7 +91,7 @@
               <p> {{client.email}} </p>
               <p><a href="#" @click = "editAccountChange()"> Edit account </a> | <a href="#"> Change password </a></p>
             </div>
-            <div class="postsDetails">
+            <div class="postsDetails"  v-if=" client.posts > 0">
               <h3>Posts you have done</h3>
               <div class="postContainers">
                 <div class="cards" v-for="post in client.posts" :style="'background-image:url('+post.urlImage+');'">
@@ -103,7 +104,14 @@
                 </div>
               </div>
             </div>
+            <div v-if="1 > client.posts " class="nothing">
+              <h2>Nothing here</h2>
+            </div>
           </div>
+         
+        </div>
+        <div class="accountSection" v-else>
+            PONER ACA EL DISEÑO DE INICIO DE SESION
         </div>
     </main>
     <!-- footer -->
