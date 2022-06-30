@@ -5,15 +5,12 @@ import com.PsychoTeam.Psycho.Dtos.PurchaseDTO;
 import com.PsychoTeam.Psycho.Models.Client;
 import com.PsychoTeam.Psycho.Models.ClientProduct;
 
-import com.PsychoTeam.Psycho.Models.ProductCart;
 import com.PsychoTeam.Psycho.Models.Purchase;
-import com.PsychoTeam.Psycho.repositories.ProductCartRepository;
 import com.PsychoTeam.Psycho.services.ClientProductService;
 import com.PsychoTeam.Psycho.services.ClientService;
 import com.PsychoTeam.Psycho.services.ProductService;
 import com.PsychoTeam.Psycho.services.PurchaseService;
 
-import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,24 +19,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static com.PsychoTeam.Psycho.Utils.Utils.CreatePDF;
-import static com.PsychoTeam.Psycho.Utils.Utils.GenerateToken;
 
 
 @RestController
@@ -54,7 +44,6 @@ public class PurchaseController {
 
     @Autowired
     private ClientService clientService;
-
 
     @Autowired
     private PurchaseService purchaseService;
@@ -90,7 +79,6 @@ public class PurchaseController {
 
         if (clientProductList.size() == 0)
             return new ResponseEntity<>("Not a single item in the cart", HttpStatus.FORBIDDEN);
-
 
         double totalExpense = clientProductService.getTotalExpensesOfCart(clientUsed);
 
