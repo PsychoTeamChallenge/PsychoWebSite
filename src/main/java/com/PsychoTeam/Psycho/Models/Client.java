@@ -89,4 +89,7 @@ public class Client {
     public boolean isEnabled() {
         return this.enabled;
     }
+    public void emptyCart(){
+        this.cart.forEach(clientProduct -> cart.remove(clientProduct));
+    }
 }

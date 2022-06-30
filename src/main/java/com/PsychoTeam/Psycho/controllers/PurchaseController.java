@@ -37,6 +37,7 @@ import java.util.List;
 import java.util.Set;
 
 import static com.PsychoTeam.Psycho.Utils.Utils.CreatePDF;
+import static com.PsychoTeam.Psycho.Utils.Utils.GenerateToken;
 
 
 @RestController
@@ -88,23 +89,16 @@ public class PurchaseController {
             return new ResponseEntity<>("Not a single item in the cart", HttpStatus.FORBIDDEN);
 
 
-        LocalDate todayDate = LocalDate.now();
-        LocalDateTime todayTime = todayDate.atTime(LocalTime.now());
-
         double totalExpense = clientProductService.getTotalExpensesOfCart(clientUsed);
 
-        Set<ClientProduct> productsList = new HashSet<>(clientProductList);
-
-        Purchase newPurchase = new Purchase();
-        newPurchase.setProducts(productsList);
-        newPurchase.setDate(todayTime);
-        newPurchase.setAddress(purchaseApplicationDTO.getAddress());
-        newPurchase.setPayMethod(purchaseApplicationDTO.getPaymentMethod());
-        newPurchase.setTotalExpense(totalExpense);
+        Purchase newPurchase = new Purchase(clientUsed,totalExpense,purchaseApplicationDTO.getShipmentType(), purchaseApplicationDTO.getPaymentMethod(), purchaseApplicationDTO.getAddress());
         newPurchase.setEnable(true);
+
+
         clientUsed.addPurchases(newPurchase);
         clientService.saveClient(clientUsed);
         purchaseService.savePurchase(newPurchase);
+        clientProductService.finishCart(clientUsed);
         return new ResponseEntity<>("Purchase completed", HttpStatus.ACCEPTED);
     }
 

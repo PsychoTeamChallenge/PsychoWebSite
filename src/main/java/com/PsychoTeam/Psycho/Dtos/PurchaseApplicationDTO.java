@@ -1,5 +1,6 @@
 package com.PsychoTeam.Psycho.Dtos;
 
+import com.PsychoTeam.Psycho.Models.ShipmentType;
 import com.lowagie.text.Document;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,5 +8,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class PurchaseApplicationDTO {
- private String shipmentType,paymentMethod,address;
+ private ShipmentType shipmentType;
+ private String paymentMethod,address;
+
 }

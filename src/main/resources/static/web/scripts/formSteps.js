@@ -283,7 +283,7 @@ Vue.createApp({
         if (this.cardNumber != "" & this.expiry != "" & this.cvv != "" & this.cardHolder != "") {
           $('#loading').css("display", "flex")
 
-          let payment = {
+          let cardData = {
             "number": this.cardNumber,
             'cardHolder': this.cardHolder,
             'category': "Others",
@@ -292,19 +292,37 @@ Vue.createApp({
             'cvv': this.cvv,
             'amount': this.expense + 1000
           }
-          axios.post("https://bankrdox.herokuapp.com/api/transactions/makePayment", payment)
-            .then(response => {
-              $('#loading').fadeOut();
-              Swal.fire(
-                'Accepted!',
-                'Your payment was successful!',
-                'success'
-              ).then(() => {
-                nextTab()
-              })
+          let purchase ={
+            "shipmentType":"ADDRESS",
+            "paymentMethod":"Credit card",
+            "address": this.addressInput,
 
-            }
-            )
+          }
+          axios.post("https://bankrdox.herokuapp.com/api/transactions/makePayment", cardData)
+            .then(response=>{
+              axios.post("/api/purchase/complete",purchase)
+              .then(response => {
+                $('#loading').fadeOut();
+                Swal.fire(
+                  'Accepted!',
+                  'Your payment was successful!',
+                  'success'
+                ).then(() => {
+                  nextTab()
+                })
+  
+              }
+              )
+              .catch(error => {
+                $('#loading').fadeOut();
+                Swal.fire(
+                  'Opss!',
+                  'There was a psycho problem!',
+                  'error'
+                )
+                console.log(error)
+              })
+            })
             .catch(error => {
               $('#loading').fadeOut();
               Swal.fire(

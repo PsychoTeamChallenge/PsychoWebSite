@@ -26,4 +26,5 @@ public interface ClientProductService {
 
     void removeClientProducts(Client client);
 
+    void finishCart(Client client);
 }

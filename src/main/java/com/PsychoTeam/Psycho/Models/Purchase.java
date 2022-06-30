@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 import static com.PsychoTeam.Psycho.Utils.Utils.GenerateIdCrypt;
@@ -28,7 +29,7 @@ public class Purchase {
     private Client client;
     @ElementCollection
     @Column(name = "products")
-    private Set<ClientProduct> products;
+    private Set<ClientProduct> products = new HashSet<>();
     private LocalDateTime date;
     private double totalExpense;
     private ShipmentType shipmentType;
@@ -41,7 +42,7 @@ public class Purchase {
 
     public Purchase(Client client, double totalExpense, ShipmentType shipmentType, String payMethod, String address) {
         this.client = client;
-        this.products = client.getCart();
+        this.products.addAll(client.getCart());
         this.date = LocalDateTime.now();
         this.totalExpense = totalExpense;
         this.shipmentType = shipmentType;
