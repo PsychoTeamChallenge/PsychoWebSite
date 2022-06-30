@@ -133,6 +133,7 @@ label {
     text-align: -webkit-center;
     display: block;
     cursor: pointer;
+    letter-spacing: 2px;
 }
 
 .form__input input,
@@ -422,11 +423,12 @@ height: 2vw;
     #half2 {
         width: 50%;
     }
-
+    #color-tatoo:checked + label,#bg:checked + label{
+        color: var(--pink)!important;
+    }
     #color-tatoo,
     #bg {
-        width: 1vw;
-    height: 2vw;
+        display: none;
     }
 
     #client-idea {
