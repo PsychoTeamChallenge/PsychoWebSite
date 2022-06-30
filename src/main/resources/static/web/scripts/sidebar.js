@@ -23,7 +23,11 @@ Vue.createApp({
           this.isClient = true;
 
       })
+<<<<<<< HEAD
+      .catch(error => {console.log(error)})
+=======
       // .catch(error => )
+>>>>>>> b89deefc317f85a1caa7abf9ff1bb9321d184235
 
     },
 
@@ -91,13 +95,28 @@ Vue.createApp({
       
     },
     computed: {
-
+     
     }
-
-}).mount('#app')
-
-
-function logout(){
-  axios.post("/api/logout")
-  .then(window.location.href = "/web/index.html")
-}
+    
+  }).mount('#app')
+  
+  function logout(){
+    axios.post("/api/logout")
+    .then(response =>{
+      Swal.fire(
+        'Are you sure?',
+        "Do you want log out?",
+        'warning',
+       true,
+       '#3085d6',
+        '#d33',
+       'Yes,I am sure').then((result) => {
+        if (result.isConfirmed) {
+         window.location.href= "/web/index.html"
+        }
+      });
+   } 
+   )
+  
+  }
+  
