@@ -186,6 +186,17 @@ textarea:focus-visible {
 .color {
     padding: 5px 0 5px 60px;
 }
+#picker{
+    width: 13rem;
+    background: #e40081;
+    height: 50px;
+    border-radius: 5px;
+}
+#sendAppointment{
+    background: #00dbdc;
+    padding: 0.4rem;
+    border-radius: 5px;
+}
 
 #client-file {
     text-align: center;

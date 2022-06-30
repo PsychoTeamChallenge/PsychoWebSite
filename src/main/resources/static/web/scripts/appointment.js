@@ -3,11 +3,17 @@ Vue.createApp({
         return {
             appointmentDates: [],
             tattoersList: [],
-            picker: ""
+            picker: "", 
+            isClient:false,
         }
     },
 
     created() {
+      axios.get("/api/clients/current")
+      .then(response=>this.isClient = true)
+      .catch(error=>{
+        this.isClient = false;
+      })
       axios.get("/api/appointments")
       .then((response) => {
         let dataOwned = response.data;
@@ -80,17 +86,16 @@ Vue.createApp({
         
         Swal.fire({
           title: 'Are tou sure do you want to make an appoinment?',
-          showDenyButton: true,
           showCancelButton: true,
           confirmButtonText: 'Yes,I am sure',
           denyButtonText: `Don't make it`,
         }).then((result) => {
-          /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            Swal.fire('You have an apoinment', '', 'success')
+           
             axios.post("/api/appointments/add", "tattoer_id=" + 1 + "&date=" + fullDate + "&phone=" + tel
             + "&bodyPart=" + bodyPart + "&tattooSize=" + tattooSize + "&color=" + color)
-            console.log(fullDate);
+           .then(response=> Swal.fire('You have an apoinment', '', 'success'))
+           .catch(error=> Swal.fire('Upss', 'Something came wrong', 'error'))
           } else if (result.isDenied) {
             Swal.fire('Your appoinment is cancel', '', 'info')
           }
