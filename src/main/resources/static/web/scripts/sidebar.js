@@ -5,6 +5,7 @@ Vue.createApp({
             editAccount: false,
             filtradosCategory:[],
             postsFiltrados: [],
+            purchases:[],
             client: {},
             isClient: false,
             piercing: true,
@@ -14,18 +15,14 @@ Vue.createApp({
     },
 
     created() {
-        axios.get("/api/post").then(response => {
-            this.posts = response.data;
-            this.postsFiltrados = this.posts;
-        })
-            .catch(error => console.log(error))
-
-        axios.get("/api/clients/current")
-            .then(response => {
-                this.client = response.data;
-                this.isClient = true;
-            })
-            .catch(error => console.log(error))
+      axios.get("/api/clients/current")
+      .then(response => {
+          this.client = response.data;
+          this.postsFiltrados = this.client.posts
+          this.purchases = this.client.purchases
+          this.isClient = true;
+      })
+      .catch(error => )
 
     },
 
@@ -75,22 +72,31 @@ Vue.createApp({
         })
       },
       refreshSession(){
-        axios.get("/api/post").then(response => {
-            this.posts = response.data;
-            this.postsFiltrados = this.posts;
-        })
-            .catch(error => console.log(error))
-
         axios.get("/api/clients/current")
             .then(response => {
                 this.client = response.data;
+                this.postsFiltrados = this.client.posts
                 this.isClient = true;
             })
             .catch(error => console.log(error))
-      }
+      },
+      formatDate(dateInput){
+        const date = new Date(dateInput);
+        let day = date.getDate() < 10? "0"+ date.getDate() : date.getDate();
+        let month = date.getMonth() < 10? "0"+ date.getMonth() : date.getMonth();
+        let year = date.getFullYear();
+        return day + "/" + month + "/" + year
+      },
+      
     },
     computed: {
 
     }
 
 }).mount('#app')
+
+
+function logout(){
+  axios.post("/api/logout")
+  .then(window.location.href = "/web/index.html")
+}

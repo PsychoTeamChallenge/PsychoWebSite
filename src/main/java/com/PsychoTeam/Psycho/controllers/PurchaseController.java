@@ -86,16 +86,18 @@ public class PurchaseController {
         newPurchase.setEnable(true);
 
         purchaseService.addProducts(clientUsed, newPurchase);
+        purchaseService.savePurchase(newPurchase);
 
         clientUsed.addPurchases(newPurchase);
         clientService.saveClient(clientUsed);
         clientProductService.removeClientProducts(clientUsed);
-        purchaseService.savePurchase(newPurchase);
-        return new ResponseEntity<>("Purchase completed", HttpStatus.ACCEPTED);
+
+        return new ResponseEntity<>(newPurchase.getId(), HttpStatus.ACCEPTED);
+
     }
 
 
-    @GetMapping("/purchase/resume")
+    @PostMapping("/purchase/resume")
     public ResponseEntity<?> getResume(Authentication authentication, HttpServletResponse response, @RequestParam long idPurchase) throws DocumentException, IOException {
 
         Client client = clientService.getClient(authentication.getName());

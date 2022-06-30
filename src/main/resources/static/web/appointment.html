@@ -14,9 +14,8 @@
     <link rel="stylesheet" href="./styles/navBar.css">
     <!-- footer -->
     <link rel="stylesheet" href="./styles/footer.css">
-
-
     <link rel="stylesheet" href="./styles/appointmen.css">
+    <link href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" rel="stylesheet" />
     <title>Appointmet</title>
 </head>
 
@@ -63,7 +62,7 @@
         </section>
         <div class="mobileHeaderBackground"></div>
 
-        <form class="form__container">
+        <form class="form__container" id = "app">
             <div class="form__header">
                 <h2>request appointment</h2>
                 <img src="./assets/index/xGraffittiVioleta.png" alt="XGraffitty" id="xGraffityFormAppointment">
@@ -78,21 +77,16 @@
                             placeholder="last name">
                     </label>
                     <label for="telephone">
-                        <input class="form__input" type="tel" name="telephone" id="tel" placeholder="telephone">
+                        <input class="form__input" type="tel" name="telephone" id="telephoneClient" placeholder="telephone">
                     </label>
                     <fieldset class="form__fieldset">
-                        <select class="form__select">
+                        <select class="form__select" id = "tattoerPicker">
                             <option selected disabled>picke an artist</option>
-                            <option name="1" id="1">Polli</option>
-                            <option name="1" id="2">Celes</option>
-                            <option name="1" id="3">Zeke</option>
-                            <option name="1" id="4">David</option>
-                            <option name="1" id="5">Lauteh</option>
-                            <option name="1" id="6">Fla</option>
+                            <option v-for = "tattoer in tattoersList" name = "1" :value="tattoer.id">{{ tattoer.firstName + " " + tattoer.lastName }}</option>
                         </select>
                     </fieldset>
                     <label for="idea">
-                        <textarea class=" name=" idea" id="client-idea" cols="30" rows="10"
+                        <textarea name="idea" id="client-idea" cols="30" rows="10"
                             placeholder="explain your idea:"></textarea>
                     </label>
                 </div>
@@ -104,7 +98,7 @@
 
 
                     <label for="size">
-                        <input class="form__input" type="number" name="size" id="size-tatoo" placeholder="tatoo size">
+                        <input class="form__input" type="text" name="size" id="size-tatoo" placeholder="tatoo size">
                     </label>
                     <div class="font row g-0 d-flex align-items-end">
                         <h5 class="col-12">what do you prefeer?</h5>
@@ -116,24 +110,24 @@
                             <input type="radio" name="color" id="bg">
                             <label for="bg">black and white</label>
                         </div>
-                    
+
                     </div>
                     <div class="font">pick a date</div>
                     <div class="mini-contain2">
                         <label class="center" for="date">
-                            <input class="form__input" type="datetime-local" name="date" id="date-appointment">
+                            <input @click ="openDatePicker()" class="form__input" type="text" name="date" id="datepicker">
                         </label>
                     </div>
                 </div>
                 <div class="font">send an idea:
-                    <div class="mini-contain"> 
+                    <div class="mini-contain">
                         <label for="send">
                             <button type="button" class="form__input "  name="send" id="client-file">Upload image </button>
                         </label>
                     </div>
                 </div>
                 </div>
-                <button class="form__input" type="submit">send application</button>
+                <button class="form__input" @click="createAppointment($event)">send application</button>
             </div>
         </form>
     </main>
@@ -141,6 +135,10 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
     <script src="./scripts/navBar.js"></script>
+    <script src="./scripts/appointment.js"></script>
 
 </body>

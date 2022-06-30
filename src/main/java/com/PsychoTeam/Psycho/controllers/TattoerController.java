@@ -58,4 +58,12 @@ public class TattoerController {
 
         return new ResponseEntity<>(tattoerDTO,HttpStatus.OK);
     }
+
+    @GetMapping("/tattoers")
+    public ResponseEntity<?> getAllTattoers(){
+
+        List<TattoerDTO> tattoersListDTO = tattoerService.getTattoersDTO();
+
+        return new ResponseEntity<>(tattoersListDTO,HttpStatus.OK);
+    }
 }

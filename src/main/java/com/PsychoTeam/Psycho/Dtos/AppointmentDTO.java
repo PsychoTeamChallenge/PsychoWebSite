@@ -10,17 +10,20 @@ import java.util.stream.Collectors;
 @Getter
 public class AppointmentDTO {
 
-    private long id;
-    private ClientDTO client;
+    private long id, phone;
 
-    private TattoerDTO tattoer;
+    private String tattooSize, bodyPart;
+
+    private boolean color;
 
     private LocalDate date;
 
     public AppointmentDTO(Appointment appointment){
         this.id = appointment.getId();
-        this.client = new ClientDTO(appointment.getClient());
-        this.tattoer = new TattoerDTO(appointment.getTattoer());
         this.date = appointment.getDate();
+        this.phone = appointment.getPhone();
+        this.tattooSize = appointment.getTattooSize();
+        this.bodyPart = appointment.getBodyPart();
+        this.color = appointment.isColor();
     }
 }

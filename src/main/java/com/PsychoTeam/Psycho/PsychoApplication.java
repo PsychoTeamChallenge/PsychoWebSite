@@ -1,11 +1,7 @@
 package com.PsychoTeam.Psycho;
-import com.PsychoTeam.Psycho.Models.Client;
-import com.PsychoTeam.Psycho.Models.Post;
-import com.PsychoTeam.Psycho.Models.Product;
+import com.PsychoTeam.Psycho.Models.*;
 import com.PsychoTeam.Psycho.repositories.ClientRepository;
-import com.PsychoTeam.Psycho.services.ClientService;
-import com.PsychoTeam.Psycho.services.PostService;
-import com.PsychoTeam.Psycho.services.ProductService;
+import com.PsychoTeam.Psycho.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -31,7 +28,7 @@ public class PsychoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner initData(ClientService clientService, ProductService productService, PostService postService) {
+	public CommandLineRunner initData(ClientService clientService, ProductService productService, PostService postService, TattoerService tattoerService, AppointmentService appointmentService) {
 		return (args) -> {
 
 //			DECLARACION DE CLIENTE: NOMBRE | APELLIDO | USERNAME | EMAIL | CONTRASEÑA
@@ -149,9 +146,18 @@ public class PsychoApplication {
 			clientZ.setEnabled(true);
 			clientService.saveClient(clientZ);
 
+			Tattoer tattoerA = new Tattoer("David", "Tattoer", "daveytattoo", "daveytattoo@psycho.com", passwordEncoder.encode("daveybtw"));
+			tattoerService.saveTattoer(tattoerA);
 
+			long phone = 3186942813L;
+			Appointment appointmentA = new Appointment(clientZ, phone, "Arm", "13cm", true, tattoerA, LocalDate.of(2022, 06, 30));
+			appointmentService.saveAppointment(appointmentA);
 
+			Appointment appointmentB = new Appointment(clientZ, phone, "Arm", "13cm", true, tattoerA, LocalDate.of(2022, 06, 13));
+			appointmentService.saveAppointment(appointmentB);
 
+			Appointment appointmentC = new Appointment(clientZ, phone, "Arm", "13cm", true, tattoerA, LocalDate.of(2022, 06, 20));
+			appointmentService.saveAppointment(appointmentC);
 
 			// ----------- CLOTHING
 

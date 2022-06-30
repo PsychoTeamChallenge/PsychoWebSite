@@ -307,11 +307,21 @@ color: black;
 .tab-steps {
   margin-top: 0rem;
 }
-
-
+.tab-steps.t4{
+  justify-content: center;
+}
+.tab-steps.t4 .total.download{
+transition: .3s;
+color: white;
+}
+  .tab-steps.t4 .total.download:hover{
+  color: var(--lightblue);
+  cursor: pointer;
+}
 #labelCardNumber {
   width: 50vw !important;
 }
+
 
 .form label {
   backdrop-filter: blur(3px) saturate(180%);

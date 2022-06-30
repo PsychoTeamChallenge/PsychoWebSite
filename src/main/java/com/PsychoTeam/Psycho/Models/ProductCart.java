@@ -24,7 +24,6 @@ public class ProductCart {
     public ProductCart(){}
 
     public ProductCart(ClientProduct clientProduct) {
-        this.id = clientProduct.getId();
         this.size = clientProduct.getSize();
         this.color = clientProduct.getColor();
         this.price = clientProduct.getPrice();
