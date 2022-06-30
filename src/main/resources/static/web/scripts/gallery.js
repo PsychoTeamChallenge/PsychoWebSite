@@ -50,6 +50,8 @@ Vue.createApp({
             document.querySelector("html").classList.toggle("active")
         }
 
+        
+
     },
     computed: {
         shearchFilter() {
