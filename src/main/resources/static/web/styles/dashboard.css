@@ -56,7 +56,6 @@ body{
 .sidebarMenu{
   display: flex;
   flex-direction: column;
-  font-family: "Graffity";
 }
 
 .desktopSidebarMiddle .sidebarMenu .sidebarItem a{
