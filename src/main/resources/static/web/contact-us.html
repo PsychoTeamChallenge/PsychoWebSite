@@ -108,10 +108,10 @@
                     <img src="./assets/index/xGraffittiVioleta.png" alt="XGraffitty" id="xGraffityForm">
                 </div>
                 <form>
-                    <input type="fname" name="fname" id="fname" placeholder="NAME">
-                    <input type="email" name="email" id="email" placeholder="EMAIL">
-                    <input type="phone" name="phone" id="phone" placeholder="PHONE">
-                    <textarea name="message" id="message" cols="30" rows="10" placeholder="MESSAGE"></textarea>
+                    <input type="fname" name="fname" id="fname" placeholder="NAME" required>
+                    <input type="email" name="email" id="email" placeholder="EMAIL" required>
+                    <input type="phone" name="phone" id="phone" placeholder="PHONE" required>
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="MESSAGE" required></textarea>
                     <button type="submit" v-on:click.prevent="alertContact()">SEND</button>
                 </form>
             </div>

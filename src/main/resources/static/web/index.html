@@ -132,9 +132,9 @@
                         <h2>Contact Us</h2>
                         <img src="./assets/index/xGraffittiVioleta.png" alt="XGraffitty" id="xGraffityForm">
                     </div>
-                    <input type="name" name="name" id="name" placeholder="NAME">
-                    <input type="email" name="email" id="email" placeholder="EMAIL">
-                    <textarea name="message" id="message" cols="30" rows="10" placeholder="MESSAGE"></textarea>
+                    <input type="name" name="name" id="name" placeholder="NAME" required>
+                    <input type="email" name="email" id="email" placeholder="EMAIL" required>
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="MESSAGE" required></textarea>
 
                     <button type="submit" v-on:click.prevent="alertContact()">Send</button>
                 </form>
