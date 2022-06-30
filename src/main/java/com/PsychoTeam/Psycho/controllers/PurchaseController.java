@@ -55,8 +55,6 @@ public class PurchaseController {
     @Autowired
     private ClientService clientService;
 
-    @Autowired
-    ProductCartRepository productCartRepository;
 
     @Autowired
     private PurchaseService purchaseService;
@@ -99,18 +97,12 @@ public class PurchaseController {
         Purchase newPurchase = new Purchase(clientUsed,totalExpense,purchaseApplicationDTO.getShipmentType(), purchaseApplicationDTO.getPaymentMethod(), purchaseApplicationDTO.getAddress());
         newPurchase.setEnable(true);
 
-        clientUsed.getCart().forEach(clientProduct -> {
-            ProductCart productCart = new ProductCart(clientProduct);
-            productCartRepository.save(productCart);
-            newPurchase.addProduct(productCart);
-        });
-
-        purchaseService.savePurchase(newPurchase);
-
+        purchaseService.addProducts(clientUsed, newPurchase);
 
         clientUsed.addPurchases(newPurchase);
         clientService.saveClient(clientUsed);
         clientProductService.removeClientProducts(clientUsed);
+        purchaseService.savePurchase(newPurchase);
         return new ResponseEntity<>("Purchase completed", HttpStatus.ACCEPTED);
     }
 

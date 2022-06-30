@@ -14,6 +14,8 @@ public interface PurchaseService {
 
     List<PurchaseDTO> getPurchasesDTOByClient(Client client);
 
+    void addProducts(Client client, Purchase purchase);
+
     void savePurchase(Purchase purchase);
 
     void removePurchase(Purchase purchase);
