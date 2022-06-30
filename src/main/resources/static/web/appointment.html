@@ -81,7 +81,7 @@
                     </label>
                     <fieldset class="form__fieldset">
                         <select class="form__select" id = "tattoerPicker">
-                            <option selected disabled>picke an artist</option>
+                            <option selected disabled>pick an artist</option>
                             <option v-for = "tattoer in tattoersList" name = "1" :value="tattoer.id">{{ tattoer.firstName + " " + tattoer.lastName }}</option>
                         </select>
                     </fieldset>
@@ -112,22 +112,24 @@
                         </div>
 
                     </div>
-                    <div class="font">pick a date</div>
+                    <div class="font"></div>
                     <div class="mini-contain2">
-                        <label class="center" for="date">
+                        <button class="form__button" id="datebutton">
+                        <label class="btn-default" for="date">pick a date
                             <input @click ="openDatePicker()" class="form__input" type="text" name="date" id="datepicker">
                         </label>
+                    </button>
                     </div>
                 </div>
-                <div class="font">send an idea:
+                <div class="font">send your idea:
                     <div class="mini-contain">
-                        <label for="send">
-                            <button type="button" class="form__input "  name="send" id="client-file">Upload image </button>
+                        <label class="btn-file">
+                            <i class='bx bx-upload' style='color:#ffffff;font-size: 2.5rem;' ></i><input type="file" style="display: none;" required>
                         </label>
                     </div>
                 </div>
                 </div>
-                <button class="form__input" @click="createAppointment($event)">send application</button>
+                <button class="form__button" @click="createAppointment($event)">send application</button>
             </div>
         </form>
     </main>
