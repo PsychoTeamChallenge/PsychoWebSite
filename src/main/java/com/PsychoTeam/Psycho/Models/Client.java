@@ -90,6 +90,6 @@ public class Client {
         return this.enabled;
     }
     public void emptyCart(){
-        this.cart.forEach(clientProduct -> cart.remove(clientProduct));
+        this.cart.clear();
     }
 }

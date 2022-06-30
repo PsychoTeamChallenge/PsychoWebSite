@@ -82,11 +82,4 @@ public class ClientProductImplement implements ClientProductService {
             clientProductRepository.delete(clientProduct);
         });
     }
-
-    @Override
-    public void finishCart(Client client) {
-        client.emptyCart();
-        clientRepository.save(client);
-        System.out.println(client.getCart());
-    }
 }

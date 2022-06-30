@@ -5,7 +5,9 @@ import com.PsychoTeam.Psycho.Dtos.PurchaseDTO;
 import com.PsychoTeam.Psycho.Models.Client;
 import com.PsychoTeam.Psycho.Models.ClientProduct;
 
+import com.PsychoTeam.Psycho.Models.ProductCart;
 import com.PsychoTeam.Psycho.Models.Purchase;
+import com.PsychoTeam.Psycho.repositories.ProductCartRepository;
 import com.PsychoTeam.Psycho.services.ClientProductService;
 import com.PsychoTeam.Psycho.services.ClientService;
 import com.PsychoTeam.Psycho.services.ProductService;
@@ -54,6 +56,9 @@ public class PurchaseController {
     private ClientService clientService;
 
     @Autowired
+    ProductCartRepository productCartRepository;
+
+    @Autowired
     private PurchaseService purchaseService;
 
     @GetMapping("/purchases/current")
@@ -94,11 +99,18 @@ public class PurchaseController {
         Purchase newPurchase = new Purchase(clientUsed,totalExpense,purchaseApplicationDTO.getShipmentType(), purchaseApplicationDTO.getPaymentMethod(), purchaseApplicationDTO.getAddress());
         newPurchase.setEnable(true);
 
+        clientUsed.getCart().forEach(clientProduct -> {
+            ProductCart productCart = new ProductCart(clientProduct);
+            productCartRepository.save(productCart);
+            newPurchase.addProduct(productCart);
+        });
+
+        purchaseService.savePurchase(newPurchase);
+
 
         clientUsed.addPurchases(newPurchase);
         clientService.saveClient(clientUsed);
-        purchaseService.savePurchase(newPurchase);
-        clientProductService.finishCart(clientUsed);
+        clientProductService.removeClientProducts(clientUsed);
         return new ResponseEntity<>("Purchase completed", HttpStatus.ACCEPTED);
     }
 

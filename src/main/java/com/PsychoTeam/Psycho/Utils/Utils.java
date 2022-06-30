@@ -90,7 +90,7 @@ public class Utils {
             table.addCell(cell);
         });
 
-        purchase.getProducts().forEach(product -> {
+        purchase.getProductCarts().forEach(product -> {
             Image img;
             try {
                 img = Image.getInstance(product.getUrl());
