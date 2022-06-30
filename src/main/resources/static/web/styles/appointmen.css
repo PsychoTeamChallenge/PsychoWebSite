@@ -142,7 +142,7 @@ label {
 }
 .form__input input,
 .form__select select {
-    
+
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -234,6 +234,15 @@ textarea:focus-visible {
 #datebutton{
     background-image: none;
 }
+
+.mc-calendar{
+  border: 1px solid white;
+}
+
+.mc-picker{
+  background-image: url(../assets/background/newBackground.png);
+}
+
 .form__select {
     font-size: 2rem;
     height: 50px;
@@ -269,10 +278,10 @@ select:hover {
     align-items: flex-end;
     justify-content: center;
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 @media screen and (min-width:270px) and (max-width:650px) {
@@ -304,8 +313,8 @@ input[type=number]::-webkit-outer-spin-button {
     }
     input[type=checkbox] {
         transform: scale(1.5);
-      } 
-      
+      }
+
     form button[type="submit"] {
           width: 42vw;
           font-size: 2rem;
@@ -332,7 +341,7 @@ input[type=number]::-webkit-outer-spin-button {
         /* background-image: url(../assets/index/imputTextoGrande.png); */
         /* height: 50px;
         font-family: 'Argh';
-        color: white !important; */ 
+        color: white !important; */
         opacity: 0;
         position: absolute;
         z-index: -1;
@@ -341,18 +350,18 @@ input[type=number]::-webkit-outer-spin-button {
     #logoTongue {
         display: none;
     }
-    input, input::-webkit-input-placeholder { 
-        width: 64vw;                                       
-        font-size: 32px; 
-    }    
+    input, input::-webkit-input-placeholder {
+        width: 64vw;
+        font-size: 32px;
+    }
      .form__select {
-        width: 64vw;                      
+        width: 64vw;
       }
-        
+
      form textarea {
-        width: 64vw;                    
+        width: 64vw;
       }
-        
+
      #client-file {
         width: 64vw;
      }
@@ -374,9 +383,9 @@ input[type=number]::-webkit-outer-spin-button {
         width: 65vw;
     }
     form button[type="submit"] {
-  
+
         height: 12vw;
-  
+
     }
 
 .form__select {
