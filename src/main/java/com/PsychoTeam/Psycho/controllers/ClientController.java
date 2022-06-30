@@ -175,6 +175,32 @@ public class ClientController {
         return new ResponseEntity<>("Product remove success", HttpStatus.ACCEPTED);
     }
 
+    @PatchMapping("/clients/edit")
+    public ResponseEntity<?> editCurrentClient(@RequestParam String firstName,
+                                               @RequestParam String lastName,
+                                               @RequestParam String email,
+                                               Authentication authentication){
+        Client client = clientService.getClient(authentication.getName());
+        if(client == null){
+            return new ResponseEntity<>("Client unauthorized", HttpStatus.FORBIDDEN);
+        }
+
+        if(firstName.equals("") && lastName.equals("") && email.equals(""))
+            return new ResponseEntity<>("Nothing has changed", HttpStatus.ACCEPTED);
+
+        if (!firstName.equals(""))
+            client.setFirstName(firstName);
+
+        if (!lastName.equals(""))
+            client.setLastName(lastName);
+
+        if (!email.equals(""))
+            client.setEmail(email);
+
+        clientService.saveClient(client);
+        return new ResponseEntity<>("Client properties edited succesfully", HttpStatus.ACCEPTED);
+    }
+
     private void sendVerificationEmail(Client client)
             throws MessagingException, UnsupportedEncodingException {
 

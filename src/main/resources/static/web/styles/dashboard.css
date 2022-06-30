@@ -208,83 +208,12 @@ body {
 }
 
 
-/* ------------ NOT LOGIN ----------------*/
-
-@font-face {
-  font-family: "Fester";
-  src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
-}
-
-.notLogin {
-  padding-top: 10vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  letter-spacing: 1px;
-}
-
-.notLogin p {
-  font-family: "Fester";
-
-}
-
-.notLogin a {
-  font-size: 1.5rem;
-  color: white !important;
-  cursor: pointer;
-  transition: 0.8s;
-}
-
-.notLogin a:hover {
-  color: var(--purple) !important;
-  text-shadow: 0px 0px 15px white;
-}
-
-.notLogin .loginPleaseImg {
-  width: 180px;
-}
-
-
-/* ------------ MEDIA QUERIES ------------*/
-
-@media screen and (min-width: 460px) and (max-width: 800px) {
-  .notLogin {
-    width: 80vw;
-  }
-
-}
-
-@media screen and (min-width:801px) {
-  .notLogin {
-    width: 85vw;
-    padding-top: 5vh;
-  }
-
-  .notLogin .loginPleaseImg {
-    width: 230px;
-  }
-
-  .notLogin p {
-    font-size: 1.5rem;
-
-  }
-
-  .notLogin a {
-    font-size: 2.1rem;
-  }
-
-}
-
 @media (min-width: 1080px) {
   .cards {
     width: 13rem;
     min-height: auto;
   }
 
-  .notLogin {
-    width: 70vw;
-    padding-left: 15vh;
-  }
 }
 
 @media (max-width: 800px) {
