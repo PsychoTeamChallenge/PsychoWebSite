@@ -63,42 +63,43 @@
         </section>
         <div class="mobileHeaderBackground"></div>
 
-        <form class="form__container" id = "app">
-            <div class="form__header" >
-                <h2 data-aos="fade-left">request appointment</h2>
+        <form class="form__container" id="app">
+            <div class="form__header" v-if="isClient">
+                <h2>request appointment</h2>
                 <img src="./assets/index/xGraffittiVioleta.png" alt="XGraffitty" id="xGraffityFormAppointment">
             </div>
-            <div class="form__body">
-                <div id="half1" data-aos="zoom-out">
-                    <label for="name">
+            <div class="form__body" v-if="isClient">
+                <div id="half1">
+                    <label for="client-name">
                         <input class="form__input" type="text" name="name" id="client-name" placeholder="name">
                     </label>
-                    <label for="last-name">
+                    <label for="client-last-name">
                         <input class="form__input" type="text" name="last-name" id="client-last-name"
                             placeholder="last name">
                     </label>
-                    <label for="telephone">
-                        <input class="form__input" type="tel" name="telephone" id="telephoneClient" placeholder="telephone">
+                    <label for="telephoneClient">
+                        <input class="form__input" type="tel" name="telephone" id="telephoneClient"
+                            placeholder="telephone">
                     </label>
                     <fieldset class="form__fieldset">
-                        <select class="form__select" id = "tattoerPicker">
+                        <select class="form__select" id="tattoerPicker">
                             <option selected disabled>pick an artist</option>
-                            <option v-for = "tattoer in tattoersList" name = "1" :value="tattoer.id">{{ tattoer.firstName + " " + tattoer.lastName }}</option>
+                            <option v-for="tattoer in tattoersList" name="1" :value="tattoer.id">{{ tattoer.firstName +
+                                " " + tattoer.lastName }}</option>
                         </select>
                     </fieldset>
-                    <label for="idea">
+                    <label for="client-idea">
                         <textarea name="idea" id="client-idea" cols="30" rows="10"
                             placeholder="explain your idea:"></textarea>
                     </label>
                 </div>
                 <div id="half2" data-aos="zoom-out-up">
                     <label for="body">
+
                         <input class="form__input" type="text" name="body" id="body-part"
                             placeholder="body part for tattoo?">
                     </label>
-
-
-                    <label for="size">
+                    <label for="size-tatoo">
                         <input class="form__input" type="text" name="size" id="size-tatoo" placeholder="tatoo size">
                     </label>
                     <div class="font row g-0 d-flex align-items-end">
@@ -116,22 +117,31 @@
                     <div class="font"></div>
                     <div class="mini-contain2">
                         <button class="form__button" id="datebutton">
-                        <label class="btn-default" for="date">pick a date
-                            <input @click ="openDatePicker()" class="form__input" type="text" name="date" id="datepicker">
-                        </label>
-                    </button>
+                            <label class="btn-default" @click="openDatePicker()" id="picker">
+                                pick a date
+                                <!-- <input  class="form__input" type="text" name="date" id="datepicker"> -->
+                            </label>
+                        </button>
                     </div>
                 </div>
                 <div class="font">send your idea:
                     <div class="mini-contain">
                         <label class="btn-file">
-                            <i class='bx bx-upload' style='color:#ffffff;font-size: 2.5rem;' ></i><input type="file" style="display: none;" required>
+                            <i class='bx bx-upload' style='color:#ffffff;font-size: 2.5rem;'></i><input type="file"
+                                style="display: none;" required>
                         </label>
                     </div>
                 </div>
-                </div>
-                <button class="form__button" @click="createAppointment($event)">send application</button>
             </div>
+            <div v-else>
+                <div class="notLogin">
+                    <p>You aren't login, please login</p>
+                    <a href="./login.html">Click here</a>
+                    <img src="../web/assets/account/accountLogin.png" alt="hand with a key" class="loginPleaseImg">
+                  </div>
+            </div>
+            <button class="form__button" v-if="isClient" id="sendAppointment" @click="createAppointment($event)">send
+                application</button>
         </form>
     </main>
 

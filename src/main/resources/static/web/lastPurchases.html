@@ -30,9 +30,10 @@
 </head>
 
 <body>
+  <a href="./index.html" class="logOutArrow"><i class='bx bx-left-arrow-alt' style="font-size: 3rem; color: white;" ></i></a> 
   <!-- nav mobile -->
   <nav class="mobileNav">
-    <a href="#"><i class='bx bx-home-circle active'></i></a>
+    <a href="./index.html"><i class='bx bx-home-circle '></i></a>
     <a href="./gallery.html"><i class='bx bxs-grid-alt'></i></a>
     <a href="./gallery.html"><i class='bx bxs-plus-circle'></i></a>
     <a href="./shop.html"><i class='bx bx-shopping-bag'></i></a>
@@ -40,6 +41,7 @@
   </nav>
   <!--- sidebarDesktop -->
   <div class="desktopSidebar" id="desktopSidebar">
+    
     <div class="desktopSidebarTop">
       <div>
         <img src="./assets/logo/sketchLogo2.png" alt="logoToungue" class="logoSidebar">
@@ -112,7 +114,11 @@
         <h2>Purchase details</h2>
       </div>
       <div v-else>
-        PONER ACA EL DISEÑO DE INICIO DE SESION
+        <div class="notLogin">
+          <p>You aren't login, please login</p>
+          <a href="./login.html">Click here</a>
+          <img src="../web/assets/account/accountLogin.png" alt="hand with a key" class="loginPleaseImg">
+        </div>
       </div>
     </div>
   </main>

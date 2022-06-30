@@ -5,6 +5,7 @@
   --darklightblue: #00748E;
   --blue: #00313E;
   --darkpink: #C3007D;
+  --purple: #ca00fd;
 }
 
 /* Tipografias*/
@@ -12,6 +13,14 @@
 @font-face {
   font-family: "Fester";
   src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+@font-face {
+  font-family: "Argh";
+  src: url(../assets/fonts/argh/ArghDemo.otf);
+}
+@font-face {
+  font-family: "Graffity";
+  src: url(../assets/fonts/fontsAlternativas/aAnotherTag.ttf);
 }
 
 [v-cloak] {
@@ -428,6 +437,59 @@
   }
 }
 
+
+/* ------------ NOT LOGIN ----------------*/
+
+@font-face {
+  font-family: "Fester";
+  src: url(../assets/fonts/fester/Fester-ExtraLight.otf);
+}
+
+.notLogin {
+  padding-top: 10vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  letter-spacing: 1px;
+}
+
+.notLogin p {
+  font-family: "Fester";
+
+}
+
+.notLogin a {
+  font-size: 1.5rem;
+  color: white !important;
+  cursor: pointer;
+  font-family: "Argh";
+}
+
+.notLogin a:hover {
+  color: var(--purple) !important;
+  text-shadow: 0px 0px 15px white;
+}
+
+.notLogin .loginPleaseImg {
+  width: 180px;
+}
+
+
+/* ------------ MEDIA QUERIES ------------*/
+
+@media screen and (min-width: 460px) and (max-width: 800px) {
+  .notLogin {
+    width: 80vw;
+  }
+
+}
+
+
+
+
+
+
+
 @media (min-width:460px) {
   .downSeccion .filters input {
     width: 12rem;
@@ -577,6 +639,26 @@
     z-index: 2;
     width: 150px;
   }
+
+
+  .notLogin {
+    width: 85vw;
+    padding-top: 5vh;
+  }
+
+  .notLogin .loginPleaseImg {
+    width: 230px;
+  }
+
+  .notLogin p {
+    font-size: 1.5rem;
+
+  }
+
+  .notLogin a {
+    font-size: 2.1rem;
+  }
+
 }
 
 @media (min-width: 1080px) {
@@ -586,6 +668,10 @@
     bottom: -9vh;
     z-index: 2;
     width: 170px;
+  }
+  .notLogin {
+    width: 80vw;
+    padding-left: 15vh;
   }
 }
 

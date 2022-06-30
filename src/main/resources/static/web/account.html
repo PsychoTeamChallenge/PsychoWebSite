@@ -26,13 +26,15 @@
     <link rel="stylesheet" href="./styles/accountDetails.css">
     <link rel="stylesheet" href="./styles/dashboard.css">
     <link rel="stylesheet" href="./styles/shop.css">
+    <link rel="stylesheet" href="./styles/appointmen.css">
     <title>Your Account</title>
 </head>
 
 <body>
+  <a href="./index.html" class="logOutArrow"><i class='bx bx-left-arrow-alt' style="font-size: 3rem; color: white;" ></i></a> 
     <!-- nav mobile -->
     <nav class="mobileNav">
-        <a href="#"><i class='bx bx-home-circle active'></i></a>
+        <a href="./index.html"><i class='bx bx-home-circle '></i></a>
         <a href="./gallery.html"><i class='bx bxs-grid-alt'></i></a>
         <a href="./gallery.html"><i class='bx bxs-plus-circle'></i></a>
         <a href="./shop.html"><i class='bx bx-shopping-bag'></i></a>
@@ -40,6 +42,7 @@
     </nav>
     <!--- sidebarDesktop -->
     <div class="desktopSidebar" id = "desktopSidebar">
+      <a href="./index.html"><i class='bx bx-left-arrow-alt' style="font-size: 3rem; color: white;" ></i></a> 
       <div class="desktopSidebarTop">
         <div>
           <img src="./assets/logo/sketchLogo2.png" alt="logoToungue" class = "logoSidebar">
@@ -75,13 +78,30 @@
       <a href="yourFavourites.html"> Your favourites </a>
     </div>
     <!--- NavbarMobile -->
+    <!--- ModalForm -->
+    <!--- <div class="modalForm">
+      <form class = "formAccount">
+        <div class="">
+          <label for="firstName">
+              <input class="form__input" type="text" name="firstName" id="firstNameClient" placeholder="First name">
+          </label>
+          <label for="lastName">
+              <input class="form__input" type="text" name="lastName" id="lastNameClient" placeholder="Last name">
+          </label>
+          <label for="email">
+              <input class="form__input" type="text" name="email" id="emailClient" placeholder="E-mail">
+          </label>
+        </div>
+      </form>
+    </div> --->
+    <!--- ModalForm -->
     <main id = "app">
         <!--  img girl -->
         <!-- LOADER -->
         <div id="loading"></div>
         <!-- tattoArtists -->
         <div class="barbedWire-navbar" id = "barbedWireNavBar"></div>
-      
+
         <div class="webpageContent"  v-if="isClient" >
           <div class="accountSection">
             <div class="accountDetails">
@@ -108,10 +128,14 @@
               <h2>Nothing here</h2>
             </div>
           </div>
-         
+
         </div>
         <div class="accountSection" v-else>
-            PONER ACA EL DISEÑO DE INICIO DE SESION
+          <div class="notLogin">
+            <p>You aren't login, please login</p>
+            <a href="./login.html">Click here</a>
+            <img src="../web/assets/account/accountLogin.png" alt="hand with a key" class="loginPleaseImg">
+          </div>
         </div>
     </main>
     <!-- footer -->

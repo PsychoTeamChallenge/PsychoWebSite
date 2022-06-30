@@ -134,6 +134,9 @@ function validateAllForms(variableN) {
 
 function switchTab(number) {
   let tabs = Array.from($('#main-form').children('.tab-steps'));
+  if(n == tabs.length){
+    return false;
+  }
   if (number > tabs.length) {
     return false;
   }

@@ -149,6 +149,21 @@ public class PsychoApplication {
 			Tattoer tattoerA = new Tattoer("David", "Tattoer", "daveytattoo", "daveytattoo@psycho.com", passwordEncoder.encode("daveybtw"));
 			tattoerService.saveTattoer(tattoerA);
 
+			Tattoer tattoerB = new Tattoer("Ezequiel", "Tattoer", "ezeketatto", "ezeketattoo@psycho.com", passwordEncoder.encode("ezeke"));
+			tattoerService.saveTattoer(tattoerB);
+
+			Tattoer tattoerC = new Tattoer("Ana", "Tattoer", "anatatto", "ana.agustina@psycho.com", passwordEncoder.encode("ana321"));
+			tattoerService.saveTattoer(tattoerC);
+
+			Tattoer tattoerD = new Tattoer("Flavia", "Tattoer", "flaviatattoo", "flaviatattoo@psycho.com", passwordEncoder.encode("flavia123"));
+			tattoerService.saveTattoer(tattoerD);
+
+			Tattoer tattoerE = new Tattoer("Celeste", "Tattoer", "celestetattoo", "celestetattoo@psycho.com", passwordEncoder.encode("cele123"));
+			tattoerService.saveTattoer(tattoerE);
+
+			Tattoer tattoerF = new Tattoer("Lauti", "Tattoer", "lautitattoo", "lautitattoo@psycho.com", passwordEncoder.encode("lauti123"));
+			tattoerService.saveTattoer(tattoerF);
+
 			long phone = 3186942813L;
 			Appointment appointmentA = new Appointment(clientZ, phone, "Arm", "13cm", true, tattoerA, LocalDate.of(2022, 06, 30));
 			appointmentService.saveAppointment(appointmentA);

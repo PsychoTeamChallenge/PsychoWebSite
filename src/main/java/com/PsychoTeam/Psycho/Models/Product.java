@@ -4,6 +4,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -40,7 +41,7 @@ public class Product {
         this.name = name;
         this.description = description;
         this.stock = stock;
-        this.price = price;
+        this.price = Math.round(price / 230);
         this.urlImg = urlImg;
         this.category = category;
         this.filter = filter;

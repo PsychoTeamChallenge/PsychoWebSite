@@ -23,6 +23,7 @@ Vue.createApp({
     },
 
     created() {
+       
         axios.get("/api/post").then(response => {
             this.posts = response.data;
             this.postsFiltrados = this.posts;
