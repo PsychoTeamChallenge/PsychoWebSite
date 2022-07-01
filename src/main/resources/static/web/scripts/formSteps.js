@@ -356,7 +356,6 @@ Vue.createApp({
     getPDF() {
       axios.post("/api/purchase/resume", "idPurchase=" + this.idPurchase, { "responseType": 'blob' })
         .then(response => {
-          console.log(response)
           let blob = new Blob([response.data]);
           let link = document.createElement('a');
           link.href = window.URL.createObjectURL(blob);
