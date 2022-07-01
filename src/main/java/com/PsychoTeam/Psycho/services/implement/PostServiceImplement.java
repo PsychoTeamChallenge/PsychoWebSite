@@ -18,7 +18,7 @@ public class PostServiceImplement implements PostService {
 
     @Override
     public Post getPostById(long id) {
-        return postRepository.getReferenceById(id);
+        return postRepository.findById(id).orElse(null);
     }
 
     @Override
