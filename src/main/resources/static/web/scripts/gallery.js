@@ -52,7 +52,7 @@ Vue.createApp({
             }
         },
         requestAppointment() {
-            window.location.href = "http://localhost:8080/web/appointment.html"
+            window.location.href = "/web/appointment.html"
         },
 
         openNewPost(){
