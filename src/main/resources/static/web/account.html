@@ -19,8 +19,6 @@
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
-
     <link rel="stylesheet" href="./styles/gallery.css">
     <link rel="stylesheet" href="./styles/formSteps.css">
     <link rel="stylesheet" href="./styles/accountDetails.css">
@@ -42,7 +40,6 @@
     </nav>
     <!--- sidebarDesktop -->
     <div class="desktopSidebar" id = "desktopSidebar">
-      <a href="./index.html"><i class='bx bx-left-arrow-alt' style="font-size: 3rem; color: white;" ></i></a> 
       <div class="desktopSidebarTop">
         <div>
           <img src="./assets/logo/sketchLogo2.png" alt="logoToungue" class = "logoSidebar">
@@ -111,7 +108,7 @@
               <p> {{client.email}} </p>
               <p><a href="#" @click = "editAccountChange()"> Edit account </a> | <a href="#"> Change password </a></p>
             </div>
-            <div class="postsDetails"  v-if=" client.posts > 0">
+            <div class="postsDetails"  v-if="client.posts.length > 0">
               <h3>Posts you have done</h3>
               <div class="postContainers">
                 <div class="cards" v-for="post in client.posts" :style="'background-image:url('+post.urlImage+');'">
@@ -124,7 +121,7 @@
                 </div>
               </div>
             </div>
-            <div v-if="1 > client.posts " class="nothing">
+            <div v-else-if="1 > client.posts " class="nothing">
               <h2>Nothing here</h2>
             </div>
           </div>

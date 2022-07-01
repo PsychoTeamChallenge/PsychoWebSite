@@ -88,14 +88,26 @@ Vue.createApp({
         let year = date.getFullYear();
         return day + "/" + month + "/" + year
       },
-      
+      getPDF(id_purchase) {
+        axios.post("/api/purchase/resume", "idPurchase=" + id_purchase, { "responseType": 'blob' })
+          .then(response => {
+            console.log(response)
+            let blob = new Blob([response.data]);
+            let link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = `Pyscho_Resume_${this.client.firstName}_${this.client.lastName}.pdf`;
+            link.click();
+          })
+          .catch(error => console.log(error))
+      }
+
     },
     computed: {
-     
+
     }
-    
+
   }).mount('#app')
-  
+
   function logout(){
     axios.post("/api/logout")
     .then(response =>{
@@ -111,8 +123,7 @@ Vue.createApp({
          window.location.href= "/web/index.html"
         }
       });
-   } 
+   }
    )
-  
+
   }
-  
