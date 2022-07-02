@@ -52,5 +52,4 @@ public class Appointment {
         this.tattoer = tattoer;
         this.date = date;
     }
-
 }
