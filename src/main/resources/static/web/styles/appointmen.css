@@ -78,7 +78,7 @@ body {
 h2 {
     font-family: "Argh";
     color: white;
-    /* font-size: 2em; */
+    font-size: 2rem;
     letter-spacing: 2px;
 }
 
@@ -284,7 +284,16 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-@media screen and (min-width:270px) and (max-width:650px) {
+#color-tatoo,
+#bg {
+    display: none;
+}
+
+#color-tatoo:checked + label,#bg:checked + label{
+    color: var(--pink)!important;
+}
+/* --------------------- MEDIA QUERIES ------------------*/
+@media screen and (min-width:270px) and (max-width:659px) {
     .form__header {
         margin-top: 2rem;
         height: 6vh;
@@ -368,6 +377,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 @media screen and (min-width:660px) and (max-width:800px) {
+
+    h2{
+        font-size: 2.5rem;
+        padding-bottom: 2%;
+    }
     #xGraffityFormAppointment {
         top: 31.5vh;
         left: 118.5vh;
@@ -423,6 +437,10 @@ form textarea {
     width: 2.5vw;
 height: 2vw;
 }
+
+form{
+    padding-top: 9vh !important;
+}
 }
 
 @media screen and (min-width:800px) {
@@ -432,10 +450,11 @@ height: 2vw;
         left: 82.5vh;
     }
     h2{
-        font-size: 2rem;
+        font-size: 3rem;
         font-weight: normal;
     }
     form {
+        padding-top: 0vh;
         margin-top: 5rem;
     }
 
@@ -486,4 +505,9 @@ height: 2vw;
     form button[type="submit"] {
         height: 12vh;
     }
+
+    
+main {
+    margin-bottom: 0rem;
+}
 }
