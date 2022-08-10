@@ -369,4 +369,4 @@ Vue.createApp({
 
   }
 
-}).directive('dragscroll', VueDragscroll).mount('#app')
+}).use(VueDragscroll).mount('#app')
